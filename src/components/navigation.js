@@ -1,9 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import GithubIcon from "react-icons/lib/go/mark-github"
-import TwitterIcon from "react-icons/lib/fa/twitter"
 import SearchForm from "../components/search-form"
-import DiscordIcon from "../components/discord"
 import logo from "../logo.svg"
 import typography, { rhythm, scale, options } from "../utils/typography"
 import presets, { colors } from "../utils/presets"
@@ -169,37 +167,10 @@ const Navigation = ({ pathname }) => {
             offsetVertical="-0.2175rem"
           />
           <SocialNavItem
-            href="https://github.com/gatsbyjs/gatsby"
+            href="https://github.com/suziwen/markdownxiaoshujiang"
             title="GitHub"
           >
             <GithubIcon style={{ verticalAlign: `text-top` }} />
-          </SocialNavItem>
-          <div
-            css={{
-              display: `none`,
-              [presets.Desktop]: { display: !isHomepage && `flex` },
-              [presets.Hd]: { display: `flex` },
-            }}
-          >
-            <SocialNavItem
-              href="https://discord.gg/0ZcbPKXt5bVoxkfV"
-              title="Discord"
-            >
-              <DiscordIcon overrideCSS={{ verticalAlign: `text-top` }} />
-            </SocialNavItem>
-            <SocialNavItem
-              href="https://twitter.com/gatsbyjs"
-              title="@gatsbyjs"
-            >
-              <TwitterIcon style={{ verticalAlign: `text-top` }} />
-            </SocialNavItem>
-          </div>
-          <SocialNavItem
-            href="https://www.gatsbyjs.com"
-            title="gatsbyjs.com"
-            overrideCSS={{ paddingRight: 0 }}
-          >
-            .com
           </SocialNavItem>
         </div>
       </div>
