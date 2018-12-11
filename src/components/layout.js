@@ -149,20 +149,12 @@ class DefaultLayout extends React.Component {
       <div className={isHomepage ? `is-homepage` : ``}>
         <SiteMetadata pathname={this.props.location.pathname} />
         <SkipNavLink css={styles.skipLink}>Skip to main content</SkipNavLink>
-        <Banner background={isHomepage ? `#402060` : false}>
-          {/* !!! If you change the children of Banner remember to do the same in layout/layout-with-heading.js */}
-          {`: “Rise of the Content Mesh: Webcast with Contentful and Gatsby”.`}
-        </Banner>
         <Navigation pathname={this.props.location.pathname} />
         <div
           className={`main-body`}
           css={{
-            paddingTop: presets.bannerHeight,
             [presets.Tablet]: {
               margin: `0 auto`,
-              paddingTop: isHomepage
-                ? presets.bannerHeight
-                : `calc(${presets.bannerHeight} + ${presets.headerHeight})`,
             },
             paddingLeft: `env(safe-area-inset-left)`,
             paddingRight: `env(safe-area-inset-right)`,

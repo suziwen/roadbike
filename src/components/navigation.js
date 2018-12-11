@@ -62,11 +62,6 @@ const Navigation = ({ pathname }) => {
         height: presets.headerHeight,
         left: 0,
         right: 0,
-        top: isHomepage
-          ? `calc(${presets.bannerHeight} + ${rhythm(
-              options.blockMarginBottom
-            )})`
-          : presets.bannerHeight,
         zIndex: 2,
         "&:after": {
           content: `''`,

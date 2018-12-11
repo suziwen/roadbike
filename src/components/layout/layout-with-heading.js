@@ -4,7 +4,6 @@ import Helmet from "react-helmet"
 import { SkipNavLink } from "@reach/skip-nav"
 import styled from "react-emotion"
 
-import Banner from "../banner"
 import PageHeading from "./page-heading"
 import Navigation from "../navigation"
 import MobileNavigation from "../navigation-mobile"
@@ -20,12 +19,10 @@ import "../../fonts/Webfonts/futurapt_demiitalic_macroman/stylesheet.css"
 import "typeface-spectral"
 
 const Content = styled(`div`)`
-  padding-top: ${presets.bannerHeight};
   padding-bottom: 3.5rem;
 
   ${presets.Tablet} {
     margin-left: ${presets.pageHeadingDesktopWidth};
-    padding-top: calc(${presets.bannerHeight} + ${presets.headerHeight});
     padding-bottom: 0;
   }
 `
