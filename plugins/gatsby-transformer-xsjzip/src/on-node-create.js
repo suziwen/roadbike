@@ -44,6 +44,12 @@ async function unZipContent(node, ){
 
 const slugs = {}
 
+const fixSlugPath = (slug)=>{
+  slug = slug.replace(/\.*/g, '')
+  slug = slug.replace(/\/+/g, '/')
+  slug = slug.replace(/^\/*|\/*$/g, '')
+  return slug
+}
 const fixDuplateSlug = ({slug, times=0, reporter, node})=>{
   const orignSlug = slug
   if (!!times) {
@@ -154,7 +160,7 @@ module.exports = async function onCreateNode(
     markdownNode.customCss = meta.cssText
     markdownNode.css = style
     const slug = frontmatter.slug || meta.slug || createFilePath({node, getNode})
-    markdownNode.slug = fixDuplateSlug({slug, reporter, node})
+    markdownNode.slug = fixDuplateSlug({slug: fixSlugPath(slug), reporter, node})
     slugs[markdownNode.slug] = node
     const stringfyDate = (date)=>{
       if (_.isDate(date)){
