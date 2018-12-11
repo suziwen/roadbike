@@ -143,12 +143,13 @@ const Navigation = ({ pathname }) => {
           css={styles.navContainer}
         >
           <ul css={styles.ulContainer}>
-            <NavItem linkTo="/docs/">Docs</NavItem>
+            <NavItem linkTo="/docs/">文档</NavItem>
             <NavItem linkTo="/tutorial/">Tutorial</NavItem>
-            <NavItem linkTo="/plugins/">Plugins</NavItem>
-            <NavItem linkTo="/features/">Features</NavItem>
-            <NavItem linkTo="/blog/">Blog</NavItem>
-            <NavItem linkTo="/showcase/">Showcase</NavItem>
+            <NavItem linkTo="/feature/">主要功能</NavItem>
+            <NavItem linkTo="/blog/">博客</NavItem>
+            <NavItem linkTo="/log/">升级日志</NavItem>
+            <NavItem linkTo="/price/">价格</NavItem>
+            <NavItem linkTo="/download/">下载</NavItem>
             {/* <li css={styles.li}>
                 <Link
                   to="/community/"

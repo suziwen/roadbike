@@ -7,7 +7,6 @@ import {
   DocsIcon,
   TutorialIcon,
   PluginsIcon,
-  ShowcaseIcon,
 } from "../assets/mobile-nav-icons"
 import presets, { colors } from "../utils/presets"
 import { svgStyles } from "../utils/styles"
@@ -75,7 +74,6 @@ const MobileNavigation = () => (
       <MobileNavItem linkTo="/tutorial/" label="Tutorial" icon={TutorialIcon} />
       <MobileNavItem linkTo="/plugins/" label="Plugins" icon={PluginsIcon} />
       <MobileNavItem linkTo="/blog/" label="Blog" icon={BlogIcon} />
-      <MobileNavItem linkTo="/showcase/" label="Showcase" icon={ShowcaseIcon} />
     </div>
   </React.Fragment>
 )

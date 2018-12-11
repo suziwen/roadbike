@@ -2,7 +2,7 @@ import React from "react"
 import Helmet from "react-helmet"
 import { graphql, StaticQuery } from "gatsby"
 
-import gatsbyIcon from "../assets/gatsby-icon.png"
+import gatsbyIcon from "../assets/logo-icon.png"
 
 const SiteMetadata = ({ pathname }) => (
   <StaticQuery
@@ -36,8 +36,8 @@ const SiteMetadata = ({ pathname }) => (
         <meta property="og:locale" content="en" />
         <meta property="og:site_name" content={title} />
         <meta property="og:image" content={`${siteUrl}${gatsbyIcon}`} />
-        <meta property="og:image:width" content="512" />
-        <meta property="og:image:height" content="512" />
+        <meta property="og:image:width" content="256" />
+        <meta property="og:image:height" content="256" />
       </Helmet>
     )}
   />
