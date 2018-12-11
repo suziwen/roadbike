@@ -10,6 +10,7 @@ import Container from "../components/container"
 
 class DocsTemplate extends React.Component {
   render() {
+    console.log(this.props.data)
     const page = this.props.data.storyWriterMarkdown
     const html = page.html
 
@@ -51,8 +52,8 @@ class DocsTemplate extends React.Component {
 export default DocsTemplate
 
 export const pageQuery = graphql`
-  query($path: String!) {
-    storyWriterMarkdown(slug: { eq: $path }) {
+  query($slug: String!) {
+    storyWriterMarkdown(slug: { eq: $slug }) {
       html
       title
       excerpt

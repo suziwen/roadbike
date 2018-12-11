@@ -4,6 +4,9 @@ import { Link, graphql } from "gatsby"
 
 import Container from "../components/container"
 import Layout from "../components/layout"
+import getLink from "../utils/node-link"
+
+
 
 const Tags = ({ pageContext, data, location }) => {
   const { tag } = pageContext
@@ -18,10 +21,8 @@ const Tags = ({ pageContext, data, location }) => {
         <h1>{tagHeader}</h1>
         <ul>
           {edges.map(({ node }) => {
-            const {
-              title,
-              slug
-            } = node
+            const title = node.title
+            const slug = getLink(node)
             return (
               <li key={slug}>
                 <Link to={slug}>{title}</Link>
@@ -29,7 +30,7 @@ const Tags = ({ pageContext, data, location }) => {
             )
           })}
         </ul>
-        <Link to="/blog/tags">All tags</Link>
+        <Link to="/tags">All tags</Link>
       </Container>
     </Layout>
   )
@@ -73,6 +74,7 @@ export const pageQuery = graphql`
       edges {
         node {
           title
+          docType
           slug
         }
       }

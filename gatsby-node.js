@@ -74,7 +74,7 @@ exports.createPages = ({ graphql, actions }) => {
         posts.forEach(post => {
           if (post.node.docType === 'docs') {
             createPage({
-              path: post.node.slug,
+              path: `/docs/` + post.node.slug,
               component: docPostTemplate,
               context: {
                 slug: post.node.slug,
@@ -103,19 +103,19 @@ exports.createPages = ({ graphql, actions }) => {
           });
 
           related = _.shuffle(related).slice(0,6);
-            let next = index === 0 ? null : blogPosts[index - 1].node
-            const prev =
-              index === blogPosts.length - 1 ? null : blogPosts[index + 1].node
-            createPage({
-              path: post.node.slug,
-              component: blogPostTemplate,
-              context: {
-                slug: post.node.slug,
-                prev,
-                next,
-                related
-              },
-            })
+          let next = index === 0 ? null : blogPosts[index - 1].node
+          const prev =
+            index === blogPosts.length - 1 ? null : blogPosts[index + 1].node
+          createPage({
+            path: `/blog/` + post.node.slug,
+            component: blogPostTemplate,
+            context: {
+              slug: post.node.slug,
+              prev,
+              next,
+              related
+            },
+          })
         })
 
          // pagination blogPost

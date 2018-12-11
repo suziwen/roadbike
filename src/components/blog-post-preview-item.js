@@ -4,11 +4,12 @@ import Img from "gatsby-image"
 
 import typography, { rhythm, scale } from "../utils/typography"
 import presets, { colors } from "../utils/presets"
+import getLink from "../utils/node-link"
 
 const BlogPostPreviewItem = ({ post, className }) => {
   return (
     <article className={className} css={{ position: `relative` }}>
-      <Link to={post.slug}>
+      <Link to={getLink(post)}>
         <h2>{post.title}</h2>
         <p css={{ fontWeight: `normal` }}>
           {post.excerpt}
@@ -44,7 +45,7 @@ const BlogPostPreviewItem = ({ post, className }) => {
         </div>
       </div>
       <Link
-        to={post.slug}
+        to={getLink(post)}
         css={{
           position: `absolute`,
           top: 0,

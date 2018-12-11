@@ -9,6 +9,7 @@ import presets, { colors } from "../utils/presets"
 import typography, { rhythm, scale, options } from "../utils/typography"
 import Container from "../components/container"
 import TagsSection from "../components/tags-section"
+import getLink from "../utils/node-link"
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -140,7 +141,7 @@ class BlogPostTemplate extends React.Component {
                 }}
               >
                 {prev && (
-                  <Link to={prev.slug} css={prevNextLinkStyles}>
+                  <Link to={getLink(prev)} css={prevNextLinkStyles}>
                     <h4 css={prevNextLabelStyles}>Previous</h4>
                     <span
                       css={{
@@ -163,7 +164,7 @@ class BlogPostTemplate extends React.Component {
                 }}
               >
                 {next && (
-                  <Link to={next.slug} css={prevNextLinkStyles}>
+                  <Link to={getLink(next)} css={prevNextLinkStyles}>
                     <h4 css={prevNextLabelStyles}>Next</h4>
                     <span
                       css={{
@@ -200,6 +201,7 @@ export const pageQuery = graphql`
       id
       html
       excerpt
+      docType
       title
       createDate(formatString: "MMMM DD, YYYY")
       updateDate(formatString: "MMMM DD, YYYY")
