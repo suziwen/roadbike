@@ -71,7 +71,7 @@ const BlogPostPreviewItem = ({ post, className }) => {
 }
 
 export const blogPostPreviewFragment = graphql`
-  fragment BlogPostPreview_item on MarkdownRemark {
+  fragment BlogPostPreview_item on StoryWriterMarkdown {
     slug
     title
     docType

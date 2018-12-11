@@ -9,7 +9,7 @@ const TagsSection = ({ tags }) => {
     const divider = i < tags.length - 1 && <span>{` | `}</span>
     return (
       <span key={tag}>
-        <Link to={`/blog/tags/${_.kebabCase(tag.toLowerCase())}`}>{tag}</Link>
+        <Link to={`/tags/${_.kebabCase(tag.toLowerCase())}`}>{tag}</Link>
         {divider}
       </span>
     )

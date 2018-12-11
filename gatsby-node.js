@@ -78,7 +78,6 @@ exports.createPages = ({ graphql, actions }) => {
               component: docPostTemplate,
               context: {
                 slug: post.node.slug,
-                related
               },
             })
           }

@@ -2,11 +2,11 @@ import React from "react"
 import { Link } from "gatsby"
 import Helmet from "react-helmet"
 
-import Layout from "../../components/layout"
-import { itemListDocs } from "../../utils/sidebar/item-list"
-import Container from "../../components/container"
-import DocSearchContent from "../../components/docsearch-content"
-import presets from "../../utils/presets"
+import Layout from "../components/layout"
+import { itemListDocs } from "../utils/sidebar/item-list"
+import Container from "../components/container"
+import DocSearchContent from "../components/docsearch-content"
+import presets from "../utils/presets"
 
 class IndexRoute extends React.Component {
   render() {

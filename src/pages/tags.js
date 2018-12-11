@@ -8,8 +8,8 @@ import kebabCase from "lodash/kebabCase"
 // Components
 import Helmet from "react-helmet"
 import { Link } from "gatsby"
-import Layout from "../../components/layout"
-import Container from "../../components/container"
+import Layout from "../components/layout"
+import Container from "../components/container"
 
 const TagsPage = ({
   data: {
@@ -17,7 +17,7 @@ const TagsPage = ({
     site: {
       siteMetadata: { title, description, siteUrl }
     }
-  }
+  },
   location,
 }) => {
   const uniqGroup = group.reduce((lookup, tag) => {

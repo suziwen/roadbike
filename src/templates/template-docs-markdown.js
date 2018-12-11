@@ -52,7 +52,7 @@ export default DocsTemplate
 
 export const pageQuery = graphql`
   query($path: String!) {
-    storyWriterMarkdown(fields: { slug: { eq: $path } }) {
+    storyWriterMarkdown(slug: { eq: $path }) {
       html
       title
       excerpt

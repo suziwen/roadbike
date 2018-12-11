@@ -7,7 +7,7 @@ import Layout from "../components/layout"
 
 const Tags = ({ pageContext, data, location }) => {
   const { tag } = pageContext
-  const { edges, totalCount } = data.allMarkdownRemark
+  const { edges, totalCount } = data.allStoryWriterMarkdown
   const tagHeader = `${totalCount} post${
     totalCount === 1 ? `` : `s`
   } tagged with "${tag}"`
