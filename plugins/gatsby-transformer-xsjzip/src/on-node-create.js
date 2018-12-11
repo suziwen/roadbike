@@ -144,7 +144,7 @@ module.exports = async function onCreateNode(
       },
     }
 
-    markdownNode.docType = node.sourceInstanceName === 'docs' ? `docs` : `blogs`
+    markdownNode.docType = node.sourceInstanceName? node.sourceInstanceName : `blogs`
     markdownNode.html = previewHtml
     markdownNode.title = frontmatter.title || meta.title
     markdownNode.tags = frontmatter.tags || meta.tags
