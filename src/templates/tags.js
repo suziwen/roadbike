@@ -19,8 +19,8 @@ const Tags = ({ pageContext, data, location }) => {
         <ul>
           {edges.map(({ node }) => {
             const {
-              frontmatter: { title },
-              fields: { slug },
+              title,
+              slug
             } = node
             return (
               <li key={slug}>
@@ -40,14 +40,13 @@ Tags.propTypes = {
     tag: PropTypes.string.isRequired,
   }),
   data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
+    allStoryWriterMarkdown: PropTypes.shape({
       totalCount: PropTypes.number.isRequired,
       edges: PropTypes.arrayOf(
         PropTypes.shape({
           node: PropTypes.shape({
-            frontmatter: PropTypes.shape({
-              title: PropTypes.string.isRequired,
-            }),
+            title: PropTypes.string.isRequired,
+            slug: PropTypes.string.isRequired,
           }),
         }).isRequired
       ),
@@ -58,27 +57,25 @@ Tags.propTypes = {
 export default Tags
 
 export const pageQuery = graphql`
-  query($tag: String) {
-    allMarkdownRemark(
-      limit: 2000
-      sort: { fields: [frontmatter___date, fields___slug], order: DESC }
-      filter: {
-        frontmatter: { tags: { in: [$tag] } }
-        fileAbsolutePath: { regex: "/docs.blog/" }
-        fields: { released: { eq: true } }
+  query TagPage($tag: String) {
+    site {
+      siteMetadata {
+        title
+        description
+        siteUrl
       }
+    }
+    allStoryWriterMarkdown(
+      sort: { fields: [updateDate], order: DESC }
+      filter: { tags: { in: [$tag] } }
     ) {
       totalCount
       edges {
         node {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-          }
+          title
+          slug
         }
       }
     }
   }
-`
+`;

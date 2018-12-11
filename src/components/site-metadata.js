@@ -38,9 +38,6 @@ const SiteMetadata = ({ pathname }) => (
         <meta property="og:image" content={`${siteUrl}${gatsbyIcon}`} />
         <meta property="og:image:width" content="512" />
         <meta property="og:image:height" content="512" />
-
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content={twitter} />
       </Helmet>
     )}
   />

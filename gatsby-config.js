@@ -14,66 +14,27 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-source-npm-package-search`,
-      options: {
-        keywords: [`gatsby-plugin`, `gatsby-component`],
-      },
+        resolve: `gatsby-source-filesystem`,
+        options: {
+            path: `${__dirname}/src/xsjposts/blogs`,
+            name: 'blogs',
+        },
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `docs`,
-        path: `${__dirname}/../docs/`,
-      },
+        resolve: `gatsby-source-filesystem`,
+        options: {
+            path: `${__dirname}/src/xsjposts/docs`,
+            name: 'docs',
+        },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `packages`,
-        path: `${__dirname}/../packages/`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `ecosystem`,
-        path: `${__dirname}/src/data/ecosystem/`,
-      },
-    },
+    `gatsby-transformer-xsjzip`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    `gatsby-transformer-documentationjs`,
     `gatsby-transformer-yaml`,
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          `gatsby-remark-graphviz`,
-          `gatsby-remark-code-titles`,
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 786,
-              backgroundColor: `#ffffff`,
-            },
-          },
-          {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 1.05rem`,
-            },
-          },
-          `gatsby-remark-autolink-headers`,
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
-        ],
-      },
-    },
     {
       resolve: `gatsby-plugin-nprogress`,
       options: {
@@ -99,16 +60,8 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
-    `gatsby-transformer-csv`,
-    `gatsby-plugin-twitter`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: `UA-93349937-5`,
-      },
-    },
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -172,31 +125,5 @@ module.exports = {
         ],
       },
     },
-    `gatsby-plugin-netlify`,
-    `gatsby-plugin-netlify-cache`,
-    {
-      resolve: `gatsby-plugin-mailchimp`,
-      options: {
-        endpoint: `https://gatsbyjs.us17.list-manage.com/subscribe/post?u=1dc33f19eb115f7ebe4afe5ee&amp;id=f366064ba7`,
-      },
-    },
-    {
-      resolve: `gatsby-transformer-screenshot`,
-      options: {
-        nodeTypes: [`StartersYaml`],
-      },
-    },
-    `gatsby-plugin-subfont`,
-    // {
-    // resolve: `gatsby-plugin-guess-js`,
-    // options: {
-    // GAViewID: `142357465`,
-    // // The "period" for fetching analytic data.
-    // period: {
-    // startDate: new Date(`2018-1-1`),
-    // endDate: new Date(),
-    // },
-    // },
-    // },
   ],
 }

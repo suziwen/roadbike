@@ -13,15 +13,18 @@ import Container from "../../components/container"
 
 const TagsPage = ({
   data: {
-    allMarkdownRemark: { group },
-  },
+    allStoryWriterMarkdown: { group },
+    site: {
+      siteMetadata: { title, description, siteUrl }
+    }
+  }
   location,
 }) => {
   const uniqGroup = group.reduce((lookup, tag) => {
     const key = kebabCase(tag.fieldValue.toLowerCase())
     if (!lookup[key]) {
       lookup[key] = Object.assign(tag, {
-        slug: `/blog/tags/${key}`,
+        slug: `/tags/${key}`,
       })
     }
     return lookup
@@ -55,7 +58,7 @@ const TagsPage = ({
 
 TagsPage.propTypes = {
   data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
+    allStoryWriterMarkdown: PropTypes.shape({
       group: PropTypes.arrayOf(
         PropTypes.shape({
           fieldValue: PropTypes.string.isRequired,
@@ -70,14 +73,18 @@ export default TagsPage
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(
-      limit: 2000
-      filter: { fileAbsolutePath: { regex: "/docs.blog/" } }
-    ) {
-      group(field: frontmatter___tags) {
+    site {
+      siteMetadata {
+        title
+        description
+        siteUrl
+      }
+    }
+    allStoryWriterMarkdown {
+      group(field: tags) {
         fieldValue
         totalCount
       }
     }
   }
-`
+`;

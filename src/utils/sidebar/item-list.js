@@ -1,6 +1,4 @@
 import docsSidebar from "../../data/sidebars/doc-links.yaml"
-import featuresSidebar from "../../data/sidebars/features-links.yaml"
-import tutorialSidebar from "../../data/sidebars/tutorial-links.yaml"
 
 const createHash = link => {
   let index = -1
@@ -27,17 +25,4 @@ const itemListDocs = extenditemList(docsSidebar).map(item => {
   return { ...item, key: `docs` }
 })
 
-const itemListFeatures = extenditemList(featuresSidebar).map(item => {
-  return {
-    ...item,
-    key: `features`,
-    disableAccordions: true,
-    disableExpandAll: true,
-  }
-})
-
-const itemListTutorial = extenditemList(tutorialSidebar).map(item => {
-  return { ...item, key: `tutorial` }
-})
-
-export { itemListDocs, itemListFeatures, itemListTutorial }
+export { itemListDocs}

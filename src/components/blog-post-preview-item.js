@@ -6,14 +6,12 @@ import typography, { rhythm, scale } from "../utils/typography"
 import presets, { colors } from "../utils/presets"
 
 const BlogPostPreviewItem = ({ post, className }) => {
-  const avatar = post.frontmatter.author.avatar.childImageSharp.fixed
-
   return (
     <article className={className} css={{ position: `relative` }}>
-      <Link to={post.fields.slug}>
-        <h2>{post.frontmatter.title}</h2>
+      <Link to={post.slug}>
+        <h2>{post.title}</h2>
         <p css={{ fontWeight: `normal` }}>
-          {post.frontmatter.excerpt ? post.frontmatter.excerpt : post.excerpt}
+          {post.excerpt}
         </p>
       </Link>
       <div
@@ -23,35 +21,6 @@ const BlogPostPreviewItem = ({ post, className }) => {
           marginBottom: rhythm(2),
         }}
       >
-        <Link
-          to={post.frontmatter.author.fields.slug}
-          css={{
-            position: `relative`,
-            zIndex: 1,
-            "&&": {
-              boxShadow: `none`,
-              borderBottom: `0`,
-              fontWeight: `normal`,
-              ":hover": {
-                background: `transparent`,
-              },
-            },
-          }}
-        >
-          <Img
-            alt=""
-            fixed={avatar}
-            css={{
-              borderRadius: `100%`,
-              display: `inline-block`,
-              marginRight: rhythm(1 / 2),
-              marginBottom: 0,
-              verticalAlign: `top`,
-              // prevents image twitch in Chrome when hovering the card
-              transform: `translateZ(0)`,
-            }}
-          />
-        </Link>
         <div
           css={{
             display: `inline-block`,
@@ -67,31 +36,15 @@ const BlogPostPreviewItem = ({ post, className }) => {
           }}
         >
           <div>
-            <Link
-              to={post.frontmatter.author.fields.slug}
-              css={{
-                position: `relative`,
-                zIndex: 1,
-                "&&": {
-                  color: `${colors.gatsby}`,
-                  fontWeight: `normal`,
-                  ":hover": {
-                    background: colors.ui.bright,
-                  },
-                },
-              }}
-            >
-              {post.frontmatter.author.id}
-            </Link>
             {` `}
             on
             {` `}
-            {post.frontmatter.date}
+            {post.updateDate}
           </div>
         </div>
       </div>
       <Link
-        to={post.fields.slug}
+        to={post.slug}
         css={{
           position: `absolute`,
           top: 0,
@@ -119,36 +72,22 @@ const BlogPostPreviewItem = ({ post, className }) => {
 
 export const blogPostPreviewFragment = graphql`
   fragment BlogPostPreview_item on MarkdownRemark {
+    slug
+    title
+    docType
     excerpt
-    fields {
-      slug
-    }
-    frontmatter {
-      excerpt
-      title
-      date(formatString: "MMMM Do YYYY")
-      author {
-        id
-        fields {
-          slug
-        }
-        avatar {
-          childImageSharp {
-            fixed(
-              width: 30
-              height: 30
-              quality: 80
-              traceSVG: {
-                turdSize: 10
-                background: "#f6f2f8"
-                color: "#e0d6eb"
-              }
-            ) {
-              ...GatsbyImageSharpFixed_tracedSVG
-            }
-          }
+    tags
+    updateDate(formatString: "DD MMMM, YYYY")
+    cover {
+      childImageSharp {
+        fluid(maxWidth: 180) {
+          ...GatsbyImageSharpFluid
         }
       }
+    }
+    meta {
+      title
+      tags
     }
   }
 `

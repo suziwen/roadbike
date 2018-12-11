@@ -1,12 +1,12 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Helmet from "react-helmet"
+import get from "lodash/get";
 
 import Layout from "../components/layout"
 import Container from "../components/container"
 import BlogPostPreviewItem from "../components/blog-post-preview-item"
 import Pagination from "../components/pagination"
-import EmailCaptureForm from "../components/email-capture-form"
 
 import presets, { colors } from "../utils/presets"
 import { rhythm, options } from "../utils/typography"
@@ -14,7 +14,15 @@ import logo from "../monogram.svg"
 
 class BlogPostsIndex extends React.Component {
   render() {
-    const { allMarkdownRemark } = this.props.data
+    const siteTitle = get(this, "props.data.site.siteMetadata.title");
+    const siteDescription = get(
+      this,
+      "props.data.site.siteMetadata.description"
+    );
+    const siteUrl = get(this, "props.data.site.siteMetadata.siteUrl");
+    const posts = get(this, "props.data.allStoryWriterMarkdown.edges");
+    const pagesTotal = get(this, "props.pageContext.pagesTotal");
+    const currentPage = get(this, "props.pageContext.currentPage");
 
     return (
       <Layout location={this.props.location}>
@@ -61,10 +69,10 @@ class BlogPostsIndex extends React.Component {
             >
               Blog
             </h1>
-            {allMarkdownRemark.edges.map(({ node }) => (
+            {posts.map(({ node }) => (
               <BlogPostPreviewItem
                 post={node}
-                key={node.fields.slug}
+                key={node.slug}
                 css={{
                   marginBottom: rhythm(options.blockMarginBottom),
                   [presets.Tablet]: {
@@ -99,7 +107,6 @@ class BlogPostsIndex extends React.Component {
               />
             ))}
             <Pagination context={this.props.pageContext} />
-            <EmailCaptureForm signupMessage="Enjoying our blog? Receive the next post in your inbox!" />
           </Container>
         </main>
       </Layout>
@@ -110,16 +117,21 @@ class BlogPostsIndex extends React.Component {
 export default BlogPostsIndex
 
 export const pageQuery = graphql`
-  query blogListQuery($skip: Int!, $limit: Int!) {
-    allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date, fields___slug] }
-      filter: {
-        frontmatter: { draft: { ne: true } }
-        fileAbsolutePath: { regex: "/docs.blog/" }
-        fields: { released: { eq: true } }
+  query IndexQuery($limit: Int, $skip: Int) {
+    site {
+      siteMetadata {
+        title
+        description
+        siteUrl
       }
+    }
+    allStoryWriterMarkdown(
       limit: $limit
       skip: $skip
+      sort: { fields: [updateDate, slug], order: DESC }
+      filter: {
+        docType: {eq: "blogs"}
+      }
     ) {
       edges {
         node {
@@ -128,4 +140,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
