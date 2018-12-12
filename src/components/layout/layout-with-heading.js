@@ -23,6 +23,7 @@ const Content = styled(`div`)`
 
   ${presets.Tablet} {
     margin-left: ${presets.pageHeadingDesktopWidth};
+    padding-top: ${presets.headerHeight};
     padding-bottom: 0;
   }
 `

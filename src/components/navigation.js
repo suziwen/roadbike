@@ -60,6 +60,11 @@ const Navigation = ({ pathname }) => {
         backgroundColor: isHomepage ? `transparent` : `rgba(255,255,255,0.975)`,
         position: isHomepage ? `absolute` : `relative`,
         height: presets.headerHeight,
+        top: isHomepage
+          ? rhythm(
+              options.blockMarginBottom
+            )
+          : 0,
         left: 0,
         right: 0,
         zIndex: 2,

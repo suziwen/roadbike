@@ -3,12 +3,13 @@ const Promise = require(`bluebird`)
 const path = require(`path`)
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions
 
   return new Promise((resolve, reject) => {
     const pageSize = 8;
 
     const docPostTemplate = path.resolve(`src/templates/template-docs-markdown.js`)
+    const logPostTemplate = path.resolve(`src/templates/template-logs-markdown.js`)
     const blogPostTemplate = path.resolve(`src/templates/template-blog-post.js`)
     const paginatedPostsTemplate = path.resolve(`src/templates/template-blog-list.js`)
     const tagTemplate = path.resolve(`src/templates/tags.js`)
@@ -70,8 +71,19 @@ exports.createPages = ({ graphql, actions }) => {
                   },
               });
           });
-
+        
+        const logNodes = []
         posts.forEach(post => {
+          if (post.node.docType === 'logs') {
+            logNodes.push(post.node)
+            createPage({
+              path: `/logs/` + post.node.slug,
+              component: logPostTemplate,
+              context: {
+                slug: post.node.slug,
+              },
+            })
+          }
           if (post.node.docType === 'docs') {
             createPage({
               path: `/docs/` + post.node.slug,
@@ -82,6 +94,15 @@ exports.createPages = ({ graphql, actions }) => {
             })
           }
         })
+        if (logNodes.length > 0 ){
+          const logNode = logNodes[0]
+          createRedirect({
+            toPath: `/logs/${logNode.slug}`,
+            fromPath: `/logs/`,
+            redirectInBrowser: true,
+            isPermanent: true
+          })
+        }
 
         blogPosts.forEach((post, index) => {
           let related = posts.filter((p) => {

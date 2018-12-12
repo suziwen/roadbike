@@ -66,6 +66,7 @@
   "private": true,
   "scripts": {
     "build": "gatsby build",
+    "clean": "rm -rf .cache && rm -rf public",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "develop": "gatsby develop",
     "start": "npm run develop",

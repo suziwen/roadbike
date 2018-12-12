@@ -27,6 +27,13 @@ module.exports = {
             name: 'docs',
         },
     },
+    {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+            path: `${__dirname}/src/xsjposts/logs`,
+            name: 'logs',
+        },
+    },
     `gatsby-transformer-xsjzip`,
     {
       resolve: `gatsby-plugin-typography`,
