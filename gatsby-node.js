@@ -79,8 +79,9 @@ exports.createPages = ({ graphql, actions }) => {
             logNodes.push(post.node)
             logSidebarItems.push({
               title: post.node.title,
-              link: `/logs/${post.node.slug}`,
-              hash: false
+              link: encodeURI(`/logs/${post.node.slug}`),
+              hash: false,
+              key: 'logs'
             })
           }
           if (post.node.docType === 'docs') {
