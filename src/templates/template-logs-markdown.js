@@ -11,7 +11,9 @@ import Container from "../components/container"
 class DocsTemplate extends React.Component {
   render() {
     const page = this.props.data.storyWriterMarkdown
+    const logSidebarItems = this.props.pageContext.logSidebarItems
     const html = page.html
+    console.log(itemListDocs)
 
     return (
       <React.Fragment>
@@ -27,7 +29,7 @@ class DocsTemplate extends React.Component {
           isSidebarDisabled={
             false
           }
-          itemList={itemListDocs}
+          itemList={logSidebarItems}
           enableScrollSync={false}
         >
           <DocSearchContent>

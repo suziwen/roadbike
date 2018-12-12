@@ -73,15 +73,14 @@ exports.createPages = ({ graphql, actions }) => {
           });
         
         const logNodes = []
+        const logSidebarItems = []
         posts.forEach(post => {
           if (post.node.docType === 'logs') {
             logNodes.push(post.node)
-            createPage({
-              path: `/logs/` + post.node.slug,
-              component: logPostTemplate,
-              context: {
-                slug: post.node.slug,
-              },
+            logSidebarItems.push({
+              title: post.node.title,
+              link: `/logs/${post.node.slug}`,
+              hash: false
             })
           }
           if (post.node.docType === 'docs') {
@@ -103,6 +102,16 @@ exports.createPages = ({ graphql, actions }) => {
             isPermanent: true
           })
         }
+        logNodes.forEach(node=>{
+          createPage({
+            path: `/logs/` + node.slug,
+            component: logPostTemplate,
+            context: {
+              slug: node.slug,
+              logSidebarItems
+            },
+          })
+        })
 
         blogPosts.forEach((post, index) => {
           let related = posts.filter((p) => {
