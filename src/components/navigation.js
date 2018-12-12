@@ -145,7 +145,7 @@ const Navigation = ({ pathname }) => {
             <NavItem linkTo="/tutorial/">Tutorial</NavItem>
             <NavItem linkTo="/feature/">主要功能</NavItem>
             <NavItem linkTo="/blog/">博客</NavItem>
-            <NavItem linkTo="/log/">升级日志</NavItem>
+            <NavItem linkTo="/logs/">升级日志</NavItem>
             <NavItem linkTo="/price/">价格</NavItem>
             <NavItem linkTo="/download/">下载</NavItem>
             {/* <li css={styles.li}>

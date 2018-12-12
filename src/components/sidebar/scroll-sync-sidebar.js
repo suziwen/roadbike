@@ -76,9 +76,7 @@ const _getItemIds = section => {
 }
 
 const _getElementTopOffsetsById = ids => {
-  const banner = document.getElementsByClassName(`banner`)
   const navigation = document.getElementsByClassName(`navigation`)
-  const bannerHeight = banner[0].offsetHeight || 0
   const navigationHeight = navigation[0].offsetHeight || 0
 
   return ids
@@ -87,7 +85,7 @@ const _getElementTopOffsetsById = ids => {
       return element
         ? {
             hash,
-            offsetTop: element.offsetTop - bannerHeight - navigationHeight,
+            offsetTop: element.offsetTop - navigationHeight,
           }
         : null
     })

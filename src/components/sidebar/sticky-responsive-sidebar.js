@@ -111,11 +111,11 @@ const styles = {
     width: 320,
     zIndex: 10,
     [presets.Tablet]: {
-      height: `calc(100vh - ${presets.headerHeight} - ${presets.bannerHeight})`,
+      height: `calc(100vh - ${presets.headerHeight})`,
       maxWidth: `none`,
       opacity: `1 !important`,
       pointerEvents: `auto`,
-      top: `calc(${presets.headerHeight} + ${presets.bannerHeight})`,
+      top: `calc(${presets.headerHeight})`,
       width: rhythm(10),
     },
     [presets.Desktop]: {
