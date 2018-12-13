@@ -3,6 +3,7 @@ import DocsIcon from "!raw-loader!./docs.svg"
 import TutorialIcon from "!raw-loader!./tutorial.svg"
 import PluginsIcon from "!raw-loader!./plugins.svg"
 import ShowcaseIcon from "!raw-loader!./showcase.svg"
+import PriceIcon from "!raw-loader!./showcase.svg"
 
 export {
   BlogIcon,
@@ -10,4 +11,5 @@ export {
   TutorialIcon,
   PluginsIcon,
   ShowcaseIcon,
+  PriceIcon,
 }
