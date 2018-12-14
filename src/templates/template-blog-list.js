@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Helmet from "react-helmet"
 import get from "lodash/get";
 
@@ -79,11 +79,6 @@ class BlogPostsIndex extends React.Component {
                     background: `#fff`,
                     borderRadius: presets.radiusLg,
                     boxShadow: `0 3px 10px rgba(25, 17, 34, 0.05)`,
-                    padding: rhythm(options.blockMarginBottom * 2),
-                    paddingLeft: rhythm(options.blockMarginBottom * 3),
-                    paddingRight: rhythm(options.blockMarginBottom * 3),
-                    marginLeft: rhythm(-options.blockMarginBottom * 2),
-                    marginRight: rhythm(-options.blockMarginBottom * 2),
                     transition: `transform ${presets.animation.speedDefault} ${
                       presets.animation.curveDefault
                     },  box-shadow ${presets.animation.speedDefault} ${
@@ -135,6 +130,13 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
+          listCover: cover{
+            childImageSharp{
+              fluid(maxWidth: 180) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
           ...BlogPostPreview_item
         }
       }
