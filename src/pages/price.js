@@ -38,7 +38,6 @@ class IndexRoute extends React.Component {
           />
         </Helmet>
         <div css={{ position: `relative` }}>
-          <MastheadBg />
           <div
             css={{
               display: `flex`,
@@ -47,7 +46,6 @@ class IndexRoute extends React.Component {
               justifyContent: `space-between`,
             }}
           >
-            <MastheadContent />
             <div
               css={{
                 padding: rhythm(presets.gutters.default / 2),
