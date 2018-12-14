@@ -11,8 +11,7 @@ import MastheadBg from "../components/masthead-bg"
 import MastheadContent from "../components/masthead"
 import HomepageSection from "../components/homepage/homepage-section"
 import { PriceIcon} from "../assets/mobile-nav-icons"
-import PriceFreeSection from "../components/price-free-section"
-import PriceVipSection from "../components/price-vip-section"
+import ImageZoom from 'react-medium-image-zoom'
 import {
   setupScrollersObserver,
   unobserveScrollers,
@@ -162,6 +161,9 @@ const PriceSection = ({
 }
 
 
+const QuestionSections = ()=>{
+}
+
 
 class IndexRoute extends React.Component {
   componentDidMount() {
@@ -247,6 +249,17 @@ class IndexRoute extends React.Component {
                   </PriceSection>
                 </PriceSections>
               </HomepageSection>
+              <ImageZoom
+                shouldReplaceImage = {false}
+                image={{
+                  src: this.props.data.image1.childImageSharp.fixed.src,
+                  alt: 'hahah',
+                }}
+                zoomImage={{
+                  src: this.props.data.image1.publicURL,
+                  alt: 'gooood',
+                }}
+              />
             </div>
           </div>
         </div>
@@ -256,3 +269,41 @@ class IndexRoute extends React.Component {
 }
 
 export default IndexRoute
+
+
+export const query = graphql`
+  query {
+    image1: file(relativePath: { eq: "price/1.png" }, sourceInstanceName: { eq: "assets"}) {
+      publicURL
+      childImageSharp {
+        fixed(width: 400) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    image2: file(relativePath: { eq: "price/2.png" }, sourceInstanceName: { eq: "assets"}) {
+      publicURL
+      childImageSharp {
+        fixed(width: 125, height: 125) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    image3: file(relativePath: { eq: "price/3.png" }, sourceInstanceName: { eq: "assets"}) {
+      publicURL
+      childImageSharp {
+        fixed(width: 125, height: 125) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    image4: file(relativePath: { eq: "price/4.png" }, sourceInstanceName: { eq: "assets"}) {
+      publicURL
+      childImageSharp {
+        fixed(width: 125, height: 125) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+  }
+`
