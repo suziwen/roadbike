@@ -51,6 +51,8 @@ class BlogPostTemplate extends React.Component {
       </p>
     )
 
+    const postHtmlAndCss = `<style>${post.customCss}</style>\n${post.html}`
+
     return (
       <Layout location={this.props.location}>
         <Container className="post" css={{ paddingBottom: `0` }}>
@@ -106,7 +108,7 @@ class BlogPostTemplate extends React.Component {
               {post.title}
             </h1>
             <section className="post-body">
-              <div dangerouslySetInnerHTML={{ __html: post.html }} />
+              <div dangerouslySetInnerHTML={{ __html: postHtmlAndCss }} />
             </section>
             <TagsSection
               tags={post.tags}
@@ -203,6 +205,8 @@ export const pageQuery = graphql`
       excerpt
       docType
       title
+      customCss
+      css
       createDate(formatString: "MMMM DD, YYYY")
       updateDate(formatString: "MMMM DD, YYYY")
       tags

@@ -12,7 +12,7 @@ class DocsTemplate extends React.Component {
   render() {
     console.log(this.props.data)
     const page = this.props.data.storyWriterMarkdown
-    const html = page.html
+    const pageHtmlAndCss = `<style>${page.customCss}</style>\n${page.html}`
 
     return (
       <React.Fragment>
@@ -38,7 +38,7 @@ class DocsTemplate extends React.Component {
               </h1>
               <div
                 dangerouslySetInnerHTML={{
-                  __html: html,
+                  __html: pageHtmlAndCss,
                 }}
               />
             </Container>
@@ -55,6 +55,8 @@ export const pageQuery = graphql`
   query($slug: String!) {
     storyWriterMarkdown(slug: { eq: $slug }) {
       html
+      css
+      customCss
       title
       excerpt
       slug
