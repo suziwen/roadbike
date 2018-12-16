@@ -1,7 +1,7 @@
 import React from "react"
 import Modal from "react-modal"
 import { SkipNavLink } from "@reach/skip-nav"
-import MdClose from "react-icons/lib/md/close"
+import {MdClose} from "react-icons/md"
 import { navigate, PageRenderer } from "gatsby"
 import presets, { colors } from "../utils/presets"
 import Navigation from "../components/navigation"

@@ -1,8 +1,7 @@
 import React from "react"
 import Helmet from "react-helmet"
 import { Link, graphql } from "gatsby"
-import ArrowForwardIcon from "react-icons/lib/md/arrow-forward"
-import ArrowBackIcon from "react-icons/lib/md/arrow-back"
+import {MdArrowForward, MdArrowBack} from "react-icons/md"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
 import presets, { colors } from "../utils/presets"
@@ -152,7 +151,7 @@ class BlogPostTemplate extends React.Component {
                         },
                       }}
                     >
-                      <ArrowBackIcon style={{ verticalAlign: `sub` }} />
+                      <MdArrowBack style={{ verticalAlign: `sub` }} />
                       {prev.title}
                     </span>
                   </Link>
@@ -176,7 +175,7 @@ class BlogPostTemplate extends React.Component {
                       }}
                     >
                       {next.title}
-                      <ArrowForwardIcon style={{ verticalAlign: `sub` }} />
+                      <MdArrowForward style={{ verticalAlign: `sub` }} />
                     </span>
                   </Link>
                 )}

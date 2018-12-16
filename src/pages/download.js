@@ -8,7 +8,7 @@ import { rhythm, options } from "../utils/typography"
 import { vP } from "../components/gutters"
 import Container from "../components/container"
 import { PriceIcon} from "../assets/mobile-nav-icons"
-import ArrowForwardIcon from "react-icons/lib/md/arrow-forward"
+import {MdArrowForward} from "react-icons/md"
 import HomepageSection from "../components/homepage/homepage-section"
 import Button from "../components/button"
 import {
@@ -54,10 +54,10 @@ const DownloadSections = ({
       title={`当前最新版本 v${version}`}
     >
       <DownloadButtonsStyled>
-        <Button large to={downloadUrl} ondark={true} tag="href" target="_blank" icon={<ArrowForwardIcon />} style={{margin: "10px"}}>
+        <Button large to={downloadUrl} ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
           Github 下载
         </Button>
-        <Button large to={downloadUrl} ondark tag="href" target="_blank" icon={<ArrowForwardIcon />} style={{margin: "10px"}}>
+        <Button large to={downloadUrl} ondark tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
           百度网盘下载(提取密码:)
         </Button>
       </DownloadButtonsStyled>
@@ -97,7 +97,7 @@ const OldDownloadSections = ()=>{
       inverseStyle={true}
       title={`支持 window xp 的版本 v1.13.0`}
     >
-      <Button large to="https://github.com/suziwen/markdownxiaoshujiang/releases/tag/v1.13.0" ondark={true} tag="href" target="_blank" icon={<ArrowForwardIcon />} style={{margin: "10px"}}>
+      <Button large to="https://github.com/suziwen/markdownxiaoshujiang/releases/tag/v1.13.0" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
         Github 下载
       </Button>
     </HomepageSection>
@@ -112,7 +112,7 @@ const OtherDownloadSections = ()=>{
       inverseStyle={true}
       title={`其他更多版本`}
     >
-      <Button large to="https://github.com/suziwen/markdownxiaoshujiang/releases" ondark={true} tag="href" target="_blank" icon={<ArrowForwardIcon />} style={{margin: "10px"}}>
+      <Button large to="https://github.com/suziwen/markdownxiaoshujiang/releases" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
         Github 下载
       </Button>
     </HomepageSection>

@@ -1,6 +1,5 @@
 import React, { Fragment } from "react"
-import GoFold from "react-icons/lib/go/fold"
-import GoUnfold from "react-icons/lib/go/unfold"
+import {GoFold, GoUnfold} from "react-icons/go"
 
 import presets, { colors } from "../../utils/presets"
 import { scale, options, rhythm } from "../../utils/typography"

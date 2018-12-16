@@ -1,7 +1,6 @@
 import React from "react"
 import { navigate } from "gatsby"
-import ArrowForwardIcon from "react-icons/lib/md/arrow-forward"
-import ArrowBackIcon from "react-icons/lib/md/arrow-back"
+import {MdArrowForward, MdArrowBack} from "react-icons/md"
 import PaginationLink from "./PaginationLink"
 import presets, { colors } from "../../utils/presets"
 import { options, rhythm } from "../../utils/typography"
@@ -57,12 +56,12 @@ class Pagination extends React.Component {
           }}
         >
           <PaginationLink to={prevPageLink} css={prevNextLinkStyles}>
-            <ArrowBackIcon style={{ verticalAlign: `sub` }} />
+            <MdArrowBack style={{ verticalAlign: `sub` }} />
             Newer posts
           </PaginationLink>
           <PaginationLink to={nextPageLink} css={prevNextLinkStyles}>
             Older posts
-            <ArrowForwardIcon style={{ verticalAlign: `sub` }} />
+            <MdArrowForward style={{ verticalAlign: `sub` }} />
           </PaginationLink>
         </div>
         <div

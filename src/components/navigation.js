@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import GithubIcon from "react-icons/lib/go/mark-github"
+import {GoMarkGithub} from "react-icons/go"
 import SearchForm from "../components/search-form"
 import logo from "../logo.svg"
 import typography, { rhythm, scale, options } from "../utils/typography"
@@ -178,7 +178,7 @@ const Navigation = ({ pathname }) => {
             href="https://github.com/suziwen/markdownxiaoshujiang"
             title="GitHub"
           >
-            <GithubIcon style={{ verticalAlign: `text-top` }} />
+            <GoMarkGithub style={{ verticalAlign: `text-top` }} />
           </SocialNavItem>
         </div>
       </div>

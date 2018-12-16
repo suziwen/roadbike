@@ -8,7 +8,6 @@ import Container from "../container"
 import HomepageSection from "../homepage/homepage-section"
 import { PriceIcon} from "../../assets/mobile-nav-icons"
 import Button from "../button"
-import ArrowForwardIcon from "react-icons/lib/md/arrow-forward"
 
 const PriceSections = styled('div')`
   display: flex;
@@ -176,7 +175,7 @@ const PriceCompareDetail = ()=>{
           ]}
         >
           <div>
-            <Button large to="/download/" icon={<ArrowForwardIcon />}>
+            <Button large to="/download/">
               下载使用
             </Button>
             </div>
@@ -197,7 +196,7 @@ const PriceCompareDetail = ()=>{
           ]}
         >
           <div>
-            <Button large to="/download/" icon={<ArrowForwardIcon />}>
+            <Button large to="/download/">
               查看付费流程
             </Button>
           </div>
