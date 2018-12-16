@@ -21,6 +21,8 @@ import "../assets/story-writer-markdown-default.css"
 import "../assets/story-writer-markdown-code-solarized-light.css"
 import "../assets/story-writer-markdown-components.css"
 
+import "../fonts/Webfonts/xsj/stylesheet.css"
+
 // Other fonts
 import "typeface-spectral"
 

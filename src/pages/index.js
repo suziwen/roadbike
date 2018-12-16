@@ -13,6 +13,8 @@ import {
   unobserveScrollers,
 } from "../utils/scrollers-observer"
 
+//import "../fonts/Webfonts/xsj/stylesheet.css"
+
 class IndexRoute extends React.Component {
   componentDidMount() {
     setupScrollersObserver()
@@ -23,6 +25,7 @@ class IndexRoute extends React.Component {
   }
 
   render() {
+//    require(`../fonts/Webfonts/xsj/stylesheet.css`)
     return (
       <Layout location={this.props.location}>
         <Helmet>

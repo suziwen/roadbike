@@ -100,8 +100,8 @@ const MastheadContent = () => (
         </span>
         apps and websites with React
       </h1>
-      <Button large to="/docs/" icon={<ArrowForwardIcon />}>
-        Get Started
+      <Button large tag="href" target="_self" overrideCSS={{fontFamily: 'smy'}} to="http://markdown.xiaoshujiang.com" icon={<ArrowForwardIcon />}>
+        开始写作
       </Button>
     </div>
   </div>
