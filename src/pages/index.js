@@ -8,6 +8,7 @@ import { vP } from "../components/gutters"
 import Container from "../components/container"
 import MastheadBg from "../components/story-head-bg"
 import MastheadContent from "../components/masthead"
+import MastheadLogo from "../components/masthead-logo"
 import {
   setupScrollersObserver,
   unobserveScrollers,
@@ -50,6 +51,7 @@ class IndexRoute extends React.Component {
             }}
           >
             <MastheadContent />
+            <MastheadLogo />
             <div
               css={{
                 padding: rhythm(presets.gutters.default / 2),

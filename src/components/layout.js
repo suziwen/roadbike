@@ -176,7 +176,7 @@ class DefaultLayout extends React.Component {
             renderContent={() => this.props.children}
           />
         </div>
-        <MobileNavigation />
+        <MobileNavigation pathname={this.props.location.pathname} />
       </div>
     )
   }

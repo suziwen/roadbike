@@ -12,6 +12,7 @@ const MastheadContent = () => (
     className="masthead-content"
     css={{
       display: `flex`,
+      height: `100vh`,
       padding: vP,
       paddingTop: rhythm(5),
       paddingBottom: rhythm(1),

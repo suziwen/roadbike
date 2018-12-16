@@ -35,8 +35,9 @@ const MobileNavItem = ({ linkTo, label, icon }) => (
   </Link>
 )
 
-const MobileNavigation = () => (
-  <React.Fragment>
+const MobileNavigation = ({pathname}) => {
+  const isHomepage = pathname === `/`
+  return (<React.Fragment>
     <span
       css={{
         position: `absolute`,
@@ -60,8 +61,8 @@ const MobileNavigation = () => (
         left: 0,
         right: 0,
         zIndex: 1,
-        borderTop: `1px solid ${colors.ui.border}`,
-        background: colors.ui.whisper,
+        borderTop: `1px solid ${isHomepage?colors.gray.bright : colors.ui.border}`,
+        background: isHomepage ? colors.gray.light :colors.ui.whisper,
         minHeight: presets.headerHeight,
         fontFamily: typography.options.headerFontFamily.join(`,`),
         paddingBottom: `env(safe-area-inset-bottom)`,
@@ -70,13 +71,14 @@ const MobileNavigation = () => (
         },
       }}
     >
-      <MobileNavItem linkTo="/docs/" label="Docs" icon={DocsIcon} />
-      <MobileNavItem linkTo="/tutorial/" label="Tutorial" icon={TutorialIcon} />
-      <MobileNavItem linkTo="/plugins/" label="Plugins" icon={PluginsIcon} />
-      <MobileNavItem linkTo="/blog/" label="Blog" icon={BlogIcon} />
+      <MobileNavItem linkTo="/" label="Home" icon={DocsIcon} />
+      <MobileNavItem linkTo="/docs/" label="文档" icon={DocsIcon} />
+      <MobileNavItem linkTo="/tutorial/" label="教程" icon={TutorialIcon} />
+      <MobileNavItem linkTo="/plugins/" label="功能" icon={PluginsIcon} />
+      <MobileNavItem linkTo="/blog/" label="博客" icon={BlogIcon} />
     </div>
   </React.Fragment>
-)
+)}
 
 export default MobileNavigation
 
