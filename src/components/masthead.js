@@ -1,5 +1,5 @@
 import React from "react"
-import {FaHome} from "react-icons/fa"
+import {FiFeather} from "react-icons/fi"
 
 import { rhythm, scale } from "../utils/typography"
 import presets, { colors } from "../utils/presets"
@@ -101,7 +101,7 @@ const MastheadContent = () => (
         </span>
         apps and websites with React
       </h1>
-      <Button large tag="href" target="_self" overrideCSS={{fontFamily: 'smy'}} to="http://markdown.xiaoshujiang.com" icon={<FaHome />}>
+      <Button large tag="href" target="_self" overrideCSS={{fontFamily: 'smy'}} to="http://markdown.xiaoshujiang.com" icon={<FiFeather />}>
         开始写作
       </Button>
     </div>
