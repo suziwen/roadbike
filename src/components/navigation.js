@@ -18,20 +18,28 @@ const iconColorHomepage = colors.ui.light
 const assignActiveStyles = ({ isPartiallyCurrent }) =>
   isPartiallyCurrent ? { style: styles.navItem.active } : {}
 
-const NavItem = ({ linkTo, children }) => (
-  <li css={styles.li}>
-    <Link to={linkTo} getProps={assignActiveStyles} css={styles.navItem}>
-      {children}
-    </Link>
-  </li>
-)
 
 const Navigation = ({ pathname }) => {
   const isHomepage = pathname === `/`
   const isBlog = pathname === `/blog/` || pathname.indexOf(`/blog/page/`) === 0
+  const navItemStyles = {
+    ...styles.navItem,
+    color: isHomepage ? colors.ui.light : `inherit`,
+    "&:hover": {
+      color: isHomepage ? colors.ui.bright : colors.gatsby
+    }
+  }
+
+  const NavItem = ({ linkTo, children }) => (
+    <li css={styles.li}>
+      <Link to={linkTo} getProps={assignActiveStyles} css={navItemStyles}>
+        {children}
+      </Link>
+    </li>
+  )
 
   const socialIconsStyles = {
-    ...styles.navItem,
+    ...navItemStyles,
     ...styles.socialIconItem,
     [presets.Phablet]: {
       color: isHomepage ? iconColorHomepage : false,

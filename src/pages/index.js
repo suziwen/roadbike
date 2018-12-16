@@ -6,7 +6,7 @@ import presets, { colors } from "../utils/presets"
 import { rhythm } from "../utils/typography"
 import { vP } from "../components/gutters"
 import Container from "../components/container"
-import MastheadBg from "../components/masthead-bg"
+import MastheadBg from "../components/story-head-bg"
 import MastheadContent from "../components/masthead"
 import {
   setupScrollersObserver,
@@ -26,6 +26,11 @@ class IndexRoute extends React.Component {
     return (
       <Layout location={this.props.location}>
         <Helmet>
+          <htmlAttributes 
+            css={{
+              overflow: `hidden`
+            }}
+          />
           <meta
             name="Description"
             content="Blazing fast modern site generator for React. Go beyond static sites: build blogs, ecommerce sites, full-blown apps, and more with Gatsby."
