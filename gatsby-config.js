@@ -83,28 +83,21 @@ module.exports = {
           {
             query: `
               {
-                allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___date] }
+                allStoryWriterMarkdown(
+                  sort: { order: DESC, fields: [createDate] }
                   filter: {
-                    frontmatter: { draft: { ne: true } }
-                    fileAbsolutePath: { regex: "/docs.blog/" }
+                    docType: {eq: "blogs"}
                   }
                 ) {
                   edges {
                     node {
                       excerpt
                       html
-                      frontmatter {
-                        title
-                        date
-                        excerpt
-                        author {
-                          id
-                        }
-                      }
-                      fields {
-                        slug
-                      }
+                      title
+                      createDate
+                      updateDate
+                      tags
+                      slug
                     }
                   }
                 }
@@ -124,15 +117,14 @@ module.exports = {
                 generator: `GatsbyJS`,
               }
             },
-            serialize: ({ query: { site, allMarkdownRemark } }) =>
-              allMarkdownRemark.edges.map(({ node }) => {
+            serialize: ({ query: { site, allStoryWriterMarkdown } }) =>
+              allStoryWriterMarkdown.edges.map(({ node }) => {
                 return {
-                  title: node.frontmatter.title,
-                  description: node.frontmatter.excerpt || node.excerpt,
-                  url: site.siteMetadata.siteUrl + node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + node.fields.slug,
+                  title: node.title,
+                  description: node.excerpt,
+                  url: site.siteMetadata.siteUrl + node.slug,
+                  guid: site.siteMetadata.siteUrl + node.slug,
                   custom_elements: [{ "content:encoded": node.html }],
-                  author: node.frontmatter.author.id,
                 }
               }),
           },

@@ -4,7 +4,16 @@ import presets from "../utils/presets"
 import { vP, vPHd, vPVHd, vPVVHd } from "../components/gutters"
 
 
-const Logo = () => (
+class Logo extends React.Component {
+  componentDidMount() {
+    console.log(`hhhhhh`)
+  }
+
+  componentWillUnmount() {
+    console.log(`bbbb`)
+  }
+  render() {
+   return (
     <div
       css={{
         position: `absolute`,
@@ -37,6 +46,7 @@ const Logo = () => (
         小书匠
       </p>
     </div>
-)
+  )}
+  }
 
 export default Logo
