@@ -3,7 +3,6 @@ import { graphql, Link } from "gatsby"
 import Helmet from "react-helmet"
 import get from "lodash/get";
 
-import Layout from "../components/layout"
 import Container from "../components/container"
 import BlogPostPreviewItem from "../components/blog-post-preview-item"
 import Pagination from "../components/pagination"
@@ -25,7 +24,6 @@ class BlogPostsIndex extends React.Component {
     const currentPage = get(this, "props.pageContext.currentPage");
 
     return (
-      <Layout location={this.props.location}>
         <main
           id={`reach-skip-nav`}
           css={{
@@ -104,7 +102,6 @@ class BlogPostsIndex extends React.Component {
             <Pagination context={this.props.pageContext} />
           </Container>
         </main>
-      </Layout>
     )
   }
 }

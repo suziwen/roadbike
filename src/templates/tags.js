@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 import { Link, graphql } from "gatsby"
 
 import Container from "../components/container"
-import Layout from "../components/layout"
 import getLink from "../utils/node-link"
 
 
@@ -16,23 +15,21 @@ const Tags = ({ pageContext, data, location }) => {
   } tagged with "${tag}"`
 
   return (
-    <Layout location={location}>
-      <Container>
-        <h1>{tagHeader}</h1>
-        <ul>
-          {edges.map(({ node }) => {
-            const title = node.title
-            const slug = getLink(node)
-            return (
-              <li key={slug}>
-                <Link to={slug}>{title}</Link>
-              </li>
-            )
-          })}
-        </ul>
-        <Link to="/tags">All tags</Link>
-      </Container>
-    </Layout>
+    <Container>
+      <h1>{tagHeader}</h1>
+      <ul>
+        {edges.map(({ node }) => {
+          const title = node.title
+          const slug = getLink(node)
+          return (
+            <li key={slug}>
+              <Link to={slug}>{title}</Link>
+            </li>
+          )
+        })}
+      </ul>
+      <Link to="/tags">All tags</Link>
+    </Container>
   )
 }
 

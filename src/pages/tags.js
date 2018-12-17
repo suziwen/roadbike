@@ -8,7 +8,6 @@ import kebabCase from "lodash/kebabCase"
 // Components
 import Helmet from "react-helmet"
 import { Link } from "gatsby"
-import Layout from "../components/layout"
 import Container from "../components/container"
 
 const TagsPage = ({
@@ -31,28 +30,26 @@ const TagsPage = ({
   }, {})
 
   return (
-    <Layout location={location}>
-      <Container>
-        <Helmet title="Tags" />
-        <div>
-          <h1>Tags</h1>
-          <ul>
-            {Object.keys(uniqGroup)
-              .sort((tagA, tagB) => tagA.localeCompare(tagB))
-              .map(key => {
-                const tag = uniqGroup[key]
-                return (
-                  <li key={tag.fieldValue}>
-                    <Link to={tag.slug}>
-                      {tag.fieldValue} ({tag.totalCount})
-                    </Link>
-                  </li>
-                )
-              })}
-          </ul>
-        </div>
-      </Container>
-    </Layout>
+    <Container>
+      <Helmet title="Tags" />
+      <div>
+        <h1>Tags</h1>
+        <ul>
+          {Object.keys(uniqGroup)
+            .sort((tagA, tagB) => tagA.localeCompare(tagB))
+            .map(key => {
+              const tag = uniqGroup[key]
+              return (
+                <li key={tag.fieldValue}>
+                  <Link to={tag.slug}>
+                    {tag.fieldValue} ({tag.totalCount})
+                  </Link>
+                </li>
+              )
+            })}
+        </ul>
+      </div>
+    </Container>
   )
 }
 

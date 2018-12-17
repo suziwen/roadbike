@@ -1,7 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Helmet from "react-helmet"
-import Layout from "../components/layout"
 import presets, { colors } from "../utils/presets"
 import { rhythm } from "../utils/typography"
 import { vP } from "../components/gutters"
@@ -28,19 +27,18 @@ class IndexRoute extends React.Component {
   render() {
 //    require(`../fonts/Webfonts/xsj/stylesheet.css`)
     return (
-      <Layout location={this.props.location}>
-        <Helmet>
-          <htmlAttributes 
-            css={{
-              overflow: `hidden`
-            }}
-          />
-          <meta
-            name="Description"
-            content="Blazing fast modern site generator for React. Go beyond static sites: build blogs, ecommerce sites, full-blown apps, and more with Gatsby."
-          />
-        </Helmet>
         <div css={{ position: `relative` }}>
+          <Helmet>
+            <htmlAttributes 
+              css={{
+                overflow: `hidden`
+              }}
+            />
+            <meta
+              name="Description"
+              content="Blazing fast modern site generator for React. Go beyond static sites: build blogs, ecommerce sites, full-blown apps, and more with Gatsby."
+            />
+          </Helmet>
           <MastheadBg />
           <div
             css={{
@@ -74,7 +72,6 @@ class IndexRoute extends React.Component {
             </div>
           </div>
         </div>
-      </Layout>
     )
   }
 }

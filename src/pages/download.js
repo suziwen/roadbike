@@ -2,7 +2,6 @@ import React from "react"
 import styled from "react-emotion"
 import { graphql } from "gatsby"
 import Helmet from "react-helmet"
-import Layout from "../components/layout"
 import presets, { colors } from "../utils/presets"
 import { rhythm, options } from "../utils/typography"
 import { vP } from "../components/gutters"
@@ -130,38 +129,36 @@ class IndexRoute extends React.Component {
 
   render() {
     return (
-      <Layout location={this.props.location}>
+      <div css={{ position: `relative` }}>
         <Helmet>
           <meta
             name="Description"
             content="小书匠下载"
           />
         </Helmet>
-        <div css={{ position: `relative` }}>
+        <div
+          css={{
+            display: `flex`,
+            flexDirection: `row`,
+            flexWrap: `wrap`,
+            justifyContent: `space-between`,
+          }}
+        >
           <div
             css={{
-              display: `flex`,
-              flexDirection: `row`,
-              flexWrap: `wrap`,
-              justifyContent: `space-between`,
+              padding: rhythm(presets.gutters.default / 2),
+              paddingBottom: 0,
+              flex: `0 0 100%`,
+              maxWidth: `100%`,
+              [presets.Hd]: { padding: vP, paddingTop: 0, paddingBottom: 0 },
             }}
           >
-            <div
-              css={{
-                padding: rhythm(presets.gutters.default / 2),
-                paddingBottom: 0,
-                flex: `0 0 100%`,
-                maxWidth: `100%`,
-                [presets.Hd]: { padding: vP, paddingTop: 0, paddingBottom: 0 },
-              }}
-            >
-              <DownloadSections version="6.8.1" downloadUrl="http://www.baidu.com" />
-              <OldDownloadSections />
-              <OtherDownloadSections />
-            </div>
+            <DownloadSections version="6.8.1" downloadUrl="http://www.baidu.com" />
+            <OldDownloadSections />
+            <OtherDownloadSections />
           </div>
         </div>
-      </Layout>
+      </div>
     )
   }
 }

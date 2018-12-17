@@ -6,7 +6,7 @@ import { rhythm } from "../utils/typography"
 
 export default props => {
   if (props.disable) {
-    return props.renderContent()
+    return props.children
   } else {
     return (
       <Fragment>
@@ -22,7 +22,7 @@ export default props => {
             [presets.Desktop]: { paddingLeft: rhythm(12) },
           }}
         >
-          {props.renderContent()}
+          {props.children}
         </div>
         <StickyResponsiveSidebar
           enableScrollSync={props.enableScrollSync}

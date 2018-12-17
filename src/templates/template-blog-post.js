@@ -3,7 +3,6 @@ import Helmet from "react-helmet"
 import { Link, graphql } from "gatsby"
 import {MdArrowForward, MdArrowBack} from "react-icons/md"
 import Img from "gatsby-image"
-import Layout from "../components/layout"
 import presets, { colors } from "../utils/presets"
 import typography, { rhythm, scale, options } from "../utils/typography"
 import Container from "../components/container"
@@ -53,7 +52,7 @@ class BlogPostTemplate extends React.Component {
     const postHtmlAndCss = `<style>${post.customCss}</style>\n${post.html}`
 
     return (
-      <Layout location={this.props.location}>
+      <div>
         <Container className="post" css={{ paddingBottom: `0` }}>
           <main id={`reach-skip-nav`}>
             {/* Add long list of social meta tags */}
@@ -183,7 +182,7 @@ class BlogPostTemplate extends React.Component {
             </div>
           </Container>
         </div>
-      </Layout>
+      </div>
     )
   }
 }
