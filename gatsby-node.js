@@ -4,35 +4,30 @@ const path = require(`path`)
 const req = require('require-yml')
 const _docSidebarItems = req(`./src/xsjposts/docs/doc-links.yaml`)
 
-const itemList = (docsSidebar)=>{
-  const createHash = link => {
-    let index = -1
-    if (link) index = link.indexOf(`#`)
-    return index >= 0 ? link.substr(index + 1) : false
-  }
-
-  const extenditemList = itemList => {
-    itemList.forEach(section => {
-      if (section.items) extendItem(section.items, section.title)
-    })
-    return itemList
-  }
-
-  const extendItem = (items, parentTitle) => {
-    items.forEach(item => {
-      item.hash = createHash(item.link)
-      item.parentTitle = parentTitle
-      if (item.items) extendItem(item.items, item.title)
-    })
-  }
-
-  const itemListDocs = extenditemList(docsSidebar).map(item => {
-    return { ...item, key: `docs` }
-  })
-  return itemListDocs
+const createHash = link => {
+  let index = -1
+  if (link) index = link.indexOf(`#`)
+  return index >= 0 ? link.substr(index + 1) : false
 }
 
-const docSidebarItems = itemList(_docSidebarItems)
+const extenditemList = itemList => {
+  itemList.forEach(section => {
+    if (section.items) extendItem(section.items, section.title)
+  })
+  return itemList
+}
+
+const extendItem = (items, parentTitle) => {
+  items.forEach(item => {
+    item.hash = createHash(item.link)
+    item.parentTitle = parentTitle
+    if (item.items) extendItem(item.items, item.title)
+  })
+}
+
+const docSidebarItems = extenditemList(_docSidebarItems).map(item => {
+  return { ...item, key: `docs` }
+})
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions
@@ -56,6 +51,7 @@ exports.createPages = ({ graphql, actions }) => {
               edges {
                 node {
                   title
+                  toc
                   docType
                   slug
                   tags
@@ -171,11 +167,35 @@ exports.createPages = ({ graphql, actions }) => {
           let next = index === 0 ? null : blogPosts[index - 1].node
           const prev =
             index === blogPosts.length - 1 ? null : blogPosts[index + 1].node
+          console.log(post.node.toc)
+          let blogSidebarItems = null
+          if (post.node.toc) {
+            const _blogSidebarItems = JSON.parse(post.node.toc)
+            if (_blogSidebarItems.length > 0) {
+              const fixSlug = (items)=>{
+                items.forEach((item)=>{
+                  item.link = `/blog/${item.link}`
+                  if (item.items) {
+                    fixSlug(item.items)
+                  }
+                })
+              }
+              fixSlug(_blogSidebarItems)
+              blogSidebarItems = extenditemList(_blogSidebarItems).map(item => {
+                return { ...item, key: `blogs` }
+              })
+            }
+          }
+          //const _blogSidebarItems = JSON.parse(post.node.toc)
+         // const blogSidebarItems = extenditemList(_blogSidebarItems).map(item => {
+         //   return { ...item, key: `blogs` }
+         // })
           createPage({
             path: `/blog/` + post.node.slug,
             component: blogPostTemplate,
             context: {
               slug: post.node.slug,
+              sidebarItems: blogSidebarItems,
               prev,
               next,
               related

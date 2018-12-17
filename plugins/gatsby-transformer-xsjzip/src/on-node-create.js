@@ -126,6 +126,70 @@ const transformCssSelector = (cssText)=>{
   return newCssText
 }
 
+const getTableOfContent = ($, slug)=>{
+  const result = []
+  let preItem = null
+  let depth = 1
+  $("h1, h2, h3, h4, h5, h6, h7").each((i, he)=>{
+    const $he = $(he)
+    if (!$he.hasClass("story_title")){
+      const $anchorContainer = $he.prev()
+      const tagName = he.tagName
+      const level = parseInt(tagName.substring(1))
+      if ($anchorContainer.length === 1 && $anchorContainer.hasClass('xsj_anchor')){
+        const nameEls = $anchorContainer.find(".blank_anchor_name")
+        if (nameEls.length === 2) {
+          const hash = nameEls[0].attribs.name
+          const title = nameEls[1].attribs.name
+          const link = `${slug}#${hash}`
+          const item = {
+            title,
+            link,
+          }
+          if (depth < level) {
+            if (preItem === null) {
+              result.push(item)
+            } else {
+              depth += 1
+              if (!preItem.items){
+                preItem.items = []
+              }
+              item.parent = preItem
+              preItem.items.push(item)
+            }
+          } else {
+            while(depth != level) {
+              if (!preItem) {
+                depth = level
+              } else {
+                preItem = preItem.parent
+                depth -= 1
+              }
+            }
+            if (preItem && preItem.parent) {
+              item.parent = preItem.parent
+              preItem.parent.items.push(item)
+            } else {
+              result.push(item)
+            }
+          }
+          preItem = item
+        }
+      }
+    }
+  })
+  const removeParentField = (items)=>{
+    items.forEach((item)=>{
+      delete(item.parent)
+      if (item.items) {
+        removeParentField(item.items)
+      }
+    })
+  }
+  removeParentField(result)
+  return result
+}
+
 module.exports = async function onCreateNode(
   { node, getNode, loadNodeContent, actions, createNodeId, reporter, store, pathPrefix, cache},
   pluginOptions
@@ -223,6 +287,7 @@ module.exports = async function onCreateNode(
     markdownNode.css = style
     const slug = frontmatter.slug || meta.slug || createFilePath({node, getNode})
     markdownNode.slug = fixDuplateSlug({slug: fixSlugPath(slug), reporter, node})
+    markdownNode.toc = JSON.stringify(getTableOfContent($, markdownNode.slug))
     slugs[markdownNode.slug] = node
     const stringfyDate = (date)=>{
       if (_.isDate(date)){
