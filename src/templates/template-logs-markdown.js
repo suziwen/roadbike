@@ -2,9 +2,7 @@ import React from "react"
 import Helmet from "react-helmet"
 import { graphql } from "gatsby"
 
-import PageWithSidebar from "../components/page-with-sidebar"
 import ContextConsumer from "../components/context"
-import { itemListDocs } from "../utils/sidebar/item-list"
 import DocSearchContent from "../components/docsearch-content"
 
 import Container from "../components/container"
@@ -13,18 +11,11 @@ class DocsTemplate extends React.Component {
   render() {
     const page = this.props.data.storyWriterMarkdown
     const props = this.props
-    const logSidebarItems = this.props.pageContext.logSidebarItems
     const pageHtmlAndCss = `<style>${page.customCss}</style>\n${page.html}`
     return (
       <ContextConsumer>
         {({data, set})=>{
           return (
-            <PageWithSidebar
-              disable={false}
-              itemList={logSidebarItems}
-              location={props.location}
-              enableScrollSync={false}
-              >
               <React.Fragment>
                 <Helmet>
                   <title>{page.title}</title>
@@ -46,7 +37,6 @@ class DocsTemplate extends React.Component {
                     </Container>
                   </DocSearchContent>
               </React.Fragment>
-            </PageWithSidebar>
           )
         }}
       </ContextConsumer>

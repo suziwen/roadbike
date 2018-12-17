@@ -9,6 +9,7 @@ import MobileNavigation from "../components/navigation-mobile"
 import SiteMetadata from "../components/site-metadata"
 import Transition from "../components/transition"
 import ContextConsumer, { ContextProviderComponent } from "../components/context"
+import PageWithSidebar from "../components/page-with-sidebar"
 
 // Import Futura PT typeface
 import "../fonts/Webfonts/futurapt_book_macroman/stylesheet.css"
@@ -39,15 +40,20 @@ class DefaultLayout extends React.PureComponent {
 
   render() {
     const isHomepage = this.props.location.pathname === `/`
+    const pageContext = this.props.pageContext
+    const sidebarItems = pageContext.sidebarItems
+    const isSidebarDisabled = pageContext.isSidebarDisabled || !sidebarItems
+    const enableScrollSync = pageContext.enableScrollSync
+
     const props = this.props
     return (
     <ContextProviderComponent>
       <ContextConsumer>
         {({data, set})=>{
           // SEE: template-docs-markdown for why this.props.isSidebarDisabled is here
-          const isSidebarDisabled = data.isSidebarDisabled || !data.itemList
-          const itemList = data.itemList
-          const enableScrollSync = data.enableScrollSync
+          // const isSidebarDisabled = data.isSidebarDisabled || !data.itemList
+          //const itemList = data.itemList
+          //const enableScrollSync = data.enableScrollSync
           return (
             <div className={isHomepage ? `is-homepage` : ``}>
               <SiteMetadata pathname={props.location.pathname} />
@@ -66,9 +72,16 @@ class DefaultLayout extends React.PureComponent {
                   paddingRight: `env(safe-area-inset-right)`,
                 }}
               >
-                <Transition location={location}>
-                  {props.children}
-                </Transition>
+                <PageWithSidebar
+                  disable={isSidebarDisabled}
+                  itemList={sidebarItems}
+                  location={props.location}
+                  enableScrollSync={enableScrollSync}
+                >
+                  <Transition location={props.location}>
+                    {props.children}
+                  </Transition>
+                </PageWithSidebar>
               </div>
               <MobileNavigation pathname={props.location.pathname} />
             </div>

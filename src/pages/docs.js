@@ -2,9 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import Helmet from "react-helmet"
 
-import PageWithSidebar from "../components/page-with-sidebar"
 import ContextConsumer from "../components/context"
-import { itemListDocs } from "../utils/sidebar/item-list"
 import Container from "../components/container"
 import DocSearchContent from "../components/docsearch-content"
 import presets from "../utils/presets"
@@ -15,14 +13,7 @@ class IndexRoute extends React.Component {
     return (
       <ContextConsumer>
         {({data, set})=>{
-          //set({itemList: itemListDocs})
           return (
-            <PageWithSidebar
-              disable={false}
-              itemList={itemListDocs}
-              location={props.location}
-              enableScrollSync={false}
-            >
               <DocSearchContent>
                 <Container>
                   <Helmet>
@@ -118,7 +109,6 @@ class IndexRoute extends React.Component {
                   </div>
                 </Container>
               </DocSearchContent>
-            </PageWithSidebar>
           )
         }}
       </ContextConsumer>

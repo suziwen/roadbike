@@ -1,6 +1,38 @@
 const _ = require(`lodash`)
 const Promise = require(`bluebird`)
 const path = require(`path`)
+const req = require('require-yml')
+const _docSidebarItems = req(`./src/xsjposts/docs/doc-links.yaml`)
+
+const itemList = (docsSidebar)=>{
+  const createHash = link => {
+    let index = -1
+    if (link) index = link.indexOf(`#`)
+    return index >= 0 ? link.substr(index + 1) : false
+  }
+
+  const extenditemList = itemList => {
+    itemList.forEach(section => {
+      if (section.items) extendItem(section.items, section.title)
+    })
+    return itemList
+  }
+
+  const extendItem = (items, parentTitle) => {
+    items.forEach(item => {
+      item.hash = createHash(item.link)
+      item.parentTitle = parentTitle
+      if (item.items) extendItem(item.items, item.title)
+    })
+  }
+
+  const itemListDocs = extenditemList(docsSidebar).map(item => {
+    return { ...item, key: `docs` }
+  })
+  return itemListDocs
+}
+
+const docSidebarItems = itemList(_docSidebarItems)
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions
@@ -90,6 +122,7 @@ exports.createPages = ({ graphql, actions }) => {
               component: docPostTemplate,
               context: {
                 slug: post.node.slug,
+                sidebarItems: docSidebarItems
               },
             })
           }
@@ -109,7 +142,7 @@ exports.createPages = ({ graphql, actions }) => {
             component: logPostTemplate,
             context: {
               slug: node.slug,
-              logSidebarItems
+              sidebarItems: logSidebarItems
             },
           })
         })
@@ -181,4 +214,17 @@ exports.onPostBuild = () => {
 //    `../docs/blog/2017-02-21-1-0-progress-update-where-came-from-where-going/gatsbygram.mp4`,
 //    `./public/gatsbygram.mp4`
 //  )
+}
+
+exports.onCreatePage = ({page, actions})=> {
+  const { createPage } = actions
+  console.log(page.path)
+  if(page.path.indexOf(`/docs/`) === 0) {
+    page.context.sidebarItems = docSidebarItems
+    createPage(page)
+  } else if (page.path.indexOf(`/logs/`) === 0) {
+    createPage(page)
+  } else {
+    createPage(page)
+  }
 }
