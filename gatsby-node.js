@@ -113,6 +113,7 @@ exports.createPages = ({ graphql, actions }) => {
               title: post.node.title,
               link: encodeURI(`/logs/${post.node.slug}`),
               hash: false,
+              disableExpandAll: true,
               key: 'logs'
             })
           }
