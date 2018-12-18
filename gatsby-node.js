@@ -12,6 +12,12 @@ const createHash = link => {
 
 const extenditemList = itemList => {
   itemList.forEach(section => {
+    if (section && section.link){
+      const hash = createHash(section.link)
+      if (hash) {
+        section.hash = hash
+      }
+    } 
     if (section.items) extendItem(section.items, section.title)
   })
   return itemList
@@ -169,20 +175,22 @@ exports.createPages = ({ graphql, actions }) => {
             index === blogPosts.length - 1 ? null : blogPosts[index + 1].node
           console.log(post.node.toc)
           let blogSidebarItems = null
+          let enableScrollSync = null
           if (post.node.toc) {
             const _blogSidebarItems = JSON.parse(post.node.toc)
             if (_blogSidebarItems.length > 0) {
               const fixSlug = (items)=>{
                 items.forEach((item)=>{
-                  item.link = `/blog/${item.link}`
+                  item.link = encodeURI(`/blog/${item.link}`)
                   if (item.items) {
                     fixSlug(item.items)
                   }
                 })
               }
               fixSlug(_blogSidebarItems)
+              enableScrollSync = true
               blogSidebarItems = extenditemList(_blogSidebarItems).map(item => {
-                return { ...item, key: `blogs` }
+                return { ...item, key: `blog` }
               })
             }
           }
@@ -196,6 +204,7 @@ exports.createPages = ({ graphql, actions }) => {
             context: {
               slug: post.node.slug,
               sidebarItems: blogSidebarItems,
+              enableScrollSync,
               prev,
               next,
               related
