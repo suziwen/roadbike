@@ -100,8 +100,8 @@ const styles = {
       transform: `scale(1)`,
       background: `repeating-linear-gradient(
   45deg,
-  ${colors.skyLight},
-  ${colors.skyLight} 10px,
+  ${colors.ui.whisper},
+  ${colors.ui.whisper} 10px,
   ${colors.gatsby} 10px,
   ${colors.gatsby} 20px
 )`
@@ -111,8 +111,8 @@ const styles = {
       opacity: 1,
       background: `repeating-linear-gradient(
   45deg,
-  ${colors.skyLight},
-  ${colors.skyLight} 10px,
+  ${colors.ui.whisper},
+  ${colors.ui.whisper} 10px,
   ${colors.gatsby} 10px,
   ${colors.gatsby} 20px
 )`
