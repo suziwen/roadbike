@@ -10,12 +10,14 @@ const createLink = ({
   item,
   onLinkClick,
   isActive,
+  isExpanded,
   isParentOfActiveItem,
   stepsUI,
   customCSS,
 }) => {
   const isDraft = _isDraft(item.title)
   const title = _getTitle(item.title, isDraft)
+  const isInFoldedActive  = !isActive && !isExpanded && isParentOfActiveItem
 
   return (
     <span
@@ -41,6 +43,7 @@ const createLink = ({
           isDraft && styles.draft,
           isActive && styles.activeLink,
           isParentOfActiveItem && styles.parentOfActiveLink,
+          isInFoldedActive && styles.isInFoldedActiveLink,
           customCSS && customCSS,
         ]}
         onClick={onLinkClick}
@@ -89,6 +92,30 @@ const styles = {
     "&:after": {
       width: 200,
       opacity: 1,
+    },
+  },
+  isInFoldedActiveLink: {
+    "&:before": {
+      background: colors.gatsby,
+      transform: `scale(1)`,
+      background: `repeating-linear-gradient(
+  45deg,
+  ${colors.skyLight},
+  ${colors.skyLight} 10px,
+  ${colors.gatsby} 10px,
+  ${colors.gatsby} 20px
+)`
+    },
+    "&:after": {
+      width: 200,
+      opacity: 1,
+      background: `repeating-linear-gradient(
+  45deg,
+  ${colors.skyLight},
+  ${colors.skyLight} 10px,
+  ${colors.gatsby} 10px,
+  ${colors.gatsby} 20px
+)`
     },
   },
   link: {
