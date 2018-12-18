@@ -10,7 +10,21 @@ const createHash = link => {
   return index >= 0 ? link.substr(index + 1) : false
 }
 
+// re generate uid,
+const generateUid = (uid, uidObj, times=0)=>{
+  let tempUid = uid
+  if (times > 0 ) {
+    tempuid = uid + `_` + times
+  }
+  if (uidObj[tempUid]) {
+    return checkHasUid(uid, uidObj, times + 1)
+  } else {
+    return tempUid
+  }
+}
+
 const extenditemList = itemList => {
+  const uidObj = {}
   itemList.forEach(section => {
     if (section && section.link){
       const hash = createHash(section.link)
@@ -18,16 +32,23 @@ const extenditemList = itemList => {
         section.hash = hash
       }
     } 
-    if (section.items) extendItem(section.items, section.title)
+    section.parentUid = ''
+    const uid = generateUid(section.title, uidObj, 0)
+    section.uid = uid
+    if (section.items) extendItem(section.items, uid, uidObj)
   })
   return itemList
 }
 
-const extendItem = (items, parentTitle) => {
+
+const extendItem = (items, parentUid, uidObj) => {
   items.forEach(item => {
     item.hash = createHash(item.link)
-    item.parentTitle = parentTitle
-    if (item.items) extendItem(item.items, item.title)
+    item.parentUid = parentUid
+    const uid = generateUid(parentUid + '___' + item.title, uidObj, 0)
+    item.uid = uid
+    uidObj[uid] = true
+    if (item.items) extendItem(item.items, uid, uidObj)
   })
 }
 

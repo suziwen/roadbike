@@ -23,7 +23,7 @@ try {
 const isItemActive = (activeItemParents, item) => {
   if (activeItemParents) {
     for (let parent of activeItemParents) {
-      if (parent === item.title) return true
+      if (parent === item.uid) return true
     }
   }
 
@@ -33,9 +33,9 @@ const isItemActive = (activeItemParents, item) => {
 const getOpenItemHash = (itemList, state) => {
   for (let item of itemList) {
     if (item.items) {
-      state.openSectionHash[item.title] =
+      state.openSectionHash[item.uid] =
         isItemActive(state.activeItemParents, item) ||
-        state.activeItemLink.title === item.title
+        state.activeItemLink.uid === item.uid
 
       getOpenItemHash(item.items, state)
     }
@@ -161,7 +161,7 @@ class SidebarBody extends Component {
     const state = {
       openSectionHash: {
         ...openSectionHash,
-        [item.title]: !openSectionHash[item.title],
+        [item.uid]: !openSectionHash[item.uid],
       },
     }
 
@@ -235,7 +235,7 @@ class SidebarBody extends Component {
               <Item
                 activeItemLink={activeItemLink}
                 activeItemParents={activeItemParents}
-                isActive={openSectionHash[item.title]}
+                isActive={openSectionHash[item.uid]}
                 item={item}
                 key={index}
                 level={0}

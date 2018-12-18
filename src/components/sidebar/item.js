@@ -6,7 +6,7 @@ import createLink from "../../utils/sidebar/create-link"
 const isItemActive = (activeItemParents, item) => {
   if (activeItemParents) {
     for (let parent of activeItemParents) {
-      if (parent === item.title) return true
+      if (parent === item.uid) return true
     }
   }
 

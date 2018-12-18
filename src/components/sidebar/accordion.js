@@ -88,7 +88,7 @@ class Accordion extends React.Component {
       openSectionHash,
     } = this.props
     const uid = `item_` + this.state.uid
-    const isExpanded = openSectionHash[item.title] || item.disableAccordions
+    const isExpanded = openSectionHash[item.uid] || item.disableAccordions
 
     return (
       <li
@@ -129,7 +129,7 @@ class Accordion extends React.Component {
               activeItemParents={activeItemParents}
               createLink={createLink}
               item={subitem}
-              key={subitem.title}
+              key={subitem.uid}
               level={level + 1}
               location={location}
               onLinkClick={onLinkClick}
