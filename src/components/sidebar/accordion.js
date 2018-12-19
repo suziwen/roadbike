@@ -14,7 +14,6 @@ const ItemWithSubitems = ({
   item,
   level,
   location,
-  enableScrollSync,
   onLinkClick,
   onSectionTitleClick,
   uid,
@@ -32,7 +31,6 @@ const ItemWithSubitems = ({
           item={item}
           level={level}
           location={location}
-          enableScrollSync={enableScrollSync}
           onLinkClick={onLinkClick}
           onSectionTitleClick={onSectionTitleClick}
           uid={uid}
@@ -43,7 +41,6 @@ const ItemWithSubitems = ({
           isExpanded={isExpanded}
           isParentOfActiveItem={isParentOfActiveItem}
           item={item}
-          enableScrollSync={enableScrollSync}
           level={level}
           onSectionTitleClick={onSectionTitleClick}
           title={item.title}
@@ -84,7 +81,6 @@ class Accordion extends React.Component {
       item,
       level,
       location,
-      enableScrollSync,
       onLinkClick,
       onSectionTitleClick,
       openSectionHash,
@@ -109,7 +105,6 @@ class Accordion extends React.Component {
           item={item}
           level={level}
           location={location}
-          enableScrollSync={enableScrollSync}
           onLinkClick={onLinkClick}
           onSectionTitleClick={onSectionTitleClick}
           uid={uid}
@@ -133,7 +128,6 @@ class Accordion extends React.Component {
               key={subitem.uid}
               level={level + 1}
               location={location}
-              enableScrollSync={enableScrollSync}
               onLinkClick={onLinkClick}
               isExpanded={isExpanded}
               onSectionTitleClick={onSectionTitleClick}

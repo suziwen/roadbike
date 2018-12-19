@@ -25,11 +25,10 @@ class ItemLink extends React.Component {
       isActive,
       isExpanded,
       isParentOfActiveItem,
-      enableScrollSync,
     } = this.props
     const isInFoldedActive  = !isActive && !isExpanded && isParentOfActiveItem
     const isNeedScollIntoView = isActive || isInFoldedActive
-    if (isNeedScollIntoView && enableScrollSync){
+    if (isNeedScollIntoView){
       const node = this.itemLinkRef.current
       node.scrollIntoViewIfNeeded({ behavior: 'smooth' });
     }

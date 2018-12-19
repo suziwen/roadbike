@@ -78,7 +78,6 @@ const SplitButton = ({
   item,
   level,
   location,
-  enableScrollSync,
   onLinkClick,
   onSectionTitleClick,
   uid,
@@ -105,7 +104,6 @@ const SplitButton = ({
           isParentOfActiveItem,
           item,
           location,
-          enableScrollSync,
           onLinkClick,
           customCSS:
             level === 0

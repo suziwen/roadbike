@@ -25,7 +25,6 @@ class Item extends React.PureComponent {
       location,
       onLinkClick,
       onSectionTitleClick,
-      enableScrollSync,
       ui,
     } = this.props
 
@@ -47,7 +46,6 @@ class Item extends React.PureComponent {
             item={item}
             level={level}
             location={location}
-            enableScrollSync={enableScrollSync}
             onLinkClick={onLinkClick}
             openSectionHash={openSectionHash}
             onSectionTitleClick={onSectionTitleClick}
@@ -65,7 +63,6 @@ class Item extends React.PureComponent {
                 item,
                 location,
                 onLinkClick,
-                enableScrollSync,
                 stepsUI: ui === `steps`,
               }}
             />
