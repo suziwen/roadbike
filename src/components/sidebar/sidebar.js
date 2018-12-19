@@ -239,6 +239,7 @@ class SidebarBody extends Component {
                 item={item}
                 key={index}
                 level={0}
+                enableScrollSync={this.props.enableScrollSync}
                 location={location}
                 onLinkClick={closeSidebar}
                 onSectionTitleClick={this._toggleSection}

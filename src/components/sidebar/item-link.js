@@ -8,6 +8,32 @@ const _isDraft = title => title.slice(-1) === `*`
 
 
 class ItemLink extends React.Component {
+  constructor(props, context) {
+    super(props, context)
+    this.itemLinkRef = React.createRef()
+  }
+  componentDidMount() {
+    this.scrollToView();
+  }
+
+  componentDidUpdate() {
+    this.scrollToView();
+  }
+
+  scrollToView() {
+    const {
+      isActive,
+      isExpanded,
+      isParentOfActiveItem,
+      enableScrollSync,
+    } = this.props
+    const isInFoldedActive  = !isActive && !isExpanded && isParentOfActiveItem
+    const isNeedScollIntoView = isActive || isInFoldedActive
+    if (isNeedScollIntoView && enableScrollSync){
+      const node = this.itemLinkRef.current
+      node.scrollIntoViewIfNeeded({ behavior: 'smooth' });
+    }
+  }
   render() {
     const {
       item,
@@ -23,6 +49,7 @@ class ItemLink extends React.Component {
     const isInFoldedActive  = !isActive && !isExpanded && isParentOfActiveItem
   return (
     <span
+      ref={this.itemLinkRef}
       css={{
         display: `flex`,
         alignItems: `center`,
