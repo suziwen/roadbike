@@ -24,6 +24,9 @@ const generateUid = (uid, uidObj, times=0)=>{
 }
 
 const extenditemList = itemList => {
+  if (!itemList) {
+    return []
+  }
   const uidObj = {}
   itemList.forEach(section => {
     if (section && section.link){

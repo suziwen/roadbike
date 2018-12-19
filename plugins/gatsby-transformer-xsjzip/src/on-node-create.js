@@ -8,7 +8,7 @@ const cheerio = require('cheerio')
 const { createFileNode } = require(`gatsby-source-filesystem/create-file-node`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const truncatise = require(`truncatise`)
-const replaceImages = require(`./replace-images`)
+const {replaceImages, transformImages} = require(`./replace-images`)
 const Trianglify = require('trianglify')
 const css = require(`css`)
 
@@ -246,9 +246,11 @@ module.exports = async function onCreateNode(
   $('.story_title').remove()
   $('.story_tags').remove()
   // 对 image 的特殊处理
-  await replaceImages({$, jsonNode, cache, pathPrefix, reporter, fileNodes})
+  const remoteImageNodes = await transformImages({$, cache, store, createNode, createNodeId})
+  await replaceImages({$, jsonNode, cache, pathPrefix, reporter, fileNodes, remoteImageNodes})
   //const previewHtml = "<div id='xsj_root_html'><div id='xsj_root_body'>" + $('.html_preview.preview').parent().html() + "</div></div>"
   const previewHtml = $('.html_preview.preview').parent().html()
+  console.log(previewHtml)
 
   try {
     let data = grayMatter(content, pluginOptions)
