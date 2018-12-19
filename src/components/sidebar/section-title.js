@@ -1,6 +1,7 @@
 import React from "react"
 
 import ChevronSvg from "./chevron-svg"
+import ItemLink from "./item-link"
 import { colors } from "../../utils/presets"
 import { options } from "../../utils/typography"
 
@@ -71,7 +72,6 @@ const TitleButton = ({
 )
 
 const SplitButton = ({
-  createLink,
   isActive,
   isExpanded,
   isParentOfActiveItem,
@@ -97,24 +97,26 @@ const SplitButton = ({
         borderRight: `1px solid ${colors.ui.border}`,
       }}
     >
-      {createLink({
-        isActive,
-        isExpanded,
-        isParentOfActiveItem,
-        item,
-        location,
-        onLinkClick,
-        customCSS:
-          level === 0
-            ? {
-                "&&": {
-                  ...styles.smallCaps,
-                  color: isExpanded ? colors.gatsby : false,
-                  fontWeight: isActive ? `bold` : `normal`,
-                },
-              }
-            : false,
-      })}
+      <ItemLink
+        {...{
+          isActive,
+          isExpanded,
+          isParentOfActiveItem,
+          item,
+          location,
+          onLinkClick,
+          customCSS:
+            level === 0
+              ? {
+                  "&&": {
+                    ...styles.smallCaps,
+                    color: isExpanded ? colors.gatsby : false,
+                    fontWeight: isActive ? `bold` : `normal`,
+                  },
+                }
+              : false,
+        }}
+      />
     </span>
     {/* @todo this should cover 100% of the item's height */}
     <button

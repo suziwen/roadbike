@@ -1,7 +1,7 @@
 import React, { Fragment } from "react"
 
 import Accordion from "./accordion"
-import createLink from "../../utils/sidebar/create-link"
+import ItemLink from "./item-link"
 
 const isItemActive = (activeItemParents, item) => {
   if (activeItemParents) {
@@ -36,7 +36,6 @@ class Item extends React.PureComponent {
           <Accordion
             activeItemLink={activeItemLink}
             activeItemParents={activeItemParents}
-            createLink={createLink}
             isActive={
               isActive ||
               item.link === location.pathname ||
@@ -58,13 +57,15 @@ class Item extends React.PureComponent {
               paddingLeft: level === 0 ? 40 : false,
             }}
           >
-            {createLink({
-              isActive: item.link === activeItemLink.link,
-              item,
-              location,
-              onLinkClick,
-              stepsUI: ui === `steps`,
-            })}
+            <ItemLink 
+              {...{
+                isActive: item.link === activeItemLink.link,
+                item,
+                location,
+                onLinkClick,
+                stepsUI: ui === `steps`,
+              }}
+            />
           </li>
         )}
       </Fragment>

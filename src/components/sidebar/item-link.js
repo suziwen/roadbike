@@ -1,24 +1,26 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import presets, { colors } from "../presets"
+import presets, { colors } from "../../utils/presets"
 
 const _getTitle = (title, isDraft) => (isDraft ? title.slice(0, -1) : title)
 const _isDraft = title => title.slice(-1) === `*`
 
-const createLink = ({
-  item,
-  onLinkClick,
-  isActive,
-  isExpanded,
-  isParentOfActiveItem,
-  stepsUI,
-  customCSS,
-}) => {
-  const isDraft = _isDraft(item.title)
-  const title = _getTitle(item.title, isDraft)
-  const isInFoldedActive  = !isActive && !isExpanded && isParentOfActiveItem
 
+class ItemLink extends React.Component {
+  render() {
+    const {
+      item,
+      onLinkClick,
+      isActive,
+      isExpanded,
+      isParentOfActiveItem,
+      stepsUI,
+      customCSS,
+    } = this.props
+    const isDraft = _isDraft(item.title)
+    const title = _getTitle(item.title, isDraft)
+    const isInFoldedActive  = !isActive && !isExpanded && isParentOfActiveItem
   return (
     <span
       css={{
@@ -54,6 +56,7 @@ const createLink = ({
       </Link>
     </span>
   )
+  }
 }
 
 const bulletOffset = {
@@ -186,4 +189,5 @@ const styles = {
   },
 }
 
-export default createLink
+export default ItemLink
+

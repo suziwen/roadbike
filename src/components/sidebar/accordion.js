@@ -1,6 +1,7 @@
 import React, { Fragment } from "react"
 
 import Item from "./item"
+import ItemLink from "./item-link"
 import { Title, TitleButton, SplitButton } from "./section-title"
 import { colors } from "../../utils/presets"
 
@@ -8,7 +9,6 @@ const paddingLeft = level => (level === 0 ? level + 1 * 40 : level + 1 * 20)
 
 const ItemWithSubitems = ({
   activeItemLink,
-  createLink,
   isExpanded,
   isParentOfActiveItem,
   item,
@@ -25,7 +25,6 @@ const ItemWithSubitems = ({
     <Fragment>
       {item.link ? (
         <SplitButton
-          createLink={createLink}
           isActive={isActive}
           isExpanded={isExpanded}
           isParentOfActiveItem={isParentOfActiveItem}
@@ -77,7 +76,6 @@ class Accordion extends React.Component {
     const {
       activeItemLink,
       activeItemParents,
-      createLink,
       isActive,
       isParentOfActiveItem,
       item,
@@ -101,7 +99,6 @@ class Accordion extends React.Component {
         <ItemWithSubitems
           activeItemLink={activeItemLink}
           activeItemParents={activeItemParents}
-          createLink={createLink}
           isActive={isActive}
           isExpanded={isExpanded}
           isParentOfActiveItem={isParentOfActiveItem}
@@ -127,7 +124,6 @@ class Accordion extends React.Component {
             <Item
               activeItemLink={activeItemLink}
               activeItemParents={activeItemParents}
-              createLink={createLink}
               item={subitem}
               key={subitem.uid}
               level={level + 1}
