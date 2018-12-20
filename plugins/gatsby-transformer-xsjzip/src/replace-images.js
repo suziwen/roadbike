@@ -7,7 +7,7 @@ const slash = require(`slash`)
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 
 
-const replaceImage = async({$img, imageNode, options, reporter, cache})=>{
+const replaceImage = async({$img, imageNode, options, reporter, cache, isLocal})=>{
   let fluidResult = await fluid({
     file: imageNode,
     args: options,
@@ -28,16 +28,18 @@ const replaceImage = async({$img, imageNode, options, reporter, cache})=>{
     cache,
   })
   $img.attr('class', 'front_image')
-  $img.attr('src', fallbackSrc)
-  $img.attr('srcSet', srcSet)
-  $img.attr('sizes', fluidResult.sizes)
+  if (isLocal) {
+    $img.attr('src', fallbackSrc)
+    $img.attr('srcSet', srcSet)
+    $img.attr('sizes', fluidResult.sizes)
+  }
   // 单引号在 cheerio 里会被强制转换成双引号，造成 svgUri 里的内容不能正常显示，
   // 又不想把 cheerio 里的 decodeEntities: false 
   // 只能把 svgUri 改成 base64 格式》？？
   // https://github.com/cheeriojs/cheerio/issues/720
   // https://github.com/tigt/mini-svg-data-uri
   //
-  const spanStr = `<div style="max-width: 100%;width:${presentationWidth}px; margin-left: auto; margin-right: auto;position:relative;"></div>`
+  const spanStr = `<div style="display:inline-block;max-width: 100%;width:${presentationWidth}px; margin-left: auto; margin-right: auto;position:relative;"></div>`
   $img.wrap(spanStr)
   $img.before(`<div style="width:100%;display:block;padding-bottom: ${ratio};"></div>`)
   $img.before(`<img class="background_image" src="${svgUri}" style="position: absolute;top:0;left:0;width: 100%;height:100%;object-fit: cover;object-position: center;"/>`)
@@ -74,7 +76,7 @@ const transformImages = async({$, cache, store, createNode, createNodeId})=>{
   return remoteImageNodes
 }
 
-const replaceImages = async ({$, jsonNode, cache, pathPrefix, reporter, fileNodes})=> {
+const replaceImages = async ({$, jsonNode, cache, pathPrefix, reporter, fileNodes, remoteImageNodes})=> {
   const imageDefaults = {
     maxWidth: 1024,
     pathPrefix,
@@ -84,15 +86,24 @@ const replaceImages = async ({$, jsonNode, cache, pathPrefix, reporter, fileNode
   $('img').each((index, img)=>{
     const $img = $(img)
     const src = $img.attr('src')
-    if (src && isRelativeUrl(src)){
-      const imagePath = slash(path.join(jsonNode.dir, src))
-      const imageNode = _.find(fileNodes, (fileNode)=>{
-        if (fileNode && fileNode.absolutePath){
-          return fileNode.absolutePath === imagePath
+    if (src){
+      if (isRelativeUrl(src)){
+        const imagePath = slash(path.join(jsonNode.dir, src))
+        const imageNode = _.find(fileNodes, (fileNode)=>{
+          if (fileNode && fileNode.absolutePath){
+            return fileNode.absolutePath === imagePath
+          }
+        })
+        if (imageNode){
+          imgs.push({$img, imageNode, options:imageDefaults, reporter, cache, isLocal: true})
         }
-      })
-      if (imageNode){
-        imgs.push({$img, imageNode, options:imageDefaults, reporter, cache})
+      } else {
+      if (isWebUri(src)){
+        const imageNode = remoteImageNodes[src]
+        if (imageNode) {
+          imgs.push({$img, imageNode, options:imageDefaults, reporter, cache, isLocal: false})
+        }
+      }
       }
     }
   })
