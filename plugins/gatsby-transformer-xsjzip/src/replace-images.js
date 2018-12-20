@@ -33,6 +33,7 @@ const replaceImage = async({$img, imageNode, options, reporter, cache, isLocal})
     $img.attr('srcSet', srcSet)
     $img.attr('sizes', fluidResult.sizes)
   }
+  $img.attr('data-action', 'zoom')
   // 单引号在 cheerio 里会被强制转换成双引号，造成 svgUri 里的内容不能正常显示，
   // 又不想把 cheerio 里的 decodeEntities: false 
   // 只能把 svgUri 改成 base64 格式》？？
@@ -43,7 +44,7 @@ const replaceImage = async({$img, imageNode, options, reporter, cache, isLocal})
   $img.wrap(spanStr)
   $img.before(`<div style="width:100%;display:block;padding-bottom: ${ratio};"></div>`)
   $img.before(`<img class="background_image" src="${svgUri}" style="position: absolute;top:0;left:0;width: 100%;height:100%;object-fit: cover;object-position: center;"/>`)
-  $img.attr('style', `opacity: 0;max-width: 100%;position: absolute;top:0;left:0;width: 100%;height:100%;object-fit: cover;object-position: center;`)
+  $img.attr('style', `max-width: 100%;position: absolute;top:0;left:0;width: 100%;height:100%;object-fit: cover;object-position: center;`)
   console.log($img.parent().parent().html())
 }
 
