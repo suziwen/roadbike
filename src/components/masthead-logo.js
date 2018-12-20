@@ -33,6 +33,8 @@ class Logo extends React.Component {
           letterSpacing: `0.02em`,
           fontFamily: "webfontxiaoshujiang",
           fontSize: scale(3 / 5).fontSize,
+          textShadow: `1px 1px 20px hsla(0,100%,100%,0.3)`,
+          fontWeight: `bold`,
           marginBottom: 0,
           [presets.Phablet]: {
             fontSize: scale(3 / 5).fontSize,
