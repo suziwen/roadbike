@@ -216,6 +216,7 @@ a.attachment .filesize {
   text-align: center;
 }
 .story_image_container > .story_image {
+  display: inline-block;
   position: relative;
   max-width: 100%;
 }

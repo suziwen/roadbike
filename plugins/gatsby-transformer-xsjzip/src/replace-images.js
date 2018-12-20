@@ -37,7 +37,7 @@ const replaceImage = async({$img, imageNode, options, reporter, cache})=>{
   // https://github.com/cheeriojs/cheerio/issues/720
   // https://github.com/tigt/mini-svg-data-uri
   //
-  const spanStr = `<div style="max-width:${presentationWidth}px; margin-left: auto; margin-right: auto;position:relative;"></div>`
+  const spanStr = `<div style="max-width: 100%;width:${presentationWidth}px; margin-left: auto; margin-right: auto;position:relative;"></div>`
   $img.wrap(spanStr)
   $img.before(`<div style="width:100%;display:block;padding-bottom: ${ratio};"></div>`)
   $img.before(`<img class="background_image" src="${svgUri}" style="position: absolute;top:0;left:0;width: 100%;height:100%;object-fit: cover;object-position: center;"/>`)
