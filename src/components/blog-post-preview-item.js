@@ -16,13 +16,44 @@ const ArticleStyled = styled('article')`
   }
 `
 
-const CoverStyled = styled(Img)`
+const CoverStyled = styled('div')`
   display: none;
+  position: relative;
   ${presets.Tablet} {
     flex-basis: 180px;
     flex-grow: 0;
     display: block;
   }
+`
+
+const WaveStyled = styled(`div`)`
+  position: absolute;
+  right: 0;
+  height: 100%;
+  top: 0;
+  background: url(/imgs/whitewave2cb.svg);
+  z-index: 10;
+  background-repeat-y: repeat;
+  background-repeat-x: no-repeat;
+`
+
+const Wave1Styld = styled(WaveStyled)`
+  width: 50px;
+`
+const Wave2Styld = styled(WaveStyled)`
+  width: 60px;
+  background-position-y: 50px;
+  opacity: .6;
+`
+const Wave3Styld = styled(WaveStyled)`
+  opacity: .3;
+  width: 70px;
+  background-position-y: 100px;
+`
+const Wave4Styld = styled(WaveStyled)`
+  opacity: .1;
+  width: 80px;
+  background-position-y: 20px;
 `
 
 const ContentStyled = styled(`div`)`
@@ -44,7 +75,13 @@ const BlogPostPreviewItem = ({ post, className }) => {
   return (
     <article className={className} css={{ position: `relative` }}>
       <ArticleStyled>
-        <CoverStyled fluid={post.cover.childImageSharp.fluid} />
+        <CoverStyled>
+          <Img fluid={post.cover.childImageSharp.fluid} css={{height: `100%`}}/>
+          <Wave1Styld/>
+          <Wave2Styld/>
+          <Wave3Styld/>
+          <Wave4Styld/>
+        </CoverStyled>
       <ContentStyled>
       <Link to={getLink(post)}>
         <h2>{post.title}</h2>
