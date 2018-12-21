@@ -2,6 +2,7 @@ import React from "react"
 import presets, { colors } from "../utils/presets"
 import { rhythm } from "../utils/typography"
 import styled, {keyframes} from "react-emotion"
+import Stars from "./stars"
 import bgImg from "../assets/Trees-Landscape-Silhouette.png"
 
 const colorChange = keyframes({
@@ -29,6 +30,13 @@ const ContainerStyled = styled(`div`)`
   height: 100vh;
   background: black;
   background: linear-gradient(to bottom, #000000 0%, #5788fe 100%);
+`
+
+const StarsStyled = styled(Stars)`
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
 `
 
 const LandscapeStyled = styled(`div`)`
@@ -64,6 +72,7 @@ const MastheadBg = () => (
       zIndex: -1,
     }}
   >
+    <StarsStyled/>
     <LandscapeStyled />
     <FilterStyled />
   </ContainerStyled>
