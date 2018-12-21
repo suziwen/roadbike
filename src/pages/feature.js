@@ -19,6 +19,13 @@ const SvgContainerStyled = styled(`div`)`
   left: 0;
   width: 100vw;
   height: 100vh;
+  & .link--active {
+    stroke-width: 3.5px;
+  }
+  & .label--active {
+    font-weight: bolder;
+    font-size: 20pt!important;
+  }
   & .glow{
     text-shadow:
     -1px -1px 3px ${colors.lilac},
@@ -87,8 +94,32 @@ class IndexRoute extends React.Component {
             var vNodes = vRoot.descendants();
             var vLinks = vLayout(vRoot).links();
 
+
+            function mouseovered(active) {
+              return function(d) {
+                //d3.select(this).classed("label--active", active);
+                if (d.target){
+                  d = d.target
+                }
+                do {
+                  d3.select(d.linkNode).classed("link--active", active).each(moveLinkToFront);
+                  d3.select(d.textNode).classed("label--active", active).each(moveLabelToFront);
+                } while (d = d.parent);
+              };
+            }
+
+            function moveLabelToFront(){
+              const groupNode = this.parentNode
+              groupNode.parentNode.appendChild(groupNode);
+            }
+
+            function moveLinkToFront() {
+              this.parentNode.appendChild(this);
+            }
+
             // Draw on screen
             g.selectAll('path').data(vLinks).enter().append('path')
+                .each(function(d){d.target.linkNode = this})
                 .attr('d', d3.linkRadial()
                     .angle(function (d) { return d.x; })
                     .radius(function (d) { return d.y; }))
@@ -96,13 +127,16 @@ class IndexRoute extends React.Component {
                         //if(d.data.data.least_devd_country === "Yes") { return "blue";}
                         //else if (d.data.data.devd_region === "Yes") { return "green";}
                         return vColor(d.target.data.data.leg);
-            })
+                })
+                .on("mouseover", mouseovered(true))
+                .on("mouseout", mouseovered(false));
 
             var node = g.selectAll(".node").data(vNodes).enter().append('g')
                 .attr('transform', function(d) { return "translate(" + d3.pointRadial(d.x, d.y) + ")"; });
 
             node.append("text")
                 .text(function (d){ return d.data.data.id; })
+                .each(function(d){d.textNode = this})
                 .style("font-size", function (d){ return vFontSize[d.height] + "pt"; })
                 .attr("transform", function(d) { return "rotate(" + textRotation(d) + ")" })
                 .attr("text-anchor", function (d){
@@ -117,7 +151,9 @@ class IndexRoute extends React.Component {
 
                     return vColor(d.data.data.leg);
         })
-                .classed("glow", function (d){ return d.height !== 0; });
+                .classed("glow", function (d){ return d.height !== 0; })
+                .on("mouseover", mouseovered(true))
+                .on("mouseout", mouseovered(false));
 
 
             function textRotation(d) {
