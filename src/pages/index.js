@@ -28,12 +28,7 @@ class IndexRoute extends React.Component {
 //    require(`../fonts/Webfonts/xsj/stylesheet.css`)
     return (
         <div css={{ position: `relative` }}>
-          <Helmet>
-            <htmlAttributes 
-              css={{
-                overflow: `hidden`
-              }}
-            />
+          <Helmet htmlAttributes={{style: 'overflow:hidden;'}}>
             <meta
               name="Description"
               content="Blazing fast modern site generator for React. Go beyond static sites: build blogs, ecommerce sites, full-blown apps, and more with Gatsby."
