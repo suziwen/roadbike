@@ -42,15 +42,17 @@ class IndexRoute extends React.Component {
   }
   componentDidMount() {
     const target = this.d3Ref.current
-    const vWidth = target.clientWidth
-    const vHeight = target.clientHeight
+    const vWidth = 1920
+    const vHeight = 1920
     const vFontSize = [6,10,18,22]
     const vColor = d3.scaleOrdinal().domain(["Oceania", "Africa", "Europe", "Latin America", "Asia"]).range(["#ff6698", "#ffb366", "#ffff66", "#98ff66", "#6698ff"])
     const svg = d3.select(target)
-    const g = svg.select('g').attr('transform', 'translate(' + vWidth/2 + ',' + vHeight/2 + ')')
-    svg.call(d3.zoom()
+    const g = svg.select('g')
+    const zoom = d3.zoom()
+    svg.call(zoom
           .scaleExtent([1 / 2, 4])
           .on("zoom", zoomed))
+    svg.transition().duration(750).call(zoom.transform, d3.zoomIdentity.translate(vWidth / 2, vHeight / 2))
     function zoomed() {
       g.attr("transform", d3.event.transform);
     }
