@@ -6,6 +6,7 @@
   "dependencies": {
     "@reach/skip-nav": "^0.1.1",
     "bluebird": "^3.5.1",
+    "d3": "^5.7.0",
     "dotenv": "^6.0.0",
     "email-validator": "^1.1.1",
     "emotion": "^9.2.12",
