@@ -81,7 +81,7 @@ class IndexRoute extends React.Component {
 
             node.append("text")
                 .text(function (d){ return d.data.data.id; })
-                .attr("font-size", function (d){ return vFontSize[d.height] + "pt"; })
+                .style("font-size", function (d){ return vFontSize[d.height] + "pt"; })
                 .attr("transform", function(d) { return "rotate(" + textRotation(d) + ")" })
                 .attr("text-anchor", function (d){
                     if(d.height === 0){ return (d.x > Math.PI) ? "end" : "start"; }
