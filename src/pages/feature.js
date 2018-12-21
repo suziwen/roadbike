@@ -56,14 +56,28 @@ class IndexRoute extends React.Component {
     const vFontSize = [6,10,18,22]
     const vColor = d3.scaleOrdinal().domain(["Oceania", "Africa", "Europe", "Latin America", "Asia"]).range(["#ff6698", "#ffb366", "#ffff66", "#98ff66", "#6698ff"])
     const svg = d3.select(target)
-    const g = svg.select('g')
+    const zoomGroup= svg.select('g.zoom_group')
+    const g = svg.select('g.rotate_group')
     const zoom = d3.zoom()
     svg.call(zoom
           .scaleExtent([1 / 2, 4])
           .on("zoom", zoomed))
+          .on("wheel", rotate)
     svg.transition().duration(750).call(zoom.transform, d3.zoomIdentity.translate(vWidth / 2, vHeight / 2))
     function zoomed() {
-      g.attr("transform", d3.event.transform);
+      zoomGroup.attr("transform", d3.event.transform);
+    }
+    function rotate(e){
+      const oldValue = parseInt(g.attr("data-rotate")) || 0
+      // 除以 14 个像素单位
+      const delta = -d3.event.deltaY * (d3.event.deltaMode ? 120 : 1) / 14
+      const newValue = (oldValue + delta) % 360
+      g.attr("data-rotate", newValue)
+      g.attr("transform", `rotate(${newValue})`)
+      const x = d3
+      console.log(d3)
+      console.log(x.event.wheelDelta)
+      console.log(e)
     }
     d3.csv('/country-hierarchy.csv').then((vCsvData)=>{
       const vData = d3.stratify()(vCsvData)
@@ -116,6 +130,7 @@ class IndexRoute extends React.Component {
             function moveLinkToFront() {
               this.parentNode.appendChild(this);
             }
+
 
             // Draw on screen
             g.selectAll('path').data(vLinks).enter().append('path')
@@ -184,7 +199,10 @@ class IndexRoute extends React.Component {
           />
         </Helmet>
         <svg ref={this.d3Ref} width='100vw' height='100vh'>
-          <g></g>
+          <g class="zoom_group">
+            <g class="rotate_group">
+            </g>
+          </g>
         </svg>
         
       </SvgContainerStyled>
