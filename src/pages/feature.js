@@ -14,6 +14,11 @@ import Button from "../components/button"
 
 const SvgContainerStyled = styled(`div`)`
   background: ${colors.gatsby};
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   & .glow{
     text-shadow:
     -1px -1px 3px ${colors.lilac},
@@ -37,11 +42,18 @@ class IndexRoute extends React.Component {
   }
   componentDidMount() {
     const target = this.d3Ref.current
-    const vWidth = 900
-    const vHeight = 800
+    const vWidth = target.clientWidth
+    const vHeight = target.clientHeight
     const vFontSize = [6,10,18,22]
     const vColor = d3.scaleOrdinal().domain(["Oceania", "Africa", "Europe", "Latin America", "Asia"]).range(["#ff6698", "#ffb366", "#ffff66", "#98ff66", "#6698ff"])
-    const g = d3.select(target).attr('width', vWidth).attr('height', vHeight).select('g').attr('transform', 'translate(' + vWidth/2 + ',' + vHeight/2 + ')')
+    const svg = d3.select(target)
+    const g = svg.select('g').attr('transform', 'translate(' + vWidth/2 + ',' + vHeight/2 + ')')
+    svg.call(d3.zoom()
+          .scaleExtent([1 / 2, 4])
+          .on("zoom", zoomed))
+    function zoomed() {
+      g.attr("transform", d3.event.transform);
+    }
     d3.csv('/country-hierarchy.csv').then((vCsvData)=>{
       const vData = d3.stratify()(vCsvData)
       drawViz(vData)
@@ -70,7 +82,8 @@ class IndexRoute extends React.Component {
             g.selectAll('path').data(vLinks).enter().append('path')
                 .attr('d', d3.linkRadial()
                     .angle(function (d) { return d.x; })
-                    .radius(function (d) { return d.y; })).attr("stroke", function(d){
+                    .radius(function (d) { return d.y; }))
+                .attr("stroke", function(d){
                         //if(d.data.data.least_devd_country === "Yes") { return "blue";}
                         //else if (d.data.data.devd_region === "Yes") { return "green";}
                         return vColor(d.target.data.data.leg);
@@ -111,18 +124,26 @@ class IndexRoute extends React.Component {
   }
 
   componentWillUnmount() {
+    const target = this.d3Ref.current
+    const svg = d3.select(target)
+    svg.on(".zoom", null)
   }
 
   render() {
     return (
       <SvgContainerStyled css={{ position: `relative` }}>
         <Helmet>
+          <htmlAttributes 
+            css={{
+              overflow: `hidden`
+            }}
+          />
           <meta
             name="Description"
             content="小书匠主要功能"
           />
         </Helmet>
-        <svg ref={this.d3Ref}>
+        <svg ref={this.d3Ref} width='100vw' height='100vh'>
           <g></g>
         </svg>
         
