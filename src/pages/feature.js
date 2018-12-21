@@ -35,6 +35,8 @@ const SvgContainerStyled = styled(`div`)`
   } 
 `
 
+let layoutType = 'cluster'
+
 class IndexRoute extends React.Component {
   constructor(props, context) {
     super(props, context)
@@ -73,9 +75,14 @@ class IndexRoute extends React.Component {
 
 
             // Declare d3 layout
-            var vLayout = d3.cluster().size([2 * Math.PI, Math.min(vWidth, vHeight)/2 - 130]); // margin!
-
+            let vLayout = null
+            if (layoutType === 'cluster') {
+              vLayout = d3.cluster().size([2 * Math.PI, Math.min(vWidth, vHeight)/2 - 130]); // margin!
+            } else {
+              vLayout = d3.tree().size([2 * Math.PI, Math.min(vWidth, vHeight)/2 - 130]); // margin!
+            }
             // Layout + Data
+            //var vRoot = d3.hierarchy(vData);
             var vRoot = d3.hierarchy(vData);
             var vNodes = vRoot.descendants();
             var vLinks = vLayout(vRoot).links();
