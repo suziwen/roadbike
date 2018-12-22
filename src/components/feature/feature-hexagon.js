@@ -2,6 +2,7 @@ import React from "react"
 import styled from "react-emotion"
 import { graphql, Link } from "gatsby"
 import presets, { colors } from "../../utils/presets"
+import Hexagon from 'react-hexagon'
 import HexagonItem from "./hexagon-item"
 
 
@@ -14,73 +15,18 @@ const HexagonContainerStyled = styled(`div`)`
   bottom: 0;
   width: 30%;
   margin: 0 auto;
-  overflow: hidden;
   font-family: sans-serif;
   list-style-type: none;
   & .hex {
     position: relative;
-    visibility:hidden;
-    outline:1px solid transparent; /* fix for jagged edges in FF on hover transition */
     transition: all 0.5s;
     backface-visibility: hidden;
     will-change: transform;
     transition: all 0.5s;
+    height: 100%;
+    margin-top: -15px;
+    padding-left: 5px;
   }
-  & .hex::after{
-    content:'';
-    display:block;
-    padding-bottom: 86.602%;  /* =  100 / tan(60) * 1.5 */
-  }
-  & .hexIn{
-    position: absolute;
-    width:96%;
-    padding-bottom: 110.851%; /* =  width / sin(60) */
-    margin: 2%;
-    overflow: hidden;
-    visibility: hidden;
-    outline:1px solid transparent; /* fix for jagged edges in FF on hover transition */
-    -webkit-transform: rotate3d(0,0,1,-60deg) skewY(30deg);
-        -ms-transform: rotate3d(0,0,1,-60deg) skewY(30deg);
-            transform: rotate3d(0,0,1,-60deg) skewY(30deg);
-      transition: all 0.5s;
-  }
-  & .hexIn * {
-    position: absolute;
-    visibility: visible;
-    outline:1px solid transparent; /* fix for jagged edges in FF on hover transition */
-  }
-  & .hexLabel {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      color: #fff;
-      background: #6abf40;
-      overflow: hidden;
-      -webkit-transform: skewY(-30deg) rotate3d(0,0,1,60deg);
-          -ms-transform: skewY(-30deg) rotate3d(0,0,1,60deg);
-              transform: skewY(-30deg) rotate3d(0,0,1,60deg);
-  }
-
-
-  /*** HEX CONTENT **********************************************************************/
-
-  & .hex .header {
-    width: 100%;
-    padding: 5%;
-    box-sizing:border-box;
-    font-weight: 300;
-    color: #F5CE95;
-    text-align: center;
-    font-size: 1.5em;
-    z-index: 1;
-  }
-
-  /*** HOVER EFFECT  **********************************************************************/
-
-
 
   ${presets.Mobile} and (max-width: 549px) {
     font-size: 8px;
@@ -128,7 +74,7 @@ class FeatureHexagon extends React.Component {
       <HexagonContainerStyled>
         {[1, 4, 9, 16, 3,2,5,7,8,10,12].map((val, idx)=>{
           return (
-          <HexagonItem key={idx}/>
+          <Hexagon className="hex" key={idx} style={{stroke: 'orange'}}/>
          ) 
         })}
       </HexagonContainerStyled>
