@@ -11,6 +11,7 @@ import { PriceIcon} from "../assets/mobile-nav-icons"
 import {MdArrowForward} from "react-icons/md"
 import HomepageSection from "../components/homepage/homepage-section"
 import Button from "../components/button"
+import FeatureHexagon from "../components/feature/feature-hexagon"
 
 const SvgContainerStyled = styled(`div`)`
   background: ${colors.gatsby};
@@ -204,7 +205,8 @@ class IndexRoute extends React.Component {
             </g>
           </g>
         </svg>
-        
+        <FeatureHexagon>
+        </FeatureHexagon>
       </SvgContainerStyled>
     )
   }
