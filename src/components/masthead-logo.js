@@ -2,7 +2,17 @@ import React from "react"
 import typography, { rhythm, scale } from "../utils/typography"
 import presets from "../utils/presets"
 import { vP, vPHd, vPVHd, vPVVHd } from "../components/gutters"
+import SplitText from 'react-pose-text'
 
+
+const charPoses = {
+  exit: { opacity: 0, y: 20 },
+  enter: {
+    opacity: 1,
+    y: 0,
+    delay: ({ charIndex }) => charIndex * 30
+  }
+}
 
 class Logo extends React.Component {
   componentDidMount() {
@@ -45,7 +55,9 @@ class Logo extends React.Component {
           },
         }}
       >
+        <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
         小书匠
+      </SplitText>
       </p>
     </div>
   )}
