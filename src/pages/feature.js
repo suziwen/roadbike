@@ -200,8 +200,8 @@ class IndexRoute extends React.Component {
           />
         </Helmet>
         <svg ref={this.d3Ref} width='100vw' height='100vh'>
-          <g class="zoom_group">
-            <g class="rotate_group">
+          <g className="zoom_group">
+            <g className="rotate_group">
             </g>
           </g>
         </svg>
