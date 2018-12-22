@@ -4,6 +4,7 @@ import { graphql, Link } from "gatsby"
 import presets, { colors } from "../../utils/presets"
 import Hexagon from 'react-hexagon'
 import HexagonItem from "./hexagon-item"
+import {FiFeather} from "react-icons/fi"
 
 // hexagon 布局算法取自 https://github.com/web-tiki/responsive-grid-of-hexagons
 /**
@@ -85,7 +86,14 @@ const HexagonContainerStyled = styled(`div`)`
   }
   & .hex.hex_active{
     transform: scale(2);
+    z-index: 1000;
   }
+  & .hex .hex_icon{
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
 
   ${presets.Mobile} and (max-width: 549px) {
     font-size: 8px;
@@ -225,7 +233,11 @@ class FeatureHexagon extends React.Component {
           const key = val[0]
           const itemObj = val[1]
           return (
-          <Hexagon className={this.state.activeItemKey === key ?"hex hex_active": "hex"} key={idx} style={{stroke: 'orange', fill: 'orange'}} onClick={()=>{this.handleActiveItem(key)}}/>
+          <Hexagon className={this.state.activeItemKey === key ?"hex hex_active": "hex"} key={idx} style={{stroke: 'orange', fill: 'orange'}} onClick={()=>{this.handleActiveItem(key)}}>
+            <foreignObject className="foreign-object hex_icon" x="50%" y="50%">
+              <FiFeather style={{width: '50%', height: '50%', transform: 'translate(-50%, -50%)'}}/>
+            </foreignObject>
+          </Hexagon>
          ) 
         })}
       </HexagonContainerStyled>
