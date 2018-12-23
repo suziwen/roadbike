@@ -11,6 +11,13 @@ let vLinks = null
 let vNodes = null
 let vRoot = null
 
+function textRotation(d) {
+    var angle = d.x / Math.PI * 180 + 90;
+
+    if (d.depth < 2) { return 0;}
+    else if (angle <= 270) { return angle - 180;}
+    else { return angle;}
+}
 const getNodeById = (id)=>{
   for (const vNode of vNodes) {
     if (vNode.data.id === id) {
@@ -110,6 +117,7 @@ class Mindmap extends React.Component {
       const newValue = (oldValue + delta) % 360
       g.attr("data-rotate", newValue)
       g.attr("transform", `rotate(${newValue})`)
+
       const x = d3
       console.log(d3)
       console.log(x.event.wheelDelta)
@@ -226,13 +234,6 @@ class Mindmap extends React.Component {
       .style("opacity", 1)
 
 
-            function textRotation(d) {
-                var angle = d.x / Math.PI * 180 + 90;
-
-                if (d.depth < 2) { return 0;}
-                else if (angle <= 270) { return angle - 180;}
-                else { return angle;}
-            }
         }
 
 
