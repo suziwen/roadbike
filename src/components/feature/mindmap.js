@@ -4,7 +4,8 @@ import { graphql } from "gatsby"
 
 import * as d3 from 'd3'
 
-let layoutType = 'cluster'
+//let layoutType = 'cluster'
+let layoutType = 'tree'
 
 let vLinks = null
 let vNodes = null
@@ -196,7 +197,7 @@ class Mindmap extends React.Component {
                 .attr('transform', function(d) { return "translate(" + d3.pointRadial(d.x, d.y) + ")"; });
 
             node.append("text")
-                .text(function (d){ return d.data.data.id; })
+                .text(function (d){ return d.data.data.title; })
                 .each(function(d){d.textNode = this})
                 .style("font-size", function (d){ return vFontSize[d.height] + "pt"; })
                 .attr("transform", function(d) { return "rotate(" + textRotation(d) + ")" })

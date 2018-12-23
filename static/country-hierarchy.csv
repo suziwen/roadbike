@@ -1,261 +1,146 @@
-id,count,devd_region,least_devd_country,parentId,type
-World,1,,,,world
-Africa,58,,,World,majorarea
-Northern America,5,,,World,majorarea
-Europe,48,,,World,majorarea
-Asia,50,,,World,majorarea
-Latin America,48,,,World,majorarea
-Oceania,23,,,World,majorarea
-Eastern Africa,20,,,Africa,region
-Middle Africa,9,,,Africa,region
-Northern Africa,7,,,Africa,region
-Southern Africa,5,,,Africa,region
-Western Africa,17,,,Africa,region
-Central Asia,5,,,Asia,region
-Eastern Asia,7,,,Asia,region
-South-Eastern Asia,11,,,Asia,region
-Southern Asia,9,,,Asia,region
-Western Asia,18,,,Asia,region
-Eastern Europe,10,,,Europe,region
-Northern Europe,13,,,Europe,region
-Southern Europe,16,,,Europe,region
-Western Europe,9,,,Europe,region
-Caribbean,26,,,Latin America,region
-Central America,8,,,Latin America,region
-South America,14,,,Latin America,region
-Australia & New Zealand,2,,,Oceania,region
-Melanesia,5,,,Oceania,region
-Micronesia,7,,,Oceania,region
-Polynesia,9,,,Oceania,region
-Australia,1,Yes,No,Australia & New Zealand,country
-New Zealand,1,Yes,No,Australia & New Zealand,country
-Anguilla,1,No,No,Caribbean,country
-Antigua & Barbuda,1,No,No,Caribbean,country
-Aruba,1,No,No,Caribbean,country
-Bahamas,1,No,No,Caribbean,country
-Barbados,1,No,No,Caribbean,country
-"Bonaire, Sint Eustatius & Saba",1,No,No,Caribbean,country
-British Virgin Islands,1,No,No,Caribbean,country
-Cayman Islands,1,No,No,Caribbean,country
-Cuba,1,No,No,Caribbean,country
-Curacao,1,No,No,Caribbean,country
-Dominica,1,No,No,Caribbean,country
-Dominican Republic,1,No,No,Caribbean,country
-Grenada,1,No,No,Caribbean,country
-Guadeloupe,1,No,No,Caribbean,country
-Haiti,1,No,Yes,Caribbean,country
-Jamaica,1,No,No,Caribbean,country
-Martinique,1,No,No,Caribbean,country
-Montserrat,1,No,No,Caribbean,country
-Puerto Rico,1,No,No,Caribbean,country
-Saint Kitts & Nevis,1,No,No,Caribbean,country
-Saint Lucia,1,No,No,Caribbean,country
-Saint Vincent & the Grenadines,1,No,No,Caribbean,country
-Sint Maarten (Dutch part),1,No,No,Caribbean,country
-Trinidad & Tobago,1,No,No,Caribbean,country
-Turks & Caicos Islands,1,No,No,Caribbean,country
-United States Virgin Islands,1,No,No,Caribbean,country
-Belize,1,No,No,Central America,country
-Costa Rica,1,No,No,Central America,country
-El Salvador,1,No,No,Central America,country
-Guatemala,1,No,No,Central America,country
-Honduras,1,No,No,Central America,country
-Mexico,1,No,No,Central America,country
-Nicaragua,1,No,No,Central America,country
-Panama,1,No,No,Central America,country
-Kazakhstan,1,No,No,Central Asia,country
-Kyrgyzstan,1,No,No,Central Asia,country
-Tajikistan,1,No,No,Central Asia,country
-Turkmenistan,1,No,No,Central Asia,country
-Uzbekistan,1,No,No,Central Asia,country
-Burundi,1,No,Yes,Eastern Africa,country
-Comoros,1,No,Yes,Eastern Africa,country
-Djibouti,1,No,Yes,Eastern Africa,country
-Eritrea,1,No,Yes,Eastern Africa,country
-Ethiopia,1,No,Yes,Eastern Africa,country
-Kenya,1,No,No,Eastern Africa,country
-Madagascar,1,No,Yes,Eastern Africa,country
-Malawi,1,No,Yes,Eastern Africa,country
-Mauritius,1,No,No,Eastern Africa,country
-Mayotte,1,No,No,Eastern Africa,country
-Mozambique,1,No,Yes,Eastern Africa,country
-Reunion,1,No,No,Eastern Africa,country
-Rwanda,1,No,Yes,Eastern Africa,country
-Seychelles,1,No,No,Eastern Africa,country
-Somalia,1,No,Yes,Eastern Africa,country
-South Sudan,1,No,Yes,Eastern Africa,country
-Uganda,1,No,Yes,Eastern Africa,country
-United Republic of Tanzania,1,No,Yes,Eastern Africa,country
-Zambia,1,No,Yes,Eastern Africa,country
-Zimbabwe,1,No,No,Eastern Africa,country
-China,1,No,No,Eastern Asia,country
-"China, Hong Kong Special Administrative Region",1,No,No,Eastern Asia,country
-"China, Macao Special Administrative Region",1,No,No,Eastern Asia,country
-Democratic People's Republic of Korea,1,No,No,Eastern Asia,country
-Japan,1,Yes,No,Eastern Asia,country
-Mongolia,1,No,No,Eastern Asia,country
-Republic of Korea,1,No,No,Eastern Asia,country
-Belarus,1,Yes,No,Eastern Europe,country
-Bulgaria,1,Yes,No,Eastern Europe,country
-Czech Republic,1,Yes,No,Eastern Europe,country
-Hungary,1,Yes,No,Eastern Europe,country
-Poland,1,Yes,No,Eastern Europe,country
-Republic of Moldova,1,Yes,No,Eastern Europe,country
-Romania,1,Yes,No,Eastern Europe,country
-Russian Federation,1,Yes,No,Eastern Europe,country
-Slovakia,1,Yes,No,Eastern Europe,country
-Ukraine,1,Yes,No,Eastern Europe,country
-Fiji,1,No,No,Melanesia,country
-New Caledonia,1,No,No,Melanesia,country
-Papua New Guinea,1,No,No,Melanesia,country
-Solomon Islands,1,No,Yes,Melanesia,country
-Vanuatu,1,No,Yes,Melanesia,country
-Guam,1,No,No,Micronesia,country
-Kiribati,1,No,Yes,Micronesia,country
-Marshall Islands,1,No,No,Micronesia,country
-Micronesia (Federated States of),1,No,No,Micronesia,country
-Nauru,1,No,No,Micronesia,country
-Northern Mariana Islands,1,No,No,Micronesia,country
-Palau,1,No,No,Micronesia,country
-Angola,1,No,Yes,Middle Africa,country
-Cameroon,1,No,No,Middle Africa,country
-Central African Republic,1,No,Yes,Middle Africa,country
-Chad,1,No,Yes,Middle Africa,country
-Congo,1,No,No,Middle Africa,country
-Democratic Republic of the Congo,1,No,Yes,Middle Africa,country
-Equatorial Guinea,1,No,Yes,Middle Africa,country
-Gabon,1,No,No,Middle Africa,country
-Sao Tome & Principe,1,No,Yes,Middle Africa,country
-Algeria,1,No,No,Northern Africa,country
-Egypt,1,No,No,Northern Africa,country
-Libya,1,No,No,Northern Africa,country
-Morocco,1,No,No,Northern Africa,country
-Sudan,1,No,Yes,Northern Africa,country
-Tunisia,1,No,No,Northern Africa,country
-Western Sahara,1,No,No,Northern Africa,country
-Bermuda,1,Yes,No,Northern America,country
-Canada,1,Yes,No,Northern America,country
-Greenland,1,Yes,No,Northern America,country
-Saint Pierre & Miquelon,1,Yes,No,Northern America,country
-United States of America,1,Yes,No,Northern America,country
-Channel Islands,1,Yes,No,Northern Europe,country
-Denmark,1,Yes,No,Northern Europe,country
-Estonia,1,Yes,No,Northern Europe,country
-Faeroe Islands,1,Yes,No,Northern Europe,country
-Finland,1,Yes,No,Northern Europe,country
-Iceland,1,Yes,No,Northern Europe,country
-Ireland,1,Yes,No,Northern Europe,country
-Isle of Man,1,Yes,No,Northern Europe,country
-Latvia,1,Yes,No,Northern Europe,country
-Lithuania,1,Yes,No,Northern Europe,country
-Norway,1,Yes,No,Northern Europe,country
-Sweden,1,Yes,No,Northern Europe,country
-United Kingdom of Great Britain & Northern Ireland,1,Yes,No,Northern Europe,country
-American Samoa,1,No,No,Polynesia,country
-Cook Islands,1,No,No,Polynesia,country
-French Polynesia,1,No,No,Polynesia,country
-Niue,1,No,No,Polynesia,country
-Samoa,1,No,No,Polynesia,country
-Tokelau,1,No,No,Polynesia,country
-Tonga,1,No,No,Polynesia,country
-Tuvalu,1,No,Yes,Polynesia,country
-Wallis & Futuna Islands,1,No,No,Polynesia,country
-Argentina,1,No,No,South America,country
-Bolivia (Plurinational State of),1,No,No,South America,country
-Brazil,1,No,No,South America,country
-Chile,1,No,No,South America,country
-Colombia,1,No,No,South America,country
-Ecuador,1,No,No,South America,country
-Falkland Islands (Malvinas),1,No,No,South America,country
-French Guiana,1,No,No,South America,country
-Guyana,1,No,No,South America,country
-Paraguay,1,No,No,South America,country
-Peru,1,No,No,South America,country
-Suriname,1,No,No,South America,country
-Uruguay,1,No,No,South America,country
-Venezuela (Bolivarian Republic of),1,No,No,South America,country
-Brunei Darussalam,1,No,No,South-Eastern Asia,country
-Cambodia,1,No,Yes,South-Eastern Asia,country
-Indonesia,1,No,No,South-Eastern Asia,country
-Lao People's Democratic Republic,1,No,Yes,South-Eastern Asia,country
-Malaysia,1,No,No,South-Eastern Asia,country
-Myanmar,1,No,Yes,South-Eastern Asia,country
-Philippines,1,No,No,South-Eastern Asia,country
-Singapore,1,No,No,South-Eastern Asia,country
-Thailand,1,No,No,South-Eastern Asia,country
-Timor-Leste,1,No,Yes,South-Eastern Asia,country
-Viet Nam,1,No,No,South-Eastern Asia,country
-Botswana,1,No,No,Southern Africa,country
-Lesotho,1,No,Yes,Southern Africa,country
-Namibia,1,No,No,Southern Africa,country
-South Africa,1,No,No,Southern Africa,country
-Swaziland,1,No,No,Southern Africa,country
-Afghanistan,1,No,Yes,Southern Asia,country
-Bangladesh,1,No,Yes,Southern Asia,country
-Bhutan,1,No,Yes,Southern Asia,country
-India,1,No,No,Southern Asia,country
-Iran (Islamic Republic of),1,No,No,Southern Asia,country
-Maldives,1,No,No,Southern Asia,country
-Nepal,1,No,Yes,Southern Asia,country
-Pakistan,1,No,No,Southern Asia,country
-Sri Lanka,1,No,No,Southern Asia,country
-Albania,1,Yes,No,Southern Europe,country
-Andorra,1,Yes,No,Southern Europe,country
-Bosnia & Herzegovina,1,Yes,No,Southern Europe,country
-Croatia,1,Yes,No,Southern Europe,country
-Gibraltar,1,Yes,No,Southern Europe,country
-Greece,1,Yes,No,Southern Europe,country
-Holy See,1,Yes,No,Southern Europe,country
-Italy,1,Yes,No,Southern Europe,country
-Malta,1,Yes,No,Southern Europe,country
-Montenegro,1,Yes,No,Southern Europe,country
-Portugal,1,Yes,No,Southern Europe,country
-San Marino,1,Yes,No,Southern Europe,country
-Serbia,1,Yes,No,Southern Europe,country
-Slovenia,1,Yes,No,Southern Europe,country
-Spain,1,Yes,No,Southern Europe,country
-The former Yugoslav Republic of Macedonia,1,Yes,No,Southern Europe,country
-Benin,1,No,Yes,Western Africa,country
-Burkina Faso,1,No,Yes,Western Africa,country
-Cote d'Ivoire,1,No,No,Western Africa,country
-Cabo Verde,1,No,No,Western Africa,country
-Gambia,1,No,Yes,Western Africa,country
-Ghana,1,No,No,Western Africa,country
-Guinea,1,No,Yes,Western Africa,country
-Guinea-Bissau,1,No,Yes,Western Africa,country
-Liberia,1,No,Yes,Western Africa,country
-Mali,1,No,Yes,Western Africa,country
-Mauritania,1,No,Yes,Western Africa,country
-Niger,1,No,Yes,Western Africa,country
-Nigeria,1,No,No,Western Africa,country
-Saint Helena,1,No,No,Western Africa,country
-Senegal,1,No,Yes,Western Africa,country
-Sierra Leone,1,No,Yes,Western Africa,country
-Togo,1,No,Yes,Western Africa,country
-Armenia,1,No,No,Western Asia,country
-Azerbaijan,1,No,No,Western Asia,country
-Bahrain,1,No,No,Western Asia,country
-Cyprus,1,No,No,Western Asia,country
-Georgia,1,No,No,Western Asia,country
-Iraq,1,No,No,Western Asia,country
-Israel,1,No,No,Western Asia,country
-Jordan,1,No,No,Western Asia,country
-Kuwait,1,No,No,Western Asia,country
-Lebanon,1,No,No,Western Asia,country
-Oman,1,No,No,Western Asia,country
-Qatar,1,No,No,Western Asia,country
-Saudi Arabia,1,No,No,Western Asia,country
-State of Palestine,1,No,No,Western Asia,country
-Syrian Arab Republic,1,No,No,Western Asia,country
-Turkey,1,No,No,Western Asia,country
-United Arab Emirates,1,No,No,Western Asia,country
-Yemen,1,No,Yes,Western Asia,country
-Austria,1,Yes,No,Western Europe,country
-Belgium,1,Yes,No,Western Europe,country
-France,1,Yes,No,Western Europe,country
-Germany,1,Yes,No,Western Europe,country
-Liechtenstein,1,Yes,No,Western Europe,country
-Luxembourg,1,Yes,No,Western Europe,country
-Monaco,1,Yes,No,Western Europe,country
-Netherlands,1,Yes,No,Western Europe,country
-Switzerland,1,Yes,No,Western Europe,country
+id,parentId,type,title
+main,,,小书匠
+grammar,main,,语法
+fileManagers,main,,文件管理
+export,main,,导出
+import,main,,导入
+editor,main,,编辑
+preview,main,,预览
+store,main,,第三方存储
+database,main,,数据中心
+imageStore,main,,图片
+commonGrammar,grammar,,基础语法
+extraGrammar,grammar,,高级语法
+featureGrammar,grammar,,小书匠专有语法
+featureImageGrammar,featureGrammar,,块级图片
+markGrammar,featureGrammar,,高亮
+featureCodeGrammar,featureGrammar,,高级代码块
+nunjucksGrammar,featureGrammar,,nunjucks模板语法
+extraTableGrammar,featureGrammar,,高级表格
+codeCHunkGrammar,featureGrammar,,代码块执行
+staticsGrammar,featureGrammar,,统计图语法
+plantumlGrammar,featureGrammar,,plantuml
+imgGrammar,featureGrammar,,远程图片生成语法
+moremoreGrammar,featureGrammar,,更多，还有更多等着你的发现
+wavedromGrammar,featureGrammar,,wavedrom语法
+videoGrammar,featureGrammar,,视频语法
+audioGrammar,featureGrammar,,音频语法
+attachmentGrammar,featureGrammar,,附件语法
+rubyGrammar,featureGrammar,,注音语法
+cjkGrammar,featureGrammar,,中文语法
+sequenceGrammar,extraGrammar,,序列图语法
+flowGrammar,extraGrammar,,流程图语法
+mermaidGrammar,extraGrammar,,mermaid图语法
+emojiGrammar,extraGrammar,,emoji表情语法
+gfmCodeGrammar,extraGrammar,,gfm格式代码块语法
+mathjaxGrammar,extraGrammar,,数学公式语法
+tableGrammar,extraGrammar,,表格语法
+footnoteGrammar,extraGrammar,,脚注语法
+htmlGrammar,extraGrammar,,html语法
+htmlAttrGrammar,extraGrammar,,html属性语法
+todoGrammar,extraGrammar,,待办语法
+supsubGrammar,extraGrammar,,上下标语法
+strokeGrammar,extraGrammar,,删除线语法
+underLineGrammar,extraGrammar,,下划线语法
+defGrammar,extraGrammar,,定义语法
+components,main,,组件
+sketchComponents,components,,涂鸦组件
+drawioComponents,components,,绘图组件
+tableComponents,components,,可视化表格组件
+mulEditorType,editor,,多种内置编辑器
+aceEditor,mulEditorType,,ace内置编辑器
+codemirrorEditor,mulEditorType,,codemirror内置编辑器
+leftVertialEditor,mulEditorType,,左竖排编辑器
+rightVertialEditor,mulEditorType,,右竖排编辑器
+vim,editor,,vim按键模式
+emacs,editor,,emacs按键模式
+wordcheck,editor,,英文拼写检查
+minimap,editor,,minimap 小地图
+foldParagh,editor,,章节折叠
+typeWriter,editor,,打字机滚动效果
+zenWriter,editor,,全屏写作模式
+lineFocus,editor,,行专注写作模式
+customEditor,editor,,编辑器字体自定义
+themesEditor,editor,,多种编辑器主题
+directPasteImage,editor,,剪切板图片粘贴
+directInputTime,editor,,快速输入当前时间
+htmlToMarkdown,editor,,html 片段转换成 markdown
+imageMigarte,editor,,图床迁移
+directDragFile,editor,,图片，附件直接拖拽引入
+instancePreviewImage,editor,,编辑器内即时预览图片
+instancePreviewTodo,editor,,编辑器内即时预览待办
+freeLayoutEditor,editor,,编辑器位置任意调整
+syncScrollEditor,editor,,同步编辑区滚动
+editorOutline,editor,,编辑器大纲
+foldEditorOutline,editorOutline,,可折叠
+syncScrollEditorOutline,editorOutline,,双向自动定位
+dragDropEditorOutline,editorOutline,,可拖拽
+floatEditorOutline,editorOutline,,浮动大纲
+mulPreviewType,preview,,多种预览格式
+htmlPreview,mulPreviewType,,html 预览
+pptPreview,mulPreviewType,,ppt 预览
+pdfPreview,mulPreviewType,,pdf 预览
+mulPreviewLayout,preview,,多种预览布局
+tbPreviewLayout,mulPreviewLayout,,上预览下编辑
+btPreviewLayout,mulPreviewLayout,,下预览上编辑
+lrPreviewLayout,mulPreviewLayout,,左预览右编辑
+rlPreviewLayout,mulPreviewLayout,,右预览左编辑
+floatPreviewLayout,mulPreviewLayout,,浮动预览
+windowPreviewLayout,mulPreviewLayout,,窗口预览
+waterMarkFloatPreviewLayout,floatPreviewLayout,,浮动水印预览
+rotateFloatPreviewLayout,floatPreviewLayout,,浮动旋转预览
+zenPreview,preview,,全屏预览模式
+syncScrollPreivew,preview,,同步预览区滚动
+instancePreview,preview,,实时预览
+previewOutline,preview,,预览大纲
+foldPreviewOutline,previewOutline,,可折叠
+syncScrollPreviewOutline,previewOutline,,双向自动定位
+topdownScrollPreviewOutline,previewOutline,,页首页尾定位
+floatPreviewOutline,previewOutline,,浮动大纲
+themesPreview,preview,,个性化预览
+customCssPreview,themesPreview,,自定义预览样式
+defaultThemesPreview,themesPreview,,多款内置预览主题
+defaultCodeThemesPreview,themesPreview,,多款内置代码块预览主题
+codeCamera,preview,,代码块拍照图片
+previewCamera,preview,,生成长图
+staticsPreview,preview,,字数统计
+fileList,fileManagers,,文件列表
+recycleFold,fileManagers,,回收站
+fileHistory,fileManagers,,历史记录
+fullSearchFile,fileManagers,,全文搜索
+tagManager,fileManagers,,标签管理
+attachmentManager,fileManagers,,附件管理
+imageManager,fileManagers,,图片管理
+templateManager,fileManagers,,模板管理
+evernote,store,,evernote 存储
+yingxiang,store,,印象笔记存储
+youdao,store,,有道笔记存储
+wiz,store,,为知笔记存储
+github,store,,github 存储
+gitee,store,,gitee 码云存储
+gitlab,store,,gitlab 存储
+dropbox,store,,dropbox 存储
+local,store,,本地文件夹存储
+github,imageStore,,github 图床
+smms,imageStore,,smms 图床
+aliyun,imageStore,,阿里云 oss
+qiniu,imageStore,,七牛图床
+upai,imageStore,,右拍云图床
+imgur,imageStore,,imgur 图床
+weibo,imageStore,,微博图床
+mdtxt,export,,markdown 纯文本
+html,export,,html 文本
+styledHtml,export,,格式化后的 html 文本
+customTemplatedHtml,export,,模式式 html 文本
+zip,export,,zip 压缩包
+png,export,,png 格式长图
+onlinePdf,export,,pdf
+print,export,,打印
+ppt,export,,ppt
+batchExport,export,,批量导出
+word,export,,word
+localDatabase,database,,本地数据中心管理
+exportDatabase,database,,导出数据中心
+customSyncDatabase,database,,远程数据中心同步
+account,main,,帐户中心
+customSyncConfig,account,,配置参数同步
