@@ -177,14 +177,37 @@ class Mindmap extends React.Component {
               })
               self.handleSelectedNode(d.data.id)
             }
+            function project(theta, r){
+              theta -= Math.PI/2
+              return [
+                r * Math.cos(theta),
+                r * Math.sin(theta),
+              ]
+            }
 
-
-            // Draw on screen
-            g.selectAll('path').data(vLinks).enter().append('path')
-                .each(function(d){d.target.linkNode = this})
+/**
+ *
                 .attr('d', d3.linkRadial()
                     .angle(function (d) { return d.x; })
                     .radius(function (d) { return d.y; }))
+ */
+            // Draw on screen
+            g.selectAll('path').data(vLinks).enter().append('path')
+                .each(function(d){d.target.linkNode = this})
+                .attr("d", function(d) {
+            if(d.source === vNodes[0]){
+              return "M" + project(d.source.x, d.source.y)
+                + " " + project(d.target.x, d.target.y);
+            } else {
+                return d3.linkRadial()
+                    .angle(function (d) { 
+                    return d.x; 
+                    })
+                    .radius(function (d) { 
+                    return d.y; 
+                    })(d)
+            }
+          })
                 .attr("stroke", function(d){
                         //if(d.data.data.least_devd_country === "Yes") { return "blue";}
                         //else if (d.data.data.devd_region === "Yes") { return "green";}
