@@ -21,10 +21,10 @@ const SvgContainerStyled = styled(`div`)`
   left: 0;
   width: 100vw;
   height: 100vh;
-  & .link--active {
+  & .link--active, & .link--selected {
     stroke-width: 3.5px;
   }
-  & .label--active {
+  & .label--active, & .label--selected {
     font-weight: bolder;
     font-size: 20pt!important;
   }
@@ -48,6 +48,29 @@ const SvgContainerStyled = styled(`div`)`
 class IndexRoute extends React.Component {
   constructor(props, context) {
     super(props, context)
+    this.handleActiveNode = this.handleActiveNode.bind(this)
+    this.handleSelectedNode = this.handleSelectedNode.bind(this)
+    this.state = {
+      activeNode: null,
+      selectedNode: null
+    }
+  }
+
+  handleSelectedNode(key){
+    const oldKey = this.state.selectedNode
+    if (key !== oldKey) {
+      this.setState({
+        selectedNode: key
+      })
+    }
+  }
+  handleActiveNode(key, type='hover'){
+    const oldKey = this.state.activeNode
+    if ( oldKey  != key) {
+      this.setState({
+        activeNode: key
+      })
+    }
   }
   componentDidMount() {}
 
@@ -63,7 +86,12 @@ class IndexRoute extends React.Component {
             content="小书匠主要功能"
           />
         </Helmet>
-        <Mindmap/>
+        <Mindmap 
+          activeNode={this.state.activeNode} 
+          selectedNode={this.state.selectedNode}
+          handleSelectedNode={this.handleSelectedNode}
+          handleActiveNode={this.handleActiveNode}
+        />
         <FeatureHexagon>
         </FeatureHexagon>
       </SvgContainerStyled>

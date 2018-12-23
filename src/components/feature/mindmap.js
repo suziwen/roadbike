@@ -5,13 +5,87 @@ import { graphql } from "gatsby"
 import * as d3 from 'd3'
 
 let layoutType = 'cluster'
+
+let vLinks = null
+let vNodes = null
+let vRoot = null
+
+const getNodeById = (id)=>{
+  for (const vNode of vNodes) {
+    if (vNode.data.id === id) {
+      return vNode
+    }
+  }
+  return null
+}
+
+function moveLabelToFront(){
+  const groupNode = this.parentNode
+  groupNode.parentNode.appendChild(groupNode);
+}
+
+function moveLinkToFront() {
+  this.parentNode.appendChild(this);
+}
+
+function mouseovered(d) {
+  d3.selectAll('.link--active').classed("link--active", false)
+  d3.selectAll('.label--active').classed("label--active", false)
+  if (!d) {return}
+  if (d.target){
+    d = d.target
+  }
+  do {
+    d3.select(d.linkNode).classed("link--active", true).each(moveLinkToFront);
+    d3.select(d.textNode).classed("label--active", true).each(moveLabelToFront);
+  } while (d = d.parent);
+}
+
+function clickSelected(d, force=false) {
+  d3.selectAll('.link--selected').classed("link--selected", false)
+  d3.selectAll('.label--selected').classed("label--selected", false)
+  if (!d) {return}
+  if (d.target){
+    d = d.target
+  }
+  const currentNode = d.textNode
+  if (!d3.select(currentNode).classed('label--selected') || force){
+    do {
+      d3.select(d.linkNode).classed("link--selected", true).each(moveLinkToFront);
+      d3.select(d.textNode).classed("label--selected", true).each(moveLabelToFront);
+    } while (d = d.parent);
+  }
+}
+
 class Mindmap extends React.Component {
   constructor(props, context) {
     super(props, context)
     this.d3Ref = React.createRef()
+    this.handleActiveNode = this.props.handleActiveNode
+    this.handleSelectedNode = this.props.handleSelectedNode
+    this.state = {
+      activeNode: this.props.activeNode,
+      selectedNode: this.props.selectedNode
+    }
+  }
+  shouldComponentUpdate(nextProps, nextState){
+    // 内部自己的变化不管
+    if (this.state != nextState) {return false}
+    if (nextProps.activeNode != this.state.activeNode){
+      const activeKey = nextProps.activeNode
+      const activeNode = getNodeById(activeKey)
+      mouseovered(activeNode)
+    }
+    if (nextProps.selectedNode != this.state.selectedNode){
+      const selectedKey = nextProps.selectedNode
+      const selectedNode = getNodeById(selectedKey)
+      clickSelected(selectedNode, true)
+    }
+    return false
   }
   componentDidMount() {
     const target = this.d3Ref.current
+    const self = this
     const vWidth = 1920
     const vHeight = 1920
     const vFontSize = [6,10,18,22]
@@ -65,31 +139,34 @@ class Mindmap extends React.Component {
             }
             // Layout + Data
             //var vRoot = d3.hierarchy(vData);
-            var vRoot = d3.hierarchy(vData);
-            var vNodes = vRoot.descendants();
-            var vLinks = vLayout(vRoot).links();
+            vRoot = d3.hierarchy(vData);
+            vNodes = vRoot.descendants();
+            vLinks = vLayout(vRoot).links();
 
-
-            function mouseovered(active) {
-              return function(d) {
-                //d3.select(this).classed("label--active", active);
+            function _mouseovered(active){
+              
+              return function(d){
                 if (d.target){
                   d = d.target
                 }
-                do {
-                  d3.select(d.linkNode).classed("link--active", active).each(moveLinkToFront);
-                  d3.select(d.textNode).classed("label--active", active).each(moveLabelToFront);
-                } while (d = d.parent);
-              };
+                if (active) {
+                  mouseovered(d, true)
+                  //self.handleActiveNode(d.data.id)
+                } else {
+                  mouseovered(null, true)
+                  //self.handleActiveNode()
+                }
+              }
             }
-
-            function moveLabelToFront(){
-              const groupNode = this.parentNode
-              groupNode.parentNode.appendChild(groupNode);
-            }
-
-            function moveLinkToFront() {
-              this.parentNode.appendChild(this);
+            function _clickSelected(d){
+              if (d.target){
+                d = d.target
+              }
+              clickSelected(d)
+              self.setState({
+                selectedNode: d.data.id
+              })
+              self.handleSelectedNode(d.data.id)
             }
 
 
@@ -104,8 +181,9 @@ class Mindmap extends React.Component {
                         //else if (d.data.data.devd_region === "Yes") { return "green";}
                         return vColor(d.target.data.data.leg);
                 })
-                .on("mouseover", mouseovered(true))
-                .on("mouseout", mouseovered(false));
+                .on("click", _clickSelected)
+                .on("mouseover", _mouseovered(true))
+                .on("mouseout", _mouseovered(false))
 
             var node = g.selectAll(".node").data(vNodes).enter().append('g')
                 .attr('transform', function(d) { return "translate(" + d3.pointRadial(d.x, d.y) + ")"; });
@@ -128,8 +206,9 @@ class Mindmap extends React.Component {
                     return vColor(d.data.data.leg);
         })
                 .classed("glow", function (d){ return d.height !== 0; })
-                .on("mouseover", mouseovered(true))
-                .on("mouseout", mouseovered(false));
+                .on("mouseover", _mouseovered(true))
+                .on("mouseout", _mouseovered(false))
+                .on("click", _clickSelected)
 
 
             function textRotation(d) {
@@ -147,6 +226,8 @@ class Mindmap extends React.Component {
   componentWillUnmount() {
     const target = this.d3Ref.current
     const svg = d3.select(target)
+    svg.selectAll('text').on('mouseover', null).on('mouseout', null).on('click',null)
+    svg.selectAll('path').on('mouseover', null).on('mouseout', null).on('click',null)
     svg.on(".zoom", null)
   }
 
