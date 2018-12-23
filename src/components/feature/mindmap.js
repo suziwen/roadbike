@@ -184,6 +184,13 @@ class Mindmap extends React.Component {
                 .on("click", _clickSelected)
                 .on("mouseover", _mouseovered(true))
                 .on("mouseout", _mouseovered(false))
+                .style("opacity", 0)
+      .transition()
+      .duration(300)
+      .delay(function(d,i) {
+        return 24*i;
+      })
+      .style("opacity", 1)
 
             var node = g.selectAll(".node").data(vNodes).enter().append('g')
                 .attr('transform', function(d) { return "translate(" + d3.pointRadial(d.x, d.y) + ")"; });
@@ -209,6 +216,13 @@ class Mindmap extends React.Component {
                 .on("mouseover", _mouseovered(true))
                 .on("mouseout", _mouseovered(false))
                 .on("click", _clickSelected)
+                    .style("opacity", 0)
+    .transition()
+      .duration(300)
+      .delay(function(d,i) {
+        return 24*i;
+      })
+      .style("opacity", 1)
 
 
             function textRotation(d) {
