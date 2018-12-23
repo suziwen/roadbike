@@ -195,6 +195,20 @@ class Mindmap extends React.Component {
 
 /**
  *
+ *
+ https://blockbuilder.org/curran/1dd7ab046a4ed32380b21e81a38447aa
+          .attr("d", function(d) {
+            if(d.parent === descendants[0]){
+              return "M" + project(d.x, d.y)
+                + " " + project(d.parent.x, d.parent.y);
+            } else {
+              return "M" + project(d.x, d.y)
+                + "C" + project(d.x, (d.y + d.parent.y) / 2)
+                + " " + project(d.parent.x, (d.y + d.parent.y) / 2)
+                + " " + project(d.parent.x, d.parent.y);
+            }
+          });
+      ////orign
                 .attr('d', d3.linkRadial()
                     .angle(function (d) { return d.x; })
                     .radius(function (d) { return d.y; }))
