@@ -43,10 +43,14 @@ function mouseovered(d) {
   if (d.target){
     d = d.target
   }
+  if (d.depth == 0 ) {return}
   do {
     d3.select(d.linkNode).classed("link--active", true).each(moveLinkToFront);
     d3.select(d.textNode).classed("label--active", true).each(moveLabelToFront);
-  } while (d = d.parent);
+  } while ((d = d.parent) && d.depth);
+  if (d) {
+    d3.select(d.textNode).each(moveLabelToFront);
+  }
 }
 
 function clickSelected(d, force=false) {
@@ -56,12 +60,16 @@ function clickSelected(d, force=false) {
   if (d.target){
     d = d.target
   }
+  if (d.depth == 0 ) {return}
   const currentNode = d.textNode
   if (!d3.select(currentNode).classed('label--selected') || force){
     do {
       d3.select(d.linkNode).classed("link--selected", true).each(moveLinkToFront);
       d3.select(d.textNode).classed("label--selected", true).each(moveLabelToFront);
-    } while (d = d.parent);
+    } while ((d = d.parent) && d.depth);
+    if (d) {
+      d3.select(d.textNode).each(moveLabelToFront);
+    }
   }
 }
 
@@ -96,7 +104,7 @@ class Mindmap extends React.Component {
     const self = this
     const vWidth = 1920
     const vHeight = 1920
-    const vFontSize = [6,10,18,22]
+    const vFontSize = [6,10,18,22, 30, 36]
     const vColor = d3.scaleOrdinal().domain(["Oceania", "Africa", "Europe", "Latin America", "Asia"]).range(["#ff6698", "#ffb366", "#ffff66", "#98ff66", "#6698ff"])
     const svg = d3.select(target)
     const zoomGroup= svg.select('g.zoom_group')
@@ -230,7 +238,9 @@ class Mindmap extends React.Component {
             node.append("text")
                 .text(function (d){ return d.data.data.title; })
                 .each(function(d){d.textNode = this})
-                .style("font-size", function (d){ return vFontSize[d.height] + "pt"; })
+                .style("font-size", function (d){ 
+                  return vFontSize[d.height] + "pt"; 
+                })
                 .attr("transform", function(d) { return "rotate(" + textRotation(d) + ")" })
                 .attr("text-anchor", function (d){
                     if(d.height === 0){ return (d.x > Math.PI) ? "end" : "start"; }
