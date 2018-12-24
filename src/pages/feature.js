@@ -13,8 +13,12 @@ import HomepageSection from "../components/homepage/homepage-section"
 import Button from "../components/button"
 import FeatureHexagon from "../components/feature/feature-hexagon"
 import Mindmap from "../components/feature/mindmap"
+import FeatureDetail from  "../components/feature/feature-detail"
 
 import featureStyles from "../components/feature.module.css"
+
+
+
 
 
 const Modal = posed.div({
@@ -127,7 +131,7 @@ class IndexRoute extends React.Component {
         >
         </FeatureHexagon>
         <PoseGroup>
-          {this.state.selectedNode&&<Modal key="modal" className={featureStyles.modal} />}
+          {this.state.selectedNode&&<Modal key="modal" className={featureStyles.modal} ><FeatureDetail nodes={featureItems} selectedNode={this.state.selectedNode}/></Modal>}
       </PoseGroup>
       </SvgContainerStyled>
     )
