@@ -249,6 +249,7 @@ class Mindmap extends React.Component {
       .style("opacity", 1)
 
             var node = g.selectAll(".node").data(vNodes).enter().append('g')
+                .classed("xsj_root_group", function (d){ return d.depth === 0; })
                 .attr('transform', function(d) { return "translate(" + d3.pointRadial(d.x, d.y) + ")"; });
 
             node.append("text")
@@ -288,6 +289,13 @@ class Mindmap extends React.Component {
       })
       .style("opacity", 1)
 
+            const symbol = d3.symbol().type(d3.symbolCircle)
+            const rootGroup = g.select(".xsj_root_group")
+            const rootBox = rootGroup.node().getBBox()
+            const symbolSizePercent = Math.max(rootBox.width/2, rootBox.height/2)
+            rootGroup.insert("path", ":first-child ")
+              .attr("d", symbol.size(symbolSizePercent * symbolSizePercent * Math.PI))
+              .style("fill", "yellow")
 
         }
 
