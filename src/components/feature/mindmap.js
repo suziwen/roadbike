@@ -11,6 +11,7 @@ let vLinks = null
 let vNodes = null
 let vRoot = null
 let zoom = null
+let mindmapSvg = null
 
 function textRotation(d) {
     var angle = d.x / Math.PI * 180 + 90;
@@ -55,12 +56,11 @@ function mouseovered(d) {
 }
 
 function centerNode(d){
-  //return svg.transition().duration(750).call(zoom.translateTo, d.x, d.y)
-  const svg =  d3.select(".mindmap_svg")
-  const vWidth = svg.node().clientWidth
-  const vHeight = svg.node().clientHeight
+  //return mindmapSvg.transition().duration(750).call(zoom.translateTo, d.x, d.y)
+  const vWidth = mindmapSvg.node().clientWidth
+  const vHeight = mindmapSvg.node().clientHeight
   const rotateGroup = d3.select(".rotate_group")
-  const t = d3.zoomTransform(svg.node())
+  const t = d3.zoomTransform(mindmapSvg.node())
   const rotateValue = parseInt(rotateGroup.attr("data-rotate")) || 0
   const rotateAngle = rotateValue * 2 * Math.PI / 360
   // 要把 angle, raidus 转换成坐标
@@ -70,7 +70,7 @@ function centerNode(d){
   x = -x  + (vWidth / 2) /t.k;
   y = -y  + (vHeight / 2) / t.k;
   // 注意 scale 和 translate 顺序，反了的话结果会出错
-  svg.transition().duration(750).call( zoom.transform, d3.zoomIdentity.scale(t.k).translate(x,y))
+  mindmapSvg.transition().duration(750).call( zoom.transform, d3.zoomIdentity.scale(t.k).translate(x,y))
 }
 
 function clickSelected(d, force=false, scrollTo=false) {
@@ -102,11 +102,23 @@ class Mindmap extends React.Component {
     this.d3Ref = React.createRef()
     this.handleActiveNode = this.props.handleActiveNode
     this.handleSelectedNode = this.props.handleSelectedNode
+    this.handleResize = this.handleResize.bind(this)
     this.nodes = this.props.nodes
     this.state = {
       activeNode: this.props.activeNode,
       selectedNode: this.props.selectedNode
     }
+  }
+
+  handleResize(){
+    const vWidth = mindmapSvg.node().clientWidth
+    const vHeight = mindmapSvg.node().clientHeight
+    const rotateGroup = mindmapSvg.select(".rotate_group")
+    rotateGroup
+      .transition().duration(750)
+      .attr("data-rotate", 0)
+      .attr("transform", null)
+    mindmapSvg.transition().duration(750).call(zoom.transform, d3.zoomIdentity.scale(1).translate(vWidth / 2, vHeight / 2))
   }
   shouldComponentUpdate(nextProps, nextState){
     // 内部自己的变化不管
@@ -130,17 +142,17 @@ class Mindmap extends React.Component {
     const mapHeight = 1920
     const vFontSize = [6,10,18,22, 30, 36]
     const vColor = d3.scaleOrdinal().domain(["Oceania", "Africa", "Europe", "Latin America", "Asia"]).range(["#ff6698", "#ffb366", "#ffff66", "#98ff66", "#6698ff"])
-    const svg = d3.select(target)
-    const vWidth = svg.node().clientWidth
-    const vHeight = svg.node().clientHeight
-    const zoomGroup= svg.select('g.zoom_group')
-    const g = svg.select('g.rotate_group')
+    mindmapSvg = d3.select(target)
+    const vWidth = mindmapSvg.node().clientWidth
+    const vHeight = mindmapSvg.node().clientHeight
+    const zoomGroup= mindmapSvg.select('g.zoom_group')
+    const g = mindmapSvg.select('g.rotate_group')
     zoom = d3.zoom()
-    svg.call(zoom
+    mindmapSvg.call(zoom
           .scaleExtent([1 / 2, 4])
           .on("zoom", zoomed))
           .on("wheel", rotate)
-    svg.transition().duration(750).call(zoom.transform, d3.zoomIdentity.translate(vWidth / 2, vHeight / 2))
+    mindmapSvg.call(zoom.transform, d3.zoomIdentity.translate(vWidth / 2, vHeight / 2))
     function zoomed() {
       zoomGroup.attr("transform", d3.event.transform);
     }
@@ -329,14 +341,20 @@ class Mindmap extends React.Component {
         }
 
 
+    window.addEventListener(`resize`, this.handleResize)
   }
 
   componentWillUnmount() {
     const target = this.d3Ref.current
-    const svg = d3.select(target)
-    svg.selectAll('text').on('mouseover', null).on('mouseout', null).on('click',null)
-    svg.selectAll('path').on('mouseover', null).on('mouseout', null).on('click',null)
-    svg.on(".zoom", null)
+    mindmapSvg.selectAll('text').on('mouseover', null).on('mouseout', null).on('click',null)
+    mindmapSvg.selectAll('path').on('mouseover', null).on('mouseout', null).on('click',null)
+    mindmapSvg.on(".zoom", null)
+    window.removeEventListener(`resize`, this.handleResize)
+    vLinks = null
+    vNodes = null
+    vRoot = null
+    zoom = null
+    mindmapSvg = null
   }
 
   render() {
