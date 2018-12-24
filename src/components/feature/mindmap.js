@@ -293,9 +293,12 @@ class Mindmap extends React.Component {
             const rootGroup = g.select(".xsj_root_group")
             const rootBox = rootGroup.node().getBBox()
             const symbolSizePercent = Math.max(rootBox.width/2, rootBox.height/2)
+            // symbol.size  = math.pi * r^2
             rootGroup.insert("path", ":first-child ")
               .attr("d", symbol.size(symbolSizePercent * symbolSizePercent * Math.PI))
-              .style("fill", "yellow")
+              .style("fill", "#663399")
+              .style("stroke-width", "5")
+              .style("stroke", "rgb(255, 179, 102)")
 
         }
 
