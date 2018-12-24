@@ -125,8 +125,10 @@ class Mindmap extends React.Component {
     function centerNode(d){
       //return svg.transition().duration(750).call(zoom.translateTo, d.x, d.y)
       const t = d3.zoomTransform(svg.node())
+      const rotateValue = parseInt(g.attr("data-rotate")) || 0
+      const rotateAngle = rotateValue * 2 * Math.PI / 360
       // 要把 angle, raidus 转换成坐标
-      const positions = d3.pointRadial(d.x, d.y)
+      const positions = d3.pointRadial(d.x + rotateAngle, d.y)
       let x = positions[0]
       let y = positions[1]
       x = -x  + (vWidth / 2) /t.k;
