@@ -35,6 +35,10 @@ const SvgContainerStyled = styled(`div`)`
     1px -1px 3px ${colors.lilac},
     1px  1px 3px ${colors.lilac};
   }
+  & .xsj_root_text{
+    font-family: webfontxiaoshujiang;
+    font-weight: bolder;
+  }
   & text{
     alignment-baseline: central;
     fill: white;
@@ -78,6 +82,8 @@ class IndexRoute extends React.Component {
   }
 
   render() {
+    const featureItems = this.props.data.allFeaturesCsv.edges.map((n)=>(n.node))
+    featureItems.columns = ["id", "parentId", "type", "title", "description", "showHexagon"]
     return (
       <SvgContainerStyled css={{ position: `relative` }}>
         <Helmet htmlAttributes={{style: 'overflow:hidden;'}}>
@@ -91,8 +97,9 @@ class IndexRoute extends React.Component {
           selectedNode={this.state.selectedNode}
           handleSelectedNode={this.handleSelectedNode}
           handleActiveNode={this.handleActiveNode}
+          nodes={featureItems}
         />
-        <FeatureHexagon>
+        <FeatureHexagon nodes={featureItems}>
         </FeatureHexagon>
       </SvgContainerStyled>
     )
@@ -102,3 +109,20 @@ class IndexRoute extends React.Component {
 export default IndexRoute
 
 
+export const pageQuery = graphql`
+  query {
+    allFeaturesCsv{
+      edges{
+        node{
+          id
+          parentId
+          type
+          title
+          description
+          showHexagon
+          
+        }
+      }
+    }
+  }
+`

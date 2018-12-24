@@ -28,6 +28,7 @@
     "gatsby-plugin-sitemap": "^2.0.1",
     "gatsby-plugin-typography": "^2.2.0",
     "gatsby-source-filesystem": "^2.0.1",
+    "gatsby-transformer-csv": "^2.0.5",
     "gatsby-transformer-sharp": "^2.1.1",
     "gatsby-transformer-yaml": "^2.1.1",
     "graphql-request": "1.6.0",

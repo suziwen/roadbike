@@ -22,6 +22,13 @@ module.exports = {
     {
         resolve: `gatsby-source-filesystem`,
         options: {
+            path: `${__dirname}/src/data`,
+            name: 'datas',
+        },
+    },
+    {
+        resolve: `gatsby-source-filesystem`,
+        options: {
             path: `${__dirname}/src/assets`,
             name: 'assets',
         },
@@ -46,6 +53,12 @@ module.exports = {
             path: `${__dirname}/src/xsjposts/logs`,
             name: 'logs',
         },
+    },
+    {
+      resolve: `gatsby-transformer-csv`,
+      options: {
+        noheader: false,
+      },
     },
     `gatsby-transformer-xsjzip`,
     {

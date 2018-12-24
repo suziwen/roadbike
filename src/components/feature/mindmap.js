@@ -79,6 +79,7 @@ class Mindmap extends React.Component {
     this.d3Ref = React.createRef()
     this.handleActiveNode = this.props.handleActiveNode
     this.handleSelectedNode = this.props.handleSelectedNode
+    this.nodes = this.props.nodes
     this.state = {
       activeNode: this.props.activeNode,
       selectedNode: this.props.selectedNode
@@ -131,12 +132,8 @@ class Mindmap extends React.Component {
       console.log(x.event.wheelDelta)
       console.log(e)
     }
-    d3.csv('/country-hierarchy.csv').then((vCsvData)=>{
-      const vData = d3.stratify()(vCsvData)
-      drawViz(vData)
-    }).catch((err)=>{
-      console.log(err)
-    })
+    const vData = d3.stratify()(self.nodes)
+    drawViz(vData)
     function drawViz(vData) {
 
             vData.each( function(d){
@@ -254,6 +251,12 @@ class Mindmap extends React.Component {
                 .each(function(d){d.textNode = this})
                 .style("font-size", function (d){ 
                   return vFontSize[d.height] + "pt"; 
+                })
+                .attr("class", function(d){
+                  if (d.depth === 0 ) {
+                    return "xsj_root_text"
+                  }
+                  return ""
                 })
                 .attr("transform", function(d) { return "rotate(" + textRotation(d) + ")" })
                 .attr("text-anchor", function (d){
