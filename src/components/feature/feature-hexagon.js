@@ -213,7 +213,8 @@ class FeatureHexagon extends React.Component {
     this.state = {
       activeItemKey: null
     }
-    this.handleActiveItem.bind(this)
+    this.handleSelectedNode = this.props.handleSelectedNode
+    this.handleActiveNode=this.props.handleActiveNode
     //https://codereview.stackexchange.com/posts/123735/revisions
     //this.featureItems = this.props.nodes.reduce((acc, { data }) => ({ ...acc, [data.data.id]: data.data }), {})
     // x.reduce((acc, obj) => ({ ...acc, [obj.id]: obj }), {})
@@ -242,7 +243,16 @@ class FeatureHexagon extends React.Component {
           const key = val[0]
           const itemObj = val[1]
           return (
-          <Hexagon className={this.state.activeItemKey === key ?"hex hex_active": "hex"} key={idx} style={{stroke: 'orange', fill: 'orange'}} onClick={()=>{this.handleActiveItem(key)}}>
+          <Hexagon 
+            className={this.props.selectedNode === key ?"hex hex_active": "hex"} 
+            key={idx} 
+            style={{stroke: 'orange', fill: 'orange'}}
+            onClick={()=>{this.handleSelectedNode(this.props.selectedNode ===key ? "": key)}}
+            hexProps={{
+              onMouseEnter:()=>{this.handleActiveNode(key)},
+              onMouseLeave:()=>{this.handleActiveNode()},
+            }}
+          >
             <foreignObject className="foreign-object hex_icon" x="50%" y="50%">
               <FiFeather style={{width: '50%', height: '50%', transform: 'translate(-50%, -50%)'}}/>
             </foreignObject>

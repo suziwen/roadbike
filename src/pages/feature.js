@@ -99,7 +99,12 @@ class IndexRoute extends React.Component {
           handleActiveNode={this.handleActiveNode}
           nodes={featureItems}
         />
-        <FeatureHexagon nodes={featureItems}>
+        <FeatureHexagon 
+          nodes={featureItems}
+          selectedNode={this.state.selectedNode}
+          handleSelectedNode={this.handleSelectedNode}
+          handleActiveNode={this.handleActiveNode}
+        >
         </FeatureHexagon>
       </SvgContainerStyled>
     )
