@@ -119,6 +119,15 @@ class Mindmap extends React.Component {
     function zoomed() {
       zoomGroup.attr("transform", d3.event.transform);
     }
+
+    function centerNode(d){
+      const t = d3.zoomTransform(svg)
+      let x = -d.x
+      let y = -d.y
+      x = x * t.k + vWidth / 2;
+      y = y * t.k + vHeight / 2;
+      svg.transition().duration(750).call( zoom.transform, d3.zoomIdentity.translate(x,y).scale(t.k) )
+    }
     function rotate(e){
       const oldValue = parseInt(g.attr("data-rotate")) || 0
       // 除以 14 个像素单位
@@ -176,6 +185,7 @@ class Mindmap extends React.Component {
               if (d.target){
                 d = d.target
               }
+              centerNode(d)
               let key = d.data.id
               if (key === self.state.selectedNode) {
                 key=null
