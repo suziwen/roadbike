@@ -103,11 +103,13 @@ class Mindmap extends React.Component {
   componentDidMount() {
     const target = this.d3Ref.current
     const self = this
-    const vWidth = 1920
-    const vHeight = 1920
+    const mapWidth = 1920
+    const mapHeight = 1920
     const vFontSize = [6,10,18,22, 30, 36]
     const vColor = d3.scaleOrdinal().domain(["Oceania", "Africa", "Europe", "Latin America", "Asia"]).range(["#ff6698", "#ffb366", "#ffff66", "#98ff66", "#6698ff"])
     const svg = d3.select(target)
+    const vWidth = svg.node().clientWidth
+    const vHeight = svg.node().clientHeight
     const zoomGroup= svg.select('g.zoom_group')
     const g = svg.select('g.rotate_group')
     const zoom = d3.zoom()
@@ -121,12 +123,16 @@ class Mindmap extends React.Component {
     }
 
     function centerNode(d){
-      const t = d3.zoomTransform(svg)
-      let x = -d.x
-      let y = -d.y
-      x = x * t.k + vWidth / 2;
-      y = y * t.k + vHeight / 2;
-      svg.transition().duration(750).call( zoom.transform, d3.zoomIdentity.translate(x,y).scale(t.k) )
+      //return svg.transition().duration(750).call(zoom.translateTo, d.x, d.y)
+      const t = d3.zoomTransform(svg.node())
+      // 要把 angle, raidus 转换成坐标
+      const positions = d3.pointRadial(d.x, d.y)
+      let x = positions[0]
+      let y = positions[1]
+      x = -x  + (vWidth / 2) /t.k;
+      y = -y  + (vHeight / 2) / t.k;
+      // 注意 scale 和 translate 顺序，反了的话结果会出错
+      svg.transition().duration(750).call( zoom.transform, d3.zoomIdentity.scale(t.k).translate(x,y))
     }
     function rotate(e){
       const oldValue = parseInt(g.attr("data-rotate")) || 0
@@ -156,9 +162,9 @@ class Mindmap extends React.Component {
             // Declare d3 layout
             let vLayout = null
             if (layoutType === 'cluster') {
-              vLayout = d3.cluster().size([2 * Math.PI, Math.min(vWidth, vHeight)/2 - 130]); // margin!
+              vLayout = d3.cluster().size([2 * Math.PI, Math.min(mapWidth, mapHeight)/2 - 130]); // margin!
             } else {
-              vLayout = d3.tree().size([2 * Math.PI, Math.min(vWidth, vHeight)/2 - 130]); // margin!
+              vLayout = d3.tree().size([2 * Math.PI, Math.min(mapWidth, mapHeight)/2 - 130]); // margin!
             }
             // Layout + Data
             //var vRoot = d3.hierarchy(vData);
