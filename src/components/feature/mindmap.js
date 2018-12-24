@@ -176,11 +176,16 @@ class Mindmap extends React.Component {
               if (d.target){
                 d = d.target
               }
+              let key = d.data.id
+              if (key === self.state.selectedNode) {
+                key=null
+                d = null
+              }
               clickSelected(d)
               self.setState({
-                selectedNode: d.data.id
+                selectedNode: key
               })
-              self.handleSelectedNode(d.data.id)
+              self.handleSelectedNode(key)
             }
             function project(theta, r){
               theta -= Math.PI/2
