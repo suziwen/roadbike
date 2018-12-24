@@ -10,6 +10,7 @@ let layoutType = 'tree'
 let vLinks = null
 let vNodes = null
 let vRoot = null
+let zoom = null
 
 function textRotation(d) {
     var angle = d.x / Math.PI * 180 + 90;
@@ -53,7 +54,26 @@ function mouseovered(d) {
   }
 }
 
-function clickSelected(d, force=false) {
+function centerNode(d){
+  //return svg.transition().duration(750).call(zoom.translateTo, d.x, d.y)
+  const svg =  d3.select(".mindmap_svg")
+  const vWidth = svg.node().clientWidth
+  const vHeight = svg.node().clientHeight
+  const rotateGroup = d3.select(".rotate_group")
+  const t = d3.zoomTransform(svg.node())
+  const rotateValue = parseInt(rotateGroup.attr("data-rotate")) || 0
+  const rotateAngle = rotateValue * 2 * Math.PI / 360
+  // 要把 angle, raidus 转换成坐标
+  const positions = d3.pointRadial(d.x + rotateAngle, d.y)
+  let x = positions[0]
+  let y = positions[1]
+  x = -x  + (vWidth / 2) /t.k;
+  y = -y  + (vHeight / 2) / t.k;
+  // 注意 scale 和 translate 顺序，反了的话结果会出错
+  svg.transition().duration(750).call( zoom.transform, d3.zoomIdentity.scale(t.k).translate(x,y))
+}
+
+function clickSelected(d, force=false, scrollTo=false) {
   d3.selectAll('.link--selected').classed("link--selected", false)
   d3.selectAll('.label--selected').classed("label--selected", false)
   if (!d) {return}
@@ -62,6 +82,9 @@ function clickSelected(d, force=false) {
   }
   if (d.depth == 0 ) {return}
   const currentNode = d.textNode
+  if (scrollTo) {
+    centerNode(d)
+  }
   if (!d3.select(currentNode).classed('label--selected') || force){
     do {
       d3.select(d.linkNode).classed("link--selected", true).each(moveLinkToFront);
@@ -96,7 +119,7 @@ class Mindmap extends React.Component {
     if (nextProps.selectedNode != this.state.selectedNode){
       const selectedKey = nextProps.selectedNode
       const selectedNode = getNodeById(selectedKey)
-      clickSelected(selectedNode, true)
+      clickSelected(selectedNode, true, true)
     }
     return false
   }
@@ -112,7 +135,7 @@ class Mindmap extends React.Component {
     const vHeight = svg.node().clientHeight
     const zoomGroup= svg.select('g.zoom_group')
     const g = svg.select('g.rotate_group')
-    const zoom = d3.zoom()
+    zoom = d3.zoom()
     svg.call(zoom
           .scaleExtent([1 / 2, 4])
           .on("zoom", zoomed))
@@ -122,20 +145,6 @@ class Mindmap extends React.Component {
       zoomGroup.attr("transform", d3.event.transform);
     }
 
-    function centerNode(d){
-      //return svg.transition().duration(750).call(zoom.translateTo, d.x, d.y)
-      const t = d3.zoomTransform(svg.node())
-      const rotateValue = parseInt(g.attr("data-rotate")) || 0
-      const rotateAngle = rotateValue * 2 * Math.PI / 360
-      // 要把 angle, raidus 转换成坐标
-      const positions = d3.pointRadial(d.x + rotateAngle, d.y)
-      let x = positions[0]
-      let y = positions[1]
-      x = -x  + (vWidth / 2) /t.k;
-      y = -y  + (vHeight / 2) / t.k;
-      // 注意 scale 和 translate 顺序，反了的话结果会出错
-      svg.transition().duration(750).call( zoom.transform, d3.zoomIdentity.scale(t.k).translate(x,y))
-    }
     function rotate(e){
       const oldValue = parseInt(g.attr("data-rotate")) || 0
       // 除以 14 个像素单位
@@ -193,7 +202,6 @@ class Mindmap extends React.Component {
               if (d.target){
                 d = d.target
               }
-              centerNode(d)
               let key = d.data.id
               if (key === self.state.selectedNode) {
                 key=null
@@ -333,7 +341,7 @@ class Mindmap extends React.Component {
 
   render() {
     return (
-      <svg ref={this.d3Ref} width='100vw' height='100vh'>
+      <svg className="mindmap_svg" ref={this.d3Ref} width='100vw' height='100vh'>
         <g className="zoom_group">
           <g className="rotate_group">
           </g>
