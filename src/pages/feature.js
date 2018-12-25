@@ -2,7 +2,6 @@ import React from "react"
 import styled from "react-emotion"
 import { graphql } from "gatsby"
 import Helmet from "react-helmet"
-import posed, { PoseGroup } from 'react-pose'
 import presets, { colors } from "../utils/presets"
 import { rhythm, options } from "../utils/typography"
 import { vP } from "../components/gutters"
@@ -15,28 +14,21 @@ import FeatureHexagon from "../components/feature/feature-hexagon"
 import Mindmap from "../components/feature/mindmap"
 import FeatureDetail from  "../components/feature/feature-detail"
 
-import featureStyles from "../components/feature.module.css"
 
 
 
+const FeatureDetailStyled = styled('div')`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 
 
-const Modal = posed.div({
-  enter: {
-    y: 0,
-    opacity: 1,
-    delay: 300,
-    transition: {
-      y: { type: 'spring', stiffness: 1000, damping: 15 },
-      default: { duration: 300 }
-    }
-  },
-  exit: {
-    y: 50,
-    opacity: 0,
-    transition: { duration: 150 }
-  }
-})
 
 const SvgContainerStyled = styled(`div`)`
   background: ${colors.gatsby};
@@ -130,9 +122,8 @@ class IndexRoute extends React.Component {
           handleActiveNode={this.handleActiveNode}
         >
         </FeatureHexagon>
-        <PoseGroup>
-          {this.state.selectedNode&&<Modal key="modal" className={featureStyles.modal} ><FeatureDetail nodes={featureItems} selectedNode={this.state.selectedNode}/></Modal>}
-      </PoseGroup>
+          <FeatureDetail nodes={featureItems} selectedNode={this.state.selectedNode}>
+          </FeatureDetail>
       </SvgContainerStyled>
     )
   }

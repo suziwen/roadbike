@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "react-emotion"
+import posed, { PoseGroup } from 'react-pose'
 import presets, { colors } from "../../utils/presets"
 import { rhythm, options } from "../../utils/typography"
 
@@ -15,7 +16,21 @@ import zenWriteGif from "../../assets/feature/zen_write.gif"
 import zenViewGif from "../../assets/feature/zen_view.gif"
 import outlineGif from "../../assets/feature/outline.gif"
 
+import featureStyles from "../feature.module.css"
 
+const Modal = posed.div({
+  enter: {
+    opacity: 1,
+    delay: 300,
+    transition: {
+      default: { duration: 300 }
+    }
+  },
+  exit: {
+    opacity: 0,
+    transition: { duration: 150 }
+  }
+})
 
 class FeatureDetail extends React.Component {
   constructor(props, context) {
@@ -23,7 +38,12 @@ class FeatureDetail extends React.Component {
   }
   render(){
     return (
-      <div><img src={storeGif} /></div>
+        <PoseGroup>
+          {this.props.selectedNode&&
+          <Modal key="modal" className={featureStyles.gif_modal} >
+            <div><img src={storeGif} /></div>
+          </Modal>}
+      </PoseGroup>
     )
   }
 }
