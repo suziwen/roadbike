@@ -3,7 +3,7 @@ import styled from "react-emotion"
 import posed, { PoseGroup } from 'react-pose'
 import GifPlayer from "react-gif-player"
 
-import "../../../node_modules/react-gif-player/dist/gifplayer.css"
+import "react-gif-player/dist/gifplayer.css"
 import presets, { colors } from "../../utils/presets"
 import { rhythm, options } from "../../utils/typography"
 
