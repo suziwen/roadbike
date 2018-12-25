@@ -291,7 +291,15 @@ class Mindmap extends React.Component {
                 .attr('transform', function(d) { return "translate(" + d3.pointRadial(d.x, d.y) + ")"; });
 
             node.append("text")
-                .text(function (d){ return d.data.data.title; })
+                .html(function (d){ 
+                  const data = d.data.data
+                  let title = data.title
+                  if (data.showHexagon){
+                    title += `<tspan class="fa fa-heart">good</tspan>` 
+                  }
+                  return title; 
+                })
+                .classed("linkable", function (d){ return d.data.data.showHexagon === "1"; })
                 .each(function(d){d.textNode = this})
                 .style("font-size", function (d){ 
                   return vFontSize[d.height] + "pt"; 
@@ -346,9 +354,11 @@ class Mindmap extends React.Component {
 
   componentWillUnmount() {
     const target = this.d3Ref.current
-    mindmapSvg.selectAll('text').on('mouseover', null).on('mouseout', null).on('click',null)
-    mindmapSvg.selectAll('path').on('mouseover', null).on('mouseout', null).on('click',null)
-    mindmapSvg.on(".zoom", null)
+    if (mindmapSvg) {
+      mindmapSvg.selectAll('text').on('mouseover', null).on('mouseout', null).on('click',null)
+      mindmapSvg.selectAll('path').on('mouseover', null).on('mouseout', null).on('click',null)
+      mindmapSvg.on(".zoom", null)
+    }
     window.removeEventListener(`resize`, this.handleResize)
     vLinks = null
     vNodes = null

@@ -74,6 +74,28 @@ const Modal = posed.div({
   }
 })
 
+class GifPlayerModal extends React.Component{
+  constructor(props, context) {
+    super(props, context)
+    this.pauseGif = null
+  }
+  componentDidUpdate(){
+    this.pauseGif && this.pauseGif()
+  }
+  componentWillUnmount() {
+    this.pauseGif && this.pauseGif()
+    this.pauseGif = null
+  }
+  render(){
+    const gifObj = this.props.gifObj
+    return (<GifPlayer
+      gif={gifObj.gif}
+      still={gifObj.still}
+      pauseRef={pause => this.pauseGif = pause}
+    />)
+  }
+}
+
 class FeatureDetail extends React.Component {
   constructor(props, context) {
     super(props, context)
@@ -100,11 +122,7 @@ class FeatureDetail extends React.Component {
           {gifObj&&
           <Modal key="modal" className={featureStyles.gif_modal} >
             <div>
-              <GifPlayer
-                gif={gifObj.gif}
-                still={gifObj.still}
-                pauseRef={pause => this.pauseGif = pause}
-              />
+              <GifPlayerModal gifObj={gifObj}/>
             </div>
           </Modal>}
       </PoseGroup>
