@@ -1,20 +1,20 @@
 id,parentId,type,title,description,showHexagon
 main,,,小书匠,,
-grammar,main,,语法,,1
+grammar,main,,语法,丰富的语法才能满足用户多样的使用体验，小书匠不仅提供标准的 commonmark 语法支持，还提供了很多功能更加强大的语法，像公式，流程图，思维脑图，plantuml等。,1
 fileManagers,main,,文件管理,,
 export,main,,导出,,
 import,main,,导入,,
-editor,main,,编辑,,1
+editor,main,,编辑,"小书匠内置了很多编辑器，ace, codemirror ,竖排编辑器。全屏写作，行专注，小地图，大纲，提高用户的写作效率",1
 preview,main,,预览,,
-store,main,,第三方存储,,1
+store,main,,第三方存储,数据就是用户的血液，只有流动的血液才能让生命有活力。小书匠不仅内置了数据中心，更是提供了一条龙式的多站导出。不同的存储平台多进行了大量的样式优化。,1
 database,main,,数据中心,,
-imageStore,main,,图片,,1
+imageStore,main,,图片,一篇文章，如果只有文字，没有图片。就好比生活只有了柴米油盐，没了诗和远方,1
 commonGrammar,grammar,,基础语法,,
 extraGrammar,grammar,,高级语法,,
 featureGrammar,grammar,,小书匠专有语法,,
 featureImageGrammar,featureGrammar,,块级图片,,
 markGrammar,featureGrammar,,高亮,,
-featureCodeGrammar,featureGrammar,,高级代码块,,1
+featureCodeGrammar,featureGrammar,,高级代码块,代码行号，代码标题，代码行高,1
 nunjucksGrammar,featureGrammar,,nunjucks模板语法,,
 extraTableGrammar,featureGrammar,,高级表格,,
 codeCHunkGrammar,featureGrammar,,代码块执行,,
@@ -58,10 +58,10 @@ wordcheck,editor,,英文拼写检查,,
 minimap,editor,,minimap 小地图,,
 foldParagh,editor,,章节折叠,,
 typeWriter,editor,,打字机滚动效果,,
-zenWriter,editor,,全屏写作模式,,1
+zenWriter,editor,,全屏写作模式,让你心无旁骛的进入写作状态,1
 lineFocus,editor,,行专注写作模式,,
 customEditor,editor,,编辑器字体自定义,,
-themesEditor,editor,,多种编辑器主题,,1
+themesEditor,editor,,多种编辑器主题,多彩的主题，多彩的生活,1
 directPasteImage,editor,,剪切板图片粘贴,,
 directInputTime,editor,,快速输入当前时间,,
 htmlToMarkdown,editor,,html 片段转换成 markdown,,
@@ -71,15 +71,15 @@ instancePreviewImage,editor,,编辑器内即时预览图片,,
 instancePreviewTodo,editor,,编辑器内即时预览待办,,
 freeLayoutEditor,editor,,编辑器位置任意调整,,
 syncScrollEditor,editor,,同步编辑区滚动,,
-editorOutline,editor,,编辑器大纲,,1
+editorOutline,editor,,编辑器大纲,大纲就是一篇文章的骨架，好的大纲才能让文章骨骼清奇,1
 foldEditorOutline,editorOutline,,可折叠,,
 syncScrollEditorOutline,editorOutline,,双向自动定位,,
 dragDropEditorOutline,editorOutline,,可拖拽,,
 floatEditorOutline,editorOutline,,浮动大纲,,
 mulPreviewType,preview,,多种预览格式,,
 htmlPreview,mulPreviewType,,html 预览,,
-pptPreview,mulPreviewType,,ppt 预览,,1
-pptMulPreview,mulPreviewType,,ppt 多屏演示,,1
+pptPreview,mulPreviewType,,ppt 预览,幻灯片,1
+pptMulPreview,mulPreviewType,,ppt 多屏演示,记得把好,1
 pdfPreview,mulPreviewType,,pdf 预览,,
 mulPreviewLayout,preview,,多种预览布局,,1
 tbPreviewLayout,mulPreviewLayout,,上预览下编辑,,

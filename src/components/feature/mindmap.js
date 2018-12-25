@@ -61,6 +61,7 @@ function centerNode(d){
   const vHeight = mindmapSvg.node().clientHeight
   const rotateGroup = d3.select(".rotate_group")
   const t = d3.zoomTransform(mindmapSvg.node())
+  const k = 3
   const rotateValue = parseInt(rotateGroup.attr("data-rotate")) || 0
   const rotateAngle = rotateValue * 2 * Math.PI / 360
   // 要把 angle, raidus 转换成坐标
@@ -69,10 +70,10 @@ function centerNode(d){
   let y = positions[1]
   // vWidth/2, vHeight /2 居中
   // vWidth / 4, vHeight /4 左上角
-  x = -x  + (vWidth / 8) /t.k;
-  y = -y  + (vHeight / 2) / t.k;
+  x = -x  + (vWidth / 8) /k;
+  y = -y  + (vHeight / 2) / k;
   // 注意 scale 和 translate 顺序，反了的话结果会出错
-  mindmapSvg.transition().duration(750).call( zoom.transform, d3.zoomIdentity.scale(t.k).translate(x,y))
+  mindmapSvg.transition().duration(750).call( zoom.transform, d3.zoomIdentity.scale(k).translate(x,y))
 }
 
 function clickSelected(d, force=false, scrollTo=false) {
