@@ -1,11 +1,15 @@
 import React from "react"
 import styled from "react-emotion"
 import posed, { PoseGroup } from 'react-pose'
+import GifPlayer from "react-gif-player"
+
+import "../../../node_modules/react-gif-player/dist/gifplayer.css"
 import presets, { colors } from "../../utils/presets"
 import { rhythm, options } from "../../utils/typography"
 
 import resourceGif from "../../assets/feature/resource_pic.gif"
 import storeGif from "../../assets/feature/store.gif"
+import storeGifStill from "../../assets/feature/store.gif.png"
 import editorGif from "../../assets/feature/editor.gif"
 import floatPreviewGif from "../../assets/feature/rotate_preview_water_preview.gif"
 import previewLayoutGif from "../../assets/feature/preview_position.gif"
@@ -41,7 +45,9 @@ class FeatureDetail extends React.Component {
         <PoseGroup>
           {this.props.selectedNode&&
           <Modal key="modal" className={featureStyles.gif_modal} >
-            <div><img src={storeGif} /></div>
+            <div>
+              <GifPlayer gif={storeGif} still={storeGifStill}/>
+            </div>
           </Modal>}
       </PoseGroup>
     )
