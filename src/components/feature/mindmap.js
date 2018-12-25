@@ -131,7 +131,7 @@ class Mindmap extends React.Component {
       const activeNode = getNodeById(activeKey)
       mouseovered(activeNode)
     }
-    if (nextProps.selectedNode != this.state.selectedNode){
+    if (this.props.selectedNode != nextProps.selectedNode && nextProps.selectedNode != this.state.selectedNode){
       const selectedKey = nextProps.selectedNode
       const selectedNode = getNodeById(selectedKey)
       clickSelected(selectedNode, true, true)

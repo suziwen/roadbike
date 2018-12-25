@@ -127,6 +127,7 @@ class FeatureDetail extends React.Component {
                 style={{
                   position: 'absolute',
                   cursor: 'pointer',
+                  color: colors.gatsby,
                   zIndex: 10,
                   top: 0,
                   right: '0'

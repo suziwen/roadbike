@@ -6,8 +6,11 @@
   transform: translate(-50%,-50%);
   max-width: 100%;
   max-height: 100%;
-  background: white;
+  box-shadow: 0 0 0 0.2rem rgba(140, 101, 179, 0.86);
   border-radius: 10px;
+}
+.gif_modal img{
+  margin: 0;
 }
 .normal_modal {
   position: absolute;
