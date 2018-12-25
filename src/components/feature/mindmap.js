@@ -67,7 +67,9 @@ function centerNode(d){
   const positions = d3.pointRadial(d.x + rotateAngle, d.y)
   let x = positions[0]
   let y = positions[1]
-  x = -x  + (vWidth / 2) /t.k;
+  // vWidth/2, vHeight /2 居中
+  // vWidth / 4, vHeight /4 左上角
+  x = -x  + (vWidth / 8) /t.k;
   y = -y  + (vHeight / 2) / t.k;
   // 注意 scale 和 translate 顺序，反了的话结果会出错
   mindmapSvg.transition().duration(750).call( zoom.transform, d3.zoomIdentity.scale(t.k).translate(x,y))
