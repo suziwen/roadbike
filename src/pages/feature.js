@@ -37,6 +37,9 @@ const SvgContainerStyled = styled(`div`)`
   left: 0;
   width: 100vw;
   height: 100vh;
+  & .linkable{
+    cursor: pointer;
+  }
   & .link--active, & .link--selected {
     stroke-width: 3.5px;
   }

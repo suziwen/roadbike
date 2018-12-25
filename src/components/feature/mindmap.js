@@ -215,6 +215,9 @@ class Mindmap extends React.Component {
                 d = d.target
               }
               let key = d.data.id
+              if (d.data.data.showHexagon !== "1") {
+                return
+              }
               if (key === self.state.selectedNode) {
                 key=null
                 d = null
@@ -295,11 +298,10 @@ class Mindmap extends React.Component {
                   const data = d.data.data
                   let title = data.title
                   if (data.showHexagon){
-                    title += `<tspan class="fa fa-heart">good</tspan>` 
+                    title += `<tspan class="fa fa-heart">&#xF004;</tspan>` 
                   }
                   return title; 
                 })
-                .classed("linkable", function (d){ return d.data.data.showHexagon === "1"; })
                 .each(function(d){d.textNode = this})
                 .style("font-size", function (d){ 
                   return vFontSize[d.height] + "pt"; 
@@ -323,7 +325,12 @@ class Mindmap extends React.Component {
 
                     return vColor(d.data.data.leg);
         })
-                .classed("glow", function (d){ return d.height !== 0; })
+                .classed("glow", function (d){ 
+                  return d.height !== 0; 
+                })
+                .classed("linkable", function (d){ 
+                  return d.data.data.showHexagon === "1"; 
+                })
                 .on("mouseover", _mouseovered(true))
                 .on("mouseout", _mouseovered(false))
                 .on("click", _clickSelected)
