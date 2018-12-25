@@ -4,7 +4,8 @@ import { graphql, Link } from "gatsby"
 import presets, { colors } from "../../utils/presets"
 import Hexagon from 'react-hexagon'
 import HexagonItem from "./hexagon-item"
-import {FiFeather} from "react-icons/fi"
+import {FiGitlab, FiGithub, FiFeather, FiInbox} from "react-icons/fi"
+import {FaHistory, FaShippingFast, FaBookReader, FaCode, FaBeer, FaMarkdown } from 'react-icons/fa'
 
 // hexagon 布局算法取自 https://github.com/web-tiki/responsive-grid-of-hexagons
 /**
@@ -95,6 +96,14 @@ const generateHexagonContainerStyled = (featureItems)=>{
       height: 100%;
       pointer-events: none;
     }
+    & .hex .hex_icon_fa path, & .hex .hex_icon_fa line{
+      fill: orange;
+      stroke: orange;
+    }
+    & .hex .hex_icon_fi{
+      color: orange;
+    }
+
 
 
     ${presets.Mobile} and (max-width: 549px) {
@@ -138,73 +147,27 @@ const generateHexagonContainerStyled = (featureItems)=>{
   return HexagonContainerStyled
 }
 
-const featureItems = {
-  youdao: {
-    type: 'store',
-    title: '有道笔记',
-    description: '支持有道笔记保存',
-    icon: 'xxxx'
-  },
-  evernote: {
-    type: 'store',
-    title: 'evernote',
-    description: '',
-    icon: ''
-  },
-  yingxiang: {
-    type: 'store',
-    title: '',
-    description: '',
-    icon: ''
-  },
-  github: {
-    type: 'store',
-    title: '',
-    description: '',
-    icon: ''
-  },
-  gitee: {
-    type: 'store',
-    title: '码云',
-    description: '提供了对码云笔记的支持',
-    icon: ''
-  },
-  gitlab: {
-    type: 'store',
-    title: 'gitlab',
-    description: '',
-    icon: ''
-  },
-  theme: {
-    type: 'basic',
-    title: '多种主题',
-    description: '',
-    icon: ''
-  },
-  layout: {
-    type: 'basic',
-    title: '多种布局',
-    description: '',
-    icon: ''
-  },
-  preview: {
-    type: 'basic',
-    title: '多种预览模式',
-    description: '',
-    icon: ''
-  },
-  zen: {
-    type: 'basic',
-    title: '全屏写作',
-    description: '',
-    icon: ''
-  },
-  wiz: {
-    type: 'store',
-    title: '',
-    description: '',
-    icon: ''
-  },
+const getIconObj = (item)=>{
+  switch(item.id){
+    case 'grammar':
+      return  {tag: FaMarkdown, type: 'fa'}
+    case 'featureCodeGrammar':
+      return {tag: FaCode, type: 'fa'}
+    case 'mulPreviewLayout':
+      return {tag: FaBookReader, type: 'fa'}
+    case 'syncScrollPreviewOutline':
+      return {tag: FaShippingFast, type: 'fa'}
+    case 'fileHistory':
+      return {tag: FaHistory, type: 'fa'}
+    case 'evernote':
+      return {tag: FiInbox, type: 'fi'}
+    case 'github':
+      return {tag: FiGithub, type: 'fi'}
+    case 'gitlab':
+      return {tag: FiGitlab, type: 'fi'}
+    default:
+      return {tag:FiFeather, type: 'fi'}
+  }
 }
 
 class FeatureHexagon extends React.Component {
@@ -242,19 +205,22 @@ class FeatureHexagon extends React.Component {
         {Object.entries(this.featureItems).map((val, idx)=>{
           const key = val[0]
           const itemObj = val[1]
+          const iconObj = getIconObj(itemObj)
+          const iconClass = 'hex_icon_' + iconObj.type
+          const ItemIcon = iconObj.tag
           return (
           <Hexagon 
             className={this.props.selectedNode === key ?"hex hex_active": "hex"} 
             key={idx} 
-            style={{stroke: 'orange', fill: 'orange'}}
+            style={{stroke: 'orange', fill: 'rgba(255, 165, 0, 0.1)'}}
             onClick={()=>{this.handleSelectedNode(this.props.selectedNode ===key ? "": key)}}
             hexProps={{
               onMouseEnter:()=>{this.handleActiveNode(key)},
               onMouseLeave:()=>{this.handleActiveNode()},
             }}
           >
-            <foreignObject className="foreign-object hex_icon" x="50%" y="50%">
-              <FiFeather style={{width: '50%', height: '50%', transform: 'translate(-50%, -50%)'}}/>
+            <foreignObject className={"foreign-object hex_icon " + iconClass} x="50%" y="50%">
+              <ItemIcon style={{width: '50%', height: '50%', transform: 'translate(-50%, -50%)'}}/>
             </foreignObject>
           </Hexagon>
          ) 
