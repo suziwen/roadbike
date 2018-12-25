@@ -62,7 +62,7 @@ const SvgContainerStyled = styled(`div`)`
     alignment-baseline: central;
     fill: white;
   }
-  & path{
+  & .mindmap_svg path{
     fill: none;
   } 
 `
@@ -127,8 +127,12 @@ class IndexRoute extends React.Component {
           handleActiveNode={this.handleActiveNode}
         >
         </FeatureHexagon>
-          <FeatureDetail nodes={featureItems} selectedNode={this.state.selectedNode}>
-          </FeatureDetail>
+        <FeatureDetail 
+          nodes={featureItems} 
+          selectedNode={this.state.selectedNode}
+          handleSelectedNode={this.handleSelectedNode}
+        >
+        </FeatureDetail>
       </SvgContainerStyled>
     )
   }

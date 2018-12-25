@@ -2,6 +2,7 @@ import React from "react"
 import styled from "react-emotion"
 import posed, { PoseGroup } from 'react-pose'
 import GifPlayer from "react-gif-player"
+import {FaTimes} from "react-icons/fa"
 
 import "react-gif-player/dist/gifplayer.css"
 import presets, { colors } from "../../utils/presets"
@@ -122,6 +123,18 @@ class FeatureDetail extends React.Component {
           {gifObj&&
           <Modal key="modal" className={featureStyles.gif_modal} >
             <div>
+              <FaTimes 
+                style={{
+                  position: 'absolute',
+                  cursor: 'pointer',
+                  zIndex: 10,
+                  top: 0,
+                  right: '0'
+                }}
+                onClick={()=>{
+                  this.props.handleSelectedNode()
+                }}
+              />
               <GifPlayerModal gifObj={gifObj}/>
             </div>
           </Modal>}
