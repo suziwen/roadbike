@@ -5,7 +5,7 @@ import presets, { colors } from "../../utils/presets"
 import Hexagon from 'react-hexagon'
 import HexagonItem from "./hexagon-item"
 import {FiGitlab, FiGithub, FiFeather, FiInbox} from "react-icons/fi"
-import {FaHistory, FaShippingFast, FaBookReader, FaCode, FaBeer, FaMarkdown } from 'react-icons/fa'
+import {FaGrinBeam, FaCannabis,FaUserNinja,FaDropbox, FaUserPlus, FaImages, FaFileMedical, FaConnectdevelop,  FaRocket, FaUserEdit, FaTree, FaExpand, FaHistory, FaShippingFast, FaBookReader, FaCode, FaBeer, FaMarkdown } from 'react-icons/fa'
 
 // hexagon 布局算法取自 https://github.com/web-tiki/responsive-grid-of-hexagons
 /**
@@ -149,6 +149,8 @@ const generateHexagonContainerStyled = (featureItems)=>{
 
 const getIconObj = (item)=>{
   switch(item.id){
+    case 'editor':
+      return {tag: FaConnectdevelop, type: 'fa'}
     case 'grammar':
       return  {tag: FaMarkdown, type: 'fa'}
     case 'featureCodeGrammar':
@@ -165,6 +167,28 @@ const getIconObj = (item)=>{
       return {tag: FiGithub, type: 'fi'}
     case 'gitlab':
       return {tag: FiGitlab, type: 'fi'}
+    case 'mulEditorType':
+      return {tag: FaRocket, type: 'fa'}
+    case 'dropbox':
+      return {tag: FaDropbox, type: 'fa'}
+    case 'waterMarkFloatPreviewLayout':
+      return {tag: FaGrinBeam, type: 'fa'}
+    case 'themesEditor':
+      return {tag: FaCannabis, type: 'fa'}
+    case 'zenPreview':
+      return {tag: FaExpand, type: 'fa'}
+    case 'zenWriter':
+      return {tag: FaUserEdit, type: 'fa'}
+    case 'editorOutline':
+      return {tag: FaTree, type: 'fa'}
+    case 'pptPreview':
+      return {tag: FaUserNinja, type: 'fa'}
+    case 'pptMulPreview':
+      return {tag: FaUserPlus, type:'fa'}
+    case 'imageStore':
+      return {tag: FaImages,type: 'fa'}
+    case 'store':
+      return {tag: FaFileMedical, type: 'fa'}
     default:
       return {tag:FiFeather, type: 'fi'}
   }

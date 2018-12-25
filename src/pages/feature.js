@@ -68,6 +68,9 @@ const SvgContainerStyled = styled(`div`)`
 class IndexRoute extends React.Component {
   constructor(props, context) {
     super(props, context)
+    const featureItems = this.props.data.allFeaturesCsv.edges.map((n)=>(n.node))
+    featureItems.columns = ["id", "parentId", "type", "title", "description", "showHexagon"]
+    this.featureItems = featureItems
     this.handleActiveNode = this.handleActiveNode.bind(this)
     this.handleSelectedNode = this.handleSelectedNode.bind(this)
     this.state = {
@@ -98,8 +101,7 @@ class IndexRoute extends React.Component {
   }
 
   render() {
-    const featureItems = this.props.data.allFeaturesCsv.edges.map((n)=>(n.node))
-    featureItems.columns = ["id", "parentId", "type", "title", "description", "showHexagon"]
+    const featureItems = this.featureItems
     return (
       <SvgContainerStyled css={{ position: `relative` }}>
         <Helmet htmlAttributes={{style: 'overflow:hidden;'}}>

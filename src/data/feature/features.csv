@@ -4,11 +4,11 @@ grammar,main,,语法,,1
 fileManagers,main,,文件管理,,
 export,main,,导出,,
 import,main,,导入,,
-editor,main,,编辑,,
+editor,main,,编辑,,1
 preview,main,,预览,,
-store,main,,第三方存储,,
+store,main,,第三方存储,,1
 database,main,,数据中心,,
-imageStore,main,,图片,,
+imageStore,main,,图片,,1
 commonGrammar,grammar,,基础语法,,
 extraGrammar,grammar,,高级语法,,
 featureGrammar,grammar,,小书匠专有语法,,
@@ -47,7 +47,7 @@ components,main,,组件,,
 sketchComponents,components,,涂鸦组件,,
 drawioComponents,components,,绘图组件,,
 tableComponents,components,,可视化表格组件,,
-mulEditorType,editor,,多种内置编辑器,,
+mulEditorType,editor,,多种内置编辑器,,1
 aceEditor,mulEditorType,,ace内置编辑器,,
 codemirrorEditor,mulEditorType,,codemirror内置编辑器,,
 leftVertialEditor,mulEditorType,,左竖排编辑器,,
@@ -58,10 +58,10 @@ wordcheck,editor,,英文拼写检查,,
 minimap,editor,,minimap 小地图,,
 foldParagh,editor,,章节折叠,,
 typeWriter,editor,,打字机滚动效果,,
-zenWriter,editor,,全屏写作模式,,
+zenWriter,editor,,全屏写作模式,,1
 lineFocus,editor,,行专注写作模式,,
 customEditor,editor,,编辑器字体自定义,,
-themesEditor,editor,,多种编辑器主题,,
+themesEditor,editor,,多种编辑器主题,,1
 directPasteImage,editor,,剪切板图片粘贴,,
 directInputTime,editor,,快速输入当前时间,,
 htmlToMarkdown,editor,,html 片段转换成 markdown,,
@@ -71,14 +71,15 @@ instancePreviewImage,editor,,编辑器内即时预览图片,,
 instancePreviewTodo,editor,,编辑器内即时预览待办,,
 freeLayoutEditor,editor,,编辑器位置任意调整,,
 syncScrollEditor,editor,,同步编辑区滚动,,
-editorOutline,editor,,编辑器大纲,,
+editorOutline,editor,,编辑器大纲,,1
 foldEditorOutline,editorOutline,,可折叠,,
 syncScrollEditorOutline,editorOutline,,双向自动定位,,
 dragDropEditorOutline,editorOutline,,可拖拽,,
 floatEditorOutline,editorOutline,,浮动大纲,,
 mulPreviewType,preview,,多种预览格式,,
 htmlPreview,mulPreviewType,,html 预览,,
-pptPreview,mulPreviewType,,ppt 预览,,
+pptPreview,mulPreviewType,,ppt 预览,,1
+pptMulPreview,mulPreviewType,,ppt 多屏演示,,1
 pdfPreview,mulPreviewType,,pdf 预览,,
 mulPreviewLayout,preview,,多种预览布局,,1
 tbPreviewLayout,mulPreviewLayout,,上预览下编辑,,
@@ -87,9 +88,9 @@ lrPreviewLayout,mulPreviewLayout,,左预览右编辑,,
 rlPreviewLayout,mulPreviewLayout,,右预览左编辑,,
 floatPreviewLayout,mulPreviewLayout,,浮动预览,,
 windowPreviewLayout,mulPreviewLayout,,窗口预览,,
-waterMarkFloatPreviewLayout,floatPreviewLayout,,浮动水印预览,,
+waterMarkFloatPreviewLayout,floatPreviewLayout,,浮动水印预览,,1
 rotateFloatPreviewLayout,floatPreviewLayout,,浮动旋转预览,,
-zenPreview,preview,,全屏预览模式,,
+zenPreview,preview,,全屏预览模式,,1
 syncScrollPreivew,preview,,同步预览区滚动,,
 instancePreview,preview,,实时预览,,
 previewOutline,preview,,预览大纲,,
