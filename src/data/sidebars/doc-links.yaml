@@ -1,12 +1,96 @@
-- title: Quick Start
+- title: 小书匠语法
   items:
-    - title: Getting Started
-      link: /docs/
-    - title: Starter Library
-      link: /starters/
-    - title: Recipes
-      link: /docs/recipes/
-- title: Guides
+    - title: 标准语法
+      items:
+        - title: 斜体
+          link: /docs/grammar/common/italic/
+        - title: 粗体
+          link: /docs/grammar/common/strong/
+        - title: 图片
+          link: /docs/grammar/common/image/
+        - title: 链接
+          link: /docs/grammar/common/link/
+        - title: 章节标题
+          link: /docs/grammar/common/headings/
+        - title: HTML
+          link: /docs/grammar/common/html/
+        - title: 代码
+          link: /docs/grammar/common/code/
+        - title: 无序列表
+          link: /docs/grammar/common/ul/
+        - title: 有序列表
+          link: /docs/grammar/common/ol/
+        - title: 引用
+          link: /docs/grammar/common/quote/
+        - title: 段落
+          link: /docs/grammar/common/paragraph/
+    - title: 高级语法
+      items:
+        - title: 表格
+          link: /docs/grammar/advance/table/
+        - title: 大纲
+          link: /docs/grammar/advance/toc/
+        - title: 下标
+          link: /docs/grammar/advance/subscript/
+        - title: 上标
+          link: /docs/grammar/advance/supscript/
+        - title: 缩写定义
+          link: /docs/grammar/advance/abbr/
+        - title: 定义
+          link: /docs/grammar/advance/deflist/
+        - title: mathjax
+          link: /docs/grammar/advance/mathjax/
+        - title: 流程图
+          link: /docs/grammar/advance/flow/
+        - title: 序列图
+          link: /docs/grammar/advance/sequence/
+        - title: emoji 表情
+          link: /docs/grammar/advance/emoji/
+        - title: 居中
+          link: /docs/grammar/advance/center/
+        - title: 对齐
+          link: /docs/grammar/advance/align/
+        - title: html 属性修改之 decorate
+          link: /docs/grammar/advance/decorate/
+        - title: html 属性修改之 attrs
+          link: /docs/grammar/advance/attrs/
+        - title: 自定义 class
+          link: /docs/grammar/advance/class/
+        - title: todo 待办
+          link: /docs/grammar/advance/todo/
+    - title: 小书匠专有语法
+      items:
+        - title: 思维脑图
+          link: /docs/grammar/feature/mindmap/
+        - title: 中文斜体
+          link: /docs/grammar/feature/cjk_emphasis/
+        - title: nunjucks 模板引擎
+          link: /docs/grammar/feature/nunjucks/
+        - title: codeChunk 代码执行
+          link: /docs/grammar/feature/code_chunk/
+        - title: 远程图片
+          link: /docs/grammar/feature/xsjimg/
+        - title: plantuml 建模
+          link: /docs/grammar/feature/plantuml/
+        - title: wavedrom 数字时间图
+          link: /docs/grammar/feature/wavedrom/
+        - title: mermaid
+          link: /docs/grammar/feature/mermaid/
+        - title: plot 统计图
+          link: /docs/grammar/feature/plot/
+        - title: video 视频
+          link: /docs/grammar/feature/video/
+        - title: audio 音频
+          link: /docs/grammar/feature/audio/
+        - title: attachment 附件
+          link: /docs/grammar/feature/attachment/
+        - title: 高亮标记
+          link: /docs/grammar/feature/mark/
+        - title: 印刷字替换
+          link: /docs/grammar/feature/typographer/
+        - title: 注音
+          link: /docs/grammar/feature/cjk_ruby/
+- title: 使用教程
   items:
     - title: Preparing your environment
       link: /docs/preparing-your-environment/
