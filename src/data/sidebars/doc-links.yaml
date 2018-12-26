@@ -24,6 +24,8 @@
           link: /docs/grammar/common/quote/
         - title: 段落
           link: /docs/grammar/common/paragraph/
+        - title: 水平线
+          link: /docs/grammar/common/horizontal/
     - title: 高级语法
       items:
         - title: 表格

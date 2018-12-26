@@ -2,7 +2,7 @@ const _ = require(`lodash`)
 const Promise = require(`bluebird`)
 const path = require(`path`)
 const req = require('require-yml')
-const _docSidebarItems = req(`./src/xsjposts/docs/doc-links.yaml`)
+const _docSidebarItems = req(`./src/data/sidebars/doc-links.yaml`)
 
 const createHash = link => {
   let index = -1
