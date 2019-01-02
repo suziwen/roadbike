@@ -60,6 +60,8 @@
           link: /docs/grammar/advance/class/
         - title: todo 待办
           link: /docs/grammar/advance/todo/
+        - title: 脚注
+          link: /docs/grammar/advance/footnote/
     - title: 小书匠专有语法
       items:
         - title: 思维脑图
@@ -94,7 +96,7 @@
           link: /docs/grammar/feature/cjk_ruby/
 - title: 使用教程
   items:
-    - title: Preparing your environment
+    - title: 使用第三方存储保存进行文章管理
       link: /docs/preparing-your-environment/
       items:
         - title: Browser Support
@@ -103,7 +105,7 @@
           link: /docs/gatsby-on-windows/
         - title: Gatsby on Linux
           link: /docs/gatsby-on-linux/
-    - title: Deploying & hosting
+    - title: 图床使用
       link: /docs/deploying-and-hosting/
       items:
         - title: Preparing your site for deployment*
@@ -124,7 +126,7 @@
           link: /docs/path-prefix/
         - title: How Gatsby works with GitHub pages
           link: /docs/how-gatsby-works-with-github-pages/
-    - title: Custom configuration
+    - title: 发布博客
       link: /docs/customization/
       items:
         - title: Babel.js
@@ -141,7 +143,7 @@
           link: /docs/eslint/
         - title: Proxying API requests
           link: /docs/api-proxy/
-    - title: Images and files
+    - title: 发送邮件
       link: /docs/images-and-files/
       items:
         - title: Adding Images, Fonts, and Files
@@ -160,16 +162,16 @@
           link: /docs/working-with-images/
         - title: Using gatsby-image
           link: /docs/using-gatsby-image/
-    - title: Sourcing content and data
+    - title: 导出
       link: /docs/content-and-data/
       items:
-        - title: Using unstructured data
+        - title: 导出 pdf
           link: /docs/using-unstructured-data/
-        - title: Sourcing from the filesystem
+        - title: 导出 zip
           link: /docs/sourcing-from-the-filesystem/
-        - title: Sourcing from databases*
+        - title: 导出 html
           link: /docs/sourcing-from-databases/
-        - title: Sourcing from SaaS services*
+        - title: 导出 word
           link: /docs/sourcing-from-saas-services/
         - title: Sourcing from private APIs*
           link: /docs/sourcing-from-private-apis/
@@ -186,7 +188,7 @@
               link: /docs/sourcing-from-contentful/
             - title: Sourcing from Prismic
               link: /docs/sourcing-from-prismic/
-    - title: Querying your data with GraphQL
+    - title: 绘图组件 drawio 使用教程 
       link: /docs/graphql/
       items:
         - title: Introducing GraphiQL
@@ -209,7 +211,7 @@
           link: /docs/creating-slugs-for-pages/
         - title: Programmatically create pages from data
           link: /docs/programmatically-create-pages-from-data/
-    - title: Plugins
+    - title: 可视化表格组件使用教程
       link: /docs/plugins/
       items:
         - title: Plugin authoring
@@ -220,12 +222,12 @@
           link: /docs/create-source-plugin/
         - title: Source plugin tutorial
           link: /docs/source-plugin-tutorial/
-    - title: Starters
+    - title: PlantUML 建模语法使用教程
       link: /docs/starters/
       items:
         - title: Create a Starter*
           link: /docs/create-a-starter/
-    - title: Styling
+    - title: PPT 语法使用教程
       link: /docs/styling/
       items:
         - title: Layout Components
@@ -244,7 +246,7 @@
           link: /docs/component-css/
         - title: PostCSS
           link: /docs/post-css/
-    - title: Testing
+    - title: 数据中心使用教程
       link: /docs/testing/
       items:
         - title: Unit testing
@@ -259,7 +261,7 @@
           link: /docs/testing-react-components/
         - title: Visual testing with Storybook
           link: /docs/visual-testing-with-storybook/
-    - title: Debugging
+    - title: 文件管理教程
       link: /docs/debugging/
       items:
         - title: Debugging HTML builds
@@ -270,7 +272,7 @@
           link: /docs/debugging-the-build-process/
         - title: Trace Gatsby builds
           link: /docs/performance-tracing/
-    - title: Use cases with Gatsby (including apps)
+    - title: 模板管理教程
       link: /docs/building-apps-with-gatsby/
       items:
         - title: Client data fetching*
@@ -287,7 +289,7 @@
           link: /docs/building-a-blog/
         - title: Building an image-heavy site*
           link: /docs/building-an-image-heavy-site/
-    - title: Adding website functionality
+    - title: 自定义 css 预览样式教程
       link: /docs/adding-website-functionality/
       items:
         - title: Adding search
