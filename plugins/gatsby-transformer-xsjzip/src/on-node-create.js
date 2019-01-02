@@ -250,7 +250,6 @@ module.exports = async function onCreateNode(
   await replaceImages({$, jsonNode, cache, pathPrefix, reporter, fileNodes, remoteImageNodes})
   //const previewHtml = "<div id='xsj_root_html'><div id='xsj_root_body'>" + $('.html_preview.preview').parent().html() + "</div></div>"
   const previewHtml = $('.html_preview.preview').parent().html()
-  console.log(previewHtml)
 
   try {
     let data = grayMatter(content, pluginOptions)

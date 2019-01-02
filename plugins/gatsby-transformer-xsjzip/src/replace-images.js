@@ -45,7 +45,6 @@ const replaceImage = async({$img, imageNode, options, reporter, cache, isLocal})
   $img.before(`<div style="width:100%;display:block;padding-bottom: ${ratio};"></div>`)
   $img.before(`<img class="background_image" src="${svgUri}" style="position: absolute;top:0;left:0;width: 100%;height:100%;object-fit: cover;object-position: center;"/>`)
   $img.attr('style', `max-width: 100%;position: absolute;top:0;left:0;width: 100%;height:100%;object-fit: cover;object-position: center;`)
-  console.log($img.parent().parent().html())
 }
 
 const transformImages = async({$, cache, store, createNode, createNodeId})=>{
