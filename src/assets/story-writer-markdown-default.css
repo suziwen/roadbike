@@ -338,6 +338,31 @@ div.mathjax {
 
 /* road bike use*/
 
+
+@-webkit-keyframes loader {
+    from {
+        -webkit-transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        transform: translate(-50%, -50%) scale(1) rotate(0deg)
+    }
+
+    to {
+        -webkit-transform: translate(-50%, -50%) scale(1) rotate(360deg);
+        transform: translate(-50%, -50%) scale(1) rotate(360deg)
+    }
+}
+
+@keyframes loader {
+    from {
+        -webkit-transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        transform: translate(-50%, -50%) scale(1) rotate(0deg)
+    }
+
+    to {
+        -webkit-transform: translate(-50%, -50%) scale(1) rotate(360deg);
+        transform: translate(-50%, -50%) scale(1) rotate(360deg)
+    }
+}
+
 .mindmap_container {
     margin-left: calc(-100vw / 2 + 100% / 2 + 8rem);
     margin-right: calc(-100vw / 2 + 100% / 2);
@@ -355,4 +380,20 @@ div.mathjax {
 
 .story_block_image .gif_player .play_button{
   z-index: 101;
+}
+.story_block_image .gif_player.error .play_button{
+  color: red;
+  border-color: red;
+}
+.story_block_image .gif_player.error .play_button:after{
+  content: '加载出错了...'
+}
+.story_block_image .gif_player.loading .play_button{
+    -webkit-animation: loader .6s linear;
+    animation: loader .6s linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+.story_block_image .gif_player.loading .play_button:after{
+  content: ' ';
 }
