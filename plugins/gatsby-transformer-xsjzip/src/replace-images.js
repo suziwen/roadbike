@@ -1,4 +1,5 @@
 const _ = require(`lodash`)
+const fs = require(`fs-extra`)
 const path = require(`path`)
 const isRelativeUrl = require(`is-relative-url`)
 const { isWebUri } = require(`valid-url`)
@@ -8,13 +9,14 @@ const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 
 
 const replaceImage = async({$img, imageNode, options, reporter, cache, isLocal})=>{
+  const isBlockImg = $img.parent().parent().hasClass('story_block_image')
+  const mediaType = imageNode.internal.mediaType
   let fluidResult = await fluid({
     file: imageNode,
     args: options,
     reporter,
     cache,
   })
-  const originalImg = fluidResult.originalImg
   const fallbackSrc = fluidResult.src
   const srcSet = fluidResult.srcSet
   const presentationWidth = fluidResult.presentationWidth
@@ -27,24 +29,70 @@ const replaceImage = async({$img, imageNode, options, reporter, cache, isLocal})
     reporter,
     cache,
   })
-  $img.attr('class', 'front_image')
-  if (isLocal) {
+  if (mediaType === 'image/gif' && isBlockImg) {
+    const fileName = `${imageNode.name}-${imageNode.internal.contentDigest}${
+      imageNode.ext
+    }`
+
+    const publicPath = path.join(
+      process.cwd(),
+      `public`,
+      `static`,
+      fileName
+    )
+
+    if (!fs.existsSync(publicPath)) {
+      fs.copy(imageNode.absolutePath, publicPath, err => {
+        if (err) {
+          console.error(
+            `error copying file from ${
+              imageNode.absolutePath
+            } to ${publicPath}`,
+            err
+          )
+        }
+      })
+    }
+    
+    const originalImg = `/static/${fileName}`
+    $img.attr('class', 'front_image')
     $img.attr('src', fallbackSrc)
-    $img.attr('srcSet', srcSet)
-    $img.attr('sizes', fluidResult.sizes)
+    $img.attr('data-src', originalImg)
+    $img.attr('data-still', fallbackSrc)
+    // 单引号在 cheerio 里会被强制转换成双引号，造成 svgUri 里的内容不能正常显示，
+    // 又不想把 cheerio 里的 decodeEntities: false 
+    // 只能把 svgUri 改成 base64 格式》？？
+    // https://github.com/cheeriojs/cheerio/issues/720
+    // https://github.com/tigt/mini-svg-data-uri
+    //
+    const spanStr = `<div style="display:inline-block;max-width: 100%;width:${presentationWidth}px; margin-left: auto; margin-right: auto;position:relative;"></div>`
+    $img.wrap(spanStr)
+    $img.before(`<div style="width:100%;display:block;padding-bottom: ${ratio};"></div>`)
+    $img.before(`<img class="background_image" src="${svgUri}" style="position: absolute;top:0;left:0;width: 100%;height:100%;object-fit: cover;object-position: center;"/>`)
+    $img.attr('style', `max-width: 100%;position: absolute;top:0;left:0;width: 100%;height:100%;object-fit: cover;object-position: center;`)
+    const gifPlayerStr = `<div class="gif_player"></div>`
+    $img.wrap(gifPlayerStr)
+    $img.before(`<div class="play_button"></div>`)
+  } else {
+    $img.attr('class', 'front_image')
+    if (isLocal) {
+      $img.attr('src', fallbackSrc)
+      $img.attr('srcSet', srcSet)
+      $img.attr('sizes', fluidResult.sizes)
+    }
+    $img.attr('data-action', 'zoom')
+    // 单引号在 cheerio 里会被强制转换成双引号，造成 svgUri 里的内容不能正常显示，
+    // 又不想把 cheerio 里的 decodeEntities: false 
+    // 只能把 svgUri 改成 base64 格式》？？
+    // https://github.com/cheeriojs/cheerio/issues/720
+    // https://github.com/tigt/mini-svg-data-uri
+    //
+    const spanStr = `<div style="display:inline-block;max-width: 100%;width:${presentationWidth}px; margin-left: auto; margin-right: auto;position:relative;"></div>`
+    $img.wrap(spanStr)
+    $img.before(`<div style="width:100%;display:block;padding-bottom: ${ratio};"></div>`)
+    $img.before(`<img class="background_image" src="${svgUri}" style="position: absolute;top:0;left:0;width: 100%;height:100%;object-fit: cover;object-position: center;"/>`)
+    $img.attr('style', `max-width: 100%;position: absolute;top:0;left:0;width: 100%;height:100%;object-fit: cover;object-position: center;`)
   }
-  $img.attr('data-action', 'zoom')
-  // 单引号在 cheerio 里会被强制转换成双引号，造成 svgUri 里的内容不能正常显示，
-  // 又不想把 cheerio 里的 decodeEntities: false 
-  // 只能把 svgUri 改成 base64 格式》？？
-  // https://github.com/cheeriojs/cheerio/issues/720
-  // https://github.com/tigt/mini-svg-data-uri
-  //
-  const spanStr = `<div style="display:inline-block;max-width: 100%;width:${presentationWidth}px; margin-left: auto; margin-right: auto;position:relative;"></div>`
-  $img.wrap(spanStr)
-  $img.before(`<div style="width:100%;display:block;padding-bottom: ${ratio};"></div>`)
-  $img.before(`<img class="background_image" src="${svgUri}" style="position: absolute;top:0;left:0;width: 100%;height:100%;object-fit: cover;object-position: center;"/>`)
-  $img.attr('style', `max-width: 100%;position: absolute;top:0;left:0;width: 100%;height:100%;object-fit: cover;object-position: center;`)
 }
 
 const transformImages = async({$, cache, store, createNode, createNodeId})=>{
