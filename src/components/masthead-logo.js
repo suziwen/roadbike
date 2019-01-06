@@ -1,10 +1,22 @@
 import React from "react"
 import posed from 'react-pose'
+import styled from "react-emotion"
 import SplitText from 'react-pose-text'
 import typography, { rhythm, scale } from "../utils/typography"
 import presets from "../utils/presets"
 import { vP, vPHd, vPVHd, vPVVHd } from "../components/gutters"
+import goldImg from "../assets/gold-small.jpg"
 
+
+const Pstyled = styled.p`
+  & .split_text_logo{
+    color: #c3a343;
+    -webkit-text-fill-color: transparent;
+    background: -webkit-linear-gradient(transparent, transparent), url(${goldImg}) repeat;
+    background: -o-linear-gradient(transparent, transparent);
+    -webkit-background-clip: text;
+  }
+`
 
 const LogoText = posed.div({
   exit: {
@@ -44,7 +56,7 @@ class Logo extends React.Component {
         },
       }}
     >
-      <p
+      <Pstyled
         css={{
           color: `#fff`,
           letterSpacing: `0.02em`,
@@ -63,11 +75,11 @@ class Logo extends React.Component {
         }}
       >
         <LogoText initialPose="exit" pose="enter">
-          <SplitText charPoses={charPoses}>
+          <SplitText className="split_text_logo" charPoses={charPoses}>
           小书匠
           </SplitText>
         </LogoText>
-      </p>
+      </Pstyled>
     </div>
   )}
   }
