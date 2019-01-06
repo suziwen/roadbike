@@ -1,19 +1,26 @@
 import React from "react"
+import posed from 'react-pose'
+import SplitText from 'react-pose-text'
 import typography, { rhythm, scale } from "../utils/typography"
 import presets from "../utils/presets"
 import { vP, vPHd, vPVHd, vPVVHd } from "../components/gutters"
-import SplitText from 'react-pose-text'
 
+
+const LogoText = posed.div({
+  exit: {
+    x: '-0%'
+  },
+  enter: {
+    x: '0%',
+    beforeChildren: true,
+    staggerChildren: 200
+  }
+})
 
 const charPoses = {
-  exit: { opacity: 0, y: 20 },
-  enter: {
-    opacity: 1,
-    y: 0,
-    delay: ({ charIndex }) => charIndex * 30
-  }
+  exit: { opacity: 0 },
+  enter: { opacity: 1 }
 }
-
 class Logo extends React.Component {
   componentDidMount() {
     console.log(`hhhhhh`)
@@ -55,9 +62,11 @@ class Logo extends React.Component {
           },
         }}
       >
-        <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
-        小书匠
-      </SplitText>
+        <LogoText initialPose="exit" pose="enter">
+          <SplitText charPoses={charPoses}>
+          小书匠
+          </SplitText>
+        </LogoText>
       </p>
     </div>
   )}
