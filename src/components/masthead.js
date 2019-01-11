@@ -14,6 +14,8 @@ const MastheadContent = () => (
       display: `flex`,
       flexWrap: `wrap-reverse`,
       height: `100vh`,
+      width: `100vw`,
+      justifyContent: `space-between`,
       padding: vP,
       paddingTop: rhythm(5),
       paddingBottom: rhythm(1),
@@ -23,7 +25,6 @@ const MastheadContent = () => (
         paddingBottom: rhythm(2),
       },
       [presets.Phablet]: {
-        paddingRight: 0,
       },
       [presets.Tablet]: {
         paddingTop: rhythm(5),
@@ -34,22 +35,30 @@ const MastheadContent = () => (
       [presets.Hd]: {
         paddingTop: rhythm(5),
         paddingLeft: vPHd,
+        paddingRight: vPHd,
         paddingBottom: rhythm(3),
       },
       [presets.VHd]: {
         paddingTop: rhythm(6),
         paddingLeft: vPVHd,
+        paddingRight: vPVHd,
       },
       [presets.VVHd]: {
         paddingLeft: vPVVHd,
+        paddingRight: vPVVHd,
       },
     }}
   >
-    <div>
+    <div css={{
+      display: `flex`,
+      flexDirection: `column`,
+      justifyContent: `center`,
+      alignItems: `flex-start`,
+    }}>
       <h1
         css={{
           ...scale(0.7),
-          color: colors.gatsby,
+          color: colors.accent,
           lineHeight: 1.1,
           margin: 0,
           marginBottom: `1.2em`,
@@ -98,7 +107,7 @@ const MastheadContent = () => (
           </span>
           <Slider
             items={[`专注`, `个性`, `自由`, `开放`, `灵活`]}
-            color={colors.lilac}
+            color={colors.lemon}
           />
         </span>
         的写作软件
@@ -107,13 +116,16 @@ const MastheadContent = () => (
         开始写作
       </Button>
     </div>
-    <div>
-      <h2>激发你的写作热情</h2>
-      <h2>促进你的写作时效</h2>
-      <h2>沉淀你的知识宝藏</h2>
-      <h2>开拓你的第三大脑</h2>
-      <h2>快来吧</h2>
-      <h2>一起和小书匠享受成长的快乐</h2>
+    <div css={{
+      color: colors.accent,
+      writingMode: `vertical-rl`
+    }}>
+      激发你的写作热情<br/>
+      促进你的写作时效<br/>
+      沉淀你的知识宝藏<br/>
+      开拓你的第二大脑<br/>
+      快来吧<br/>
+      一起和小书匠享受成长的快乐
     </div>
   </div>
 )
