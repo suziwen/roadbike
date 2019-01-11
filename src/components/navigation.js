@@ -1,7 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
 import {GoMarkGithub} from "react-icons/go"
-import SearchForm from "../components/search-form"
 import logo from "../logo.svg"
 import typography, { rhythm, scale, options } from "../utils/typography"
 import presets, { colors } from "../utils/presets"
@@ -131,7 +130,7 @@ const Navigation = ({ pathname }) => {
             : {}),
         }}
       >
-        <Link
+        {isHomepage?'':<Link
           to="/"
           css={styles.logoLink}
           aria-label="Gatsby, Back to homepage"
@@ -139,10 +138,11 @@ const Navigation = ({ pathname }) => {
           <img
             src={logo}
             css={styles.logo}
-            alt="Gatsby Logo"
+            alt="Story writer Logo"
             aria-hidden="true"
           />
         </Link>
+        }
         <nav
           className="navigation"
           aria-label="Primary Navigation"
@@ -150,7 +150,6 @@ const Navigation = ({ pathname }) => {
         >
           <ul css={styles.ulContainer}>
             <NavItem linkTo="/docs/">文档</NavItem>
-            <NavItem linkTo="/tutorial/">Tutorial</NavItem>
             <NavItem linkTo="/feature/">主要功能</NavItem>
             <NavItem linkTo="/blog/">博客</NavItem>
             <NavItem linkTo="/logs/">升级日志</NavItem>
@@ -168,12 +167,6 @@ const Navigation = ({ pathname }) => {
           </ul>
         </nav>
         <div css={styles.searchAndSocialContainer}>
-          <SearchForm
-            key="SearchForm"
-            iconColor={isHomepage ? iconColorHomepage : iconColor}
-            isHomepage={isHomepage}
-            offsetVertical="-0.2175rem"
-          />
           <SocialNavItem
             href="https://github.com/suziwen/markdownxiaoshujiang"
             title="GitHub"
