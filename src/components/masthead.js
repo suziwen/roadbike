@@ -113,8 +113,64 @@ const MastheadContent = () => (
         </span>
         的写作软件
       </h1>
-      <Button large tag="href" target="_self" overrideCSS={{fontFamily: 'smy'}} to="http://markdown.xiaoshujiang.com" icon={<FiFeather />}>
+      <Button large tag="href" target="_self" overrideCSS={{
+        fontFamily: 'smy',
+        position: `relative`,
+        textShadow: `3px 3px 7px hsla(0, 2%, 13%, 0.3)`,
+        backgroundColor: `rgba(255, 229, 181, 0.5)`,
+        color: `#ffb238`,
+        borderColor: `#ffb238`,
+        borderRadius: `30% 70% 70% 30% / 30% 30% 70% 70%`,
+        boxShadow: `-1px 0px 0 0.2rem rgba(255, 229, 181, 0.39)`,
+        "&:hover": {
+          color: `#ffb238`,
+          borderColor: `#ffb238`,
+          backgroundColor: `rgba(255, 229, 181, 0.5)`,
+        },
+        "&>.crater": {
+          position: `absolute`,
+          backgroundColor: `#E8CDA5`,
+          borderRadius: `100%`,
+        }
+
+      }} to="http://markdown.xiaoshujiang.com" icon={<FiFeather />}>
         开始写作
+        <span className="crater" css={{
+          top: `18px`,
+          left: `10px`,
+          width: `4px`,
+          height: `4px`,
+        }}></span>
+        <span className="crater" css={{
+          top: `28px`,
+          left: `22px`,
+          width: `6px`,
+          height: `6px`,
+        }}></span>
+        <span className="crater" css={{
+          top: `10px`,
+          left: `25px`,
+          width: `8px`,
+          height: `8px`,
+        }}></span>
+        <span className="crater" css={{
+          bottom: `10px`,
+          right: `25px`,
+          width: `8px`,
+          height: `8px`,
+        }}></span>
+        <span className="crater" css={{
+          bottom: `28px`,
+          right: `22px`,
+          width: `6px`,
+          height: `6px`,
+        }}></span>
+        <span className="crater" css={{
+          bottom: `18px`,
+          right: `10px`,
+          width: `4px`,
+          height: `4px`,
+        }}></span>
       </Button>
     </div>
     <div css={{
