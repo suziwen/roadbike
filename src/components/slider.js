@@ -5,11 +5,17 @@ export default ({ items, color }) => (
   <div
     css={{
       display: `inline`,
-      textIndent: `8px`,
+      position: `relative`,
+      "&:before": {
+        content: `"灵活"`,
+        visibility: `hidden`,
+
+      },
 
       "& span": {
-        animation: `${topToBottom} 10s linear infinite 0s`,
+        animation: `${topToBottom} 12.5s linear infinite 0s`,
         opacity: 0,
+        left: 0,
         position: `absolute`,
 
         ":nth-child(2)": {
@@ -22,6 +28,10 @@ export default ({ items, color }) => (
 
         ":nth-child(4)": {
           animationDelay: `7.5s`,
+        },
+
+        ":nth-child(5)": {
+          animationDelay: `10s`,
         },
       },
     }}

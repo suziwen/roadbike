@@ -12,6 +12,7 @@ const MastheadContent = () => (
     className="masthead-content"
     css={{
       display: `flex`,
+      flexWrap: `wrap-reverse`,
       height: `100vh`,
       padding: vP,
       paddingTop: rhythm(5),
@@ -53,6 +54,7 @@ const MastheadContent = () => (
           margin: 0,
           marginBottom: `1.2em`,
           padding: 0,
+          whiteSpace: `nowrap`,
           width: rhythm(10),
           //fontSize: `calc(12px + 2vh + 2vw)`,
           [presets.Mobile]: {
@@ -84,7 +86,7 @@ const MastheadContent = () => (
           },
         }}
       >
-        <span css={{ display: `block` }}>
+        <span>
           <span
             css={{
               [presets.Tablet]: {
@@ -92,18 +94,26 @@ const MastheadContent = () => (
               },
             }}
           >
-            Build
+            一款
           </span>
           <Slider
-            items={[`blazing fast`, `modern`, `beautiful`, `secure`]}
+            items={[`专注`, `个性`, `自由`, `开放`, `灵活`]}
             color={colors.lilac}
           />
         </span>
-        apps and websites with React
+        的写作软件
       </h1>
       <Button large tag="href" target="_self" overrideCSS={{fontFamily: 'smy'}} to="http://markdown.xiaoshujiang.com" icon={<FiFeather />}>
         开始写作
       </Button>
+    </div>
+    <div>
+      <h2>激发你的写作热情</h2>
+      <h2>促进你的写作时效</h2>
+      <h2>沉淀你的知识宝藏</h2>
+      <h2>开拓你的第三大脑</h2>
+      <h2>快来吧</h2>
+      <h2>一起和小书匠享受成长的快乐</h2>
     </div>
   </div>
 )
