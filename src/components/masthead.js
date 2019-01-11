@@ -65,6 +65,7 @@ const MastheadContent = () => (
           padding: 0,
           whiteSpace: `nowrap`,
           width: rhythm(10),
+          fontFamily: `"AR PL UKai TW", SimSun, "宋体", Song`,
           //fontSize: `calc(12px + 2vh + 2vw)`,
           [presets.Mobile]: {
             width: rhythm(10),
@@ -118,14 +119,27 @@ const MastheadContent = () => (
     </div>
     <div css={{
       color: colors.accent,
-      writingMode: `vertical-rl`
+      fontFamily: `"AR PL UKai TW", SimSun, "宋体", Song`,
+      fontSize: `1.2rem`,
+      "&>div": {
+        whiteSpace: `nowrap`,
+        textDecoration: `underline`,
+        lineHeight: 2,
+        textShadow: `1px 1px 20px hsla(0,100%,100%,0.3)`,
+      },
+      "&>div:nth-child(even)": {
+        marginInlineStart: `2rem`,
+      },
+      [presets.Phablet]: {
+        writingMode: `vertical-rl`,
+      },
     }}>
-      激发你的写作热情<br/>
-      促进你的写作时效<br/>
-      沉淀你的知识宝藏<br/>
-      开拓你的第二大脑<br/>
-      快来吧<br/>
-      一起和小书匠享受成长的快乐
+      <div>激发你的写作热情</div>
+      <div>促进你的写作时效</div>
+      <div>沉淀你的知识宝藏</div>
+      <div>开拓你的第二大脑</div>
+      <div>快来吧</div>
+      <div>一起和小书匠享受成长的快乐</div>
     </div>
   </div>
 )
