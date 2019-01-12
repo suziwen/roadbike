@@ -1,11 +1,38 @@
 import React from "react"
 import { keyframes } from "react-emotion"
+import presets, { colors } from "../utils/presets"
+import { rhythm, scale } from "../utils/typography"
 
 export default ({ items, color }) => (
   <div
     css={{
       display: `inline`,
       position: `relative`,
+      fontFamily: `xsjbg, "AR PL UKai TW", SimSun, "宋体", Song`,
+      fontSize: scale(1.1).fontSize,
+      "@media (min-width: 350px)": {
+        fontSize: scale(1.3).fontSize,
+      },
+      "@media (min-width: 650px)": {
+        fontSize: scale(1.6).fontSize,
+        width: rhythm(12),
+      },
+      [presets.Tablet]: {
+        fontSize: scale(2).fontSize,
+        width: rhythm(14),
+      },
+      [presets.Hd]: {
+        fontSize: scale(2.2).fontSize,
+        width: rhythm(16),
+      },
+      [presets.VHd]: {
+        fontSize: scale(2.5).fontSize,
+        width: rhythm(18),
+      },
+      [presets.VVHd]: {
+        fontSize: scale(3).fontSize,
+        width: rhythm(18),
+      },
       "&:before": {
         content: `"灵活"`,
         visibility: `hidden`,

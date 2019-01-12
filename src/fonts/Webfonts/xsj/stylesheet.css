@@ -21,6 +21,23 @@
  *
  *
  */
+@font-face {
+    font-family: "xsjkt";
+    src: url("HanYiChengXingJian-1.ttf") format("truetype"); /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+}
+@font-face {
+    font-family: "xsjbg";
+    src: url("HYShangWeiShouShuW-1.ttf") format("truetype"); /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "xsjsj";
+    src: url("SuXinShiGuYinSongJian-1.ttf") format("truetype"); /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    font-style: normal;
+    font-weight: normal;
+}
 
 @font-face {
     font-family: "smy";

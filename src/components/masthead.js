@@ -67,7 +67,7 @@ const MastheadContent = (props) => {
           padding: 0,
           whiteSpace: `nowrap`,
           width: rhythm(10),
-          fontFamily: `"AR PL UKai TW", SimSun, "宋体", Song`,
+          fontFamily: `xsjkt, "AR PL UKai TW", SimSun, "宋体", Song`,
           //fontSize: `calc(12px + 2vh + 2vw)`,
           [presets.Mobile]: {
             width: rhythm(10),
@@ -177,7 +177,7 @@ const MastheadContent = (props) => {
     </div>
     <div css={{
       color: colors.accent,
-      fontFamily: `"AR PL UKai TW", SimSun, "宋体", Song`,
+      fontFamily: `xsjsj, "AR PL UKai TW", SimSun, "宋体", Song`,
       fontSize: `1.2rem`,
       "&>div": {
         whiteSpace: `nowrap`,
