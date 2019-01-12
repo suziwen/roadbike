@@ -3,20 +3,22 @@ import styled, { keyframes } from "react-emotion"
 
 const rippleScale = keyframes({
   to: {
-    opacity: 0,
-    transform: `scale(2.5)`,
+    transform: `scale(30)`,
   }
 })
 
 const Ink = styled.div`
   position: absolute;
   display: block;
-  background: rgba(255, 255, 255, 0.7);
+  background: #2F4F4F;
   border-radius: 50%;
   transform: scale(0);
   width: 10vw;
   height: 10vw;
-  animation: ${rippleScale} .5s linear;
+  margin-top: -5vw;
+  margin-left: -5vw;
+  animation: ${rippleScale} .8s linear;
+  z-index: 1000;
 `
 
 class Ripple extends React.Component {
@@ -45,9 +47,9 @@ class Ripple extends React.Component {
   render () {
     const props = this.props
     return (
-      props.rippled?<Ink innerRef={this.rippleRef} style={{
-          top: this.props.top+"px",
-          left: this.props.left+"px",
+      props.rippled?<Ink innerRef={this.rippleRef} css={{
+          top: this.props.cursorPos.top+"px",
+          left: this.props.cursorPos.left+"px",
       }}></Ink>:""
     )
   }

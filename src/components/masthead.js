@@ -124,7 +124,7 @@ const MastheadContent = (props) => {
         borderColor: `#ffb238`,
         borderRadius: `30% 70% 70% 30% / 30% 30% 70% 70%`,
         boxShadow: `-1px 0px 0 0.2rem rgba(255, 229, 181, 0.39)`,
-        "&:hover": {
+        "&:hover, &:focus": {
           color: `#ffb238`,
           borderColor: `#ffb238`,
           backgroundColor: `rgba(255, 229, 181, 0.5)`,
