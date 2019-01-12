@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "SuXinShiGuYinSongJian-1";
+    src: url("SuXinShiGuYinSongJian-1.eot"); /* IE9 */
+    src: url("SuXinShiGuYinSongJian-1.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("SuXinShiGuYinSongJian-1.woff") format("woff"), /* chrome, firefox */
+    url("SuXinShiGuYinSongJian-1.ttf") format("truetype"), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url("SuXinShiGuYinSongJian-1.svg#SuXinShiGuYinSongJian-1") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+
