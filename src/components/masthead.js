@@ -196,8 +196,11 @@ const MastheadContent = (props) => {
       <div>促进你的写作时效</div>
       <div>沉淀你的知识宝藏</div>
       <div>开拓你的第二大脑</div>
-      <div>快来吧</div>
-      <div>一起和小书匠享受成长的快乐</div>
+      <div>就现在</div>
+      <div>一起和小书匠</div>
+      <div>在文字里，在生活里</div>
+      <div>披荆斩棘</div>
+      <div>享受成长的快乐</div>
     </div>
   </div>
 )}
