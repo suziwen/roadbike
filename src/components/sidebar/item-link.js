@@ -159,6 +159,7 @@ const styles = {
       border: 0,
       boxShadow: `none`,
       fontWeight: `normal`,
+      backgroundImage: `initial`,
       "&:hover": {
         background: `transparent`,
         color: colors.gatsby,

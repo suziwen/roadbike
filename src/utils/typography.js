@@ -101,54 +101,6 @@ const _options = {
         fontFamily: options.monospaceFontFamily.join(`,`),
         fontSize: `80%`,
       },
-      ".gatsby-highlight": {
-        background: colors.code.bg,
-        borderRadius: `${presets.radius}px`,
-        padding: rhythm(options.blockMarginBottom),
-        marginBottom: rhythm(options.blockMarginBottom),
-        overflow: `auto`,
-        WebkitOverflowScrolling: `touch`,
-        position: `relative`,
-      },
-      ".gatsby-highlight pre[class*='language-']": {
-        padding: 0,
-        marginTop: 0,
-        marginBottom: 0,
-        backgroundColor: `transparent`,
-        border: 0,
-        float: `left`,
-        minWidth: `100%`,
-        overflow: `initial`,
-      },
-      ".gatsby-highlight pre code": {
-        display: `block`,
-        fontSize: `94%`,
-        lineHeight: 1.5,
-        // reset code vertical padding declared earlier
-        padding: 0,
-      },
-      ".gatsby-highlight-code-line": {
-        background: colors.code.border,
-        marginRight: `${rhythm(-options.blockMarginBottom)}`,
-        marginLeft: `${rhythm(-options.blockMarginBottom)}`,
-        paddingRight: rhythm(options.blockMarginBottom),
-        paddingLeft: `${rhythm((options.blockMarginBottom / 5) * 4)}`,
-        borderLeft: `${rhythm((options.blockMarginBottom / 5) * 1)} solid ${
-          colors.code.lineHighlightBorder
-        }`,
-        display: `block`,
-      },
-      ".gatsby-highlight::-webkit-scrollbar": {
-        width: `6px`,
-        height: `6px`,
-      },
-      ".gatsby-highlight::-webkit-scrollbar-thumb": {
-        background: colors.code.scrollbarThumb,
-      },
-      ".gatsby-highlight::-webkit-scrollbar-track": {
-        background: colors.code.border,
-        borderRadius: `0 0 ${presets.radiusLg}px ${presets.radiusLg}px`,
-      },
       // Target image captions. This is kind of a fragile selector...
       ".gatsby-resp-image-link + em": {
         ...scale(-1 / 5),
@@ -172,14 +124,15 @@ const _options = {
         transition: `all ${presets.animation.speedFast} ${
           presets.animation.curveDefault
         }`,
-        borderBottom: `1px solid ${colors.ui.bright}`,
-        boxShadow: `inset 0 -2px 0px 0px ${colors.ui.bright}`,
         fontFamily: options.headerFontFamily.join(`,`),
         fontWeight: `bold`,
+        position: `relative`,
+        textShadow: `-1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff`,
+        backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 2px, #333333 2px, #333333 3px, rgba(0, 0, 0, 0) 3px)`
       },
       ".post-body a": {
-        fontSize: `102%`,
-        color: colors.gatsby,
+        fontSize: `103%`,
+        color: colors.gray.lightCopy,
       },
       ".post-body figcaption": {
         color: colors.gray.calm,
@@ -188,7 +141,7 @@ const _options = {
         marginTop: rhythm(1 / 2),
       },
       ".main-body a:hover": {
-        background: colors.ui.bright,
+        backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 2px, #55abad 2px, #55abad 3px, rgba(0, 0, 0, 0) 3px)`,
       },
       ".main-body a.anchor": {
         color: `inherit`,
