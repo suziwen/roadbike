@@ -8,20 +8,45 @@ import Container from "../components/container"
 import MastheadBg from "../components/story-head-bg"
 import MastheadContent from "../components/masthead"
 import MastheadLogo from "../components/masthead-logo"
+import Ripple from "../components/ripple"
 import {
   setupScrollersObserver,
   unobserveScrollers,
 } from "../utils/scrollers-observer"
 
 //import "../fonts/Webfonts/xsj/stylesheet.css"
+//
 
 class IndexRoute extends React.Component {
+  constructor(props, context) {
+    super(props, context)
+    this.state = {
+      rippled: false,
+    }
+    this.inkRef = React.createRef()
+    this.rippleEffect = this.rippleEffect.bind(this)
+    this.rippleEnd = this.rippleEnd.bind(this)
+  }
   componentDidMount() {
     setupScrollersObserver()
   }
 
   componentWillUnmount() {
     unobserveScrollers()
+  }
+  rippleEffect(event){
+    const posX = event.pageX
+    const posY = event.pageY
+    this.setState({
+      rippled: true,
+      posX,
+      posY,
+    })
+  }
+  rippleEnd(){
+    this.setState({
+      rippled: false
+    })
   }
 
   render() {
@@ -35,6 +60,7 @@ class IndexRoute extends React.Component {
             />
           </Helmet>
           <MastheadBg />
+          <Ripple rippled={this.state.rippled} onEnd={this.rippleEnd} cursorPos={{top: this.state.posY, left: this.state.posX, time: Date.now()}}/>
           <div
             css={{
               display: `flex`,
@@ -43,7 +69,7 @@ class IndexRoute extends React.Component {
               justifyContent: `space-between`,
             }}
           >
-            <MastheadContent />
+            <MastheadContent rippleEffect={this.rippleEffect} curs={{index: 'adfds'}} />
             <MastheadLogo />
             <div
               css={{

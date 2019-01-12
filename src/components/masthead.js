@@ -7,7 +7,9 @@ import Button from "./button"
 import { vP, vPHd, vPVHd, vPVVHd } from "../components/gutters"
 import Slider from "./slider"
 
-const MastheadContent = () => (
+const MastheadContent = (props) => {
+  console.log(props)
+  return (
   <div
     className="masthead-content"
     css={{
@@ -113,7 +115,7 @@ const MastheadContent = () => (
         </span>
         的写作软件
       </h1>
-      <Button large tag="href" target="_self" overrideCSS={{
+      <Button large onClick={props.rippleEffect} tag="button" target="_self" overrideCSS={{
         fontFamily: 'smy',
         position: `relative`,
         textShadow: `3px 3px 7px hsla(0, 2%, 13%, 0.3)`,
@@ -198,8 +200,6 @@ const MastheadContent = () => (
       <div>一起和小书匠享受成长的快乐</div>
     </div>
   </div>
-)
+)}
 
-const Masthead = () => <MastheadContent />
-
-export default Masthead
+export default MastheadContent

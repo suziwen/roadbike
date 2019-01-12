@@ -8,7 +8,7 @@ import { vP, vPHd, vPVHd, vPVVHd } from "../components/gutters"
 import goldImg from "../assets/gold-small.jpg"
 
 
-const Pstyled = styled.p`
+const Divstyled = styled.div`
   & .split_text_logo{
     color: #c3a343;
     -webkit-text-fill-color: transparent;
@@ -35,11 +35,9 @@ const charPoses = {
 }
 class Logo extends React.Component {
   componentDidMount() {
-    console.log(`hhhhhh`)
   }
 
   componentWillUnmount() {
-    console.log(`bbbb`)
   }
   render() {
    return (
@@ -56,7 +54,7 @@ class Logo extends React.Component {
         },
       }}
     >
-      <Pstyled
+      <Divstyled
         css={{
           color: `#fff`,
           letterSpacing: `0.02em`,
@@ -79,7 +77,7 @@ class Logo extends React.Component {
           小书匠
           </SplitText>
         </LogoText>
-      </Pstyled>
+      </Divstyled>
     </div>
   )}
   }
