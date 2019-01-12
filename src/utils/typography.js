@@ -44,7 +44,6 @@ const _options = {
     `Arial`,
     `sans-serif`,
   ],
-  baseLineHeight: 1.4,
   baseFontSize: `16px`,
   headerLineHeight: 1.075,
   headerColor: colors.gray.dark,
@@ -128,7 +127,10 @@ const _options = {
         fontWeight: `bold`,
         position: `relative`,
         textShadow: `-1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff`,
-        backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 2px, #333333 2px, #333333 3px, rgba(0, 0, 0, 0) 3px)`
+        backgroundImage: `linear-gradient(#37b2b2 50%, #37b2b2 50%)`,
+        backgroundSize: `100% 2px`,
+        backgroundRepeat: `no-repeat`,
+        backgroundPositionY: `calc(100% - 2px)`
       },
       ".post-body a": {
         fontSize: `103%`,
@@ -141,7 +143,8 @@ const _options = {
         marginTop: rhythm(1 / 2),
       },
       ".main-body a:hover": {
-        backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 2px, #55abad 2px, #55abad 3px, rgba(0, 0, 0, 0) 3px)`,
+        backgroundSize: `0 2px`,
+        transition: `background-size .5s ease-in-out`,
       },
       ".main-body a.anchor": {
         color: `inherit`,
