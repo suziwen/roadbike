@@ -63,7 +63,7 @@ class IndexRoute extends React.Component {
             />
           </Helmet>
           <MastheadBg />
-          <Ripple rippled={this.state.rippled} onEnd={this.rippleEnd} cursorPos={{top: this.state.posY, left: this.state.posX, time: Date.now()}}/>
+          <Ripple rippled={this.state.rippled} onEnd={this.rippleEnd} cursorPos={{top: this.state.posY, left: this.state.posX}}/>
           <div
             css={{
               display: `flex`,
