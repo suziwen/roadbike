@@ -23,14 +23,24 @@ const HeaderBgStyled = styled(`div`)`
   border-style: solid;
   border-width: 90px 1411px 23px 399px;
   position: absolute;
-  border-color: #e4e4e4 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #e4e4e4;
+  border-color: ${colors.ui.bright} ${colors.ui.whisper} ${colors.ui.whisper} ${colors.ui.bright};
 `
+
+  const HeaderTitleStyled = styled(`div`)`
+    text-align: center;
+    position: relative;
+    padding-top: 2.3rem;
+    line-height: 0;
+    font-size: 2.3rem;
+    z-index: 1;
+  `
+
 
 const PriceSectionRoot = styled(`section`)`
   flex-basis: calc(50% - 20px);
   flex-grow: 0;
   margin: 0 10px 20px;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 8px ${colors.gray.light};
   border-radius: ${presets.radiusLg}px;
   text-align: center;
   overflow: hidden;
@@ -38,8 +48,10 @@ const PriceSectionRoot = styled(`section`)`
   justify-content: space-between;
   flex-direction: column;
   &:hover ${HeaderBgStyled}{
-    border-color: #2ECC71 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #2ECC71;
-    color: #fff;
+    border-color: ${colors.gatsby} ${colors.ui.whisper} ${colors.ui.whisper} ${colors.gatsby};
+  }
+  &:hover ${HeaderTitleStyled}{
+    color: ${colors.lemon};
   }
 `
 
@@ -50,7 +62,7 @@ const PriceSectionTitleHeader = ({
   })=> {
   const HeaderContentStyled = styled(`header`)`
     position: relative;
-    margin: 0 0 50px;
+    margin: 0 0 4rem;
   `
 
 
@@ -58,21 +70,16 @@ const PriceSectionTitleHeader = ({
     border-style: solid;
     border-width: 90px 1411px 23px 399px;
     position: absolute;
-    border-color: #2ECC71 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #2ECC71;
-    color: #fff;
-  `
-
-  const HeaderTitleStyled = styled(`div`)`
-    text-align: center;
-    position: relative;
-    padding-top: 40px;
-    z-index: 1;
+    border-color: ${colors.gatsby} ${colors.ui.whisper} ${colors.ui.whisper} ${colors.gatsby};
+    color: ${colors.lemon};
   `
 
   return (
     <HeaderContentStyled>
       {isActived? <HeaderBgActivedStyled/> : <HeaderBgStyled/>}
-      <HeaderTitleStyled>
+      <HeaderTitleStyled css={{
+        color: isActived?colors.lemon:colors.gatsby}
+        }>
         {title}
       </HeaderTitleStyled>
     </HeaderContentStyled>
@@ -94,7 +101,7 @@ const PriceSectionPriceHeader = ({
 
 const PriceSectionHeader = ({title, price, isActived})=>{
   const HeaderStyled = styled(`header`)`
-    background-color: #f6f6f6;
+    background-color: ${colors.ui.whisper};
   `
   return (
     <HeaderStyled>
@@ -112,14 +119,14 @@ const UlStyled = styled(`ul`)`
 `
 
 const LiStyled = styled(`li`)`
-  color: #a7a7a7;
+  color: ${colors.gray.bright};
   padding: 15px 0;
   & span{
-    color: #414141;
+    color: ${colors.gatsbyDarker};
   }
   :hover {
-    background-color: #E4E4E4;
-    border-left: 5px solid #2ECC71;
+    background-color: ${colors.ui.light};
+    border-left: 5px solid ${colors.gatsby};
   }
 `
 
@@ -163,12 +170,12 @@ const PriceCompareDetail = ()=>{
       sectionName="price"
       sectionIcon={PriceIcon}
       inverseStyle={false}
-      title="小书匠套餐选择"
+      title="套餐选择"
     >
       <PriceSections>
         <PriceSection
           title="免费用户"
-          price="0/年"
+          price="￥ 0.0/年"
           listItems={[
             "所有 <span>markdown</span> 基础，及扩展语法",
             "所有<span>第三方存储</span>同步",
@@ -187,17 +194,17 @@ const PriceCompareDetail = ()=>{
         </PriceSection>
         <PriceSection
           title="付费用户"
-          price="20/年"
+          price="￥ 20.0/年"
           isActived={true}
           listItems={[
             "免费版本<span>所有</span>功能",
             "小书匠专用<span>高级语法</span>",
             "自定义<span>数据中心</span>",
             "<span>定制化 PDF </span>导出<br><small>(加密，水印，封面等)</small>",
-            "<span>新功能</span>第一时间体验",
             "<span>drawio</span> 绘图功能",
             "<span>可视化</span>表格编辑器",
             "<span>图片涂鸦</span> 功能",
+            "<span>新功能</span>第一时间体验",
           ]}
         >
           <div css={{

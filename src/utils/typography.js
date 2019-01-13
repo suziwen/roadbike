@@ -94,9 +94,6 @@ const _options = {
       ".main-body a": {
         color: `inherit`,
         textDecoration: `none`,
-        transition: `all ${presets.animation.speedFast} ${
-          presets.animation.curveDefault
-        }`,
         fontFamily: options.headerFontFamily.join(`,`),
         fontWeight: `bold`,
       },

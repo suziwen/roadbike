@@ -34,12 +34,13 @@ export const Header = styled(`header`)`
 
   ${presets.Desktop} {
     margin-left: 3rem;
+    margin-bottom: 1rem;
   }
 `
 
 export const Name = styled(`h3`)`
   align-items: center;
-  color: ${props => (props.inverse ? colors.ui.light : colors.lilac)};
+  color: ${props => (props.inverse ? colors.ui.light : colors.ui.border)};
   display: flex;
   font-size: 1rem;
   font-weight: normal;
@@ -62,7 +63,7 @@ const Icon = styled(`span`)`
   svg {
     fill: transparent;
     height: ${ICON_SIZE};
-    stroke: ${props => (props.inverse ? colors.ui.light : colors.lilac)};
+    stroke: ${props => (props.inverse ? colors.ui.light : colors.ui.border)};
     width: ${ICON_SIZE};
   }
 `
