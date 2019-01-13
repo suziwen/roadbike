@@ -256,14 +256,14 @@ export default SidebarBody
 
 const styles = {
   utils: {
-    borderRight: `1px solid ${colors.ui.border}`,
+    borderRight: `1px solid ${colors.ui.light}`,
     display: `flex`,
     alignItems: `center`,
     height: presets.sidebarUtilityHeight,
     background: colors.ui.whisper,
     paddingLeft: 40,
     paddingRight: 8,
-    borderBottom: `1px solid ${colors.ui.border}`,
+    borderBottom: `1px solid ${colors.ui.light}`,
   },
   sidebarScrollContainer: {
     WebkitOverflowScrolling: `touch`,
@@ -273,7 +273,7 @@ const styles = {
     overflowY: `auto`,
     transition: `opacity 0.5s ease`,
     zIndex: 10,
-    borderRight: `1px solid ${colors.ui.border}`,
+    borderRight: `1px solid ${colors.ui.light}`,
     "::-webkit-scrollbar": {
       height: `6px`,
       width: `6px`,
@@ -282,7 +282,7 @@ const styles = {
       background: colors.ui.bright,
     },
     "::-webkit-scrollbar-thumb:hover": {
-      background: colors.lilac,
+      background: colors.gatsbyDark,
     },
     "::-webkit-scrollbar-track": {
       background: colors.ui.light,

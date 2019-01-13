@@ -54,7 +54,7 @@ class ItemLink extends React.Component {
         alignItems: `center`,
         position: `relative`,
         "&:before": {
-          background: colors.ui.border,
+          background: colors.ui.light,
           bottom: 0,
           top: `auto`,
           content: `''`,

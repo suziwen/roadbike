@@ -99,6 +99,10 @@ const _options = {
         }`,
         fontFamily: options.headerFontFamily.join(`,`),
         fontWeight: `bold`,
+      },
+      ".post-body a": {
+        fontSize: `103%`,
+        color: colors.gray.lightCopy,
         position: `relative`,
         textShadow: `-1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff`,
         backgroundImage: `linear-gradient(#37b2b2 50%, #37b2b2 50%)`,
@@ -106,17 +110,13 @@ const _options = {
         backgroundRepeat: `no-repeat`,
         backgroundPositionY: `calc(100% - 2px)`
       },
-      ".post-body a": {
-        fontSize: `103%`,
-        color: colors.gray.lightCopy,
-      },
       ".post-body figcaption": {
         color: colors.gray.calm,
         fontFamily: headerFontFamily.join(`,`),
         fontSize: `87.5%`,
         marginTop: rhythm(1 / 2),
       },
-      ".main-body a:hover": {
+      ".post-body a:hover": {
         backgroundSize: `0 2px`,
         transition: `background-size .5s ease-in-out`,
       },

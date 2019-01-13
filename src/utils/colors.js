@@ -3,9 +3,9 @@ import gray from "gray-percentage"
 const colors = {
   // original palette by @SachaG
   // @see https://www.figma.com/file/J6IYJEtdRmwJQOrcZ2DfvxDD/Gatsby
-  gatsby: `#663399`, // was #744c9e
-  gatsbyDark: `#442266`,
-  gatsbyDarker: `#221133`,
+  gatsby: `#3385c6`, // was #744c9e
+  gatsbyDark: `#4279a3`,
+  gatsbyDarker: `#49657b`,
   lemon: `#ffdf37`,
   mint: `#73fff7`,
   lilac: `#8c65b3`,
@@ -21,10 +21,10 @@ const colors = {
   skyLight: `#dcfffd`,
   skyDark: `#0a75c2`,
   ui: {
-    border: `#ede7f3`,
-    bright: `#e0d6eb`,
-    light: `#f5f3f7`,
-    whisper: `#fbfafc`,
+    border: `#add6ff`,
+    bright: `#d6eaff`,
+    light: `#eaf4ff`,
+    whisper: `#f8fbff`,
   },
   gray: {
     dark: gray(8, 270),
