@@ -36,6 +36,23 @@ const HeaderBgStyled = styled(`div`)`
   `
 
 
+const PriceContainerStyled = styled(`div`)`
+  padding: 0 0 20px;
+  & span{
+    display: inline-block;
+    transition: transform .5s;
+  }
+`
+const PriceSectionPriceHeader = ({
+  price
+})=>{
+  return (
+    <PriceContainerStyled>
+      <span>{price}</span>
+    </PriceContainerStyled>
+  )
+}
+
 const PriceSectionRoot = styled(`section`)`
   flex-basis: calc(50% - 20px);
   flex-grow: 0;
@@ -52,6 +69,9 @@ const PriceSectionRoot = styled(`section`)`
   }
   &:hover ${HeaderTitleStyled}{
     color: ${colors.lemon};
+  }
+  &:hover ${PriceContainerStyled} span{
+    transform: scale(3);
   }
 `
 
@@ -83,19 +103,6 @@ const PriceSectionTitleHeader = ({
         {title}
       </HeaderTitleStyled>
     </HeaderContentStyled>
-  )
-}
-
-const PriceSectionPriceHeader = ({
-  price
-})=>{
-  const PriceContainerStyled = styled(`div`)`
-    padding: 0 0 20px;
-  `
-  return (
-    <PriceContainerStyled>
-      <span>{price}</span>
-    </PriceContainerStyled>
   )
 }
 
