@@ -10,7 +10,7 @@ const PaginationLink = ({ to, children, ...props }) => {
       </Link>
     )
   }
-  return <span css={{ color: colors.gray.calm }}>{children}</span>
+  return null
 }
 
 export default PaginationLink

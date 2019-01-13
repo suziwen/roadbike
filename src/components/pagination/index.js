@@ -57,13 +57,14 @@ class Pagination extends React.Component {
         >
           <PaginationLink to={prevPageLink} css={prevNextLinkStyles}>
             <MdArrowBack style={{ verticalAlign: `sub` }} />
-            Newer posts
+            上一篇
           </PaginationLink>
           <PaginationLink to={nextPageLink} css={prevNextLinkStyles}>
-            Older posts
+            下一篇
             <MdArrowForward style={{ verticalAlign: `sub` }} />
           </PaginationLink>
         </div>
+        {numPages>1?
         <div
           css={{
             display: `flex`,
@@ -72,7 +73,7 @@ class Pagination extends React.Component {
             fontFamily: options.headerFontFamily.join(`,`),
           }}
         >
-          <span>Showing page &nbsp;</span>
+          <span>跳转到 &nbsp;</span>
           <select
             value={currentPage === 1 ? `` : currentPage.toString()}
             onChange={this.changePage}
@@ -109,6 +110,8 @@ class Pagination extends React.Component {
           <span>of &nbsp;</span>
           <span>{numPages}</span>
         </div>
+        : ""
+        }
       </div>
     )
   }
