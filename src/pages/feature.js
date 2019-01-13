@@ -49,10 +49,10 @@ const SvgContainerStyled = styled(`div`)`
   }
   & .glow{
     text-shadow:
-    -1px -1px 3px ${colors.lilac},
-    -1px  1px 3px ${colors.lilac},
-    1px -1px 3px ${colors.lilac},
-    1px  1px 3px ${colors.lilac};
+    -1px -1px 3px ${colors.ui.bright},
+    -1px  1px 3px ${colors.ui.bright},
+    1px -1px 3px ${colors.ui.bright},
+    1px  1px 3px ${colors.ui.bright};
   }
   & .xsj_root_text{
     font-family: webfontxiaoshujiang;

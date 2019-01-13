@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "react-emotion"
 import { graphql } from "gatsby"
+import presets, { colors } from "../../utils/presets"
 
 import * as d3 from 'd3'
 
@@ -144,7 +145,8 @@ class Mindmap extends React.Component {
     const mapWidth = 1920
     const mapHeight = 1920
     const vFontSize = [6,10,18,22, 30, 36]
-    const vColor = d3.scaleOrdinal().domain(["Oceania", "Africa", "Europe", "Latin America", "Asia"]).range(["#ff6698", "#ffb366", "#ffff66", "#98ff66", "#6698ff"])
+    const vColor = d3.scaleOrdinal().domain(["grammar", "fileManagers", "export", "import", "editor", "preview", "store", "database", "imageStore", "components", "account"])
+    .range(["#ff6698", "#7bc043 ", "#ffff66", "#98ff66", "#96ceb4", "#c99789", "#4d648d", "#009688", "#A7226E", "#594F4F", "#854442", "#536872"])
     mindmapSvg = d3.select(target)
     const vWidth = mindmapSvg.node().clientWidth
     const vHeight = mindmapSvg.node().clientHeight
@@ -325,7 +327,9 @@ class Mindmap extends React.Component {
                 .style("fill", function(d){
                     //if(d.data.data.least_devd_country === "Yes") { return "blue";}
                     //else if (d.data.data.devd_region === "Yes") { return "green";}
-
+                    if (d.depth === 0) {
+                      return colors.accent
+                    }
                     return vColor(d.data.data.leg);
         })
                 .classed("glow", function (d){ 
@@ -352,9 +356,9 @@ class Mindmap extends React.Component {
             // symbol.size  = math.pi * r^2
             rootGroup.insert("path", ":first-child ")
               .attr("d", symbol.size(symbolSizePercent * symbolSizePercent * Math.PI))
-              .style("fill", "#663399")
+              .style("fill", colors.gatsbyDark)
               .style("stroke-width", "5")
-              .style("stroke", "rgb(255, 179, 102)")
+              .style("stroke", colors.lemon)
 
         }
 
