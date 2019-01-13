@@ -8,7 +8,6 @@ import { vP } from "../components/gutters"
 import Container from "../components/container"
 import { PriceIcon} from "../assets/mobile-nav-icons"
 import {MdArrowForward} from "react-icons/md"
-import HomepageSection from "../components/homepage/homepage-section"
 import Button from "../components/button"
 import FeatureHexagon from "../components/feature/feature-hexagon"
 import Mindmap from "../components/feature/mindmap"
@@ -32,6 +31,7 @@ const FeatureDetailStyled = styled('div')`
 
 const SvgContainerStyled = styled(`div`)`
   background: ${colors.gatsby};
+  background-image: linear-gradient(120deg, ${colors.ui.border} 0%, ${colors.gatsby} 100%);
   position: absolute;
   top: 0;
   left: 0;
