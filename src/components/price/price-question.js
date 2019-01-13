@@ -7,7 +7,7 @@ import { vP } from "../gutters"
 import Container from "../container"
 import HomepageSection from "../homepage/homepage-section"
 import { PriceIcon} from "../../assets/mobile-nav-icons"
-import ImageZoom from 'react-medium-image-zoom'
+import Img from "gatsby-image"
 
 
 const QuestionSectionsStyled = styled(`div`)`
@@ -27,7 +27,6 @@ const QuestionSectionStyled = styled(`section`)`
   ${presets.Tablet} {
     border-radius: ${presets.radiusLg}px;
     margin: 0 10px 20px;
-    max-height: 60vh;
     padding: ${rhythm(options.blockMarginBottom)};
   }
 `
@@ -43,103 +42,102 @@ const Content = styled(`div`)`
   line-height: 28px;
   color: ${colors.gray.lightCopy};
 `
-
-
-const PriceQuestionPayFlow = ()=>{
-  const PayImgsStyled = styled('div')`
-    display: flex;
-    flex-direction: column;
-    ${presets.Tablet} {
-      flex-direction: row;
-    }
-  `
-  return (<StaticQuery
-    query={graphql`
-  query {
-    image1: file(relativePath: { eq: "price/1.png" }, sourceInstanceName: { eq: "assets"}) {
-      publicURL
-      childImageSharp {
-        fixed(width: 400) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    image2: file(relativePath: { eq: "price/2.png" }, sourceInstanceName: { eq: "assets"}) {
-      publicURL
-      childImageSharp {
-        fixed(width: 125, height: 125) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    image3: file(relativePath: { eq: "price/3.png" }, sourceInstanceName: { eq: "assets"}) {
-      publicURL
-      childImageSharp {
-        fixed(width: 125, height: 125) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    image4: file(relativePath: { eq: "price/4.png" }, sourceInstanceName: { eq: "assets"}) {
-      publicURL
-      childImageSharp {
-        fixed(width: 125, height: 125) {
-          ...GatsbyImageSharpFixed
-        }
-      }
+class PriceQuestionPayFlow extends React.Component {
+  constructor(props, context) {
+    super(props, context)
+    this.img1Ref = React.createRef()
+    this.img2Ref = React.createRef()
+    this.img3Ref = React.createRef()
+    this.img4Ref = React.createRef()
+    this.onLoad = this.onLoad.bind(this)
+  }
+  onLoad(imgRefStr){
+    const self = this
+    return ()=>{
+      const imgRef = self[imgRefStr].current.imageRef.current
+      imgRef.setAttribute("data-action", "zoom")
     }
   }
-    `}
-    render={data => {
-    return (
-      <PayImgsStyled>
-        <ImageZoom
-          shouldReplaceImage = {false}
-          image={{
-            src: data.image1.childImageSharp.fixed.src,
-            alt: 'hahah',
-          }}
-          zoomImage={{
-            src: data.image1.publicURL,
-            alt: 'gooood',
-          }}
-        />
-        <ImageZoom
-          shouldReplaceImage = {false}
-          image={{
-            src: data.image2.childImageSharp.fixed.src,
-            alt: 'hahah',
-          }}
-          zoomImage={{
-            src: data.image2.publicURL,
-            alt: 'gooood',
-          }}
-        />
-        <ImageZoom
-          shouldReplaceImage = {false}
-          image={{
-            src: data.image3.childImageSharp.fixed.src,
-            alt: 'hahah',
-          }}
-          zoomImage={{
-            src: data.image3.publicURL,
-            alt: 'gooood',
-          }}
-        />
-        <ImageZoom
-          shouldReplaceImage = {false}
-          image={{
-            src: data.image4.childImageSharp.fixed.src,
-            alt: 'hahah',
-          }}
-          zoomImage={{
-            src: data.image4.publicURL,
-            alt: 'gooood',
-          }}
-        />
-      </PayImgsStyled>
-    )}}
-  />)
+  render(){
+    const PayImgsStyled = styled('div')`
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      &>.gatsby-image-wrapper{
+        flex: auto;
+        margin: .3em;
+        border-radius: 0.3125em;
+        box-shadow: 0 2px 4px 0 ${colors.gray.light}, 0 2px 10px 0  ${colors.gray.superLight};
+      }
+      ${presets.Tablet} {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+    `
+    return (<StaticQuery
+      query={graphql`
+    query {
+      image1: file(relativePath: { eq: "price/1.png" }, sourceInstanceName: { eq: "assets"}) {
+        publicURL
+        childImageSharp {
+          fluid(maxWidth: 1000){
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
+      }
+      image2: file(relativePath: { eq: "price/2.png" }, sourceInstanceName: { eq: "assets"}) {
+        publicURL
+        childImageSharp {
+          fluid(maxWidth: 1000){
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
+      }
+      image3: file(relativePath: { eq: "price/3.png" }, sourceInstanceName: { eq: "assets"}) {
+        publicURL
+        childImageSharp {
+          fluid(maxWidth: 1000){
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
+      }
+      image4: file(relativePath: { eq: "price/4.png" }, sourceInstanceName: { eq: "assets"}) {
+        publicURL
+        childImageSharp {
+          fluid(maxWidth: 1000){
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
+      }
+    }
+      `}
+      render={data => {
+      return (
+        <PayImgsStyled>
+          <Img
+            fluid={data.image1.childImageSharp.fluid}
+            ref={this.img1Ref}
+            onLoad={this.onLoad('img1Ref')}
+          />
+          <Img
+            fluid={data.image2.childImageSharp.fluid}
+            ref={this.img2Ref}
+            onLoad={this.onLoad('img2Ref')}
+          />
+          <Img
+            fluid={data.image3.childImageSharp.fluid}
+            ref={this.img3Ref}
+            onLoad={this.onLoad('img3Ref')}
+          />
+          <Img
+            fluid={data.image4.childImageSharp.fluid}
+            ref={this.img4Ref}
+            onLoad={this.onLoad('img4Ref')}
+          />
+        </PayImgsStyled>
+      )}}
+    />)
+  }
 }
 
 
