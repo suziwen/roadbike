@@ -17,7 +17,7 @@ module.exports = {
   maxWidth: 35,
   maxWidthWithSidebar: 26,
   radius: 2,
-  radiusLg: 4,
+  radiusLg: 8,
   gutters: {
     default: 1.25,
     HdR: 2.5,

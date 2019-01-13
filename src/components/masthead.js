@@ -120,6 +120,7 @@ const MastheadContent = (props) => {
         position: `relative`,
         textShadow: `3px 3px 7px hsla(0, 2%, 13%, 0.3)`,
         backgroundColor: `rgba(255, 229, 181, 0.5)`,
+        background: `rgba(255, 229, 181, 0.5)`,
         color: `#ffb238`,
         borderColor: `#ffb238`,
         borderRadius: `30% 70% 70% 30% / 30% 30% 70% 70%`,

@@ -20,23 +20,23 @@ const QuestionSectionStyled = styled(`section`)`
   flex-grow: 0;
   background: #fff;
   margin: 0 10px 20px;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 8px ${colors.gatsbyDarker};
   border-radius: ${presets.radiusLg}px;
   overflow: hidden;
   padding: 0 ${rhythm(options.blockMarginBottom)};
   ${presets.Tablet} {
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
     border-radius: ${presets.radiusLg}px;
     margin: 0 10px 20px;
     max-height: 60vh;
     padding: ${rhythm(options.blockMarginBottom)};
-    padding-bottom: 0;
   }
 `
 
 
 const Header = styled(`header`)`
+  margin-bottom: ${rhythm(options.blockMarginBottom)};
   color: ${colors.gatsby};
+  text-shadow: 3px 3px 7px ${colors.gray.calm};
 `
 
 const Content = styled(`div`)`

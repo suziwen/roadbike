@@ -30,11 +30,10 @@ export const buttonStyles = {
   default: {
     alignItems: `center`,
     backgroundColor: colors.gatsby,
-    borderRadius: presets.radius,
+    background: `linear-gradient(${colors.ui.border}, ${colors.gatsby})`,
+    borderRadius: presets.radiusLg,
     borderWidth: 1,
-    borderStyle: `solid`,
-    borderColor: colors.gatsby,
-    boxShadow: `none`,
+    boxShadow: `6px 6px 6px ${colors.gray.light}`,
     color: `#fff`,
     cursor: `pointer`,
     display: `inline-flex`,
@@ -45,7 +44,6 @@ export const buttonStyles = {
     WebkitFontSmoothing: `antialiased`,
     whiteSpace: `nowrap`,
     padding: `${rhythm(2 / 5)} ${rhythm(1 / 2)}`,
-    backgroundSize: `30px 30px`,
     transition: `all ${presets.animation.speedDefault} ${
       presets.animation.curveDefault
     }`,
@@ -58,7 +56,11 @@ export const buttonStyles = {
     },
     ":focus": {
       outline: 0,
-      boxShadow: `0 0 0 0.2rem ${hex2rgba(colors.lilac, 0.25)}`,
+      boxShadow: `0 0 0 0.2rem ${hex2rgba(colors.lemon, 0.25)}`,
+    },
+    ":active": {
+      outline: 0,
+      boxShadow: `2px 2px 2px ${colors.gray.light}`,
     },
     ":after": { content: `''`, display: `block` },
     "& svg": { marginLeft: `.2em` },
@@ -107,7 +109,7 @@ export const buttonStyles = {
       padding: `${rhythm(1 / 5)} ${rhythm(1 / 3)}`,
     },
   },
-  ondark: { border: `1px solid ${colors.ui.light}` },
+  ondark: { },
 }
 
 export const svgStyles = {
