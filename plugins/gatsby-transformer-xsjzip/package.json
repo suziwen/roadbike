@@ -10,7 +10,7 @@
     "@babel/runtime": "^7.0.0",
     "adm-zip": "^0.4.13",
     "bluebird": "^3.5.0",
-    "cheerio": "^1.0.0-rc.2",
+    "cheerio": "^0.22.0",
     "css": "^2.2.4",
     "fs-extra": "^7.0.1",
     "gray-matter": "^4.0.0",
