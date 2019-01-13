@@ -58,8 +58,8 @@ const _options = {
         marginBottom: rhythm(options.blockMarginBottom),
         letterSpacing: `-0.0075em`,
       },
-      "ul, ol": {
-        marginTop: rhythm(options.blockMarginBottom),
+      "li": {
+        marginBottom: 0,
       },
       h1: {
         ...scale(4 / 5),
@@ -90,32 +90,6 @@ const _options = {
         // reset line-height: 1.4rem set by
         // https://github.com/KyleAMathews/typography.js/blob/3c99e905414d19cda124a7baabeb7a99295fec79/packages/typography/src/utils/createStyles.js#L198
         lineHeight: `inherit`,
-      },
-      "tt, code, kbd": {
-        background: colors.code.bg,
-        paddingTop: `0.2em`,
-        paddingBottom: `0.2em`,
-      },
-      "tt, code, kbd, .gatsby-code-title": {
-        fontFamily: options.monospaceFontFamily.join(`,`),
-        fontSize: `80%`,
-      },
-      // Target image captions. This is kind of a fragile selector...
-      ".gatsby-resp-image-link + em": {
-        ...scale(-1 / 5),
-        lineHeight: 1.3,
-        paddingTop: rhythm(3 / 8),
-        marginBottom: rhythm(options.blockMarginBottom * 2),
-        display: `block`,
-        textAlign: `center`,
-        fontStyle: `normal`,
-        color: colors.gray.calm,
-        position: `relative`,
-      },
-      ".gatsby-resp-image-link + em a": {
-        fontWeight: `normal`,
-        fontFamily: options.headerFontFamily.join(`,`),
-        color: colors.gatsby,
       },
       ".main-body a": {
         color: `inherit`,
@@ -156,60 +130,6 @@ const _options = {
       ".main-body a.anchor:hover": {
         background: `none`,
       },
-      ".main-body a.gatsby-resp-image-link": {
-        boxShadow: `none`,
-        borderBottom: `transparent`,
-        marginTop: rhythm(options.blockMarginBottom * 2),
-        marginBottom: rhythm(options.blockMarginBottom * 2),
-      },
-      ".main-body figure a.gatsby-resp-image-link": {
-        boxShadow: `none`,
-        borderBottom: `transparent`,
-        marginTop: rhythm(options.blockMarginBottom * 2),
-        marginBottom: 0,
-      },
-      ".main-body a.gatsby-resp-image-link:hover": {
-        background: `none`,
-        boxShadow: `none`,
-      },
-      ".gatsby-highlight, .post .gatsby-resp-iframe-wrapper, .post .gatsby-resp-image-link": {
-        marginLeft: rhythm(-options.blockMarginBottom),
-        marginRight: rhythm(-options.blockMarginBottom),
-      },
-      ".gatsby-resp-image-link": {
-        borderRadius: `${presets.radius}px`,
-        overflow: `hidden`,
-      },
-      ".gatsby-code-title": {
-        background: colors.code.bg,
-        borderBottom: `1px solid ${colors.code.border}`,
-        color: colors.code.text,
-        marginLeft: rhythm(-options.blockMarginBottom),
-        marginRight: rhythm(-options.blockMarginBottom),
-        padding: `${rhythm(options.blockMarginBottom)} ${rhythm(
-          options.blockMarginBottom
-        )} ${rhythm(options.blockMarginBottom / 2)}`,
-        fontSize: `74%`,
-      },
-      "@media (max-width:634px)": {
-        ".gatsby-highlight, .gatsby-resp-image-link": {
-          borderRadius: 0,
-          borderLeft: 0,
-          borderRight: 0,
-        },
-      },
-      video: {
-        width: `100%`,
-        marginBottom: rhythm(options.blockMarginBottom),
-      },
-      ".twitter-tweet-rendered": {
-        margin: `${rhythm(options.blockMarginBottom * 2)} auto !important`,
-      },
-      ".egghead-video": {
-        width: `620px`,
-        height: `348px`,
-        border: `none`,
-      },
       [presets.Mobile]: {
         html: {
           fontSize: `${(17 / 16) * 100}%`,
@@ -220,89 +140,10 @@ const _options = {
           fontSize: `${(18 / 16) * 100}%`,
         },
       },
-      [presets.Desktop]: {
-        ".gatsby-highlight, .post .gatsby-resp-iframe-wrapper, .post .gatsby-resp-image-link, .gatsby-code-title": {
-          marginLeft: rhythm(-options.blockMarginBottom * 1.5),
-          marginRight: rhythm(-options.blockMarginBottom * 1.5),
-        },
-        ".gatsby-highlight": {
-          padding: rhythm(options.blockMarginBottom * 1.5),
-          marginBottom: rhythm(options.blockMarginBottom * 1.5),
-        },
-        ".gatsby-highlight-code-line": {
-          marginRight: `${rhythm(-options.blockMarginBottom * 1.5)}`,
-          marginLeft: `${rhythm(-options.blockMarginBottom * 1.5)}`,
-          paddingRight: rhythm(options.blockMarginBottom * 1.5),
-          paddingLeft: `${rhythm(((options.blockMarginBottom * 1.5) / 5) * 4)}`,
-          borderLeftWidth: `${rhythm(
-            ((options.blockMarginBottom * 1.5) / 5) * 1
-          )}`,
-        },
-        ".gatsby-code-title": {
-          padding: `${rhythm(options.blockMarginBottom)} ${rhythm(
-            options.blockMarginBottom * 1.5
-          )} ${rhythm(options.blockMarginBottom / 2)}`,
-        },
-      },
       [presets.VVHd]: {
         html: {
           fontSize: `${(21 / 16) * 100}%`,
         },
-      },
-      // PrismJS syntax highlighting token styles
-      // https://www.gatsbyjs.org/packages/gatsby-remark-prismjs/
-      ".token.comment, .token.block-comment, .token.prolog, .token.doctype, .token.cdata": {
-        color: colors.code.comment,
-      },
-      ".token.punctuation": {
-        color: colors.code.punctuation,
-      },
-      ".token.property, .token.tag, .token.boolean, .token.number, .token.function-name, .token.constant, .token.symbol": {
-        color: colors.code.tag,
-      },
-      ".token.selector, .token.attr-name, .token.string, .token.char, .token.function, .token.builtin": {
-        color: colors.code.selector,
-      },
-      ".token.operator, .token.entity, .token.url, .token.variable": {},
-      ".token.atrule, .token.attr-value, .token.keyword, .token.class-name": {
-        color: colors.code.keyword,
-      },
-      ".token.inserted": {
-        color: colors.code.add,
-      },
-      ".token.deleted": {
-        color: colors.code.remove,
-      },
-      ".token.regex, .token.important": {
-        color: colors.code.regex,
-      },
-      ".language-css .token.string, .style .token.string": {
-        color: colors.code.cssString,
-      },
-      ".token.important": {
-        fontWeight: `normal`,
-      },
-      ".token.bold": {
-        fontWeight: `bold`,
-      },
-      ".token.italic": {
-        fontStyle: `italic`,
-      },
-      ".token.entity": {
-        cursor: `help`,
-      },
-      ".namespace": {
-        opacity: 0.7,
-      },
-      // PrismJS plugin styles
-      ".token.tab:not(:empty):before, .token.cr:before, .token.lf:before": {
-        color: colors.code.invisibles,
-      },
-      // Fancy external links in posts, borrowed from
-      // https://github.com/comfusion/after-dark/
-      // @see https://github.com/comfusion/after-dark/blob/8fdbe2f480ac40315cf0e01cece785d2b5c4b0c3/layouts/partials/critical-theme.css#L36-L39
-      ".gatsby-resp-image-link + em a[href*='//']:after": {
-        content: `" " url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20class='i-external'%20viewBox='0%200%2032%2032'%20width='14'%20height='14'%20fill='none'%20stroke='%23744C9E'%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='9.38%'%3E%3Cpath%20d='M14%209%20L3%209%203%2029%2023%2029%2023%2018%20M18%204%20L28%204%2028%2014%20M28%204%20L14%2018'/%3E%3C/svg%3E")`,
       },
     }
   },
