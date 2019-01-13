@@ -34,6 +34,9 @@ const PriceSectionRoot = styled(`section`)`
   border-radius: ${presets.radiusLg}px;
   text-align: center;
   overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
   &:hover ${HeaderBgStyled}{
     border-color: #2ECC71 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #2ECC71;
     color: #fff;
@@ -174,7 +177,9 @@ const PriceCompareDetail = ()=>{
             "文档<span>历史记录</span>",
           ]}
         >
-          <div>
+          <div css={{
+            margin: `${rhythm(options.blockMarginBottom)} 0`,
+          }}>
             <Button large to="/download/">
               下载使用
             </Button>
@@ -195,7 +200,9 @@ const PriceCompareDetail = ()=>{
             "<span>图片涂鸦</span> 功能",
           ]}
         >
-          <div>
+          <div css={{
+            margin: `${rhythm(options.blockMarginBottom)} 0`,
+          }}>
             <Button large to="/download/">
               查看付费流程
             </Button>

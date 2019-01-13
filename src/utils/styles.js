@@ -44,9 +44,6 @@ export const buttonStyles = {
     WebkitFontSmoothing: `antialiased`,
     whiteSpace: `nowrap`,
     padding: `${rhythm(2 / 5)} ${rhythm(1 / 2)}`,
-    transition: `all ${presets.animation.speedDefault} ${
-      presets.animation.curveDefault
-    }`,
     ":hover, &:focus": {
       backgroundSize: `30px 30px`,
       backgroundColor: colors.gatsby,

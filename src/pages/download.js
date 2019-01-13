@@ -95,10 +95,15 @@ const OldDownloadSections = ()=>{
       sectionIcon={PriceIcon}
       inverseStyle={true}
       title={`支持 window xp 的版本 v1.13.0`}
+      links={[{
+        to: "https://github.com/suziwen/markdownxiaoshujiang/releases/tag/v1.13.0",
+        label: "Github 下载",
+        inverseStyle: true,
+        icon: MdArrowForward,
+        tag: "href",
+        target: "_blank",
+      }]}
     >
-      <Button large to="https://github.com/suziwen/markdownxiaoshujiang/releases/tag/v1.13.0" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
-        Github 下载
-      </Button>
     </HomepageSection>
   )
 }
@@ -110,10 +115,15 @@ const OtherDownloadSections = ()=>{
       sectionIcon={PriceIcon}
       inverseStyle={true}
       title={`其他更多版本`}
+      links={[{
+        to: "https://github.com/suziwen/markdownxiaoshujiang/releases",
+        label: "Github 下载",
+        inverseStyle: true,
+        icon: MdArrowForward,
+        tag: "href",
+        target: "_blank",
+      }]}
     >
-      <Button large to="https://github.com/suziwen/markdownxiaoshujiang/releases" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
-        Github 下载
-      </Button>
     </HomepageSection>
   )
 }
