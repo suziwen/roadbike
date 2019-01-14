@@ -1,4 +1,5 @@
 import React, { Fragment } from "react"
+import {GoThreeBars} from "react-icons/go"
 
 import StickyResponsiveSidebar from "./sidebar/sticky-responsive-sidebar"
 import { rhythm } from "../utils/typography"
@@ -55,7 +56,7 @@ class PageWithSidebar extends React.Component {
             hide={this.state.hide}
           />
           {this.state.hide&&(<div onClick={this.showSidebar} css={{...styles.sidebarToggleButton}}>
-            显示大纲
+            <GoThreeBars />
           </div>)}
         </Fragment>
       )
@@ -65,20 +66,22 @@ class PageWithSidebar extends React.Component {
 const styles = {
   sidebarToggleButton: {
     backgroundColor: colors.gatsby,
+    color: colors.ui.whisper,
     borderRadius: `50%`,
     bottom: 64,
-    boxShadow: `0 0 20px rgba(0, 0, 0, 0.3)`,
+    boxShadow: `0 0 20px ${colors.gray.light}`,
     cursor: `pointer`,
     display: `flex`,
     height: 60,
     justifyContent: `space-around`,
+    alignItems: `center`,
     position: `fixed`,
     left: 20,
     visibility: `visible`,
     width: 60,
     zIndex: 20,
     display: `none`,
-    [presets.Tablet]: { display: `block` },
+    [presets.Tablet]: { display: `flex` },
   }
 }
 
