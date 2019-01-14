@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import {GoMarkGithub} from "react-icons/go"
 import logo from "../logo.svg"
+import isHomepageFn from "../utils/is-homepage"
 import typography, { rhythm, scale, options } from "../utils/typography"
 import presets, { colors } from "../utils/presets"
 import { vP, vPHd, vPVHd, vPVVHd } from "./gutters"
@@ -19,7 +20,7 @@ const assignActiveStyles = ({ isPartiallyCurrent }) =>
 
 
 const Navigation = ({ pathname }) => {
-  const isHomepage = pathname === `/`
+  const isHomepage = isHomepageFn(pathname)
   const isBlog = pathname === `/blog/` || pathname.indexOf(`/blog/page/`) === 0
   const navItemStyles = {
     ...styles.navItem,

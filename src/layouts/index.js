@@ -4,6 +4,7 @@ import { SkipNavLink } from "@reach/skip-nav"
 import {MdClose} from "react-icons/md"
 import { navigate, PageRenderer } from "gatsby"
 import presets, { colors } from "../utils/presets"
+import isHomepageFn from "../utils/is-homepage"
 import Navigation from "../components/navigation"
 import MobileNavigation from "../components/navigation-mobile"
 import SiteMetadata from "../components/site-metadata"
@@ -40,7 +41,7 @@ class DefaultLayout extends React.PureComponent {
   }
 
   render() {
-    const isHomepage = this.props.location.pathname === `/`
+    const isHomepage = isHomepageFn(this.props.location.pathname)
     const pageContext = this.props.pageContext
     const sidebarItems = pageContext.sidebarItems
     const isSidebarDisabled = pageContext.isSidebarDisabled || !sidebarItems

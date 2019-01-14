@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import { css } from "react-emotion"
+import isHomepageFn from "../utils/is-homepage"
 import SvgDefs from "../assets/svg-defs"
 import {
   BlogIcon,
@@ -36,7 +37,7 @@ const MobileNavItem = ({ linkTo, label, icon }) => (
 )
 
 const MobileNavigation = ({pathname}) => {
-  const isHomepage = pathname === `/`
+  const isHomepage = isHomepageFn(pathname)
   return (<React.Fragment>
     <span
       css={{
