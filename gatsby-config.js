@@ -14,6 +14,14 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-baidu-analytics`,
+      options: {
+        siteId: "f0d1765f43b1c2f17048bf9ba63ae21a",
+        // Put analytics script in the head instead of the body [default:false]
+        head: false,
+      },
+    },
+    {
       resolve: `gatsby-plugin-layout`,
       options: {
         component: require.resolve(`./src/layouts/index.js`),
