@@ -14,7 +14,7 @@ const HideSidebarButton = ({ onClick}) => (
       border: `none`,
       borderRadius: presets.radius,
       color: colors.gatsby,
-      display: `flex`,
+      display: `none`,
       cursor: `pointer`,
       alignItems: `center`,
       flexGrow: 0,
@@ -26,6 +26,8 @@ const HideSidebarButton = ({ onClick}) => (
       "&:hover": {
         background: colors.ui.bright,
       },
+      [presets.Tablet]: { display: 'flex' },
+      [presets.Desktop]: { display: 'flex' },
     }}
   >
       <Fragment>
