@@ -11,7 +11,7 @@ import { vP, vPHd, vPVHd, vPVVHd } from "./gutters"
 const navItemTopOffset = `0.6rem`
 const navItemHorizontalSpacing = rhythm(1 / 3)
 
-const iconColor = colors.lilac
+const iconColor = colors.ui.border
 const iconColorHomepage = colors.ui.light
 
 const assignActiveStyles = ({ isPartiallyCurrent }) =>
