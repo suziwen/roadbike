@@ -25,9 +25,11 @@ class StickyResponsiveSidebar extends Component {
   }
 
   render() {
+  //hide 和 open 的区别，open 是给 mobile 屏幕下使用， hide 是给宽屏下使用的
     const { open } = this.state
     const {
       enableScrollSync,
+      hide,
       location: { pathname },
     } = this.props
     const SidebarComponent = enableScrollSync ? ScrollSyncSidebar : Sidebar
@@ -45,6 +47,18 @@ class StickyResponsiveSidebar extends Component {
             ...styles.sidebarScrollContainer,
             opacity: menuOpacity,
             pointerEvents: open ? `auto` : `none`,
+            [presets.Tablet]: {
+              maxWidth: `none`,
+              opacity: `1 !important`,
+              pointerEvents: `auto`,
+              display: hide? `none`:false,
+              top: `calc(${presets.headerHeight})`,
+              width: rhythm(10),
+            },
+            [presets.Desktop]: {
+              width: rhythm(12),
+              display: hide? `none`:false,
+            },
           }}
         >
           <div
@@ -109,16 +123,6 @@ const styles = {
     transition: `opacity 0.5s ease`,
     width: 320,
     zIndex: 10,
-    [presets.Tablet]: {
-      maxWidth: `none`,
-      opacity: `1 !important`,
-      pointerEvents: `auto`,
-      top: `calc(${presets.headerHeight})`,
-      width: rhythm(10),
-    },
-    [presets.Desktop]: {
-      width: rhythm(12),
-    },
   },
   sidebar: {
     height: `100%`,
