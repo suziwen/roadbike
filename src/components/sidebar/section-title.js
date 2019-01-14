@@ -27,7 +27,7 @@ const Chevron = ({ isExpanded }) => (
   >
     <ChevronSvg
       cssProps={{
-        color: isExpanded ? colors.lilac : colors.ui.bright,
+        color: isExpanded ? colors.ui.border : colors.ui.bright,
         marginLeft: `auto`,
         marginRight: `auto`,
         transform: isExpanded ? `rotateX(180deg)` : `rotateX(0deg)`,
@@ -52,13 +52,11 @@ const TitleButton = ({
     css={{
       ...styles.resetButton,
       ...styles.button,
-      paddingLeft: level === 0 ? 40 : 0,
       paddingRight: `0 !important`,
       minHeight: 40,
       "&:before": {
         ...styles.ulHorizontalDivider,
         bottom: 0,
-        left: level === 0 ? 40 : 0,
         top: `auto`,
       },
     }}
@@ -86,7 +84,6 @@ const SplitButton = ({
     css={{
       alignItems: `flex-end`,
       display: `flex`,
-      paddingLeft: level === 0 ? 40 : 0,
       position: `relative`,
       width: `100%`,
     }}
@@ -94,7 +91,7 @@ const SplitButton = ({
     <span
       css={{
         flexGrow: 1,
-        borderRight: `1px solid ${colors.ui.border}`,
+        borderRight: `1px solid ${colors.ui.light}`,
       }}
     >
       <ItemLink

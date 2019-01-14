@@ -54,7 +54,7 @@ class Item extends React.PureComponent {
           <li
             css={{
               ...this.props.styles,
-              paddingLeft: level === 0 ? 40 : false,
+              paddingLeft: level === 0 ? 20 : false,
             }}
           >
             <ItemLink 
