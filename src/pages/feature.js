@@ -107,7 +107,12 @@ class IndexRoute extends React.Component {
     const featureItems = this.featureItems
     return (
       <SvgContainerStyled css={{ position: `relative` }}>
-        <Helmet htmlAttributes={{style: 'overflow:hidden;'}}>
+        <Helmet>
+          <htmlAttributes
+            css={{
+              overflow: `hidden`
+            }}
+          />
           <meta
             name="Description"
             content="小书匠主要功能"
