@@ -19,6 +19,7 @@ const ArticleStyled = styled('article')`
 const CoverStyled = styled('div')`
   display: none;
   position: relative;
+  pointer-events: none;
   ${presets.Tablet} {
     flex-basis: 180px;
     flex-grow: 0;
