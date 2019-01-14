@@ -8,7 +8,6 @@ import { vP, vPHd, vPVHd, vPVVHd } from "../components/gutters"
 import Slider from "./slider"
 
 const MastheadContent = (props) => {
-  console.log(props)
   return (
   <div
     className="masthead-content"

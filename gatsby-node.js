@@ -197,7 +197,6 @@ exports.createPages = ({ graphql, actions }) => {
           let next = index === 0 ? null : blogPosts[index - 1].node
           const prev =
             index === blogPosts.length - 1 ? null : blogPosts[index + 1].node
-          console.log(post.node.toc)
           let blogSidebarItems = null
           let enableScrollSync = null
           if (post.node.toc) {
@@ -272,7 +271,6 @@ exports.onPostBuild = () => {
 
 exports.onCreatePage = ({page, actions})=> {
   const { createPage } = actions
-  console.log(page.path)
   if(page.path.indexOf(`/docs/`) === 0) {
     page.context.sidebarItems = docSidebarItems
     createPage(page)

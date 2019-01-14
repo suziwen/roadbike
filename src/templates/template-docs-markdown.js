@@ -9,7 +9,6 @@ import Container from "../components/container"
 
 class DocsTemplate extends React.Component {
   render() {
-    console.log(this.props.data)
     const props = this.props
     const page = this.props.data.storyWriterMarkdown
     const pageHtmlAndCss = `<style>${page.customCss}</style>\n${page.html}`

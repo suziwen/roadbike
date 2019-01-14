@@ -171,9 +171,6 @@ class Mindmap extends React.Component {
       g.attr("transform", `rotate(${newValue})`)
 
       const x = d3
-      console.log(d3)
-      console.log(x.event.wheelDelta)
-      console.log(e)
     }
     const vData = d3.stratify()(self.nodes)
     drawViz(vData)
