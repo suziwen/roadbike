@@ -31,14 +31,14 @@ const ExpandAllButton = ({ onClick, expandAll }) => (
   >
     {expandAll ? (
       <Fragment>
-        <span>Collapse All</span>
+        <span>全部折叠</span>
         <span css={{ ...styles.icon }}>
           <GoFold />
         </span>
       </Fragment>
     ) : (
       <Fragment>
-        <span>Expand All</span>
+        <span>全部展开</span>
         <span css={{ ...styles.icon }}>
           <GoUnfold />
         </span>
