@@ -135,12 +135,7 @@ const Navigation = ({ pathname }) => {
           css={styles.logoLink}
           aria-label="Gatsby, Back to homepage"
         >
-          <img
-            src={logo}
-            css={styles.logo}
-            alt="Story writer Logo"
-            aria-hidden="true"
-          />
+          <span css={{fontFamily: `webfontxiaoshujiang`, fontWeight: `bolder`}}>小书匠</span>
         </Link>
         }
         <nav
