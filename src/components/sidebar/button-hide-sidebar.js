@@ -1,10 +1,10 @@
 import React, { Fragment } from "react"
-import {GoFold, GoUnfold} from "react-icons/go"
+import {GoX} from "react-icons/go"
 
 import presets, { colors } from "../../utils/presets"
 import { scale, options, rhythm } from "../../utils/typography"
 
-const ExpandAllButton = ({ onClick, expandAll }) => (
+const HideSidebarButton = ({ onClick}) => (
   <button
     onClick={onClick}
     css={{
@@ -28,25 +28,16 @@ const ExpandAllButton = ({ onClick, expandAll }) => (
       },
     }}
   >
-    {expandAll ? (
       <Fragment>
-        <span>全部折叠</span>
+        <span>隐藏</span>
         <span css={{ ...styles.icon }}>
-          <GoFold />
+          <GoX />
         </span>
       </Fragment>
-    ) : (
-      <Fragment>
-        <span>全部展开</span>
-        <span css={{ ...styles.icon }}>
-          <GoUnfold />
-        </span>
-      </Fragment>
-    )}
   </button>
 )
 
-export default ExpandAllButton
+export default HideSidebarButton
 
 const styles = {
   icon: {
@@ -55,3 +46,4 @@ const styles = {
     marginLeft: 8,
   },
 }
+

@@ -2,6 +2,7 @@ import React, { Component } from "react"
 
 import Item from "./item"
 import ExpandAllButton from "./button-expand-all"
+import HideSidebarButton from "./button-hide-sidebar"
 import getActiveItem from "../../utils/sidebar/get-active-item"
 import getActiveItemParents from "../../utils/sidebar/get-active-item-parents"
 import presets, { colors } from "../../utils/presets"
@@ -202,6 +203,7 @@ class SidebarBody extends Component {
       >
         {!itemList[0].disableExpandAll && (
           <header css={{ ...styles.utils }}>
+            <HideSidebarButton/>
             <ExpandAllButton
               onClick={this._expandAll}
               expandAll={this.state.expandAll}
@@ -259,6 +261,7 @@ const styles = {
     borderRight: `1px solid ${colors.ui.light}`,
     display: `flex`,
     alignItems: `center`,
+    justifyContent: `flex-end`,
     height: presets.sidebarUtilityHeight,
     background: colors.ui.whisper,
     paddingLeft: 40,
