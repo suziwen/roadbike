@@ -237,10 +237,11 @@ a.attachment .filesize {
 .story_image_blank_caption {
   border-bottom: 0px;
 }
-.story_image > img {
+.story_image >.gatsby-wrapper-image {
   border-radius: 0.3125em;
   box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.08);
 }
+.story_inline_image >.gatsby-wrapper-image,
 .story_inline_image > img {
   vertical-align: bottom;
 }
