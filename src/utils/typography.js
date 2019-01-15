@@ -114,9 +114,12 @@ const _options = {
       ".preview .xsj_hr": {
         margin: `${rhythm(options.blockMarginBottom)} 0`,
         border: 0,
-        borderTop: `1px dashed ${colors.ui.border}`,
+        borderTop: `1px dashed ${colors.gatsby}`,
         borderLeft: `90px solid transparent`,
         borderRight: `90px solid transparent`,
+        height: 0,
+        background: `none`,
+        padding: `unset`,
       },
       ".preview kbd": {
         display: `inline-block`,
@@ -129,33 +132,25 @@ const _options = {
         borderRadius: `3px`,
         boxShadow: `inset 0 -1px 0 ${colors.ui.border}`,
       },
-      hr: {
-        backgroundColor: colors.ui.light,
-      },
       ".main-body a": {
         color: `inherit`,
         textDecoration: `none`,
         fontFamily: options.headerFontFamily.join(`,`),
         fontWeight: `bold`,
       },
-      ".post-body a": {
+      ".preview a": {
         fontSize: `103%`,
         color: colors.gray.lightCopy,
         position: `relative`,
-        textShadow: `-1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff`,
-        backgroundImage: `linear-gradient(#37b2b2 50%, #37b2b2 50%)`,
+        textShadow: `-1px -1px 0 ${colors.ui.whisper}, 1px -1px 0 ${colors.ui.whisper}, -1px 1px 0 ${colors.ui.whisper}, 1px 1px 0 ${colors.ui.whisper}`,
+        backgroundImage: `linear-gradient(${colors.gatsby} 50%, ${colors.gatsby} 50%)`,
         backgroundSize: `100% 2px`,
         backgroundRepeat: `no-repeat`,
         backgroundPositionY: `calc(100% - 2px)`
       },
-      ".post-body figcaption": {
-        color: colors.gray.calm,
-        fontFamily: headerFontFamily.join(`,`),
-        fontSize: `87.5%`,
-        marginTop: rhythm(1 / 2),
-      },
-      ".post-body a:hover": {
+      ".preview a:hover": {
         backgroundSize: `0 2px`,
+        color: colors.gatsby,
         transition: `background-size .5s ease-in-out`,
       },
       ".main-body a.anchor": {
