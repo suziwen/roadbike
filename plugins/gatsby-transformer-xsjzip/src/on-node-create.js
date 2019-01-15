@@ -281,6 +281,7 @@ module.exports = async function onCreateNode(
 
     markdownNode.docType = node.sourceInstanceName? node.sourceInstanceName : `blogs`
     markdownNode.html = previewHtml
+    markdownNode.zipPath = node.absolutePath
     markdownNode.title = frontmatter.title || meta.title
     markdownNode.tags = frontmatter.tags || meta.tags
     if (!!markdownNode.tags && typeof(markdownNode.tags) === 'string'){
