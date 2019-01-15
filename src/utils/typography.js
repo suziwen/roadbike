@@ -123,7 +123,7 @@ const _options = {
         padding: `3px 5px`,
         color: colors.gatsby,
         verticalAlign: `middle`,
-        backgroundColor: colors.ui.wisper,
+        backgroundColor: colors.ui.light,
         border: `solid 1px ${colors.ui.border}`,
         borderRadius: `3px`,
         boxShadow: `inset 0 -1px 0 ${colors.ui.border}`,
