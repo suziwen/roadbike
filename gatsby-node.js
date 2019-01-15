@@ -23,6 +23,12 @@ const generateUid = (uid, uidObj, times=0)=>{
   }
 }
 
+const getPdfPath = (zipPath)=>{
+  const pos = zipPath.lastIndexOf('.zip')
+  const pdfPath = zipPath.substring(0, pos) + '.pdf'
+  return pdfPath
+}
+
 const extenditemList = itemList => {
   if (!itemList) {
     return []
@@ -84,6 +90,7 @@ exports.createPages = ({ graphql, actions }) => {
                   toc
                   docType
                   slug
+                  zipPath
                   tags
                   updateDate
                   excerpt
@@ -149,6 +156,8 @@ exports.createPages = ({ graphql, actions }) => {
               component: docPostTemplate,
               context: {
                 slug: post.node.slug,
+                zipPath: post.node.zipPath,
+                pdfPath: getPdfPath(post.node.zipPath),
                 sidebarItems: docSidebarItems
               },
             })
@@ -169,6 +178,8 @@ exports.createPages = ({ graphql, actions }) => {
             component: logPostTemplate,
             context: {
               slug: node.slug,
+              zipPath: node.zipPath,
+              pdfPath: getPdfPath(node.zipPath),
               sidebarItems: logSidebarItems
             },
           })
@@ -226,6 +237,8 @@ exports.createPages = ({ graphql, actions }) => {
             component: blogPostTemplate,
             context: {
               slug: post.node.slug,
+              zipPath: post.node.zipPath,
+              pdfPath: getPdfPath(post.node.zipPath),
               sidebarItems: blogSidebarItems,
               enableScrollSync,
               prev,

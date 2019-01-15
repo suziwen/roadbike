@@ -12,6 +12,13 @@ class DocsTemplate extends React.Component {
     const props = this.props
     const page = this.props.data.storyWriterMarkdown
     const pageHtmlAndCss = `<style>${page.customCss}</style>\n${page.html}`
+    console.log('hhhhhhhhhhhhhh')
+    if (props.data.zipFile){
+      console.log(props.data.zipFile.publicURL)
+    }
+    if (props.data.pdfFile) {
+      console.log(props.data.pdfFile.publicURL)
+    }
     return (
       <ContextConsumer>
         {({data, set})=>{
@@ -47,7 +54,13 @@ class DocsTemplate extends React.Component {
 export default DocsTemplate
 
 export const pageQuery = graphql`
-  query($slug: String!) {
+  query($slug: String!, $zipPath: String!, $pdfPath: String!) {
+    zipFile: file(absolutePath: {eq: $zipPath}){
+      publicURL
+    }
+    pdfFile: file(absolutePath: {eq: $pdfPath}){
+      publicURL
+    }
     storyWriterMarkdown(slug: { eq: $slug }) {
       html
       css
