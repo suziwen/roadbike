@@ -132,6 +132,35 @@ const _options = {
         borderRadius: `3px`,
         boxShadow: `inset 0 -1px 0 ${colors.ui.border}`,
       },
+      ".preview pre":{
+        lineHeight: `initial !important`,
+        wordWrap: `break-word`,
+        wordBreak: `break-word`,
+        tabSize: `4`,
+        whiteSpace: `pre-wrap`,
+        fontFamily: `monospace`,
+      },
+      ".preview .xiaoshujiang_code_title_container": {
+        userSelect: `none`,
+      },
+      ".preview code": {
+        position: `relative`,
+        fontFamily: `monospace`,
+        fontSize: `1em`,
+      },
+      ".preview code:before, .preview code:after": {
+        content: '"`"',
+        color: colors.gray.dark,
+        letterSpacing: `initial`,
+      },
+      ".preview pre code:before, .preview pre code:after": {
+        content: `none`,
+      },
+      ".preview pre": {
+        background: `initial`,
+        padding: 0,
+        fontFamily: `monospace`,
+      },
       ".main-body a": {
         color: `inherit`,
         textDecoration: `none`,
