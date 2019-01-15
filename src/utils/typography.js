@@ -121,6 +121,7 @@ const _options = {
       ".preview kbd": {
         display: `inline-block`,
         padding: `3px 5px`,
+        margin: `0 3px`,
         color: colors.gatsby,
         verticalAlign: `middle`,
         backgroundColor: colors.ui.light,
