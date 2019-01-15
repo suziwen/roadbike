@@ -128,7 +128,7 @@ const _options = {
       },
       ".preview code:before, .preview code:after": {
         content: '"`"',
-        color: colors.gray.dark,
+        color: colors.ui.bright,
         letterSpacing: `initial`,
       },
       ".preview pre code:before, .preview pre code:after": {
