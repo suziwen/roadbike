@@ -12,12 +12,6 @@ import Transition from "../components/transition"
 import ContextConsumer, { ContextProviderComponent } from "../components/context"
 import PageWithSidebar from "../components/page-with-sidebar"
 
-// Import Futura PT typeface
-import "../fonts/Webfonts/futurapt_book_macroman/stylesheet.css"
-import "../fonts/Webfonts/futurapt_bookitalic_macroman/stylesheet.css"
-import "../fonts/Webfonts/futurapt_demi_macroman/stylesheet.css"
-import "../fonts/Webfonts/futurapt_demiitalic_macroman/stylesheet.css"
-
 import "../assets/story-writer-markdown-default.css"
 import "../assets/story-writer-markdown-code-solarized-light.css"
 import "../assets/story-writer-markdown-components.css"
