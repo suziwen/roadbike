@@ -245,6 +245,8 @@ module.exports = async function onCreateNode(
 
   $('.story_title').remove()
   $('.story_tags').remove()
+  $('#MathJax_SVG_glyphs').parent().css('display', 'none')
+  $('#MathJax_SVG_glyphs').parent().parent().css('display', 'none')
   // 对 image 的特殊处理
   const remoteImageNodes = await transformImages({$, cache, store, createNode, createNodeId})
   await replaceImages({$, jsonNode, cache, pathPrefix, reporter, fileNodes, remoteImageNodes})
