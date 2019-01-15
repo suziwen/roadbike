@@ -1,6 +1,14 @@
+.preview table {
+  max-width: 100%;
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+  word-break: initial;
+  border: 1px solid rgba(34,36,38,.15);
+}
 /**** xsj start ****/
 /*svg start*/
-text {
+.preview text {
   font-size: 14px;
 }
 /*svg end*/
@@ -337,48 +345,6 @@ div.mathjax {
 
 
 /* road bike use*/
-.preview h1,
-.preview h2,
-.preview h3,
-.preview h4,
-.preview h5,
-.preview h6{
-  position: relative;
-}
-
-.preview h1:before{
-  content: '# '
-}
-.preview h2:before{
-  content: '## '
-}
-.preview h3:before{
-  content: '### '
-}
-.preview h4:before{
-  content: '#### '
-}
-.preview h5:before{
-  content: '##### '
-}
-.preview h6:before{
-  content: '###### '
-}
-
-.preview h1:before,
-.preview h2:before,
-.preview h3:before,
-.preview h4:before,
-.preview h5:before,
-.preview h6:before{
-  color: lightgray;
-  display: inline-block;
-  position: absolute;
-  padding-right: 100%;
-  right: 10px;
-}
-
-
 
 @-webkit-keyframes loader {
     from {

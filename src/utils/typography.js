@@ -76,20 +76,60 @@ const _options = {
       h5: {
         ...scale(0),
       },
-      blockquote: {
-        paddingLeft: rhythm(options.blockMarginBottom),
+      ".preview .xsj_heading": {
+        position: `relative`
+      },
+      ".preview .xsj_heading:before": {
+        color: colors.ui.bright,
+        display: `inline-block`,
+        position: `absolute`,
+        paddingRight: `100%`,
+        right: `10px`,
+        fontSize: `.8em`,
+      },
+      ".preview .xsj_heading.xsj_heading_h1:before": {
+        "content": `'# '`
+      },
+      ".preview .xsj_heading.xsj_heading_h2:before": {
+        "content": `'## '`
+      },
+      ".preview .xsj_heading.xsj_heading_h3:before": {
+        "content": `'### '`
+      },
+      ".preview .xsj_heading.xsj_heading_h4:before": {
+        "content": `'#### '`
+      },
+      ".preview .xsj_heading.xsj_heading_h5:before": {
+        "content": `'##### '`
+      },
+      ".preview .xsj_heading.xsj_heading_h6:before": {
+        "content": `'###### '`
+      },
+      ".preview blockquote": {
+        padding: rhythm(options.blockMarginBottom),
         marginLeft: 0,
-        borderLeft: `${rhythm(options.blockMarginBottom / 4)} solid ${
-          colors.ui.light
-        }`,
+        borderLeft: `10px solid ${colors.ui.border}`,
+        background: `${colors.ui.light}`
+      },
+      ".preview .xsj_hr": {
+        margin: `${rhythm(options.blockMarginBottom)} 0`,
+        border: 0,
+        borderTop: `1px dashed ${colors.ui.border}`,
+        borderLeft: `90px solid transparent`,
+        borderRight: `90px solid transparent`,
+      },
+      ".preview kbd": {
+        display: `inline-block`,
+        padding: `3px 5px`,
+        color: colors.gatsby,
+        verticalAlign: `middle`,
+        backgroundColor: colors.ui.wisper,
+        border: `solid 1px ${colors.ui.border}`,
+        borderRadius: `3px`,
+        boxShadow: `inset 0 -1px 0 ${colors.ui.border}`,
       },
       hr: {
         backgroundColor: colors.ui.light,
-      },
-      "tt, code, kbd, samp": {
-        // reset line-height: 1.4rem set by
-        // https://github.com/KyleAMathews/typography.js/blob/3c99e905414d19cda124a7baabeb7a99295fec79/packages/typography/src/utils/createStyles.js#L198
-        lineHeight: `inherit`,
       },
       ".main-body a": {
         color: `inherit`,
