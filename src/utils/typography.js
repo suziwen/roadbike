@@ -2,34 +2,12 @@ import Typography from "typography"
 import CodePlugin from "typography-plugin-code"
 import presets, { colors } from "./presets"
 
-const headerFontFamily = [
-  `Futura PT`,
-  `-apple-system`,
-  `BlinkMacSystemFont`,
-  `Segoe UI`,
-  `Roboto`,
-  `Oxygen`,
-  `Ubuntu`,
-  `Cantarell`,
-  `Fira Sans`,
-  `Droid Sans`,
-  `Helvetica Neue`,
-  `Arial`,
-  `sans-serif`,
-]
+const headerFontFamily =[`-apple-system`, `BlinkMacSystemFont`, `Helvetica Neue`, `PingFang SC`, `Microsoft YaHei`, `Source Han Sans SC`, `Noto Sans CJK SC`, `WenQuanYi Micro Hei`, `sans-serif`] 
 
 const _options = {
   headerFontFamily,
-  bodyFontFamily: [`Spectral`, `Georgia`, `Times New Roman`, `Times`, `serif`],
-  monospaceFontFamily: [
-    `SFMono-Regular`,
-    `Menlo`,
-    `Monaco`,
-    `Consolas`,
-    `Liberation Mono`,
-    `Courier New`,
-    `monospace`,
-  ],
+  bodyFontFamily: [`-apple-system`, `BlinkMacSystemFont`, `Helvetica Neue`, `PingFang SC`, `Microsoft YaHei`, `Source Han Sans SC`, `Noto Sans CJK SC`, `WenQuanYi Micro Hei`, `sans-serif`],
+  monospaceFontFamily: [`Menlo`, `Monaco`, `Consolas`, `Andale Mono`, `lucida console`, `Courier New`, `monospace`],
   systemFontFamily: [
     `-apple-system`,
     `BlinkMacSystemFont`,
