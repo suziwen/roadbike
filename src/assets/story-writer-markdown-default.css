@@ -363,10 +363,12 @@ div.mathjax {
     }
 }
 
-.mindmap_container {
-    margin-left: calc(-100vw / 2 + 100% / 2 + 8rem);
-    margin-right: calc(-100vw / 2 + 100% / 2);
-    max-width: calc(100vw - 16.8rem);
+@media (min-width: 750px){
+  .mindmap_container {
+      margin-left: calc(-100vw / 2 + 100% / 2 + 8rem);
+      margin-right: calc(-100vw / 2 + 100% / 2);
+      max-width: calc(100vw - 17.4rem);
+  }
 }
 
 .story_block_image .gif_player{
