@@ -165,7 +165,6 @@ export const blogPostPreviewFragment = graphql`
     }
     meta {
       title
-      tags
     }
   }
 `

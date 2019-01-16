@@ -266,6 +266,9 @@ module.exports = async function onCreateNode(
           return v
         }
       })
+      if (_.isArray(data.data.tags)){
+        data.data.tags = data.data.tags.join(',')
+      }
     }
 
     const xxId = createNodeId(`${jsonNode.id} >>> StoryWriterMarkdown`)
