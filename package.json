@@ -80,7 +80,7 @@
   "scripts": {
     "build": "gatsby build",
     "clean": "rm -rf .cache && rm -rf public",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public -r root@115.28.171.238:/data/projectgit/roadbike",
     "develop": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
