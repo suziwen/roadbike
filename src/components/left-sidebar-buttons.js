@@ -11,6 +11,7 @@ const ContainerStyled = styled('div')`
   display: none;
   text-align: right;
   flex-direction: column;
+  color: ${colors.ui.border};
   ${presets.Tablet}{
     display: flex;
   }

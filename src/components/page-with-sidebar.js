@@ -65,7 +65,7 @@ class PageWithSidebar extends React.Component {
 }
 const styles = {
   sidebarToggleButton: {
-    backgroundColor: colors.gatsby,
+    backgroundColor: colors.ui.border,
     color: colors.ui.whisper,
     borderRadius: `50%`,
     bottom: 64,
@@ -81,6 +81,9 @@ const styles = {
     width: 60,
     zIndex: 20,
     display: `none`,
+    "&:hover": {
+      backgroundColor: colors.gatsby,
+    },
     [presets.Tablet]: { display: `flex` },
   }
 }
