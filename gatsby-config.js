@@ -4,13 +4,9 @@ require(`dotenv`).config({
 
 module.exports = {
   siteMetadata: {
-    title: `GatsbyJS`,
-    siteUrl: `https://www.gatsbyjs.org`,
-    description: `Blazing fast modern site generator for React`,
-    twitter: `@gatsbyjs`,
-  },
-  mapping: {
-    "MarkdownRemark.frontmatter.author": `AuthorYaml`,
+    title: `小书匠`,
+    siteUrl: `http://www.xiaoshujiang.com`,
+    description: `一款让你爱不释手的写作软件`,
   },
   plugins: [
     {
@@ -91,8 +87,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `GatsbyJS`,
-        short_name: `GatsbyJS`,
+        name: `小书匠`,
+        short_name: `小书匠`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
@@ -141,7 +137,7 @@ module.exports = {
                 description: siteMetadata.description,
                 feed_url: siteMetadata.siteUrl + `/blog/rss.xml`,
                 site_url: siteMetadata.siteUrl,
-                generator: `GatsbyJS`,
+                generator: `StoryWriter`,
               }
             },
             serialize: ({ query: { site, allStoryWriterMarkdown } }) =>

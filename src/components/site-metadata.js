@@ -12,14 +12,13 @@ const SiteMetadata = ({ pathname }) => (
           siteMetadata {
             siteUrl
             title
-            twitter
           }
         }
       }
     `}
     render={({
       site: {
-        siteMetadata: { siteUrl, title, twitter },
+        siteMetadata: { siteUrl, title },
       },
     }) => (
       <Helmet defaultTitle={title} titleTemplate={`%s | ${title}`}>
