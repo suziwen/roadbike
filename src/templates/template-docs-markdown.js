@@ -13,13 +13,6 @@ class DocsTemplate extends React.Component {
     const props = this.props
     const page = this.props.data.storyWriterMarkdown
     const pageHtmlAndCss = `<style>${page.customCss}</style>\n${page.html}`
-    console.log('hhhhhhhhhhhhhh')
-    if (props.data.zipFile){
-      console.log(props.data.zipFile.publicURL)
-    }
-    if (props.data.pdfFile) {
-      console.log(props.data.pdfFile.publicURL)
-    }
     return (
       <ContextConsumer>
         {({data, set})=>{
