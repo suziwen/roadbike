@@ -19,7 +19,7 @@ class DocsTemplate extends React.Component {
           return (
               <React.Fragment>
                 <Helmet>
-                  <title>{page.title}</title>
+                  <title>升级日志</title>
                   <meta name="description" content={page.excerpt} />
                   <meta property="og:description" content={page.excerpt} />
                   <meta property="og:title" content={page.title} />

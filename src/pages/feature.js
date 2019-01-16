@@ -113,6 +113,7 @@ class IndexRoute extends React.Component {
               overflow: `hidden`
             }}
           />
+          <title>主要功能</title>
           <meta
             name="Description"
             content="小书匠主要功能"

@@ -31,6 +31,7 @@ class IndexRoute extends React.Component {
     return (
       <div css={{ position: `relative` }}>
         <Helmet>
+          <title>价格</title>
           <meta
             name="Description"
             content="小书匠付费功能介绍"

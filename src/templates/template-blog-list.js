@@ -34,7 +34,7 @@ class BlogPostsIndex extends React.Component {
           }}
         >
           <Helmet>
-            <title>Blog</title>
+            <title>博客</title>
           </Helmet>
           <Container
             css={{
