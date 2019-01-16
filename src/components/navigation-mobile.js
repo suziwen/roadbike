@@ -74,7 +74,7 @@ const MobileNavigation = ({pathname}) => {
     >
       <MobileNavItem linkTo="/" label="Home" icon={DocsIcon} />
       <MobileNavItem linkTo="/docs/" label="文档" icon={TutorialIcon} />
-      <MobileNavItem linkTo="/plugins/" label="功能" icon={PluginsIcon} />
+      <MobileNavItem linkTo="/price/" label="价格" icon={PluginsIcon} />
       <MobileNavItem linkTo="/blog/" label="博客" icon={BlogIcon} />
     </div>
   </React.Fragment>
