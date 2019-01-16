@@ -8,9 +8,11 @@ import typography, { rhythm, scale, options } from "../utils/typography"
 import Container from "../components/container"
 import TagsSection from "../components/tags-section"
 import getLink from "../utils/node-link"
+import LeftSidebarButtons from "../components/left-sidebar-buttons"
 
 class BlogPostTemplate extends React.Component {
   render() {
+    const props = this.props
     const post = this.props.data.storyWriterMarkdown;
     const prev = this.props.pageContext.prev
     const next = this.props.pageContext.next
@@ -54,6 +56,10 @@ class BlogPostTemplate extends React.Component {
     return (
       <div>
         <Container className="post" css={{ paddingBottom: `0` }}>
+          <LeftSidebarButtons 
+            zipFile={props.data.zipFile}
+            pdfFile={props.data.pdfFile}
+          />
           <main id={`reach-skip-nav`}>
             {/* Add long list of social meta tags */}
             <Helmet>
@@ -190,7 +196,13 @@ class BlogPostTemplate extends React.Component {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query BlogPostBySlug($slug: String!, $zipPath: String!, $pdfPath: String!) {
+    zipFile: file(absolutePath: {eq: $zipPath}){
+      publicURL
+    }
+    pdfFile: file(absolutePath: {eq: $pdfPath}){
+      publicURL
+    }
     site {
       siteMetadata {
         title

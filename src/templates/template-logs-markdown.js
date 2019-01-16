@@ -6,6 +6,7 @@ import ContextConsumer from "../components/context"
 import DocSearchContent from "../components/docsearch-content"
 
 import Container from "../components/container"
+import LeftSidebarButtons from "../components/left-sidebar-buttons"
 
 class DocsTemplate extends React.Component {
   render() {
@@ -29,6 +30,10 @@ class DocsTemplate extends React.Component {
                       <h1 css={{ marginTop: 0 }}>
                         {page.title}
                       </h1>
+                      <LeftSidebarButtons 
+                        zipFile={props.data.zipFile}
+                        pdfFile={props.data.pdfFile}
+                      />
                       <div
                         dangerouslySetInnerHTML={{
                           __html: pageHtmlAndCss,
@@ -47,7 +52,13 @@ class DocsTemplate extends React.Component {
 export default DocsTemplate
 
 export const pageQuery = graphql`
-  query($slug: String!) {
+  query($slug: String!, $zipPath: String!, $pdfPath: String!) {
+    zipFile: file(absolutePath: {eq: $zipPath}){
+      publicURL
+    }
+    pdfFile: file(absolutePath: {eq: $pdfPath}){
+      publicURL
+    }
     storyWriterMarkdown(slug: { eq: $slug }) {
       html
       css
