@@ -47,7 +47,9 @@ class LeftSidebarButtons extends React.Component {
     let pdfURL = ''
     if (props.zipFile){
       //zipURL = `http://localhost:3000/#xsjzip=${encodeURIComponent(window.location.origin + props.zipFile.publicURL)}`
-      zipURL = `http://markdown.xiaoshujiang.com/#xsjzip=${encodeURIComponent(window.location.origin + props.zipFile.publicURL)}`
+      if (typeof window !== 'undefined') {
+        zipURL = `http://markdown.xiaoshujiang.com/#xsjzip=${encodeURIComponent(window.location.origin + props.zipFile.publicURL)}`
+      }
     }
     if (props.pdfFile){
       pdfURL = `/pdf/#file=${encodeURIComponent(props.pdfFile.publicURL)}`
