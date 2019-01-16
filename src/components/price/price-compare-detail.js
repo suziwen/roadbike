@@ -218,7 +218,7 @@ const PriceCompareDetail = ()=>{
           <div css={{
             margin: `${rhythm(options.blockMarginBottom)} 0`,
           }}>
-            <Button large to="/download/">
+          <Button large to="/blog/vip/price/flow/">
               查看付费流程
             </Button>
           </div>
