@@ -51,12 +51,16 @@ class LeftSidebarButtons extends React.Component {
     if (props.pdfFile){
       pdfURL = `/pdf/#file=${encodeURIComponent(props.pdfFile.publicURL)}`
     }
-    return (
-    <ContainerStyled>
-      {zipURL&&<a href={zipURL}><span className="icon_tip">修改当前文件</span><i className="fas fa-file-archive"></i></a>}
-      {pdfURL&&<Link to={pdfURL}><span className="icon_tip">查看pdf版本</span><i className="fas fa-file-pdf"></i></Link>}
-    </ContainerStyled>
-      )
+    if (zipURL || pdfURL){
+      return (
+      <ContainerStyled>
+        {zipURL&&<a href={zipURL}><span className="icon_tip">修改当前文件</span><i className="fas fa-file-archive"></i></a>}
+        {pdfURL&&<Link to={pdfURL}><span className="icon_tip">查看pdf版本</span><i className="fas fa-file-pdf"></i></Link>}
+      </ContainerStyled>
+        )
+    } else {
+      return ""
+    }
   }
 }
 
