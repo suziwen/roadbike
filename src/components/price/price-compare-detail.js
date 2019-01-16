@@ -37,10 +37,11 @@ const HeaderBgStyled = styled(`div`)`
 
 
 const PriceContainerStyled = styled(`div`)`
-  padding: 0 0 20px;
+  padding: 0 0 10px;
   & span{
     display: inline-block;
     transition: transform .5s;
+    font-size: 2rem;
   }
 `
 const PriceSectionPriceHeader = ({
