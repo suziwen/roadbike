@@ -145,6 +145,9 @@ const _options = {
         fontFamily: options.headerFontFamily.join(`,`),
         fontWeight: `bold`,
       },
+      ".main-body a:hover": {
+        color: colors.gatsby,
+      },
       ".preview a": {
         fontSize: `103%`,
         color: colors.gray.lightCopy,
@@ -157,7 +160,6 @@ const _options = {
       },
       ".preview a:hover": {
         backgroundSize: `0 2px`,
-        color: colors.gatsby,
         transition: `background-size .5s ease-in-out`,
       },
       ".main-body a.anchor": {
