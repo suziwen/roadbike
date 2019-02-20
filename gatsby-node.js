@@ -163,6 +163,12 @@ exports.createPages = ({ graphql, actions }) => {
             })
           }
         })
+        createRedirect({
+          toPath: `/blog/vip/price/flow`,
+          fromPath: `/priceflow.html`,
+          redirectInBrowser: true,
+          isPermanent: true
+        })
         if (logNodes.length > 0 ){
           const logNode = logNodes[0]
           createRedirect({
