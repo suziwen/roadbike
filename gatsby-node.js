@@ -169,6 +169,12 @@ exports.createPages = ({ graphql, actions }) => {
           redirectInBrowser: true,
           isPermanent: true
         })
+        createRedirect({
+          toPath: `/feature`,
+          fromPath: `/feature.html`,
+          redirectInBrowser: true,
+          isPermanent: true
+        })
         if (logNodes.length > 0 ){
           const logNode = logNodes[0]
           createRedirect({
