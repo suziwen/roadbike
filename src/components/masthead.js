@@ -1,11 +1,79 @@
 import React from "react"
 import {FiFeather} from "react-icons/fi"
 
+import styled, {keyframes} from "react-emotion"
 import { rhythm, scale } from "../utils/typography"
 import presets, { colors } from "../utils/presets"
 import Button from "./button"
 import { vP, vPHd, vPVHd, vPVVHd } from "../components/gutters"
 import Slider from "./slider"
+
+
+const arrowMoveRight = keyframes({
+  "50%": {
+    "transform": "translateX(10px)"
+  }
+})
+const arrowMoveLeft = keyframes({
+  "50%": {
+    "transform": "translateX(-10px)"
+  }
+})
+
+
+const ArrowButtonStyled = styled('div')`
+  position: absolute;
+  height: 10px;
+  left: 51.5%;
+  top: 36%;
+  width: 150%;
+  z-index: -1;
+  &:after, &:before{
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 10px;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='15' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 5.5H0v-1h6v-4L15 5 6 9.5z' fill='%23B6B9C0'/%3E%3C/svg%3E");
+    position: absolute;
+    top: 0;
+  }
+  &:before{
+    left: 0;
+  }
+  &:after{
+    right: 0;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='15' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 4.5h6v1H9v4L0 5 9 .5v4z' fill='%23B6B9C0'/%3E%3C/svg%3E");
+  }
+`
+
+const ArrowButtonContainerStyled = styled('div')`
+  position: relative;
+  &:hover ${ArrowButtonStyled}:before{
+    animation: ${arrowMoveLeft} 1s ease infinite;
+  }
+  &:hover ${ArrowButtonStyled}:after{
+    animation: ${arrowMoveRight} 1s ease infinite;
+  }
+`
+
+const ArrowButtonContainer = (props) =>{
+  return (
+    <ArrowButtonContainerStyled>
+      <ArrowButtonStyled css={{
+        "transform": "translateX(-50%) rotate(-22deg)"
+      }}/>
+      <ArrowButtonStyled css={{
+        "transform": "rotate(-90deg)",
+        "width": "100%",
+        "left": 0
+      }}/>
+      <ArrowButtonStyled css={{
+        "transform": "translateX(-50%) rotate(22deg)"
+      }}/>
+      {props.children}
+    </ArrowButtonContainerStyled>
+  )
+}
 
 const MastheadContent = (props) => {
   return (
@@ -114,6 +182,7 @@ const MastheadContent = (props) => {
         </span>
         的写作软件
       </h1>
+      <ArrowButtonContainer>
       <Button large onClick={props.rippleEffect} tag="button" target="_self" overrideCSS={{
         fontFamily: 'smy',
         position: `relative`,
@@ -174,6 +243,7 @@ const MastheadContent = (props) => {
           height: `4px`,
         }}></span>
       </Button>
+      </ArrowButtonContainer>
     </div>
     <div css={{
       color: colors.accent,
