@@ -231,15 +231,19 @@ module.exports = async function onCreateNode(
       const fileResourcePath = path.join(targetDir, fileResource.filename)
       const fileNode = await createFileNode(fileResourcePath, createNodeId, {})
       fileNode.internal.description = `${node.internal.description} / ${fileResourcePath}`
+      fileNode.parent = node.id
       createNode(fileNode, { name: `gatsby-source-filesystem` })
+      createParentChildLink({ parent: node, child: fileNode })
       return fileNode
     })
   )
   const createJsonFileNode = async (meta)=>{
     const  jsonPath = path.join(targetDir, "xiaoshujiang.json")
     const fileNode = await createFileNode(jsonPath, createNodeId, {})
+    fileNode.parent = node.id
     fileNode.internal.description = `${node.internal.description} / ${jsonPath}`
     createNode(fileNode, { name: `gatsby-source-filesystem` })
+    createParentChildLink({ parent: node, child: fileNode })
     return fileNode
   }
   const jsonNode = await createJsonFileNode(meta)
@@ -249,7 +253,7 @@ module.exports = async function onCreateNode(
   $('#MathJax_SVG_glyphs').parent().css('display', 'none')
   $('#MathJax_SVG_glyphs').parent().parent().css('display', 'none')
   // 对 image 的特殊处理
-  const remoteImageNodes = await transformImages({$, cache, store, createNode, createNodeId})
+  const remoteImageNodes = await transformImages({$, cache, store, createNode, createNodeId, node, createParentChildLink})
   await replaceImages({$, jsonNode, cache, pathPrefix, reporter, fileNodes, remoteImageNodes})
   //const previewHtml = "<div id='xsj_root_html'><div id='xsj_root_body'>" + $('.html_preview.preview').parent().html() + "</div></div>"
   const previewHtml = $('.html_preview.preview').parent().html()
@@ -331,7 +335,9 @@ module.exports = async function onCreateNode(
         fs.outputFileSync(fileCoverPath, pngBuffer)
         const fileCoverNode = await createFileNode(fileCoverPath, createNodeId, {})
         fileCoverNode.internal.description = `${node.internal.description} / ${fileCoverPath}`
+        fileCoverNode.parent = node.id
         createNode(fileCoverNode, { name: `gatsby-source-filesystem` })
+        createParentChildLink({ parent: node, child: fileCoverNode })
         markdownNode.cover = `./${fileCover}`
       }
     }

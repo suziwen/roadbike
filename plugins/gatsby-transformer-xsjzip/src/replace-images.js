@@ -95,7 +95,7 @@ const replaceImage = async({$img, imageNode, options, reporter, cache, isLocal})
   }
 }
 
-const transformImages = async({$, cache, store, createNode, createNodeId})=>{
+const transformImages = async({$, cache, store, createNode, createNodeId, parentNode, createParentChildLink})=>{
   const imgs = []
   $('img').each((index, img)=>{
     const $img = $(img)
@@ -117,7 +117,10 @@ const transformImages = async({$, cache, store, createNode, createNodeId})=>{
       createNodeId
     })
     if (fileNode) {
+
+      fileNode.parent = parentNode.id
       console.log(`tranform remote image node success`)
+      createParentChildLink({ parent: parentNode, child: fileNode })
       remoteImageNodes[src] = fileNode
     }
   }))
