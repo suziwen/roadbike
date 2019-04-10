@@ -106,6 +106,10 @@ exports.createPages = ({ graphql, actions }) => {
         }
 
         // Create blog posts pages.
+        if (!result.data) {
+          reject("no story writer markdown")
+          return
+        }
         const posts = result.data.allStoryWriterMarkdown.edges
         const blogPosts = _.filter(result.data.allStoryWriterMarkdown.edges, edge=>{
           const docType = _.get(edge, `node.docType`)

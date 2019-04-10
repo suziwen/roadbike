@@ -196,6 +196,7 @@ module.exports = async function onCreateNode(
 ) {
   const { createNode, createParentChildLink } = actions
   const programDir = store.getState().program.directory
+  const zzz = 0
 
 
 
@@ -315,21 +316,24 @@ module.exports = async function onCreateNode(
       }
     }
     if (!markdownNode.cover){
-      const pattern = Trianglify({
-        palette: palettes,
-        width: 1024,
-        height: 768 
-      })
-      const pngURI = pattern.png()
-      const pngData = pngURI.substr(pngURI.indexOf('base64') + 7)
-      const pngBuffer = new Buffer(pngData, 'base64')
       const fileCover = `cover.png`
       const fileCoverPath = path.join(targetDir, fileCover)
-      fs.outputFileSync(fileCoverPath, pngBuffer)
-      const fileCoverNode = await createFileNode(fileCoverPath, createNodeId, {})
-      fileCoverNode.internal.description = `${node.internal.description} / ${fileCoverPath}`
-      createNode(fileCoverNode, { name: `gatsby-source-filesystem` })
-      markdownNode.cover = `./${fileCover}`
+      if(!fs.existsSync(fileCoverPath)){
+        reporter.info(`生成封面i${fileCoverPath}`)
+        const pattern = Trianglify({
+          palette: palettes,
+          width: 1024,
+          height: 768 
+        })
+        const pngURI = pattern.png()
+        const pngData = pngURI.substr(pngURI.indexOf('base64') + 7)
+        const pngBuffer = new Buffer(pngData, 'base64')
+        fs.outputFileSync(fileCoverPath, pngBuffer)
+        const fileCoverNode = await createFileNode(fileCoverPath, createNodeId, {})
+        fileCoverNode.internal.description = `${node.internal.description} / ${fileCoverPath}`
+        createNode(fileCoverNode, { name: `gatsby-source-filesystem` })
+        markdownNode.cover = `./${fileCover}`
+      }
     }
     const pFragments = []
     $('.html_preview.preview>p').each((i, p)=>{
