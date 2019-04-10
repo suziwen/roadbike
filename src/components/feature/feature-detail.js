@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "react-emotion"
 import posed, { PoseGroup } from 'react-pose'
-import GifPlayer from "react-gif-player"
 import {FaTimes} from "react-icons/fa"
 
 import "react-gif-player/dist/gifplayer.css"
@@ -32,6 +31,13 @@ import outlineGif from "../../assets/feature/outline.gif"
 import outlineGifStill from "../../assets/feature/outline.gif.png"
 
 import featureStyles from "../feature.module.css"
+
+
+let GifPlayer
+if (typeof window !== 'undefined') {
+  GifPlayer = require('react-gif-player')
+}
+//import GifPlayer from "react-gif-player"
 
 
 const getGifObj = (key)=>{
