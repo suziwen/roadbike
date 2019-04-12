@@ -184,7 +184,7 @@ module.exports = async function onCreateNode(
   $('#MathJax_SVG_glyphs').parent().css('display', 'none')
   $('#MathJax_SVG_glyphs').parent().parent().css('display', 'none')
   // 对 image 的特殊处理
-  const remoteImageNodes = await transformImages({$, cache, store, createNode, createNodeId, node, createParentChildLink})
+  const remoteImageNodes = await transformImages({$, cache, store, createNode, createNodeId, parentNode:node, createParentChildLink})
   await replaceImages({$, jsonNode, cache, pathPrefix, reporter, fileNodes, remoteImageNodes})
   //const previewHtml = "<div id='xsj_root_html'><div id='xsj_root_body'>" + $('.html_preview.preview').parent().html() + "</div></div>"
   const previewHtml = $('.html_preview.preview').parent().html()
