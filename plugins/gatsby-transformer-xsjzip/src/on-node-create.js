@@ -10,7 +10,6 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 const truncatise = require(`truncatise`)
 const {replaceImages, transformImages} = require(`./replace-images`)
 const Trianglify = require('trianglify')
-const css = require(`css`)
 
 const CACHE_DIR = `.cache`
 const FS_PLUGIN_DIR = `gatsby-transformer-xsjzip`
@@ -35,14 +34,6 @@ const palettes = {
   Reds: ["#fff5f0","#fee0d2","#fcbba1","#fc9272","#fb6a4a","#ef3b2c","#cb181d","#a50f15","#67000d"]
 }
 
-
-async function unZipContent(node, ){
-  const zip = new AdmZip(node.absolutePath)
-  zip.extractAllTo()
-
-  
-}
-
 const slugs = {}
 
 const fixSlugPath = (slug)=>{
@@ -64,66 +55,6 @@ const fixDuplateSlug = ({slug, times=0, reporter, node})=>{
     return fixDuplateSlug({slug:orignSlug, times:times + 1, reporter, node})
   }
   return slug
-}
-
-const recursiveCssAst = (cssAst)=>{
-  switch(cssAst.type){
-    case "stylesheet":
-      cssAst.stylesheet && cssAst.stylesheet.rules && cssAst.stylesheet.rules.forEach((rule)=>{
-        recursiveCssAst(rule)
-      })
-      break;
-    case "media":
-    case "document":
-    case "host":
-    case "supports":
-      cssAst.rules && cssAst.rules.forEach((rule)=>{
-        recursiveCssAst(rule)
-      })
-      break;
-    case "keyframes":
-      cssAst.keyframes && cssAst.keyframes.forEach((keyframe)=>{
-        recursiveCssAst(keyframe)
-      })
-      break;
-    case "keyframe":
-    case "rule":
-    case "page":
-      cssAst.selectors && cssAst.selectors.forEach((selector, i)=>{
-        if (selector) {
-          const selectorLetters = _.map(selector.split(` `), (selectorLetter)=>{
-            let letter = selectorLetter
-            let suffixLetter = ''
-            const pos = selectorLetter.indexOf(`:`)
-            if (pos > 0) {
-              letter = selectorLetter.substring(0, pos)
-              suffixLetter = selectorLetter.substring(pos)
-            }
-            if (letter == 'html') {
-              letter = '#xsj_root_html'
-            }
-            if (letter == 'body') {
-              letter = '#xsj_root_body'
-            }
-            return letter + suffixLetter
-          })
-          cssAst.selectors[i] = selectorLetters.join(" ")
-          if (cssAst.selectors[i].indexOf('#xsj_root_html') < 0) {
-            cssAst.selectors[i] = '#xsj_root_html ' + cssAst.selectors[i]
-          }
-        }
-      })
-  }
-}
-
-const transformCssSelector = (cssText)=>{
-  if (!cssText) {
-    return cssText
-  }
-  const cssAst = css.parse(cssText, {silent: true})
-  recursiveCssAst(cssAst)
-  const newCssText = css.stringify(cssAst)
-  return newCssText
 }
 
 const getTableOfContent = ($, slug)=>{
@@ -355,7 +286,6 @@ module.exports = async function onCreateNode(
     markdownNode.meta = {
       title: ``, // always include a title
       ...data.data,
-      _PARENT: jsonNode.id,
     }
 
     markdownNode.rawMarkdownBody = data.content
