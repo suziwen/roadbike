@@ -243,7 +243,7 @@ class FeatureHexagon extends React.Component {
               onMouseLeave:()=>{this.handleActiveNode()},
             }}
           >
-            <foreignObject className={"foreign-object hex_icon " + iconClass} x="50%" y="50%">
+            <foreignObject className={"foreign-object hex_icon " + iconClass} x="50%" y="50%" style={{overflow: 'visible'}}>
               <ItemIcon style={{width: '50%', height: '50%', transform: 'translate(-50%, -50%)'}}/>
             </foreignObject>
           </Hexagon>
