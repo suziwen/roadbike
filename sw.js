@@ -24,52 +24,7 @@ workbox.clientsClaim();
  * requests for URLs in the manifest.
  * See https://goo.gl/S9QRab
  */
-self.__precacheManifest = [
-  {
-    "url": "webpack-runtime-31b95a03464314c2d179.js"
-  },
-  {
-    "url": "styles.a349a1b3051336b1c81b.css"
-  },
-  {
-    "url": "styles-4b752143ef6316a2bc76.js"
-  },
-  {
-    "url": "app-ffa8d078eede4fc77b7d.js"
-  },
-  {
-    "url": "component---node-modules-gatsby-plugin-offline-app-shell-js-f0ddc48dee944b5168e1.js"
-  },
-  {
-    "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "f69c940c71b691c390ee7cede65c6120"
-  },
-  {
-    "url": "libs/zoom/zoom.css"
-  },
-  {
-    "url": "component---src-pages-404-js-168113f24e167571a26f.js"
-  },
-  {
-    "url": "static/d/285/path---404-html-516-62a-0SUcWyAf8ecbYDsMhQkEfPzV8.json"
-  },
-  {
-    "url": "libs/jquery-3.3.1.min.js"
-  },
-  {
-    "url": "libs/transition.js"
-  },
-  {
-    "url": "libs/zoom/zoom-vanilla.min.js"
-  },
-  {
-    "url": "static/d/604/path---offline-plugin-app-shell-fallback-a-30-c5a-BawJvyh36KKFwbrWPg4a4aYuc8.json"
-  },
-  {
-    "url": "manifest.webmanifest",
-    "revision": "fae6f43b3640d36355728c88e2d1713d"
-  }
-].concat(self.__precacheManifest || []);
+self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
@@ -88,7 +43,7 @@ const navigationRoute = new workbox.routing.NavigationRoute(({ event }) => {
   return idbKeyval.get(WHITELIST_KEY).then((customWhitelist = []) => {
     // Respond with the offline shell if we match the custom whitelist
     if (customWhitelist.includes(pathname)) {
-      const offlineShell = `/offline-plugin-app-shell-fallback/index.html`
+      const offlineShell = `/roadbike/offline-plugin-app-shell-fallback/index.html`
       const cacheName = workbox.core.cacheNames.precache
 
       return caches.match(offlineShell, { cacheName }).then(cachedResponse => {
@@ -160,7 +115,7 @@ const messageApi = {
 
     pathnames = pathnames.map(({ pathname, includesPrefix }) => {
       if (!includesPrefix) {
-        return `${pathname}`
+        return `/roadbike${pathname}`
       } else {
         return pathname
       }
