@@ -24,7 +24,52 @@ workbox.clientsClaim();
  * requests for URLs in the manifest.
  * See https://goo.gl/S9QRab
  */
-self.__precacheManifest = [].concat(self.__precacheManifest || []);
+self.__precacheManifest = [
+  {
+    "url": "webpack-runtime-fa65563a250431bb44aa.js"
+  },
+  {
+    "url": "styles.cc305ef79cffd39a77c5.css"
+  },
+  {
+    "url": "styles-4b752143ef6316a2bc76.js"
+  },
+  {
+    "url": "app-81110b3dd822286245dc.js"
+  },
+  {
+    "url": "component---node-modules-gatsby-plugin-offline-app-shell-js-f0ddc48dee944b5168e1.js"
+  },
+  {
+    "url": "offline-plugin-app-shell-fallback/index.html",
+    "revision": "282e4889ed4d39991becd781b1c72a40"
+  },
+  {
+    "url": "libs/zoom/zoom.css"
+  },
+  {
+    "url": "component---src-pages-404-js-168113f24e167571a26f.js"
+  },
+  {
+    "url": "static/d/285/path---404-html-516-62a-0SUcWyAf8ecbYDsMhQkEfPzV8.json"
+  },
+  {
+    "url": "libs/jquery-3.3.1.min.js"
+  },
+  {
+    "url": "libs/transition.js"
+  },
+  {
+    "url": "libs/zoom/zoom-vanilla.min.js"
+  },
+  {
+    "url": "static/d/604/path---offline-plugin-app-shell-fallback-a-30-c5a-BawJvyh36KKFwbrWPg4a4aYuc8.json"
+  },
+  {
+    "url": "manifest.webmanifest",
+    "revision": "fae6f43b3640d36355728c88e2d1713d"
+  }
+].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
