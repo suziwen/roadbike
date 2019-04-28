@@ -58,7 +58,6 @@ src/posts
 yarn-error.log
 package-lock.json
 yarn.lock
-src/xsjposts
 src/xsjpostsa
 src/xsjpostsb
 src/xsjpostsc
