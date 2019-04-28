@@ -4,14 +4,20 @@
 
 # 本地运行
 
+
+node > 8.9.*
+
+可以考虑使用 nvm 管理不同版本的 node
+https://github.com/nvm-sh/nvm
+
 ```
+nvm use 8.9.1
 npm  install
-npm run dev
+npm run start
 ```
 
 # 打包发布
 
 ```
-npm run build
-npm run public
+npm run deploy
 ```
