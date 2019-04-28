@@ -1,4 +1,4 @@
-# gatsby-transformer-remark
+# gatsby-transformer-xsjzip
 
 Parses xiaoshujiang's Markdown  zip files [Story Writer](http://markdown.xiaoshujiang.com/).
 
