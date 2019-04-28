@@ -1,28 +1,17 @@
-# gatsbyjs.org
+# xiaoshujiang.com 
 
-The main Gatsby site at gatsbyjs.org
+该源码为小书匠静态博客生成源码。
 
-Run locally with:
-
-- `yarn install`
-- `gatsby develop`
-
-See the full contributing instructions at https://www.gatsbyjs.org/docs/how-to-contribute/.
-
-## Working with the starter showcase
-
-To develop on the starter showcase, you'll need to supply a GitHub personal access token.
-
-1. Create a personal access token in your GitHub [Developer settings](https://github.com/settings/tokens).
-2. In the new token's settings, grant that token the "public_repo" scope.
-3. Create a file in the root of `www` called `.env.development`, and add the token to that file like so:
+# 本地运行
 
 ```
-GITHUB_API_TOKEN=YOUR_TOKEN_HERE
+npm  install
+npm run dev
 ```
 
-The `.env.development` file is ignored by git. Your token should never be committed.
+# 打包发布
 
-## Screenshots placeholder
-
-If you are not working on starter or site showcase, it might be beneficial to use a placeholder image instead of actual screenshots. It will skip downloading screenshots and generating responsive images for all screenshots and replace them with a placeholder image. Check [`gatsby-transformer-screenshot` docs](http://www.gatsbyjs.org/packages/gatsby-transformer-screenshot#placeholder-image) to learn how to use it.
+```
+npm run build
+npm run public
+```
