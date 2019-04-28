@@ -1,6 +1,6 @@
 # xiaoshujiang.com 
 
-该源码为小书匠官网(http://soft.xiaoshujiang.com)静态博客生成源码。 使用开源的静态博客生成工具 [gatsby](https://www.gatsbyjs.org) 生成，同时添加了小书匠导出的 zip
+该源码为小书匠官网( http://soft.xiaoshujiang.com )静态博客生成源码。 使用开源的静态博客生成工具 [gatsby](https://www.gatsbyjs.org) 生成，同时添加了小书匠导出的 zip
 文件做为数据源的插件。
 
 目前源代码放在 github 和 gitee 两个平台上， github 适合外网用户访问， gitee 适合国内这边的访问。
