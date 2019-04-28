@@ -15,6 +15,7 @@ nvm use 8.9.1
 npm  install
 npm run start
 ```
+访问 http://localhost:8000
 
 # 打包发布
 
