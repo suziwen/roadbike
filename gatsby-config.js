@@ -3,7 +3,6 @@ require(`dotenv`).config({
 })
 
 module.exports = {
-  pathPrefix: `/roadbike`,
   siteMetadata: {
     title: `小书匠`,
     siteUrl: `http://www.xiaoshujiang.com`,

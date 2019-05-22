@@ -51,7 +51,13 @@ npm run start
 npm run deploy
 ```
 
-注： 需要自己在 `package.json` 里，把对应的服务器地址调整一下。
+注： 
+
+1. 需要自己在 `package.json` 里，把对应的服务器地址调整一下。
+2. 如果发布在非根路径的网站上，比如 `roadbike`，需要在 `gatsby-config.js` 里添加 `pathPrefix: "/roadbike",` 属性
+3. 在 package.json 的打包脚本里带上 `--prefix-paths` 参数
+
+
 
 
 # License
