@@ -30,7 +30,11 @@ class ItemLink extends React.Component {
     const isNeedScollIntoView = isActive || isInFoldedActive
     if (isNeedScollIntoView){
       const node = this.itemLinkRef.current
-      node.scrollIntoViewIfNeeded({ behavior: 'smooth' });
+      if (node.scrollIntoViewIfNeeded){
+        node.scrollIntoViewIfNeeded({ behavior: 'smooth' });
+      } else {
+        node.scrollIntoView()
+      }
     }
   }
   render() {
