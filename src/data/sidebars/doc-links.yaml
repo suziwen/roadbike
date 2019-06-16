@@ -94,6 +94,8 @@
           link: /docs/grammar/feature/typographer/
         - title: 注音
           link: /docs/grammar/feature/cjk_ruby/
+        - title: 图片大小
+          link: /docs/grammar/feature/img_size/
 - title: 使用教程
   items:
     - title: 第三方存储
