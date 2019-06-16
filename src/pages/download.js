@@ -56,7 +56,7 @@ const DownloadSections = ({
         <Button large to="https://github.com/suziwen/markdownxiaoshujiang/releases/tag/v7.7.0" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
           Github 下载
         </Button>
-        <Button large to="https://pan.baidu.com/s/1GcVQGZgFFZc232Fh-mT8gQ" ondark tag="href" target="_blank" icon={<MdArrowForward />} overrideCSS={{
+        <Button large to="https://pan.baidu.com/s/1UvTmez5zRk_DBVnI_kF7nQ" ondark tag="href" target="_blank" icon={<MdArrowForward />} overrideCSS={{
           margin: "10px",
           position: "relative",
           "&:after": {
@@ -66,7 +66,7 @@ const DownloadSections = ({
             right: `0`,
             pointerEvents: `none`,
             fontSize: `1rem`,
-            content: `'提取密码: (juj3)'`,
+            content: `'提取密码: (5hvq)'`,
           }
         }}>
           百度网盘下载
