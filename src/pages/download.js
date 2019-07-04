@@ -56,6 +56,9 @@ const DownloadSections = ({
         <Button large to="https://github.com/suziwen/markdownxiaoshujiang/releases/tag/v7.7.0" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
           Github 下载
         </Button>
+        <Button large to="https://gitee.com/suziwen/markdownxiaoshujiang/releases/v7.7.0" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
+          Gitee 下载
+        </Button>
         <Button large to="https://pan.baidu.com/s/1UvTmez5zRk_DBVnI_kF7nQ" ondark tag="href" target="_blank" icon={<MdArrowForward />} overrideCSS={{
           margin: "10px",
           position: "relative",
