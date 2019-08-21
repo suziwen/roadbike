@@ -14,11 +14,10 @@ let vRoot = null
 let zoom = null
 let mindmapSvg = null
 
-function textRotation(d) {
-    var angle = d.x / Math.PI * 180 + 90;
+function textRotation(x, depth) {
+    var angle = x / Math.PI * 180 + 90;
 
-    if (d.depth < 2) { return 0;}
-    else if (angle <= 270) { return angle - 180;}
+    if (depth < 2) { return 0;}
     else { return angle;}
 }
 const getNodeById = (id)=>{
@@ -167,10 +166,28 @@ class Mindmap extends React.Component {
       // 除以 14 个像素单位
       const delta = -d3.event.deltaY * (d3.event.deltaMode ? 120 : 1) / 14
       const newValue = (oldValue + delta) % 360
+      const newRadius = (newValue / 180.0) * Math.PI
       g.attr("data-rotate", newValue)
       g.attr("transform", `rotate(${newValue})`)
 
       const x = d3
+      g.selectAll('text')
+      .attr("transform", function(d) { 
+          if (d.depth < 2){
+            return "rotate(" + (  -newValue )+ ")" 
+          } else {
+            if ((d.x + newRadius)%(2*Math.PI) <= Math.PI) {
+              return "rotate(180)" 
+            }
+          } 
+        })
+      .attr("text-anchor", function (d){
+          if(d.height === 0){ return ((d.x + newRadius)%(2*Math.PI) > Math.PI) ? "end" : "start"; }
+          else { return "middle"; } })
+      .attr("dx", function (d){
+          if(d.depth === 3){ return ((d.x + newRadius)%(2*Math.PI) > Math.PI) ? "-2px" : "2px"; }
+          else { return "0px"; } })
+
     }
     const vData = d3.stratify()(self.nodes)
     drawViz(vData)
@@ -293,7 +310,7 @@ class Mindmap extends React.Component {
 
             var node = g.selectAll(".node").data(vNodes).enter().append('g')
                 .classed("xsj_root_group", function (d){ return d.depth === 0; })
-                .attr('transform', function(d) { return "translate(" + d3.pointRadial(d.x, d.y) + ")"; });
+                .attr('transform', function(d) { return "translate(" + d3.pointRadial(d.x, d.y) + ")rotate("  + textRotation(d.x, d.depth) + ")"; });
 
             node.append("text")
                 .html(function (d){ 
@@ -314,7 +331,11 @@ class Mindmap extends React.Component {
                   }
                   return ""
                 })
-                .attr("transform", function(d) { return "rotate(" + textRotation(d) + ")" })
+                .attr("transform", function(d) { 
+                  if (d.x <= Math.PI && d.depth >= 2) {
+                    return "rotate(180)" 
+                  }
+                })
                 .attr("text-anchor", function (d){
                     if(d.height === 0){ return (d.x > Math.PI) ? "end" : "start"; }
                     else { return "middle"; } })
