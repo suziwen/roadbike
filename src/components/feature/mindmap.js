@@ -116,11 +116,6 @@ class Mindmap extends React.Component {
   handleResize(){
     const vWidth = mindmapSvg.node().clientWidth
     const vHeight = mindmapSvg.node().clientHeight
-    const rotateGroup = mindmapSvg.select(".rotate_group")
-    rotateGroup
-      .transition().duration(750)
-      .attr("data-rotate", 0)
-      .attr("transform", null)
     mindmapSvg.transition().duration(750).call(zoom.transform, d3.zoomIdentity.scale(1).translate(vWidth / 2, vHeight / 2))
   }
   shouldComponentUpdate(nextProps, nextState){
@@ -165,7 +160,10 @@ class Mindmap extends React.Component {
       const oldValue = parseInt(g.attr("data-rotate")) || 0
       // 除以 14 个像素单位
       const delta = -d3.event.deltaY * (d3.event.deltaMode ? 120 : 1) / 14
-      const newValue = (oldValue + delta) % 360
+      let newValue = (oldValue + delta) % 360
+      if (newValue < 0) {
+        newValue = 360 - newValue;
+      }
       const newRadius = (newValue / 180.0) * Math.PI
       g.attr("data-rotate", newValue)
       g.attr("transform", `rotate(${newValue})`)
@@ -176,16 +174,16 @@ class Mindmap extends React.Component {
           if (d.depth < 2){
             return "rotate(" + (  -newValue )+ ")" 
           } else {
-            if ((d.x + newRadius)%(2*Math.PI) <= Math.PI) {
+            if (Math.abs(d.x + newRadius)%(2*Math.PI) <= Math.PI) {
               return "rotate(180)" 
             }
           } 
         })
       .attr("text-anchor", function (d){
-          if(d.height === 0){ return ((d.x + newRadius)%(2*Math.PI) > Math.PI) ? "end" : "start"; }
+          if(d.height === 0){ return (Math.abs(d.x + newRadius)%(2*Math.PI) > Math.PI) ? "end" : "start"; }
           else { return "middle"; } })
       .attr("dx", function (d){
-          if(d.depth === 3){ return ((d.x + newRadius)%(2*Math.PI) > Math.PI) ? "-2px" : "2px"; }
+          if(d.depth === 3){ return (Math.abs(d.x + newRadius)%(2*Math.PI) > Math.PI) ? "-2px" : "2px"; }
           else { return "0px"; } })
 
     }
