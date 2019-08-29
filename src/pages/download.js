@@ -53,13 +53,13 @@ const DownloadSections = ({
       title={`当前最新版本 v${version}`}
     >
       <DownloadButtonsStyled>
-        <Button large to="https://github.com/suziwen/markdownxiaoshujiang/releases/tag/v7.7.0" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
+        <Button large to="https://github.com/suziwen/markdownxiaoshujiang/releases/tag/v7.8.0" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
           Github 下载
         </Button>
-        <Button large to="https://gitee.com/suziwen/markdownxiaoshujiang/releases/v7.7.0" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
+        <Button large to="https://gitee.com/suziwen/v7.8.0/releases/v7.8.0" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
           Gitee 下载
         </Button>
-        <Button large to="https://pan.baidu.com/s/1UvTmez5zRk_DBVnI_kF7nQ" ondark tag="href" target="_blank" icon={<MdArrowForward />} overrideCSS={{
+        <Button large to="https://pan.baidu.com/s/10uIyuFMRzHJkyqLMv5Fo7w" ondark tag="href" target="_blank" icon={<MdArrowForward />} overrideCSS={{
           margin: "10px",
           position: "relative",
           "&:after": {
@@ -69,7 +69,7 @@ const DownloadSections = ({
             right: `0`,
             pointerEvents: `none`,
             fontSize: `1rem`,
-            content: `'提取密码: (5hvq)'`,
+            content: `'提取密码: (ixjy)'`,
           }
         }}>
           百度网盘下载
@@ -179,7 +179,7 @@ class IndexRoute extends React.Component {
               [presets.Hd]: { padding: vP, paddingTop: 0, paddingBottom: 0 },
             }}
           >
-            <DownloadSections version="7.7.0" downloadUrl="http://www.baidu.com" />
+            <DownloadSections version="7.8.0" downloadUrl="http://www.baidu.com" />
             <OldDownloadSections />
             <OtherDownloadSections />
           </div>
