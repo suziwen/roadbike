@@ -18,6 +18,7 @@ import "../assets/story-writer-markdown-components.css"
 
 import "../fonts/Webfonts/xsj/stylesheet.css"
 import '@fortawesome/fontawesome-free/css/all.min.css'
+import '@fortawesome/fontawesome-free/css/svg-with-js.min.css'
 
 // Other fonts
 import "typeface-spectral"
