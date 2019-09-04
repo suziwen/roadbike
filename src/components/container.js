@@ -17,6 +17,7 @@ const Container = ({
       margin: `0 auto`,
       padding: `${rhythm(1.5)} ${rhythm(options.blockMarginBottom)}`,
       paddingBottom: rhythm(3.5),
+      boxSizing: "content-box",
       position: `relative`,
       [presets.Tablet]: {
         paddingBottom: rhythm(1.5),
