@@ -6,3 +6,9 @@ nvm use 8.9.1
 ```
 2. `npm run build`
 3. `npm run sync`
+
+# debug on build process
+
+```
+node --inspect-brk --no-lazy node_modules/gatsby/dist/bin/gatsby build
+```
