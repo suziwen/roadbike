@@ -156,7 +156,7 @@ exports.createPages = ({ graphql, actions }) => {
           }
           if (post.node.docType === 'docs') {
             createPage({
-              path: `/docs/` + post.node.slug,
+              path: `/docs/` + post.node.slug + `/`,
               component: docPostTemplate,
               context: {
                 slug: post.node.slug,
@@ -190,7 +190,7 @@ exports.createPages = ({ graphql, actions }) => {
         }
         logNodes.forEach(node=>{
           createPage({
-            path: `/logs/` + node.slug,
+            path: `/logs/` + node.slug + `/`,
             component: logPostTemplate,
             context: {
               slug: node.slug,
@@ -249,7 +249,7 @@ exports.createPages = ({ graphql, actions }) => {
          //   return { ...item, key: `blogs` }
          // })
           createPage({
-            path: `/blog/` + post.node.slug,
+            path: `/blog/` + post.node.slug + `/`,
             component: blogPostTemplate,
             context: {
               slug: post.node.slug,
