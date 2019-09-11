@@ -12,14 +12,6 @@ import Transition from "../components/transition"
 import ContextConsumer, { ContextProviderComponent } from "../components/context"
 import PageWithSidebar from "../components/page-with-sidebar"
 
-import "../assets/story-writer-markdown-default.css"
-import "../assets/story-writer-markdown-code-solarized-light.css"
-import "../assets/story-writer-markdown-components.css"
-
-import "../fonts/Webfonts/xsj/stylesheet.css"
-import '@fortawesome/fontawesome-free/css/all.min.css'
-import '@fortawesome/fontawesome-free/css/svg-with-js.min.css'
-
 // Other fonts
 import "typeface-spectral"
 

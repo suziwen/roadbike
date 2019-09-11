@@ -14,7 +14,7 @@ import {
   unobserveScrollers,
 } from "../utils/scrollers-observer"
 
-import "../fonts/Webfonts/xsj/homepage.css"
+//import "../fonts/Webfonts/xsj/homepage.css"
 //import "../fonts/Webfonts/xsj/stylesheet.css"
 //
 
