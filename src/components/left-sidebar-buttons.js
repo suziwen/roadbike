@@ -45,14 +45,15 @@ class LeftSidebarButtons extends React.Component {
     const props = this.props
     let zipURL = ''
     let pdfURL = ''
-    if (props.zipFile){
-      //zipURL = `http://localhost:3000/#xsjzip=${encodeURIComponent(window.location.origin + props.zipFile.publicURL)}`
-      if (typeof window !== 'undefined') {
+    // when  gatsby build , the window will undefined
+    if (typeof window !== 'undefined') {
+      if (props.zipFile){
+        //zipURL = `http://localhost:3000/#xsjzip=${encodeURIComponent(window.location.origin + props.zipFile.publicURL)}`
         zipURL = `http://markdown.xiaoshujiang.com/#xsjzip=${encodeURIComponent(window.location.origin + props.zipFile.publicURL)}`
       }
-    }
-    if (props.pdfFile){
-      pdfURL = `/pdf/#file=${encodeURIComponent(props.pdfFile.publicURL)}`
+      if (props.pdfFile){
+        pdfURL = `/pdf/#file=${encodeURIComponent(props.pdfFile.publicURL)}`
+      }
     }
     if (zipURL || pdfURL){
       return (
@@ -62,7 +63,10 @@ class LeftSidebarButtons extends React.Component {
       </ContainerStyled>
         )
     } else {
-      return ""
+      return (
+      <ContainerStyled>
+      </ContainerStyled>
+      )
     }
   }
 }
