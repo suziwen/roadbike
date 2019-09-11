@@ -290,6 +290,13 @@ exports.createPages = ({ graphql, actions }) => {
 }
 
 
+exports.onCreateWebpackConfig = ({ stage, actions }) => {
+  if (stage === `build-javascript`) {
+    actions.setWebpackConfig({
+      devtool: false,
+    })
+  }
+}
 
 exports.onPostBuild = () => {
 //  fs.copySync(
