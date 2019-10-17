@@ -64,7 +64,10 @@ const getTableOfContent = ($, slug)=>{
   $("h1, h2, h3, h4, h5, h6, h7").each((i, he)=>{
     const $he = $(he)
     if (!$he.hasClass("story_title")){
-      const $anchorContainer = $he.prev()
+      let $anchorContainer = $he.find('.xsj_anchor')
+      if ($anchorContainer.length == 0) {
+        $anchorContainer = $he.prev()
+      }
       const tagName = he.tagName
       const level = parseInt(tagName.substring(1))
       if ($anchorContainer.length === 1 && $anchorContainer.hasClass('xsj_anchor')){
