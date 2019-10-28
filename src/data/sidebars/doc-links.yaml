@@ -120,6 +120,10 @@
           link: /docs/tutorial/editor/ace/
         - title: 竖排编辑器
           link: /docs/tutorial/editor/light_editor/
+    - title: 快捷键
+      link: /docs/tutorial/shortcuts/
+    - title: 命令
+      link: /docs/tutorial/commands/
     - title: 预览
       link: /docs/tutorial/preview/
     - title: 表格组件
