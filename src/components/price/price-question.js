@@ -165,7 +165,7 @@ const PriceQuestion = ()=>{
       <QuestionSectionStyled>
         <Header>我可以一次性预付多年吗</Header>
         <Content>
-          不可以，目前提供最多预付两年，即两年40人民币。如果您付费超过40,我们这边也只是把你的会员时间延长两年，超出的金额需要用户在一定的时间内提出退回申请，才可以取回
+          不可以，目前提供最多预付两年，即两年80人民币。如果您付费超过80,我们这边也只是把你的会员时间延长两年，超出的金额需要用户在一个月内提出退回申请，才可以取回
         </Content>
       </QuestionSectionStyled>
       <QuestionSectionStyled>

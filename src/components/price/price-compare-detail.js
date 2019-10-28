@@ -202,7 +202,7 @@ const PriceCompareDetail = ()=>{
         </PriceSection>
         <PriceSection
           title="付费用户"
-          price="￥ 20.0/年"
+          price="￥ 40.0/年"
           isActived={true}
           listItems={[
             "免费版本<span>所有</span>功能",
