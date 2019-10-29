@@ -13,7 +13,7 @@
     "fs-extra": "^7.0.1",
     "gray-matter": "^4.0.0",
     "is-relative-url": "^2.0.0",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.13",
     "slash": "^2.0.0",
     "trianglify": "^1.2.0",
     "truncatise": "0.0.7",
