@@ -267,13 +267,13 @@ module.exports = async function onCreateNode(
         const pngData = pngURI.substr(pngURI.indexOf('base64') + 7)
         const pngBuffer = new Buffer(pngData, 'base64')
         fs.outputFileSync(fileCoverPath, pngBuffer)
-        const fileCoverNode = await createFileNode(fileCoverPath, createNodeId, {})
-        fileCoverNode.internal.description = `${node.internal.description} / ${fileCoverPath}`
-        fileCoverNode.parent = node.id
-        createNode(fileCoverNode, { name: `gatsby-source-filesystem` })
-        createParentChildLink({ parent: node, child: fileCoverNode })
-        markdownNode.cover = `./${fileCover}`
       }
+      const fileCoverNode = await createFileNode(fileCoverPath, createNodeId, {})
+      fileCoverNode.internal.description = `${node.internal.description} / ${fileCoverPath}`
+      fileCoverNode.parent = node.id
+      createNode(fileCoverNode, { name: `gatsby-source-filesystem` })
+      createParentChildLink({ parent: node, child: fileCoverNode })
+      markdownNode.cover = `./${fileCover}`
     }
     const pFragments = []
     $('.html_preview.preview>p').each((i, p)=>{
