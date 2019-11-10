@@ -120,6 +120,8 @@
           link: /docs/tutorial/editor/ace/
         - title: 竖排编辑器
           link: /docs/tutorial/editor/light_editor/
+    - title: 过滤器
+      link: /docs/tutorial/filter/
     - title: 快捷键
       link: /docs/tutorial/shortcuts/
     - title: 命令
