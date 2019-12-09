@@ -10,6 +10,7 @@ import MastheadBg from "../components/masthead-bg"
 import MastheadContent from "../components/masthead"
 import PriceCompareDetail from "../components/price/price-compare-detail"
 import PriceQuestion from "../components/price/price-question"
+import PriceReward from "../components/price/price-reward"
 import { PriceIcon} from "../assets/mobile-nav-icons"
 import {
   setupScrollersObserver,
@@ -65,6 +66,7 @@ class IndexRoute extends React.Component {
             >
             </main>
             <PriceCompareDetail />
+            <PriceReward />
             <PriceQuestion />
           </div>
         </div>
