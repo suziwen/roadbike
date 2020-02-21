@@ -1,0 +1,12 @@
+.xsj_beian{
+  position: absolute;
+  bottom: 0;
+  z-index: 100;
+  font-size: 12px;
+  right: 0;
+}
+.xsj_beian,
+.xsj_beian a{
+  color: grey;
+}
+

@@ -20,7 +20,7 @@ class IndexRoute extends React.Component {
                     <title>文档</title>
                   </Helmet>
                   <h1 id="get-started" css={{ marginTop: 0 }}>
-                    小书匠官方文档手册
+                    小书匠文档手册
                   </h1>
                   <p>该文档主要包含了小书匠编辑器支持的所有语法说明及小书匠使用教程。</p>
                   <p>

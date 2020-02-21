@@ -14,6 +14,7 @@ import PageWithSidebar from "../components/page-with-sidebar"
 
 // Other fonts
 import "typeface-spectral"
+import "./beian.css"
 
 
 class DefaultLayout extends React.PureComponent {
@@ -44,7 +45,7 @@ class DefaultLayout extends React.PureComponent {
           //const itemList = data.itemList
           //const enableScrollSync = data.enableScrollSync
           return (
-            <div className={isHomepage ? `is-homepage` : ``}>
+            <div className={isHomepage ? `is-homepage` : ``} css={{ minHeight: '100vh',position: 'relative'}}>
               <SiteMetadata pathname={props.location.pathname} />
               <SkipNavLink css={styles.skipLink}>Skip to main content</SkipNavLink>
               <Navigation pathname={props.location.pathname} />
@@ -73,6 +74,7 @@ class DefaultLayout extends React.PureComponent {
                 </PageWithSidebar>
               </div>
               <MobileNavigation pathname={props.location.pathname} />
+              <div className="xsj_beian"> Design by xsj <a href="http://beian.miit.gov.cn/">京ICP备13031371号</a></div>
             </div>
           )
         }}
