@@ -9,4 +9,8 @@
 .xsj_beian a{
   color: grey;
 }
+.is-homepage .xsj_beian {
+  left: 0;
+  text-align: center;
+}
 
