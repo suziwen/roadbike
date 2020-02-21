@@ -80,26 +80,6 @@ class IndexRoute extends React.Component {
           >
             <MastheadContent rippleEffect={this.rippleEffect} curs={{index: 'adfds'}} />
             <MastheadLogo />
-            <div
-              css={{
-                padding: rhythm(presets.gutters.default / 2),
-                paddingBottom: 0,
-                flex: `0 0 100%`,
-                maxWidth: `100%`,
-                [presets.Hd]: { padding: vP, paddingTop: 0, paddingBottom: 0 },
-              }}
-            >
-              <main
-                id={`reach-skip-nav`}
-                css={{
-                  display: `flex`,
-                  flexDirection: `row`,
-                  flexWrap: `wrap`,
-                  justifyContent: `space-between`,
-                }}
-              >
-              </main>
-            </div>
           </div>
         </div>
     )

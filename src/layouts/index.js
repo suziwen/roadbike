@@ -74,7 +74,7 @@ class DefaultLayout extends React.PureComponent {
                 </PageWithSidebar>
               </div>
               <MobileNavigation pathname={props.location.pathname} />
-              <div className="xsj_beian"> Design by xsj <a href="http://beian.miit.gov.cn/">京ICP备13031371号</a></div>
+              <div className="xsj_beian" css={{[presets.Tablet]: {display: `block`}}}> Design by xsj <a href="http://beian.miit.gov.cn/">京ICP备13031371号</a></div>
             </div>
           )
         }}

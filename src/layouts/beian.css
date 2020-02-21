@@ -4,6 +4,7 @@
   z-index: 100;
   font-size: 12px;
   right: 0;
+  display: none;
 }
 .xsj_beian,
 .xsj_beian a{
