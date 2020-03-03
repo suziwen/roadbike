@@ -4,6 +4,13 @@ const path = require(`path`)
 const req = require('require-yml')
 const _docSidebarItems = req(`./src/data/sidebars/doc-links.yaml`)
 
+
+const getRandomInt = function (min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 const createHash = link => {
   let index = -1
   if (link) index = link.indexOf(`#`)
@@ -314,5 +321,20 @@ exports.onCreatePage = ({page, actions})=> {
     createPage(page)
   } else {
     createPage(page)
+  }
+}
+
+
+exports.onCreateNode = ({ node, actions, getNodesByType, getNodes }) => {
+  const { createNode, createNodeField } = actions
+  if (node.internal.type === 'StoryWriterMarkdown') {
+    if (!node.cover) {
+      const fileNodes = getNodesByType('File');
+      const coverNodes = fileNodes.filter((node)=>{
+        return node.sourceInstanceName == 'covers' && node.extension == 'png';
+      });
+      const coverNode = coverNodes[getRandomInt(0, coverNodes.length - 1)];
+      node.cover = path.relative(path.dirname(node.fileAbsolutePath), coverNode.absolutePath);
+    }
   }
 }

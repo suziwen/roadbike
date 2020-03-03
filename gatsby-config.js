@@ -33,6 +33,13 @@ module.exports = {
     {
         resolve: `gatsby-source-filesystem`,
         options: {
+            path: `${__dirname}/src/default_covers`,
+            name: 'covers',
+        },
+    },
+    {
+        resolve: `gatsby-source-filesystem`,
+        options: {
             path: `${__dirname}/src/assets`,
             name: 'assets',
         },
