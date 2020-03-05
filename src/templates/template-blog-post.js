@@ -216,7 +216,6 @@ export const pageQuery = graphql`
       docType
       title
       customCss
-      css
       createDate(formatString: "MMMM DD, YYYY")
       updateDate(formatString: "MMMM DD, YYYY")
       tags
