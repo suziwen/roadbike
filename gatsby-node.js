@@ -228,9 +228,25 @@ exports.createPages = ({ graphql, actions }) => {
           });
 
           related = _.shuffle(related).slice(0,6);
+          const wrapperNode = (node)=>{
+            if (node) {
+              return {
+                title: node.title,
+                docType: node.docType,
+                slug: node.slug
+              }
+            }
+            return null;
+          }
+          related = related.map((_node)=>{
+            _node = _node && _node.node;
+            return wrapperNode(_node);
+          });
           let next = index === 0 ? null : blogPosts[index - 1].node
-          const prev =
+          next = wrapperNode(next);
+          let prev =
             index === blogPosts.length - 1 ? null : blogPosts[index + 1].node
+          prev = wrapperNode(prev);
           let blogSidebarItems = null
           let enableScrollSync = null
           if (post.node.toc) {
