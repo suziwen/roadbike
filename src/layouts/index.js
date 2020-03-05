@@ -13,7 +13,6 @@ import ContextConsumer, { ContextProviderComponent } from "../components/context
 import PageWithSidebar from "../components/page-with-sidebar"
 
 // Other fonts
-import "typeface-spectral"
 import "./beian.css"
 
 
