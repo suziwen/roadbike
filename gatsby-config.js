@@ -93,7 +93,6 @@ const plugins = [
       icon: `src/assets/logo-icon.png`,
     },
   },
-  `gatsby-plugin-offline`,
   `gatsby-plugin-react-helmet`,
   `gatsby-plugin-sitemap`,
   {
@@ -174,6 +173,8 @@ if (process.env.XSJ_SUBFONT == 'true') {
       },
     })
 }
+
+plugins.push("gatsby-plugin-offline")
 
 module.exports = {
   siteMetadata: {
