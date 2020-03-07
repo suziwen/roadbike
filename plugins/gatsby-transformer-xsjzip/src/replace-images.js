@@ -1,11 +1,18 @@
 const _ = require(`lodash`)
 const fs = require(`fs-extra`)
 const path = require(`path`)
+const Url = require(`url`)
+const validFilename = require('valid-filename')
 const isRelativeUrl = require(`is-relative-url`)
 const { isWebUri } = require(`valid-url`)
 const { fluid, traceSVG } = require(`gatsby-plugin-sharp`)
 const slash = require(`slash`)
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
+
+
+const getParsedPath = function (url) {
+    return path.parse(Url.parse(url).pathname);
+}
 
 
 const replaceImage = async({$img, imageNode, options, reporter, cache, isLocal})=>{
@@ -95,7 +102,7 @@ const replaceImage = async({$img, imageNode, options, reporter, cache, isLocal})
   }
 }
 
-const transformImages = async({$, cache, store, createNode, createNodeId, parentNode, createParentChildLink})=>{
+const transformImages = async({$, cache, store, createNode, createNodeId, parentNode, createParentChildLink, pluginOptions})=>{
   const imgs = []
   $('img').each((index, img)=>{
     const $img = $(img)
@@ -107,23 +114,30 @@ const transformImages = async({$, cache, store, createNode, createNodeId, parent
     }
   })
   const remoteImageNodes = {}
-  await Promise.all(_.map(imgs, async($img)=>{
-    const src = $img.attr('src')
-    const fileNode = await createRemoteFileNode({
-      url: src,
-      store,
-      cache,
-      createNode,
-      createNodeId
-    })
-    if (fileNode) {
+  if (pluginOptions.cachedRemoteImages) {
+    await Promise.all(_.map(imgs, async($img)=>{
+      const src = $img.attr('src')
+      const fileInfo = getParsedPath(src)
+      if (fileInfo && fileInfo.ext.length < 8 && validFilename(fileInfo.name + fileInfo.ext)){
+        const fileNode = await createRemoteFileNode({
+          url: src,
+          name: 'xsj',
+          ext: '.png',
+          store,
+          cache,
+          createNode,
+          createNodeId
+        })
+        if (fileNode) {
 
-      fileNode.parent = parentNode.id
-      console.log(`tranform remote image node success`)
-      createParentChildLink({ parent: parentNode, child: fileNode })
-      remoteImageNodes[src] = fileNode
-    }
-  }))
+          fileNode.parent = parentNode.id
+          console.log(`tranform remote image node success`)
+          createParentChildLink({ parent: parentNode, child: fileNode })
+          remoteImageNodes[src] = fileNode
+        }
+      }
+    }))
+  }
   return remoteImageNodes
 }
 

@@ -16,6 +16,7 @@
     "lodash": "^4.17.10",
     "slash": "^2.0.0",
     "truncatise": "0.0.7",
+    "valid-filename": "^3.1.0",
     "valid-url": "^1.0.9"
   },
   "devDependencies": {

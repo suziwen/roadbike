@@ -57,7 +57,11 @@ const plugins = [
       noheader: false,
     },
   },
-  `gatsby-transformer-xsjzip`,
+  {
+    resolve: `gatsby-transformer-xsjzip`,
+    options: {
+    }
+  },
   {
     resolve: `gatsby-plugin-typography`,
     options: {
