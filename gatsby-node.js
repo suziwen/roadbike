@@ -336,18 +336,18 @@ exports.onPostBuild = async ({ store, reporter }) => {
       error: reporter.error,
     }
     inputFiles = glob.sync(`${root}/**/*.html`, {ignore: `${root}/page-data/*`})
-    console.log(inputFiles)
-    if (inputFiles.length > 0) {
+    for (const inputFile of inputFiles) {
+      console.log(inputFile)
       await subfont(
         {
           root,
           inPlace: true,
           inlineFonts: false,
-          fallbacks: true,
+          fallbacks: false,
           subsetPerPage: true,
           inlineCss: false,
           silent: true,
-          inputFiles: inputFiles
+          inputFiles: [inputFile]
         },
         subfontConsole
       )
