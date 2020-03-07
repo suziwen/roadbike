@@ -7,7 +7,6 @@
     "@fortawesome/fontawesome-free": "^5.8.1",
     "@reach/skip-nav": "^0.1.2",
     "bluebird": "^3.5.4",
-    "cross-env": "^7.0.1",
     "d3": "^5.9.2",
     "dotenv": "^6.0.0",
     "email-validator": "^1.1.1",
@@ -94,6 +93,7 @@
     "stylelint": "stylelint './src/**/*.js'"
   },
   "devDependencies": {
+    "cross-env": "^7.0.2",
     "front-matter": "^2.3.0",
     "get-package-json-from-github": "^1.2.1",
     "github-api": "^3.0.0",
