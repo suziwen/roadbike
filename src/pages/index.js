@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, withPrefix } from "gatsby"
 import Helmet from "react-helmet"
 import presets, { colors } from "../utils/presets"
 import { rhythm } from "../utils/typography"
@@ -14,9 +14,8 @@ import {
   unobserveScrollers,
 } from "../utils/scrollers-observer"
 
-//import "../fonts/Webfonts/xsj/homepage.css"
+//import "../../static/fonts/Webfonts/xsj/homepage.css"
 //import "../fonts/Webfonts/xsj/stylesheet.css"
-//
 
 class IndexRoute extends React.Component {
   constructor(props, context) {
@@ -54,7 +53,6 @@ class IndexRoute extends React.Component {
   }
 
   render() {
-//    require(`../fonts/Webfonts/xsj/stylesheet.css`)
     return (
         <div css={{ position: `relative` }}>
           <Helmet>
@@ -67,6 +65,7 @@ class IndexRoute extends React.Component {
               name="Description"
               content="Blazing fast modern site generator for React. Go beyond static sites: build blogs, ecommerce sites, full-blown apps, and more with Gatsby."
             />
+            <link rel="stylesheet" type="text/css" href={withPrefix('/') + "fonts/Webfonts/xsj/homepage.css"}/>
           </Helmet>
           <MastheadBg />
           <Ripple rippled={this.state.rippled} onEnd={this.rippleEnd} cursorPos={{top: this.state.posY, left: this.state.posX}}/>

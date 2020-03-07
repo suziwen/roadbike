@@ -1,0 +1,67 @@
+/*
+ * Web Fonts from fontspring.com
+ *
+ * All OpenType features and all extended glyphs have been removed.
+ * Fully installable fonts can be purchased at http://www.fontspring.com
+ *
+ * The fonts included in this stylesheet are subject to the End User License you purchased
+ * from Fontspring. The fonts are protected under domestic and international trademark and
+ * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
+ * distributing this font software.
+ *
+ * (c) 2010-2016 Fontspring
+ *
+ *
+ *
+ *
+ * The fonts included are copyrighted by the vendor listed below.
+ *
+ * Vendor:      ParaType
+ * License URL: https://www.fontspring.com/licenses/paratype/webfont
+ *
+ *
+ */
+
+
+
+@font-face {
+    font-family: "xsjkt";
+    src: url("HanYiChengXingJian-1/HanYiChengXingJian-1.eot"); /* IE9 */
+    src: url("HanYiChengXingJian-1/HanYiChengXingJian-1.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("HanYiChengXingJian-1/HanYiChengXingJian-1.woff") format("woff"), /* chrome, firefox */
+    url("HanYiChengXingJian-1/HanYiChengXingJian-1.ttf") format("truetype"), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url("HanYiChengXingJian-1/HanYiChengXingJian-1.svg") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: "xsjbg";
+    src: url("HYShangWeiShouShuW-1/HYShangWeiShouShuW-1.eot"); /* IE9 */
+    src: url("HYShangWeiShouShuW-1/HYShangWeiShouShuW-1.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("HYShangWeiShouShuW-1/HYShangWeiShouShuW-1.woff") format("woff"), /* chrome, firefox */
+    url("HYShangWeiShouShuW-1/HYShangWeiShouShuW-1.ttf") format("truetype"), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url("HYShangWeiShouShuW-1/HYShangWeiShouShuW-1.svg") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: "xsjsj";
+    src: url("SuXinShiGuYinSongJian-1/SuXinShiGuYinSongJian-1.eot"); /* IE9 */
+    src: url("SuXinShiGuYinSongJian-1/SuXinShiGuYinSongJian-1.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("SuXinShiGuYinSongJian-1/SuXinShiGuYinSongJian-1.woff") format("woff"), /* chrome, firefox */
+    url("SuXinShiGuYinSongJian-1/SuXinShiGuYinSongJian-1.ttf") format("truetype"), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url("SuXinShiGuYinSongJian-1/SuXinShiGuYinSongJian-1.svg") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "smy";
+    src: url("smy.eot"); /* IE9 */
+    src: url("smy.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("smy.woff") format("woff"), /* chrome, firefox */
+    url("smy.ttf") format("truetype"), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url("smy.svg#smy") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}

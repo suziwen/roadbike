@@ -168,8 +168,9 @@ if (process.env.XSJ_SUBFONT == 'true') {
       resolve: `gatsby-plugin-subfont`,
       options: {
         silent: true,
-        fallback: false,
-        inlineFonts: true,
+        fallbacks: false,
+        inlineCss: false,
+        inlineFonts: false,
       },
     })
 }
