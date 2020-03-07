@@ -79,7 +79,7 @@
   "main": "n/a",
   "private": true,
   "scripts": {
-    "build": "cross-env XSJ_TONGJI=true gatsby build",
+    "build": "cross-env XSJ_TONGJI=true XSJ_SUBFONT=true gatsby build",
     "b": "gatsby build",
     "clean": "rm -rf .cache && rm -rf public",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public -r git@github.com:suziwen/roadbike.git",

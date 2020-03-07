@@ -160,6 +160,17 @@ if (process.env.XSJ_TONGJI == 'true') {
   })
 }
 
+if (process.env.XSJ_SUBFONT == 'true') {
+  plugins.push({
+      resolve: `gatsby-plugin-subfont`,
+      options: {
+        silent: true,
+        fallback: false,
+        inlineFonts: true,
+      },
+    })
+}
+
 module.exports = {
   siteMetadata: {
     title: `小书匠`,
