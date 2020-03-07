@@ -1,5 +1,4 @@
 import Typography from "typography"
-import CodePlugin from "typography-plugin-code"
 import presets, { colors } from "./presets"
 
 const headerFontFamily =[`-apple-system`, `BlinkMacSystemFont`, `Helvetica Neue`, `PingFang SC`, `Microsoft YaHei`, `Source Han Sans SC`, `Noto Sans CJK SC`, `WenQuanYi Micro Hei`, `sans-serif`] 
@@ -28,7 +27,6 @@ const _options = {
   bodyColor: colors.gray.copy,
   blockMarginBottom: 0.75,
   scaleRatio: 2,
-  plugins: [new CodePlugin()],
   overrideStyles: ({ rhythm, scale }, options) => {
     return {
       "h1,h2,h4,h5,h6": {
