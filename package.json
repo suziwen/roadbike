@@ -36,6 +36,7 @@
     "gatsby-transformer-sharp": "^2.3.17",
     "gatsby-transformer-xsjzip": "0.0.3",
     "gatsby-transformer-yaml": "^2.2.26",
+    "glob": "^7.1.6",
     "graphql-request": "1.6.0",
     "gray-percentage": "^2.0.0",
     "hex2rgba": "^0.0.1",

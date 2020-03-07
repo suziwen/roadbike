@@ -163,17 +163,6 @@ if (process.env.XSJ_TONGJI == 'true') {
   })
 }
 
-if (process.env.XSJ_SUBFONT == 'true') {
-  plugins.push({
-      resolve: `gatsby-plugin-subfont`,
-      options: {
-        silent: true,
-        fallbacks: false,
-        inlineCss: false,
-        inlineFonts: false,
-      },
-    })
-}
 
 plugins.push("gatsby-plugin-offline")
 

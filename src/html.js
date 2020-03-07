@@ -17,7 +17,8 @@ export default class HTML extends React.Component {
           <link rel="stylesheet" type="text/css" href={withPrefix('/') + "css/story-writer-markdown-default.css"}/>
           <link rel="stylesheet" type="text/css" href={withPrefix('/') + "css/story-writer-markdown-code-solarized-light.css"}/>
           <link rel="stylesheet" type="text/css" href={withPrefix('/') + "css/story-writer-markdown-components.css"}/>
-          <link rel="stylesheet" type="text/css" href={withPrefix('/') + "fonts/Webfonts/xsj/stylesheet.css"}/>
+          <link rel="stylesheet" type="text/css" href={"http://localhost/xsj/soft/s.css"}/>
+          <link rel="stylesheet" type="text/css" href={"http://localhost/xsj/notocjkallotf/zh.css"}/>
           <link rel="stylesheet" type="text/css" href={withPrefix('/') + "css/font-awesome.min.css"}/>
           <link rel="stylesheet" type="text/css" href={withPrefix('/') + "css/svg-with-js.css"}/>
           {this.props.headComponents}

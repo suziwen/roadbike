@@ -1,13 +1,14 @@
 import Typography from "typography"
 import presets, { colors } from "./presets"
 
-const headerFontFamily =[`-apple-system`, `BlinkMacSystemFont`, `Helvetica Neue`, `PingFang SC`, `Microsoft YaHei`, `Source Han Sans SC`, `Noto Sans CJK SC`, `WenQuanYi Micro Hei`, `sans-serif`] 
+const headerFontFamily =[`Noto Sans SC`, `-apple-system`, `BlinkMacSystemFont`, `Helvetica Neue`, `PingFang SC`, `Microsoft YaHei`, `Source Han Sans SC`, `Noto Sans CJK SC`, `WenQuanYi Micro Hei`, `sans-serif`] 
 
 const _options = {
   headerFontFamily,
-  bodyFontFamily: [`-apple-system`, `BlinkMacSystemFont`, `Helvetica Neue`, `PingFang SC`, `Microsoft YaHei`, `Source Han Sans SC`, `Noto Sans CJK SC`, `WenQuanYi Micro Hei`, `sans-serif`],
-  monospaceFontFamily: [`Menlo`, `Monaco`, `Consolas`, `Andale Mono`, `lucida console`, `Courier New`, `monospace`],
+  bodyFontFamily: [`Noto Serif SC`, `-apple-system`, `BlinkMacSystemFont`, `Helvetica Neue`, `PingFang SC`, `Microsoft YaHei`, `Source Han Sans SC`, `Noto Sans CJK SC`, `WenQuanYi Micro Hei`, `sans-serif`],
+  monospaceFontFamily: [`Noto Sans Mono SC`, `Menlo`, `Monaco`, `Consolas`, `Andale Mono`, `lucida console`, `Courier New`, `monospace`],
   systemFontFamily: [
+    `Noto Serif SC`,
     `-apple-system`,
     `BlinkMacSystemFont`,
     `Segoe UI`,
@@ -114,14 +115,14 @@ const _options = {
         wordBreak: `break-word`,
         tabSize: `4`,
         whiteSpace: `pre-wrap`,
-        fontFamily: `monospace`,
+        fontFamily: options.monospaceFontFamily.join(`,`),
       },
       ".preview .xiaoshujiang_code_title_container": {
         userSelect: `none`,
       },
       ".preview code": {
         position: `relative`,
-        fontFamily: `monospace`,
+        fontFamily: options.monospaceFontFamily.join(`,`),
         fontSize: `1em`,
       },
       ".preview code:before, .preview code:after": {
@@ -135,7 +136,7 @@ const _options = {
       ".preview pre": {
         background: `initial`,
         padding: 0,
-        fontFamily: `monospace`,
+        fontFamily: options.monospaceFontFamily.join(`,`),
       },
       ".main-body a": {
         color: `inherit`,

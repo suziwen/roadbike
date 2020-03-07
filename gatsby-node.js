@@ -1,6 +1,8 @@
 const _ = require(`lodash`)
 const Promise = require(`bluebird`)
 const path = require(`path`)
+const subfont = require(`subfont`)
+const glob = require(`glob`)
 const req = require('require-yml')
 const _docSidebarItems = req(`./src/data/sidebars/doc-links.yaml`)
 
@@ -321,11 +323,36 @@ exports.onCreateWebpackConfig = ({ stage, actions }) => {
   }
 }
 
-exports.onPostBuild = () => {
+exports.onPostBuild = async ({ store, reporter }) => {
 //  fs.copySync(
 //    `../docs/blog/2017-02-21-1-0-progress-update-where-came-from-where-going/gatsbygram.mp4`,
 //    `./public/gatsbygram.mp4`
 //  )
+  if (process.env.XSJ_SUBFONT == 'true') {
+    const root = path.join(store.getState().program.directory, `public`)
+    const subfontConsole = {
+      log: reporter.info,
+      warn: reporter.warn,
+      error: reporter.error,
+    }
+    inputFiles = glob.sync(`${root}/**/*.html`, {ignore: `${root}/page-data/*`})
+    console.log(inputFiles)
+    if (inputFiles.length > 0) {
+      await subfont(
+        {
+          root,
+          inPlace: true,
+          inlineFonts: false,
+          fallbacks: true,
+          subsetPerPage: true,
+          inlineCss: false,
+          silent: true,
+          inputFiles: inputFiles
+        },
+        subfontConsole
+      )
+    }
+  }
 }
 
 exports.onCreatePage = ({page, actions})=> {
