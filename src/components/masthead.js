@@ -251,7 +251,6 @@ const MastheadContent = (props) => {
       fontSize: `1.2rem`,
       "&>div": {
         whiteSpace: `nowrap`,
-        textDecoration: `underline`,
         lineHeight: 2,
         textShadow: `1px 1px 20px hsla(0,100%,100%,0.3)`,
       },
