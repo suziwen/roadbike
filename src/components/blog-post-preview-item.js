@@ -98,7 +98,7 @@ const BlogPostPreviewItem = ({ post, className }) => {
         css={{
           display: `flex`,
           alignItems: `center`,
-          marginBottom: rhythm(2),
+          marginBottom: rhythm(1),
         }}
       >
         <div

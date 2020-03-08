@@ -136,6 +136,11 @@ const _options = {
       ".main-body a:hover": {
         color: colors.gatsby,
       },
+      ".preview>.xsj_paragraph_level_0:before": {
+        content: `'　'`,
+        display: `inline-block`,
+        width: `2em`
+      },
       ".preview a": {
         fontSize: `103%`,
         color: colors.gray.lightCopy,

@@ -136,7 +136,7 @@ const styles = {
   sidebarToggleButton: {
     backgroundColor: colors.gatsby,
     borderRadius: `50%`,
-    bottom: 20,
+    bottom: 64,
     boxShadow: `0 0 2px rgba(0, 0, 0, 0.15)`,
     cursor: `pointer`,
     display: `flex`,

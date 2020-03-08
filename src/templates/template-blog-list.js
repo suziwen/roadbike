@@ -57,6 +57,7 @@ class BlogPostsIndex extends React.Component {
                   marginBottom: rhythm(options.blockMarginBottom),
                   [presets.Tablet]: {
                     background: `#fff`,
+                    marginBottom: rhythm(options.blockMarginBottom * 4),
                     borderRadius: presets.radiusLg,
                     boxShadow: `0 3px 10px rgba(25, 17, 34, 0.05)`,
                     transition: `transform ${presets.animation.speedDefault} ${
