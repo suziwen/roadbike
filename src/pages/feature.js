@@ -107,7 +107,9 @@ class IndexRoute extends React.Component {
     const featureItems = this.featureItems
     return (
       <SvgContainerStyled css={{ position: `relative` }}>
-        <Helmet>
+        <Helmet bodyAttributes={{
+          class: "roadbike-feature-page"
+        }}>
           <htmlAttributes
             css={{
               overflow: `hidden`

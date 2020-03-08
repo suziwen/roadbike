@@ -33,7 +33,9 @@ class BlogPostsIndex extends React.Component {
             },
           }}
         >
-          <Helmet>
+          <Helmet bodyAttributes={{
+            class: "roadbike-blog-list"
+          }}>
             <title>博客</title>
           </Helmet>
           <Container

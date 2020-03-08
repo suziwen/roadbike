@@ -55,7 +55,9 @@ class IndexRoute extends React.Component {
   render() {
     return (
         <div css={{ position: `relative` }}>
-          <Helmet>
+          <Helmet bodyAttributes={{
+            class: "roadbike-home-page"
+          }}>
             <htmlAttributes
               css={{
                 overflow: `hidden`

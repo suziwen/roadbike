@@ -155,7 +155,9 @@ class IndexRoute extends React.Component {
   render() {
     return (
       <div css={{ position: `relative` }}>
-        <Helmet>
+        <Helmet bodyAttributes={{
+          class: "roadbike-download-page"
+        }}>
           <title>下载</title>
           <meta
             name="Description"

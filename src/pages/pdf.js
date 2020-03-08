@@ -39,7 +39,9 @@ export default class PDFViewer extends React.Component {
   render() {
     return (
       <div ref={this.viewerRef} id='viewer' style={{ width: '100%', height: `calc(100vh - 3.5rem)` }}>
-        <Helmet>
+        <Helmet bodyAttributes={{
+          class: "roadbike-pdf-page"
+        }}>
           <htmlAttributes
             css={{
               overflow: `hidden`
