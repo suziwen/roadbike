@@ -53,10 +53,10 @@ class DefaultLayout extends React.PureComponent {
                 css={{
                   [presets.Tablet]: {
                     margin: `0 auto`,
+                    paddingTop: isHomepage
+                      ? 0
+                      : presets.headerHeight,
                   },
-                  paddingTop: isHomepage
-                    ? 0
-                    : presets.headerHeight,
                   paddingLeft: `env(safe-area-inset-left)`,
                   paddingRight: `env(safe-area-inset-right)`,
                 }}

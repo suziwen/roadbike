@@ -49,24 +49,6 @@ class BlogPostsIndex extends React.Component {
               },
             }}
           >
-            <h1
-              css={{
-                marginTop: 0,
-                [presets.Tablet]: {
-                  marginTop: 0,
-                  position: `absolute`,
-                  width: 1,
-                  height: 1,
-                  padding: 0,
-                  overflow: `hidden`,
-                  clip: `rect(0,0,0,0)`,
-                  whiteSpace: `nowrap`,
-                  clipPath: `inset(50%)`,
-                },
-              }}
-            >
-              Blog
-            </h1>
             {posts.map(({ node }) => (
               <BlogPostPreviewItem
                 post={node}
