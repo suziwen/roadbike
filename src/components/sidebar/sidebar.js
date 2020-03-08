@@ -301,11 +301,7 @@ const styles = {
     paddingBottom: 104,
     fontSize: scale(-2 / 10).fontSize,
     [presets.Tablet]: {
-      fontSize: scale(-4 / 10).fontSize,
       paddingBottom: 20,
-    },
-    "& a": {
-      fontFamily: options.systemFontFamily.join(`,`),
     },
     "& li": {
       margin: 0,

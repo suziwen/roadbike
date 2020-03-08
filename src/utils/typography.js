@@ -8,21 +8,6 @@ const _options = {
   bodyFontFamily: [`Noto Serif SC`, `-apple-system`, `BlinkMacSystemFont`, `Helvetica Neue`, `PingFang SC`, `Microsoft YaHei`, `Source Han Sans SC`, `Noto Sans CJK SC`, `WenQuanYi Micro Hei`, `sans-serif`],
   cursiveFontFamily: [`xsjcursive`, "FandolKai", "Adobe Kaiti Std", "Adobe 楷体 Std", "FZKai-Z03S", "方正楷体简体","AR PL UKai CN", "楷体", "NSimSun","SimSun", `cursive`],
   monospaceFontFamily: [`Noto Sans Mono SC`, `Menlo`, `Monaco`, `Consolas`, `Andale Mono`, `lucida console`, `Courier New`, `monospace`],
-  systemFontFamily: [
-    `Noto Serif SC`,
-    `-apple-system`,
-    `BlinkMacSystemFont`,
-    `Segoe UI`,
-    `Roboto`,
-    `Oxygen`,
-    `Ubuntu`,
-    `Cantarell`,
-    `Fira Sans`,
-    `Droid Sans`,
-    `Helvetica Neue`,
-    `Arial`,
-    `sans-serif`,
-  ],
   baseFontSize: `16px`,
   headerLineHeight: 1.075,
   headerColor: colors.gray.dark,
@@ -120,14 +105,14 @@ const _options = {
         wordBreak: `break-word`,
         tabSize: `4`,
         whiteSpace: `pre-wrap`,
-        fontFamily: options.monospaceFontFamily.join(`,`),
+        fontFamily: "'" + options.monospaceFontFamily.join(`','`) + "'", 
       },
       ".preview .xiaoshujiang_code_title_container": {
         userSelect: `none`,
       },
       ".preview code": {
         position: `relative`,
-        fontFamily: options.monospaceFontFamily.join(`,`),
+        fontFamily: "'" + options.monospaceFontFamily.join(`','`) + "'", 
         fontSize: `1em`,
       },
       ".preview code:before, .preview code:after": {
@@ -141,12 +126,11 @@ const _options = {
       ".preview pre": {
         background: `initial`,
         padding: 0,
-        fontFamily: options.monospaceFontFamily.join(`,`),
+        fontFamily: "'" + options.monospaceFontFamily.join(`','`) + "'", 
       },
       ".main-body a": {
         color: `inherit`,
         textDecoration: `none`,
-        fontFamily: options.headerFontFamily.join(`,`),
         fontWeight: `bold`,
       },
       ".main-body a:hover": {
@@ -175,22 +159,7 @@ const _options = {
       },
       ".main-body a.anchor:hover": {
         background: `none`,
-      },
-      [presets.Mobile]: {
-        html: {
-          fontSize: `${(17 / 16) * 100}%`,
-        },
-      },
-      [presets.Tablet]: {
-        html: {
-          fontSize: `${(18 / 16) * 100}%`,
-        },
-      },
-      [presets.VVHd]: {
-        html: {
-          fontSize: `${(19 / 16) * 100}%`,
-        },
-      },
+      }
     }
   },
 }

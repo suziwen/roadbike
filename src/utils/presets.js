@@ -14,8 +14,8 @@ module.exports = {
   Hd: `@media (min-width: 1200px)`,
   VHd: `@media (min-width: 1450px)`,
   VVHd: `@media (min-width: 1650px)`,
-  maxWidth: 39,
-  maxWidthWithSidebar: 26,
+  maxWidth: 49,
+  maxWidthWithSidebar: 36,
   radius: 2,
   radiusLg: 8,
   gutters: {

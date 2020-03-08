@@ -8,7 +8,7 @@ const ExpandAllButton = ({ onClick, expandAll }) => (
   <button
     onClick={onClick}
     css={{
-      ...scale(-2 / 3),
+      ...scale(-1 / 3),
       lineHeight: 1,
       background: `transparent`,
       border: `none`,
@@ -20,7 +20,6 @@ const ExpandAllButton = ({ onClick, expandAll }) => (
       flexGrow: 0,
       paddingTop: rhythm(options.blockMarginBottom / 3),
       paddingBottom: rhythm(options.blockMarginBottom / 3),
-      fontFamily: options.systemFontFamily.join(`,`),
       textAlign: `left`,
       transition: `all .2s`,
       "&:hover": {
