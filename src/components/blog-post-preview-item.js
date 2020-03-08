@@ -68,7 +68,7 @@ const ContentStyled = styled(`div`)`
     padding-left: ${rhythm(options.blockMarginBottom * 3)};
     padding-right: ${rhythm(options.blockMarginBottom * 3)};
     margin-left: ${rhythm(-options.blockMarginBottom * 2)};
-    margin-right: ${rhythm(-options.blockMarginBottom * 2)};
+    margin-right: ${rhythm(options.blockMarginBottom * 2)};
   }
 `
 
@@ -86,7 +86,11 @@ const BlogPostPreviewItem = ({ post, className }) => {
       <ContentStyled>
       <Link to={getLink(post)}>
         <h2>{post.title}</h2>
-        <p css={{ fontWeight: `normal` }}>
+        <p css={{
+        fontFamily: typography.options.bodyFontFamily.join(`,`),
+        textIndent: `2em`,
+        fontWeight: `normal` 
+        }}>
           {post.excerpt}
         </p>
       </Link>
@@ -112,8 +116,6 @@ const BlogPostPreviewItem = ({ post, className }) => {
           }}
         >
           <div>
-            {` `}
-            on
             {` `}
             {post.updateDate}
           </div>
@@ -155,7 +157,7 @@ export const blogPostPreviewFragment = graphql`
     docType
     excerpt
     tags
-    updateDate(formatString: "DD MMMM, YYYY")
+    updateDate(formatString: "YYYY-MM-DD")
     cover {
       childImageSharp {
         fluid(maxWidth: 1024) {
