@@ -1,0 +1,59 @@
+/*
+ * Web Fonts from fontspring.com
+ *
+ * All OpenType features and all extended glyphs have been removed.
+ * Fully installable fonts can be purchased at http://www.fontspring.com
+ *
+ * The fonts included in this stylesheet are subject to the End User License you purchased
+ * from Fontspring. The fonts are protected under domestic and international trademark and
+ * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
+ * distributing this font software.
+ *
+ * (c) 2010-2016 Fontspring
+ *
+ *
+ *
+ *
+ * The fonts included are copyrighted by the vendor listed below.
+ *
+ * Vendor:      ParaType
+ * License URL: https://www.fontspring.com/licenses/paratype/webfont
+ *
+ *
+ */
+
+
+
+@font-face {
+    font-family: "xsjkt";
+    font-display: swap;
+    src: url("../fontfiles/homepage/HanYiChengXingJian-1.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: "xsjbg";
+    font-display: swap;
+    src: url("../fontfiles/homepage/HYShangWeiShouShuW-1.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: "xsjsj";
+    font-display: swap;
+    src:  url("../fontfiles/homepage/SuXinShiGuYinSongJian-1.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "smy";
+    font-display: swap;
+    src: url("../fontfiles/homepage/smy.eot"); /* IE9 */
+    src: url("../fontfiles/homepage/smy.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fontfiles/homepage/smy.woff") format("woff"), /* chrome, firefox */
+    url("../fontfiles/homepage/smy.ttf") format("truetype"), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url("../fontfiles/homepage/smy.svg#smy") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}

@@ -65,7 +65,7 @@ class IndexRoute extends React.Component {
               name="Description"
               content="Blazing fast modern site generator for React. Go beyond static sites: build blogs, ecommerce sites, full-blown apps, and more with Gatsby."
             />
-            <link rel="stylesheet" type="text/css" href={withPrefix('/') + "fonts/Webfonts/xsj/homepage.css"}/>
+            <link rel="stylesheet" type="text/css" href={withPrefix('/') + "xsjfonts/fontstyles/homepage.css"}/>
           </Helmet>
           <MastheadBg />
           <Ripple rippled={this.state.rippled} onEnd={this.rippleEnd} cursorPos={{top: this.state.posY, left: this.state.posX}}/>
