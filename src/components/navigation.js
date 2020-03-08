@@ -9,7 +9,6 @@ import { vP, vPHd, vPVHd, vPVVHd } from "./gutters"
 
 // what we need to nudge down the navItems to sit
 // on the baseline of the logo's wordmark
-const navItemTopOffset = `0.6rem`
 const navItemHorizontalSpacing = rhythm(1 / 3)
 
 const iconColor = colors.ui.border
@@ -214,13 +213,13 @@ const styles = {
     height: `100%`,
   },
   navItem: {
-    ...scale(-1 / 3),
+    ...scale(1 / 4),
     borderBottom: `0.125rem solid transparent`,
     color: `inherit`,
     display: `block`,
     letterSpacing: `0.03em`,
     WebkitFontSmoothing: `antialiased`,
-    lineHeight: `calc(${presets.headerHeight} - ${navItemTopOffset})`,
+    lineHeight: presets.headerHeight,
     position: `relative`,
     textDecoration: `none`,
     textTransform: `uppercase`,
