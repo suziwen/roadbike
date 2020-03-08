@@ -85,14 +85,7 @@ body .xiaoshujiang_code {
 .xiaoshujiang_code ol {
   margin-bottom: 0px;
 }
-.xiaoshujiang_pre {
-  line-height: initial !important;
-  word-wrap: break-word;
-  word-break: break-word;
-  tab-size: 4;
-  white-space: pre-wrap;
-  font-family: monospace;
-}
+
 .xiaoshujiang_code_container pre {
   margin: 0px;
 }
@@ -295,9 +288,6 @@ a.attachment .filesize {
 .mermaid {
   text-align: center;
 }
-.mermaid_svg {
-  font-family: monospace;
-}
 /*mermaid stop*/
 /* patch evernote start*/
 .toc ul {
@@ -305,10 +295,6 @@ a.attachment .filesize {
 }
 /* patch evernote end*/
 /* other start */
-em.cjk_emphasis {
-  font-style: normal;
-  font-family: Georgia, "Times New Roman", Times, "楷体", "AR PL UKai CN", "NSimSun", "Songti SC", "SimSun", serif !important;
-}
 .flow-chart,
 .sequence-diagram {
   text-align: center;

@@ -53,6 +53,9 @@ const _options = {
       h5: {
         ...scale(0),
       },
+      text: {
+        fontFamily: options.monospaceFontFamily.join(`,`),
+      },
       ".preview .xsj_heading": {
         position: `relative`
       },
@@ -109,7 +112,7 @@ const _options = {
         borderRadius: `3px`,
         boxShadow: `inset 0 -1px 0 ${colors.ui.border}`,
       },
-      ".preview pre":{
+      ".preview pre, .preview .xiaoshujiang_pre":{
         lineHeight: `initial !important`,
         wordWrap: `break-word`,
         wordBreak: `break-word`,
