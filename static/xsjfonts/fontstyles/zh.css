@@ -121,3 +121,11 @@
   font-display: swap;
   src: url(../fontfiles/noto/NotoSansMonoCJKsc-Regular.ttf) format('truetype');
 }
+
+@font-face {
+  font-family: 'xsjcursive';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fontfiles/fandol/FandolKai-Regular.ttf) format('truetype');
+}
