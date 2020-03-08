@@ -164,7 +164,7 @@ if (process.env.XSJ_TONGJI == 'true') {
 }
 
 
-plugins.push("gatsby-plugin-offline")
+//plugins.push("gatsby-plugin-offline")
 
 module.exports = {
   siteMetadata: {
