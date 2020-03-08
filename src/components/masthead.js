@@ -141,26 +141,26 @@ const MastheadContent = (props) => {
           },
           fontSize: scale(3 / 5).fontSize,
           "@media (min-width: 350px)": {
-            fontSize: scale(4 / 5).fontSize,
+            fontSize: scale(5 / 5).fontSize,
           },
           "@media (min-width: 650px)": {
-            fontSize: scale(1).fontSize,
+            fontSize: scale(2).fontSize,
             width: rhythm(12),
           },
           [presets.Tablet]: {
-            fontSize: scale(1.1).fontSize,
+            fontSize: scale(2.1).fontSize,
             width: rhythm(14),
           },
           [presets.Hd]: {
-            fontSize: scale(1.4).fontSize,
+            fontSize: scale(2.4).fontSize,
             width: rhythm(16),
           },
           [presets.VHd]: {
-            fontSize: scale(1.5).fontSize,
+            fontSize: scale(2.5).fontSize,
             width: rhythm(18),
           },
           [presets.VVHd]: {
-            fontSize: scale(1.6).fontSize,
+            fontSize: scale(2.6).fontSize,
             width: rhythm(18),
           },
         }}
@@ -248,7 +248,7 @@ const MastheadContent = (props) => {
     <div css={{
       color: colors.accent,
       fontFamily: `xsjsj, "AR PL UKai TW", SimSun, "宋体", Song`,
-      fontSize: `1.2rem`,
+      fontSize: `1rem`,
       "&>div": {
         whiteSpace: `nowrap`,
         lineHeight: 2,
@@ -259,6 +259,18 @@ const MastheadContent = (props) => {
       },
       [presets.Phablet]: {
         writingMode: `vertical-rl`,
+      },
+      [presets.Tablet]: {
+        fontSize: `1rem`,
+      },
+      [presets.Desktop]: {
+        fontSize: `1.5rem`,
+      },
+      [presets.Hd]: {
+        fontSize: `1.7rem`,
+      },
+      [presets.VHd]: {
+        fontSize: `1.8rem`,
       },
     }}>
       <div>激发你的写作热情</div>
