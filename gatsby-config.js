@@ -85,7 +85,7 @@ const plugins = [
               case 'logs':
                 return '/logs/' + node.slug + '/';
               default:
-                return '/blogs/' + node.slug + '/';
+                return '/blog/' + node.slug + '/';
             }
           },
           date: node => node.createDate,
