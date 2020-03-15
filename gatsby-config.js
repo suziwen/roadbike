@@ -63,6 +63,38 @@ const plugins = [
     }
   },
   {
+    resolve: "gatsby-plugin-lunr",
+    options: {
+      languages: [{ name: "zh" }],
+      fields: [
+        { name: "title", store: true, attributes: { boost: 20 } },
+        { name: "description", store: true, attributes: { boost: 5 } },
+        { name: "content" },
+        { name: "url", store: true },
+        { name: "date", store: true },
+      ],
+      resolvers: {
+        StoryWriterMarkdown: {
+          title: node => node.title,
+          description: node => node.excerpt,
+          content: node => node.content,
+          url: node => {
+            switch (node.docType){
+              case 'docs':
+                return '/docs/' + node.slug + '/';
+              case 'logs':
+                return '/logs/' + node.slug + '/';
+              default:
+                return '/blogs/' + node.slug + '/';
+            }
+          },
+          date: node => node.createDate,
+        },
+      },
+      filename: "search_index.json",
+    },
+  },
+  {
     resolve: `gatsby-plugin-typography`,
     options: {
       pathToConfigModule: `src/utils/typography`,
