@@ -130,6 +130,8 @@
       link: /docs/tutorial/commands/
     - title: 片段
       link: /docs/tutorial/snippet/
+    - title: 待办列表视图
+      link: /docs/tutorial/task_list_window/
     - title: 预览
       link: /docs/tutorial/preview/
     - title: 表格组件
