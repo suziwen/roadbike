@@ -122,6 +122,8 @@
           link: /docs/tutorial/editor/light_editor/
     - title: 过滤器
       link: /docs/tutorial/filter/
+    - title: 文章置顶
+      link: /docs/tutorial/article_pinned/
     - title: 内部链接
       link: /docs/tutorial/internal_link/
     - title: 快捷键
