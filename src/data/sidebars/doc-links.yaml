@@ -132,6 +132,8 @@
       link: /docs/tutorial/commands/
     - title: 片段
       link: /docs/tutorial/snippet/
+    - title: 片段脚本参数
+      link: /docs/tutorial/snippet_script_context/
     - title: 待办列表视图
       link: /docs/tutorial/task_list_window/
     - title: 预览
