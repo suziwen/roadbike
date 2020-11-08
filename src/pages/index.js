@@ -63,9 +63,10 @@ class IndexRoute extends React.Component {
                 overflow: `hidden`
               }}
             />
+            <meta name="keywords" content="小书匠, markdown, 笔记, 知识管理"/>
             <meta
               name="Description"
-              content="Blazing fast modern site generator for React. Go beyond static sites: build blogs, ecommerce sites, full-blown apps, and more with Gatsby."
+              content="小书匠,不仅仅是一款 markdown 篇辑器,更是一款功能丰富,强大的知识管理工具"
             />
             <link rel="stylesheet" type="text/css" href={withPrefix('/') + "xsjfonts/fontstyles/homepage.css"}/>
           </Helmet>
