@@ -120,12 +120,16 @@
           link: /docs/tutorial/editor/ace/
         - title: 竖排编辑器
           link: /docs/tutorial/editor/light_editor/
+    - title: 子编辑器
+      link: /docs/tutorial/sub_codemirror_editor/
     - title: 过滤器
       link: /docs/tutorial/filter/
     - title: 文章置顶
       link: /docs/tutorial/article_pinned/
     - title: 内部链接
       link: /docs/tutorial/internal_link/
+    - title: 链接关系图
+      link: /docs/tutorial/link_network_map/
     - title: 快捷键
       link: /docs/tutorial/shortcuts/
     - title: 命令
