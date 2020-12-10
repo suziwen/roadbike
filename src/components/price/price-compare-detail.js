@@ -73,15 +73,19 @@ const PriceSectionRoot = styled(`section`)`
   }
   &:hover ${PriceContainerStyled} span{
     transform: scale(3);
+    -webkit-text-stroke: 1px white;
   }
 `
 
 const PriceSectionTitleHeader = ({
   title,
   isActived,
+  isVip,
   price
   })=> {
+  const vipFontFamilyStr = isVip?`'${options.cursiveFontFamily.join("','")}'`:'inherit'
   const HeaderContentStyled = styled(`header`)`
+    font-family: ${vipFontFamilyStr};
     position: relative;
     margin: 0 0 4rem;
   `
@@ -107,13 +111,13 @@ const PriceSectionTitleHeader = ({
   )
 }
 
-const PriceSectionHeader = ({title, price, isActived})=>{
+const PriceSectionHeader = ({title, price, isActived, isVip})=>{
   const HeaderStyled = styled(`header`)`
     background-color: ${colors.ui.whisper};
   `
   return (
     <HeaderStyled>
-      <PriceSectionTitleHeader title={title} isActived={isActived}/>
+      <PriceSectionTitleHeader title={title} isActived={isActived} isVip={isVip}/>
       <PriceSectionPriceHeader price={price}/>
     </HeaderStyled>
   )
@@ -129,8 +133,17 @@ const UlStyled = styled(`ul`)`
 const LiStyled = styled(`li`)`
   color: ${colors.gray.bright};
   padding: 15px 0;
+  & .more_detail{
+    outline: 2px dotted;
+    outline-offset: 6px;
+  }
   & span{
-    color: ${colors.gatsbyDarker};
+    font-weight: bolder;
+    a{
+      text-decoration: dotted underline;
+      text-underline-offset: 5px;
+      color: ${colors.gatsbyDarker};
+    }
   }
   :hover {
     background-color: ${colors.ui.light};
@@ -159,12 +172,13 @@ const PriceSection = ({
   title,
   price,
   isActived,
+  isVip,
   listItems,
   children
 })=>{
   return (
     <PriceSectionRoot>
-      <PriceSectionHeader title={title} price={price} isActived={isActived}/>
+      <PriceSectionHeader title={title} price={price} isActived={isActived} isVip={isVip}/>
       <PriceSectionDetail listItems={listItems}></PriceSectionDetail>
       {children}
     </PriceSectionRoot>
@@ -186,10 +200,18 @@ const PriceCompareDetail = ()=>{
           price="￥ 0.0/年"
           listItems={[
             "所有 <span>markdown</span> 基础，及扩展语法",
-            "所有<span>第三方存储</span>同步",
-            "所有<span>图床</span>存储",
-            "所有<span>客户端</span>导出",
-            "文档<span>历史记录</span>",
+            "所有<span><a href='/docs/tutorial/store/'>第三方存储</a></span>同步",
+            "所有<span><a href='/docs/tutorial/image/'>图床</a></span>存储",
+            "所有<span><a href='/docs/tutorial/import_and_export/'>客户端</a></span>导出",
+            "<span><a href='/docs/tutorial/drawio/'>drawio</a></span> 绘图功能",
+            "<span><a href='/docs/tutorial/table/editor/'>可视化</a></span>表格编辑器",
+            "<span><a href='http://soft.xiaoshujiang.com/docs/tutorial/internal_link/'>内部链接,反向链接</a></span>",
+            "<span><a href='http://soft.xiaoshujiang.com/docs/tutorial/task_list_window/'>待办清单</a></span>",
+            "<span><a href='http://soft.xiaoshujiang.com/blog/file_template_manager'>模板</a></span>",
+            "<span><a href='http://soft.xiaoshujiang.com/docs/tutorial/snippet/'>片段</a></span>",
+            "<span>全文搜索</span>",
+            "文档<span><a href='/docs/tutorial/files_manager/'>历史记录</a></span>",
+            "<span><a href='/docs/tutorial/image/editor/'>图片涂鸦</a></span> 功能",
           ]}
         >
           <div css={{
@@ -204,15 +226,19 @@ const PriceCompareDetail = ()=>{
           title="付费用户"
           price="￥ 40.0/年"
           isActived={true}
+          isVip={true}
           listItems={[
             "免费版本<span>所有</span>功能",
             "小书匠专用<span>高级语法</span>",
-            "自定义<span>数据中心</span>",
-            "<span>定制化 PDF </span>导出<br><small>(加密，水印，封面等)</small>",
-            "<span>drawio</span> 绘图功能",
-            "<span>可视化</span>表格编辑器",
-            "<span>图片涂鸦</span> 功能",
+            "自定义<span><a href='/docs/tutorial/database/'>数据中心</a></span>",
+            "<span><a href='/docs/tutorial/export/pdf/'>定制化 PDF </a></span>导出<br><small>(加密，水印，封面等)</small>",
+            "<span><a href='/docs/tutorial/link_network_map/'>链接关系图</a></span>",
+            "<span><a href='/blog/mindmap/extense'>思维脑图</a></span>",
+            "<span><a href='/docs/tutorial/sub_codemirror_editor/'>子编辑器</a></span>",
+            "<span><a href='/docs/tutorial/filter/'>过滤器</a></span>",
+            "<span>自定义背景主题</span>",
             "<span>新功能</span>第一时间体验",
+            "<span class='more_detail'><a href='/blog/story-writer/vip-feature'>更多详细介绍</a></span>",
           ]}
         >
           <div css={{

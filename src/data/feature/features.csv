@@ -40,6 +40,7 @@ htmlGrammar,extraGrammar,,html语法,,
 htmlAttrGrammar,extraGrammar,,html属性语法,,
 todoGrammar,extraGrammar,,待办语法,,
 supsubGrammar,extraGrammar,,上下标语法,,
+wikilinkGrammar,extraGrammar,,wiki链接语法,,
 strokeGrammar,extraGrammar,,删除线语法,,
 underLineGrammar,extraGrammar,,下划线语法,,
 defGrammar,extraGrammar,,定义语法,,
@@ -120,9 +121,11 @@ wiz,store,,为知笔记存储,,1
 github,store,,github 存储,,1
 gitee,store,,gitee 码云存储,,1
 gitlab,store,,gitlab 存储,,1
+webdav,store,,webdav 存储,,1
 dropbox,store,,dropbox 存储,,1
 local,store,,本地文件夹存储,,
 github,imageStore,,github 图床,,
+gitee,imageStore,,gitee 图床,,
 smms,imageStore,,smms 图床,,
 aliyun,imageStore,,阿里云 oss,,
 qiniu,imageStore,,七牛图床,,
