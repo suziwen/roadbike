@@ -41,6 +41,11 @@ const Header = styled(`header`)`
 const Content = styled(`div`)`
   line-height: 28px;
   color: ${colors.gray.lightCopy};
+  a{
+    text-decoration: dotted underline;
+    text-underline-offset: 5px;
+    color: ${colors.gatsbyDarker};
+  }
 `
 class PriceQuestionPayFlow extends React.Component {
   constructor(props, context) {
@@ -159,13 +164,15 @@ const PriceQuestion = ()=>{
       <QuestionSectionStyled>
         <Header>免费和付费有什么区别</Header>
         <Content>
-          付费用户提供更及时的更新，更多定制化的导出
+          付费用户提供更及时的更新，更多定制化的功能,详情可以参考<a href="http://soft.xiaoshujiang.com/blog/story-writer/vip-feature">这篇文章</a>
         </Content>
       </QuestionSectionStyled>
       <QuestionSectionStyled>
         <Header>我可以一次性预付多年吗</Header>
         <Content>
-          不可以，目前提供最多预付两年，即两年80人民币。如果您付费超过80,我们这边也只是把你的会员时间延长两年，超出的金额需要用户在一个月内提出退回申请，才可以取回
+          不可以，目前提供最多预付两年，即两年80人民币。
+          <br/>
+          如果您付费超过80,我们这边也只是把你的会员时间延长两年，超出的金额需要用户在一个月内提出退回申请，才可以取回
         </Content>
       </QuestionSectionStyled>
       <QuestionSectionStyled>
@@ -173,7 +180,11 @@ const PriceQuestion = ()=>{
           可以通过哪些方式支付费用
         </Header>
         <Content>
-          目前仅支持支付宝线下转账支付，用户在支付成功后，我们会在 10 个工作日内进行人工确认支付完成，再升级为正式会员. 在此期间，用户可以自动升级为临时会员, 享受与会员一样的功能
+          目前仅支持支付宝线下转账支付，用户在支付成功后，我们会在 10 个工作日内进行人工确认支付完成，再升级为正式会员. 
+          <br/>
+          在此期间，用户可以自己手动升级为临时会员, 享受与会员一样的功能.
+          <br/>
+          手动升级临时会员流程可以查看这篇<a href="http://soft.xiaoshujiang.com/blog/vip/price/flow/">文章</a>
         </Content>
       </QuestionSectionStyled>
       <QuestionSectionStyled>
@@ -189,7 +200,9 @@ const PriceQuestion = ()=>{
           升级会员后，是否可以进行数据同步了
         </Header>
         <Content>
-          不可以，小书匠目前不提供数据存储同步的服务。所有用户数据，配置都保存在用户本地，包括在线网页版小书匠编辑器，数据和配置都是保存在当前浏览器内置数据库里
+          小书匠不提供直接的数据存储服务,但提供用户自定义<a href="http://soft.xiaoshujiang.com/docs/tutorial/database/">数据中心</a>,用户可以自己搭建一个服务器专门存储和同步文章数据.
+          <br/>
+          同时,小书匠还为会员提供一个临时数据中心功能,方便用户在不同的电脑上快速同步最近修改的文章
         </Content>
       </QuestionSectionStyled>
       <QuestionSectionStyled>

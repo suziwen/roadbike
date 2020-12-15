@@ -39,6 +39,11 @@ const Header = styled(`header`)`
 const Content = styled(`div`)`
   line-height: 28px;
   color: ${colors.gray.lightCopy};
+  a{
+    text-decoration: dotted underline;
+    text-underline-offset: 5px;
+    color: ${colors.gatsbyDarker};
+  }
 `
 
 
