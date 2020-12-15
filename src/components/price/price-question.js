@@ -197,6 +197,18 @@ const PriceQuestion = ()=>{
       </QuestionSectionStyled>
       <QuestionSectionStyled>
         <Header>
+          小书匠的数据默认存储在哪？
+        </Header>
+        <Content>
+          小书匠默认将数据存储在本地数据库，具体保存位置可以通过 `关于` 界面查看
+          <br/>
+          小书匠是一个离线优先的本地软件，不管是 web 版本还是客户端版本，所有的数据都是存储在本地。
+          <br/>
+          同时，小书匠提供了一个数据同步配置的服务，用户可以自定义<a href="http://soft.xiaoshujiang.com/docs/tutorial/database/">数据中心</a>来实现专门的存储和同步文章数据功能.
+        </Content>
+      </QuestionSectionStyled>
+      <QuestionSectionStyled>
+        <Header>
           升级会员后，是否可以进行数据同步了
         </Header>
         <Content>
