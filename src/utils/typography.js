@@ -7,6 +7,7 @@ const _options = {
   headerFontFamily,
   bodyFontFamily: [`Noto Serif SC`, `-apple-system`, `BlinkMacSystemFont`, `Helvetica Neue`, `PingFang SC`, `Microsoft YaHei`, `Source Han Sans SC`, `Noto Sans CJK SC`, `WenQuanYi Micro Hei`, `sans-serif`],
   cursiveFontFamily: [`enxsjcursive`, `xsjcursive`, "FandolKai", "Adobe Kaiti Std", "Adobe 楷体 Std", "FZKai-Z03S", "方正楷体简体","AR PL UKai CN", "楷体", "NSimSun","SimSun", `cursive`],
+  quoteFontFamily: [`founderkaiti`, "FandolKai", "Adobe Kaiti Std", "Adobe 楷体 Std", "FZKai-Z03S", "方正楷体简体","AR PL UKai CN", "楷体", "NSimSun","SimSun", `cursive`],
   monospaceFontFamily: [`Noto Sans Mono SC`, `Menlo`, `Monaco`, `Consolas`, `Andale Mono`, `lucida console`, `Courier New`, `monospace`],
   baseFontSize: `16px`,
   headerLineHeight: 1.075,
@@ -72,7 +73,7 @@ const _options = {
         "content": `'###### '`
       },
       ".preview blockquote": {
-        fontFamily: options.cursiveFontFamily.join(`,`),
+        fontFamily: options.quoteFontFamily.join(`,`),
         padding: rhythm(options.blockMarginBottom),
         marginLeft: 0,
         borderLeft: `10px solid ${colors.ui.border}`,
