@@ -180,7 +180,7 @@ const MastheadContent = (props) => {
             color={colors.lemon}
           />
         </span>
-        的写作软件
+        的笔记软件
       </h1>
       <ArrowButtonContainer>
       <Button large onClick={props.rippleEffect} tag="button" target="_self" overrideCSS={{
