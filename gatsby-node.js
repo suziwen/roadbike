@@ -181,6 +181,12 @@ exports.createPages = ({ graphql, actions }) => {
           isPermanent: true
         })
         createRedirect({
+          toPath: `/price`,
+          fromPath: `/price.html`,
+          redirectInBrowser: true,
+          isPermanent: true
+        })
+        createRedirect({
           toPath: `/feature`,
           fromPath: `/feature.html`,
           redirectInBrowser: true,
