@@ -163,3 +163,5 @@
       link: /docs/tutorial/yaml/
     - title: 数据中心
       link: /docs/tutorial/database/
+    - title: 全文搜索
+      link: /docs/tutorial/search_grammar/
