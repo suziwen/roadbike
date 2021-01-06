@@ -209,7 +209,7 @@ const PriceCompareDetail = ()=>{
             "<span><a href='http://soft.xiaoshujiang.com/docs/tutorial/task_list_window/'>待办清单</a></span>",
             "<span><a href='http://soft.xiaoshujiang.com/blog/file_template_manager'>模板</a></span>",
             "<span><a href='http://soft.xiaoshujiang.com/docs/tutorial/snippet/'>片段</a></span>",
-            "<span>全文搜索</span>",
+            "<span><a href='http://soft.xiaoshujiang.com/docs/tutorial/search_grammar/'>全文搜索</a></span>",
             "文档<span><a href='/docs/tutorial/files_manager/'>历史记录</a></span>",
             "<span><a href='/docs/tutorial/image/editor/'>图片涂鸦</a></span> 功能",
           ]}
