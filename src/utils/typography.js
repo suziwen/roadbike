@@ -43,6 +43,9 @@ const _options = {
       text: {
         fontFamily: options.monospaceFontFamily.join(`,`),
       },
+      ".preview video": {
+        maxWidth: `100%`,
+      },
       ".preview .xsj_heading": {
         position: `relative`
       },
