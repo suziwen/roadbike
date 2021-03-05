@@ -115,14 +115,7 @@ class Mindmap extends React.Component {
     echarts_instance.on('mouseover', {seriesName: 'yinyang', name: 'yin'}, function(){
       echarts_instance.dispatchAction({
         type: 'highlight',
-        batch: [
-        {
-          name: 'Raisin'
-        }, {
-          name: 'Blueberry'
-        }, {
-          name: 'Chamomile'
-        }]
+        name: ['Raisin', 'Blueberry', 'Chamomile']
       })
       console.log('mouse in yin')
     })
