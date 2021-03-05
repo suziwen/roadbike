@@ -40,6 +40,7 @@ function renderitem(params, api){
         return {
             type: 'path',
             morph: true,
+            name: 'yin_path',
             shape: {
                 x: x -lwidth/8,
                 y: y,
@@ -59,6 +60,7 @@ function renderitem(params, api){
     } else {
         return {
             type: 'path',
+            name: 'yang_path',
             morph: true,
             shape: {
                 x: x + lwidth/8,  
@@ -110,6 +112,29 @@ class Mindmap extends React.Component {
     let echarts_instance = this.echarts_react.getEchartsInstance();
     echarts_instance.clear();
     echarts_instance.setOption(this.getOption())
+    echarts_instance.on('mouseover', {seriesName: 'yinyang', name: 'yin'}, function(){
+      echarts_instance.dispatchAction({
+        type: 'highlight',
+        batch: [
+        {
+          name: 'Raisin'
+        }, {
+          name: 'Blueberry'
+        }, {
+          name: 'Chamomile'
+        }]
+      })
+      console.log('mouse in yin')
+    })
+    echarts_instance.on('mouseover', {seriesName: 'yinyang', name: 'yang'}, function(){
+      console.log('mouse in yang')
+    })
+    echarts_instance.on('mouseout', {seriesName: 'yinyang', name: 'yin'}, function(){
+      console.log('mouse out yin')
+    })
+    echarts_instance.on('mouseout', {seriesName: 'yinyang', name: 'yang'}, function(){
+      console.log('mouse out yang')
+    })
     window.addEventListener(`resize`, this.handleResize)
   }
 
@@ -148,7 +173,6 @@ class Mindmap extends React.Component {
             sort: null,
 
             emphasis: {
-                focus: 'ancestor'
             },
             levels: [{}, {
                 r0: '15%',
@@ -179,9 +203,10 @@ class Mindmap extends React.Component {
             }]
         }, {
           type: 'custom',
+          name: 'yinyang',
           coordinateSystem: 'polar',
           renderItem: renderitem,
-          data: [1,2]
+          data: [{name: 'yin', value: 1},{name: 'yang', value: 2}]
         }]
     }
   }
