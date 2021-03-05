@@ -60,6 +60,9 @@ class Mindmap extends React.Component {
   }
   componentDidMount() {
     const self = this
+    let echarts_instance = this.echarts_react.getEchartsInstance();
+    echarts_instance.clear();
+    echarts_instance.setOption(this.getOption())
     window.addEventListener(`resize`, this.handleResize)
   }
 
@@ -78,7 +81,6 @@ class Mindmap extends React.Component {
             emphasis: {
                 focus: 'ancestor'
             },
-
             levels: [{}, {
                 r0: '15%',
                 r: '35%',
@@ -115,8 +117,9 @@ class Mindmap extends React.Component {
       <TransformWrapper wheel={{step: 200}} options={{limitToBounds: false}} defaultPositionX={1} defaultPositionY={1} positionX={1} positionY={1}>
         <TransformComponent>
           <ReactEChartsCore
+            ref={(e) => { this.echarts_react = e }}
             echarts={echarts}
-            option={this.getOption()}
+            option={{}}
             style = {{
               height: '100VH',
               width: '100VW'
