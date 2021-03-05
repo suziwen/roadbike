@@ -112,7 +112,7 @@ class Mindmap extends React.Component {
 
   render() {
     return (
-      <TransformWrapper wheel={{step: 200}}>
+      <TransformWrapper wheel={{step: 200}} options={{limitToBounds: false}} defaultPositionX={1} defaultPositionY={1} positionX={1} positionY={1}>
         <TransformComponent>
           <ReactEChartsCore
             echarts={echarts}
