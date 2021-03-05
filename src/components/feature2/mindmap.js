@@ -7,8 +7,12 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch"
 import ReactEChartsCore from 'echarts-for-react/lib/core'
 // Import the echarts core module, which provides the necessary interfaces for using echarts.
 import * as echarts from 'echarts/core'
-import { SunburstChart } from 'echarts/charts'
+import { 
+  SunburstChart,
+  CustomChart
+} from 'echarts/charts'
 import {
+  PolarComponent,
   TooltipComponent
 }  from 'echarts/components'
 import { SVGRenderer} from 'echarts/renderers'
@@ -23,9 +27,73 @@ import mindmapData from './mindmap-data'
 
 
 echarts.use(
-  [TooltipComponent, SunburstChart, SVGRenderer]
+  [TooltipComponent, PolarComponent, SunburstChart, CustomChart, SVGRenderer]
 )
 
+function renderitem(params, api){
+    const width = api.getWidth()
+    const height = api.getHeight()
+    const lwidth = params.coordSys.r * .3
+    const x = params.coordSys.cx - lwidth/2
+    const y = params.coordSys.cy - lwidth/2
+    console.log(lwidth)
+    const p = api.coord([0, 0])
+    return {
+        type: 'group',
+        x: x,
+        y: y ,
+        width: lwidth,
+        height: lwidth,
+        textContent: 'hhhhhhh',
+        children: [ {
+            type: 'path',
+            shape: {
+                x: lwidth/2,
+                y: lwidth/8,
+                width: lwidth/4,
+                height: lwidth/4,
+                d: 'm471.8 498.07a72.188 72.188 0 1 1 -144.38 0 72.188 72.188 0 1 1 144.38 0z '
+            },
+            style: {
+                fill: '#abc',
+            }
+        }, {
+            type: 'path',
+            shape: {
+                x: lwidth/2,
+                y: lwidth/2,
+                width: lwidth/4,
+                height: lwidth/4,
+                d: 'm471.8 498.07a72.188 72.188 0 1 1 -144.38 0 72.188 72.188 0 1 1 144.38 0z '
+            },
+            style: {
+                fill: '#abc',
+            }
+        }, {
+            type: 'path',
+            rotation: 0,
+            shape: {
+                x: -lwidth/8,
+                y: 0,
+                width: lwidth,
+                height: lwidth,
+                d: 'M365.2 151.42c-1.49 0-2.97 0.02-4.44 0.07-163.56 2.37-295.56 135.82-295.56 299.93-0.005 164.31 132.3 297.86 296.12 299.94-81.01-2.05-146.12-68.43-146.12-149.94 0-82.8 67.2-150 150-150s150-67.2 150-150-67.2-150-150-150zm0 100c27.6 0 50 22.4 50 50s-22.4 50-50 50-50-22.4-50-50 22.4-50 50-50z'
+            },
+            style: {
+                fill: 'red'
+            }
+        },  {
+            type: 'path',
+            shape: {
+                x: lwidth/8,
+                y: 0,
+                width: lwidth,
+                height: lwidth,
+                d: 'm365.2 751.36c1.48 0 2.96-0.02 4.43-0.06 163.56-2.38 295.57-135.82 295.57-299.94 0-164.3-132.31-297.86-296.13-299.94 81.01 2.06 146.13 68.44 146.13 149.94 0 82.8-67.2 150-150 150s-150 67.2-150 150 67.2 150 150 150zm0-100c-27.6 0-50-22.4-50-50s22.4-50 50-50 50 22.4 50 50-22.4 50-50 50z'
+            }
+        }]
+    };
+}
 
 
 class Mindmap extends React.Component {
@@ -72,7 +140,29 @@ class Mindmap extends React.Component {
 
   getOption (){
     return {
-        series: {
+        polar: {
+            radius: [0, '100%']
+        },
+        angleAxis: {
+            type: 'category',
+            boundaryGap: false,
+            splitLine: {
+                show: true
+            },
+            axisLine: {
+                show: true
+            }
+        },
+        radiusAxis: {
+            type: 'category',
+            axisLine: {
+                show: true
+            },
+            axisLabel: {
+                rotate: 45
+            }
+        },
+        series: [{
             type: 'sunburst',
             data: mindmapData,
             radius: [0, '95%'],
@@ -108,7 +198,12 @@ class Mindmap extends React.Component {
                     borderWidth: 3
                 }
             }]
-        }
+        }, {
+          type: 'custom',
+          coordinateSystem: 'polar',
+          renderItem: renderitem,
+          data: [2]
+        }]
     }
   }
 
