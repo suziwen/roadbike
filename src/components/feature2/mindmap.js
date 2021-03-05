@@ -47,6 +47,7 @@ function renderitem(params, api){
         textContent: 'hhhhhhh',
         children: [ {
             type: 'path',
+            morph: true,
             shape: {
                 x: lwidth/2,
                 y: lwidth/8,
@@ -59,6 +60,7 @@ function renderitem(params, api){
             }
         }, {
             type: 'path',
+            morph: true,
             shape: {
                 x: lwidth/2,
                 y: lwidth/2,
@@ -71,7 +73,7 @@ function renderitem(params, api){
             }
         }, {
             type: 'path',
-            rotation: 0,
+            morph: true,
             shape: {
                 x: -lwidth/8,
                 y: 0,
@@ -84,6 +86,7 @@ function renderitem(params, api){
             }
         },  {
             type: 'path',
+            morph: true,
             shape: {
                 x: lwidth/8,
                 y: 0,
