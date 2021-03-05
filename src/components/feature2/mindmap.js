@@ -2,15 +2,16 @@ import React from "react"
 import styled from "react-emotion"
 import { graphql } from "gatsby"
 
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch"
+
 import ReactEChartsCore from 'echarts-for-react/lib/core'
 // Import the echarts core module, which provides the necessary interfaces for using echarts.
 import * as echarts from 'echarts/core'
 import { SunburstChart } from 'echarts/charts'
 import {
-  TooltipComponent,
-  TitleComponent
+  TooltipComponent
 }  from 'echarts/components'
-import { CanvasRenderer} from 'echarts/renderers'
+import { SVGRenderer} from 'echarts/renderers'
 
 
 
@@ -22,7 +23,7 @@ import mindmapData from './mindmap-data'
 
 
 echarts.use(
-  [TitleComponent, TooltipComponent, SunburstChart, CanvasRenderer]
+  [TooltipComponent, SunburstChart, SVGRenderer]
 )
 
 
@@ -68,13 +69,6 @@ class Mindmap extends React.Component {
 
   getOption (){
     return {
-        title: {
-            text: 'WORLD COFFEE RESEARCH SENSORY LEXICON',
-            textStyle: {
-                fontSize: 14,
-                align: 'center'
-            },
-        },
         series: {
             type: 'sunburst',
             data: mindmapData,
@@ -117,16 +111,23 @@ class Mindmap extends React.Component {
   }
 
   render() {
-    return <ReactEChartsCore
-      echarts={echarts}
-      option={this.getOption()}
-      style = {{
-        height: '100%'
-      }}
-      notMerge={true}
-      lazyUpdate={true}
-      theme={"light"}
-    />
+    return (
+      <TransformWrapper wheel={{step: 200}}>
+        <TransformComponent>
+          <ReactEChartsCore
+            echarts={echarts}
+            option={this.getOption()}
+            style = {{
+              height: '100VH',
+              width: '100VW'
+            }}
+            notMerge={true}
+            lazyUpdate={true}
+            theme={"light"}
+          />
+        </TransformComponent>
+      </TransformWrapper>
+    )
   }
 }
 

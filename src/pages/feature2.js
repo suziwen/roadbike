@@ -58,10 +58,6 @@ const SvgContainerStyled = styled(`div`)`
     font-family: webfontxiaoshujiang;
     font-weight: bolder;
   }
-  & text{
-    alignment-baseline: central;
-    fill: white;
-  }
   & .mindmap_svg path{
     fill: none;
   } 
