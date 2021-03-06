@@ -68,7 +68,7 @@ class IndexRoute extends React.Component {
   constructor(props, context) {
     super(props, context)
     const featureItems = this.props.data.allFeaturesCsv.edges.map((n)=>(n.node))
-    featureItems.columns = ["id", "parentId", "type", "title", "description", "showHexagon"]
+    featureItems.columns = ["id", "parentId", "type", "title", "description", "showHexagon", "vip"]
     this.featureItems = featureItems
     this.handleActiveNode = this.handleActiveNode.bind(this)
     this.handleSelectedNode = this.handleSelectedNode.bind(this)
@@ -156,6 +156,7 @@ export const pageQuery = graphql`
           title
           description
           showHexagon
+          vip
           
         }
       }

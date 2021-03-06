@@ -166,8 +166,19 @@ class Mindmap extends React.Component {
     this.handleSelectedNode = this.props.handleSelectedNode
     this.handleResize = this.handleResize.bind(this)
     this.nodes = this.props.nodes
-    console.log(this.nodes)
-    console.log(list_to_tree(this.nodes))
+    const vipNodeIds = []
+    const noVipNodeIds = []
+    this.nodes.forEach(function(_node){
+      if (_node.parentId){
+        if(_node.vip){
+          vipNodeIds.push(_node.id)
+        } else {
+          noVipNodeIds.push(_node.id)
+        }
+      }
+    })
+    this.vipNodeIds = vipNodeIds
+    this.noVipNodeIds = noVipNodeIds
     this.mindmapData = list_to_tree(this.nodes)[0].children
     
     this.state = {
@@ -198,15 +209,19 @@ class Mindmap extends React.Component {
     let echarts_instance = this.echarts_react.getEchartsInstance();
     echarts_instance.clear();
     echarts_instance.setOption(this.getOption())
-    echarts_instance.on('mouseover', {seriesName: 'yinyang', name: 'yin'}, function(){
+    echarts_instance.on('mouseover', {seriesName: 'yinyang', name: 'yin'}, function(eInfo){
+      if (eInfo.data && eInfo.data.name !== 'yin') {return}
       echarts_instance.dispatchAction({
         type: 'highlight',
-        name: ['Raisin', 'Blueberry', 'Chamomile']
+        name: self.noVipNodeIds
       })
-      console.log('mouse in yin')
     })
-    echarts_instance.on('mouseover', {seriesName: 'yinyang', name: 'yang'}, function(){
-      console.log('mouse in yang')
+    echarts_instance.on('mouseover', {seriesName: 'yinyang', name: 'yang'}, function(eInfo){
+      if (eInfo.data && eInfo.data.name !== 'yang') {return}
+      echarts_instance.dispatchAction({
+        type: 'highlight',
+        name: self.vipNodeIds
+      })
     })
     echarts_instance.on('mouseout', {seriesName: 'yinyang', name: 'yin'}, function(){
       console.log('mouse out yin')
