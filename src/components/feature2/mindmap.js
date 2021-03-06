@@ -31,6 +31,13 @@ echarts.use(
 )
 
 function renderitem(params, api){
+    const myChart = this.echarts_react.getEchartsInstance();
+    const myModel = myChart.getModel();
+    const sunSeries = myModel.getSeriesByIndex(0);
+    const viewRoot = sunSeries.getViewRoot();
+    if (viewRoot.dataIndex !== 0) {
+        return
+    }
     //console.log(myChart)
     //console.log(api.value(1,0),api.value(1))
     const lwidth = params.coordSys.r * .3
@@ -48,6 +55,10 @@ function renderitem(params, api){
                 height: lwidth,
                 d: 'M365.2 151.42c-1.49 0-2.97 0.02-4.44 0.07-163.56 2.37-295.56 135.82-295.56 299.93-0.005 164.31 132.3 297.86 296.12 299.94-81.01-2.05-146.12-68.43-146.12-149.94 0-82.8 67.2-150 150-150s150-67.2 150-150-67.2-150-150-150zm0 100c27.6 0 50 22.4 50 50s-22.4 50-50 50-50-22.4-50-50 22.4-50 50-50z'
             },
+            textContent: {style: {text: '付费'}},
+            textConfig: {
+                rotation: 3.14/4,
+                position: ['25%', '45%']},
             style: api.style({
                 fillxx: 'red'
             }, 1),
@@ -69,6 +80,12 @@ function renderitem(params, api){
                 width: lwidth,
                 height: lwidth,
                 d: 'm365.2 751.36c1.48 0 2.96-0.02 4.43-0.06 163.56-2.38 295.57-135.82 295.57-299.94 0-164.3-132.31-297.86-296.13-299.94 81.01 2.06 146.13 68.44 146.13 149.94 0 82.8-67.2 150-150 150s-150 67.2-150 150 67.2 150 150 150zm0-100c-27.6 0-50-22.4-50-50s22.4-50 50-50 50 22.4 50 50-22.4 50-50 50z'
+            },
+            textContent: {style: {text: '免费'}},
+            textConfig: {
+                rotation: 3.14/4,
+                position: ['50%', '60%']
+                
             },
             style: api.style(null ,1)
         }
@@ -136,6 +153,7 @@ class Mindmap extends React.Component {
   }
 
   getOption (){
+    const self = this
     return {
         polar: {
             radius: [0, '100%']
@@ -198,7 +216,7 @@ class Mindmap extends React.Component {
           type: 'custom',
           name: 'yinyang',
           coordinateSystem: 'polar',
-          renderItem: renderitem,
+          renderItem: renderitem.bind(self),
           data: [{name: 'yin', value: 1},{name: 'yang', value: 2}]
         }]
     }
