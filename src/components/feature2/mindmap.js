@@ -38,6 +38,7 @@ function renderitem(params, api){
     if (viewRoot.dataIndex !== 0) {
         return
     }
+    const fillColor = myModel.getColorFromPalette(params.dataIndex + 3)
     //console.log(myChart)
     //console.log(api.value(1,0),api.value(1))
     const lwidth = params.coordSys.r * .3
@@ -60,13 +61,8 @@ function renderitem(params, api){
                 rotation: 3.14/4,
                 position: ['25%', '45%']},
             style: api.style({
-                fillxx: 'red'
-            }, 1),
-            emphasis: {
-                style: api.styleEmphasis({
-                    fill:  api.visual('color')
-                })
-            }
+                fill: fillColor
+            }, 1)
         }
     } else {
         return {
@@ -87,7 +83,9 @@ function renderitem(params, api){
                 position: ['50%', '60%']
                 
             },
-            style: api.style(null ,1)
+            style: api.style({
+                fill: fillColor
+            })
         }
     }
 }
