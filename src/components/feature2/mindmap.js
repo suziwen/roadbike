@@ -26,6 +26,7 @@ import presets, { colors } from "../../utils/presets"
 import xsjLogoDataUri from './mindmap-data'
 
 
+const jieqi = ["立春", "雨水", "惊蛰", "春分", "清明", "谷雨", "立夏", "小满", "芒种", "夏至", "小暑", "大暑", "立秋", "处暑", "白露", "秋分", "寒露", "霜降", "立冬", "小雪", "大雪", "冬至", "小寒", "大寒"]
 
 echarts.use(
   [TooltipComponent, GraphicComponent, PolarComponent, SunburstChart, CustomChart, SVGRenderer]
@@ -231,29 +232,33 @@ class Mindmap extends React.Component {
           },
           style: {
             image: xsjLogoDataUri,
-            fill: 'yellow',
-            stroke: 'blue',
             width: 40,
             height: 40
           }
         }],
         polar: {
-            radius: [0, '100%']
+            radius: [0, '90%']
         },
         angleAxis: {
-            type: 'category',
-            boundaryGap: false,
-            splitLine: {
-                show: true
-            },
-            axisLine: {
-                show: true
-            }
+          type: 'category',
+          data: jieqi,
+          boundaryGap: false,
+          splitLine: {
+              show: true,
+              lineStyle: {
+                  color: '#ddd',
+                  type: 'dashed'
+              }
+          },
+          axisLine: {
+            symbol: 'arrow',
+              show: true
+          }
         },
         radiusAxis: {
             type: 'category',
             axisLine: {
-                show: true
+                show: false
             },
             axisLabel: {
                 rotate: 45
