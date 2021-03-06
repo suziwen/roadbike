@@ -30,6 +30,40 @@ echarts.use(
   [TooltipComponent, PolarComponent, SunburstChart, CustomChart, SVGRenderer]
 )
 
+function list_to_tree(list) {
+  var map = {}, node, roots = [], i, newList=[];
+  for (i = 0; i < list.length; i += 1) {
+    map[list[i].id] = i; // initialize the map
+    var _node = list[i];
+    newList[i] = {
+      name: _node.id,
+      value: 1,
+      label: {
+        formatter: _node.title
+      },
+      children: [],
+      data: _node
+    }
+  }
+  
+  for (i = 0; i < newList.length; i += 1) {
+    var node = newList[i];
+    if (node.data.parentId !== "") {
+      // if you have dangling branches check that map[node.parentId] exists
+      var parentNode = newList[map[node.data.parentId]];
+      parentNode.children.push(node);
+      while (parentNode) {
+        parentNode.value++;
+        parentNode = newList[map[parentNode.data.parentId]];
+      }
+    } else {
+      roots.push(node);
+    }
+  }
+  return roots;
+}
+
+
 function renderitem(params, api){
     const myChart = this.echarts_react.getEchartsInstance();
     const myModel = myChart.getModel();
@@ -99,6 +133,10 @@ class Mindmap extends React.Component {
     this.handleSelectedNode = this.props.handleSelectedNode
     this.handleResize = this.handleResize.bind(this)
     this.nodes = this.props.nodes
+    console.log(this.nodes)
+    console.log(list_to_tree(this.nodes))
+    this.mindmapData = list_to_tree(this.nodes)[0].children
+    
     this.state = {
       activeNode: this.props.activeNode,
       selectedNode: this.props.selectedNode
@@ -177,7 +215,7 @@ class Mindmap extends React.Component {
         },
         series: [{
             type: 'sunburst',
-            data: mindmapData,
+            data: self.mindmapData,
             radius: [0, '95%'],
             sort: null,
 
@@ -222,15 +260,21 @@ class Mindmap extends React.Component {
 
   render() {
     return (
-      <TransformWrapper wheel={{step: 200}} options={{limitToBounds: false}} defaultPositionX={1} defaultPositionY={1} positionX={1} positionY={1}>
+      <TransformWrapper wheel={{step: 200}} options={{
+        limitToBounds: false,
+        minScale: .8
+        }} defaultPositionX={1} defaultPositionY={1} positionX={1} positionY={1}>
         <TransformComponent>
           <ReactEChartsCore
             ref={(e) => { this.echarts_react = e }}
             echarts={echarts}
             option={{}}
             style = {{
-              height: '100VH',
-              width: '100VW'
+              height: '100vH',
+              width: '100vW',
+              minHeight: '1000px',
+              minHeight: '1000px'
+
             }}
             notMerge={true}
             lazyUpdate={true}
