@@ -13,7 +13,8 @@ import {
 } from 'echarts/charts'
 import {
   PolarComponent,
-  TooltipComponent
+  TooltipComponent,
+  GraphicComponent
 }  from 'echarts/components'
 import { SVGRenderer} from 'echarts/renderers'
 
@@ -22,12 +23,12 @@ import { SVGRenderer} from 'echarts/renderers'
 
 import presets, { colors } from "../../utils/presets"
 
-import mindmapData from './mindmap-data'
+import xsjLogoDataUri from './mindmap-data'
 
 
 
 echarts.use(
-  [TooltipComponent, PolarComponent, SunburstChart, CustomChart, SVGRenderer]
+  [TooltipComponent, GraphicComponent, PolarComponent, SunburstChart, CustomChart, SVGRenderer]
 )
 
 function list_to_tree(list) {
@@ -220,6 +221,22 @@ class Mindmap extends React.Component {
   getOption (){
     const self = this
     return {
+        graphic: [{
+          type: 'image',
+          left: 'center',
+          top: 'center',
+          zlevel: 1,
+          onclick: function(){
+            window.document.location.href = '/'
+          },
+          style: {
+            image: xsjLogoDataUri,
+            fill: 'yellow',
+            stroke: 'blue',
+            width: 40,
+            height: 40
+          }
+        }],
         polar: {
             radius: [0, '100%']
         },
