@@ -45,6 +45,7 @@ src/cache
 *.vi
 *~
 *.sass-cache
+.~lock*
 
 # OS or Editor folders
 .DS_Store
@@ -62,3 +63,4 @@ src/xsjpostsa
 src/xsjpostsb
 src/xsjpostsc
 src/xsjpostsb
+
