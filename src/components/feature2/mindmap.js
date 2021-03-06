@@ -60,6 +60,34 @@ function list_to_tree(list) {
       roots.push(node);
     }
   }
+  //从上到下，再次遍历，把 level 样式应用上去
+  const levelR = [0, 10, 25, 55, 85]
+  function applyLevelFn(node, level){
+    node.depth = level
+    if (node.children && node.children.length > 0 || level < 3) {
+      node.children.forEach(function(cNode, index){
+        applyLevelFn(cNode, level + 1)
+      })
+      node.r0 = levelR[level] + '%'
+      node.r = levelR[level + 1] + '%'
+    } else {
+      //没有子节点了，这是叶子节点
+
+      node.r0 = levelR[level] + '%'
+      node.r = (levelR[level] + 2) + '%'
+      node.label = {
+        formatter: node.data.title,
+        position: 'outside',
+        padding: 3,
+        silent: false
+      }
+      node.itemStyle = {
+        borderRadius: 5,
+        borderWidth: 2
+      }
+    }
+  }
+  applyLevelFn(roots[0], 0)
   return roots;
 }
 
@@ -75,7 +103,8 @@ function renderitem(params, api){
     const fillColor = myModel.getColorFromPalette(params.dataIndex + 3)
     //console.log(myChart)
     //console.log(api.value(1,0),api.value(1))
-    const lwidth = params.coordSys.r * .3
+  //  乘以 .2 这个 就是taichi 的半径
+    const lwidth = params.coordSys.r * .2
     const x = params.coordSys.cx - lwidth/2
     const y = params.coordSys.cy - lwidth/2
     if (params.dataIndex/2) {
@@ -216,36 +245,25 @@ class Mindmap extends React.Component {
         series: [{
             type: 'sunburst',
             data: self.mindmapData,
+            itemStyle: {
+              borderRadius: 7,
+            },
             radius: [0, '95%'],
             sort: null,
 
             emphasis: {
             },
             levels: [{}, {
-                r0: '15%',
-                r: '35%',
                 itemStyle: {
+                    borderRadius: 0,
                     borderWidth: 2
                 },
                 label: {
                     rotate: 'tangential'
                 }
             }, {
-                r0: '35%',
-                r: '70%',
                 label: {
                     align: 'right'
-                }
-            }, {
-                r0: '70%',
-                r: '72%',
-                label: {
-                    position: 'outside',
-                    padding: 3,
-                    silent: false
-                },
-                itemStyle: {
-                    borderWidth: 3
                 }
             }]
         }, {
@@ -272,8 +290,8 @@ class Mindmap extends React.Component {
             style = {{
               height: '100vH',
               width: '100vW',
-              minHeight: '1000px',
-              minHeight: '1000px'
+              minHeight: '1200px',
+              minHeight: '1200px'
 
             }}
             notMerge={true}
