@@ -9,8 +9,8 @@ import Container from "../components/container"
 import { PriceIcon} from "../assets/mobile-nav-icons"
 import {MdArrowForward} from "react-icons/md"
 import Button from "../components/button"
-import FeatureHexagon from "../components/feature2/feature-titled-hexagon"
-import Mindmap from "../components/feature2/mindmap"
+import FeatureHexagon from "../components/feature/feature-hexagon"
+import Mindmap from "../components/feature/mindmap"
 import FeatureDetail from  "../components/feature/feature-detail"
 
 
@@ -58,6 +58,10 @@ const SvgContainerStyled = styled(`div`)`
     font-family: webfontxiaoshujiang;
     font-weight: bolder;
   }
+  & text{
+    alignment-baseline: central;
+    fill: white;
+  }
   & .mindmap_svg path{
     fill: none;
   } 
@@ -68,7 +72,7 @@ class IndexRoute extends React.Component {
   constructor(props, context) {
     super(props, context)
     const featureItems = this.props.data.allFeaturesCsv.edges.map((n)=>(n.node))
-    featureItems.columns = ["id", "parentId", "type", "title", "description", "showHexagon", "vip"]
+    featureItems.columns = ["id", "parentId", "type", "title", "description", "showHexagon"]
     this.featureItems = featureItems
     this.handleActiveNode = this.handleActiveNode.bind(this)
     this.handleSelectedNode = this.handleSelectedNode.bind(this)
@@ -156,11 +160,9 @@ export const pageQuery = graphql`
           title
           description
           showHexagon
-          vip
           
         }
       }
     }
   }
 `
-
