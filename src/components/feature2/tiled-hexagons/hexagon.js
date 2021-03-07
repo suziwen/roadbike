@@ -46,16 +46,21 @@ export default class Hexagon extends Component {
     let height = 2 * sideLength + elevation
 
     let fontSizeOffset = textStyle.fontSize ? 0.3 * parseInt(textStyle.fontSize) : 0
-    
-    const hexagon = (
-      <React.Fragment>
-        <path fill={fill} d={generateHexSVG(sideLength, borderRadius)} />
-        <image href={img} width={0.7 * width} height={0.7 * height} x={0.15 * width} y={0.12 * height} />
+    const imgTag = img?(<image href={img} width={0.7 * width} height={0.7 * height} x={0.15 * width} y={0.12 * height} />): ''
+    const textTag = text?(
         <text fill="#bbb" strokeWidth="0" style={textStyle}>
           <tspan x={width/2} y={height/2 + fontSizeOffset} textAnchor="middle">
             {text}
           </tspan>
         </text>
+    ): ''
+
+    
+    const hexagon = (
+      <React.Fragment>
+        <path fill={fill} d={generateHexSVG(sideLength, borderRadius)} />
+        {imgTag}
+        {textTag}
       </React.Fragment>)
 
     return (
