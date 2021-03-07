@@ -5,6 +5,43 @@ import presets, { colors } from "../../utils/presets"
 import {FiGitlab, FiGithub, FiFeather, FiInbox} from "react-icons/fi"
 import {FaGrinBeam, FaCannabis,FaUserNinja,FaDropbox, FaUserPlus, FaImages, FaFileMedical, FaConnectdevelop,  FaRocket, FaUserEdit, FaTree, FaExpand, FaHistory, FaShippingFast, FaBookReader, FaCode, FaBeer, FaMarkdown } from 'react-icons/fa'
 
+import { 
+  FcReading,
+  FcNightLandscape,
+  FcPrint,
+  FcAlarmClock,
+  FcMindMap,
+  FcShipped,
+  FcSmartphoneTablet,
+  FcSelfServiceKiosk,
+  FcParallelTasks,
+  FcList,
+  FcFaq,
+  FcEngineering,
+  FcGraduationCap,
+  FcMakeDecision,
+  FcMusic,
+  FcTimeline,
+  FcTemplate,
+  FcVoicePresentation,
+  FcWebcam,
+  FcStatistics
+} from "react-icons/fc";
+import { 
+  FcNeutralTrading,
+  FcNightPortrait,
+  FcLink,
+  FcHeatMap,
+  FcFactory,
+  FcFactoryBreakdown,
+  FcElectroDevices,
+  FcElectronics,
+  FcDoughnutChart,
+  FcDocument,
+  FcDeployment,
+  FcCalendar
+} from "react-icons/fc";
+
 import { Hexagon, TiledHexagons } from './tiled-hexagons'
 
 
@@ -15,7 +52,7 @@ const HexagonContainerStyled = styled(`div`)`
   right: 0;
 `
 
-const iconMap = {
+const iconMapbak = {
   editor: FaConnectdevelop,
   grammar: FaMarkdown,
   featureCodeGrammar: FaCode,
@@ -39,8 +76,49 @@ const iconMap = {
   other: FiFeather
 }
 
+
+const randomIcons = [
+  FcNeutralTrading,
+  FcNightPortrait,
+  FcLink,
+  FcHeatMap,
+  FcFactory,
+  FcFactoryBreakdown,
+  FcElectroDevices,
+  FcElectronics,
+  FcDoughnutChart,
+  FcDocument
+]
+
+const iconMap = {
+  editor: FcFaq,
+  grammar: FcReading,
+  featureCodeGrammar: FcList,
+  mulPreviewLayout: FcEngineering,
+  syncScrollPreviewOutline: FcParallelTasks,
+  fileHistory: FcAlarmClock,
+  evernote: FcGraduationCap,
+  github: FcMakeDecision,
+  gitlab: FcMusic,
+  mulEditorType: FcTimeline,
+  dropbox: FcTemplate,
+  waterMarkFloatPreviewLayout: FcVoicePresentation,
+  themesEditor: FcNightLandscape,
+  zenPreview: FcWebcam,
+  zenWriter: FcPrint,
+  editorOutline: FcMindMap,
+  pptPreview: FcSmartphoneTablet,
+  pptMulPreview: FcStatistics,
+  imageStore: FcSelfServiceKiosk,
+  store: FcShipped,
+}
+
+function getRandomInt(max){
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
 const getIconObj = (item)=>{
-  return iconMap[item.id] || iconMap['other']
+  return iconMap[item.id]
 }
 
 class FeatureTitledHexagon extends React.Component {
@@ -71,10 +149,14 @@ class FeatureTitledHexagon extends React.Component {
   }
 
   render(){
+    let noIconPos = 0
     const tiles = Object.entries(this.featureItems).map((val, idx)=>{
       const key = val[0]
       const itemObj = val[1]
-      const ItemIcon = getIconObj(itemObj)
+      let ItemIcon = getIconObj(itemObj)
+      if (!ItemIcon){
+        ItemIcon = randomIcons[noIconPos++%randomIcons.length]
+      }
       const isSelected = this.props.selectedNode === key
       let selectedStyle = {}
       if (this.props.selectedNode === key) {
