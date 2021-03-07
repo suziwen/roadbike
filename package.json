@@ -6,6 +6,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.8.1",
     "@reach/skip-nav": "^0.1.2",
+    "assign-deep": "^1.0.1",
     "bluebird": "^3.5.4",
     "d3": "^5.9.2",
     "dotenv": "^6.0.0",
@@ -59,7 +60,7 @@
     "react-helmet": "^5.2.0",
     "react-hexagon": "^1.1.3",
     "react-highlight-words": "^0.16.0",
-    "react-icons": "^3.5.0",
+    "react-icons": "^4.2.0",
     "react-instantsearch": "^4.5.1",
     "react-medium-image-zoom": "^3.0.15",
     "react-modal": "^3.8.1",
