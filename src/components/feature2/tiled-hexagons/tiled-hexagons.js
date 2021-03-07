@@ -31,8 +31,9 @@ export default class TiledHexagons extends Component {
 
           let { XMultiplier, YMultiplier } = getMultipliers(i, ranges)
 
+          let mergedStyles = {}
           //deep merge & clone
-          let mergedStyles = assign(mergedStyles, JSON.parse(JSON.stringify(tileStyles)), styles)
+          mergedStyles = assign(mergedStyles, JSON.parse(JSON.stringify(tileStyles)), styles)
 
           return (
             <svg key={i} x={XMultiplier * XConst} y={YMultiplier * YConst} width={singleTileWidth} height={singleTileHeight}>
