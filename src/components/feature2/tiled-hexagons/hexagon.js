@@ -49,8 +49,8 @@ export default class Hexagon extends Component {
     const imgTag = img?(<image href={img} width={0.7 * width} height={0.7 * height} x={0.15 * width} y={0.12 * height} />): ''
     const HexagonIcon = icon
     const iconTag = HexagonIcon?(
-      <foreignObject className={"foreign-object hex_icon"} x="50%" y="50%" style={{overflow: 'visible', width: '100%', height: '100%'}}>
-        <HexagonIcon style={{width: '50%', height: '50%', transform: 'translate(-50%, -50%)'}}/>
+      <foreignObject className={"foreign-object hex_icon"} style={{width: '100%', height: '100%', ...textStyle}}>
+        <HexagonIcon style={{width: '50%', height: '50%', transform: 'translate(50%, 70%)'}}/>
       </foreignObject>
     ):''
     const textTag = text?(
