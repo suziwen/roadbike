@@ -119,10 +119,10 @@ class FeatureTitledHexagon extends React.Component {
     return (
       <HexagonContainerStyled>
         <TiledHexagons
-        tileSideLengths={30}
+        tileSideLengths={20}
         tileGap={2}
         tileBorderRadii={4}
-        maxHorizontal={5}
+        maxHorizontal={7}
         tileTextStyles={{
           color: '#7cebff'
         }}

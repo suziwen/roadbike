@@ -344,8 +344,8 @@ class Mindmap extends React.Component {
             style = {{
               height: '100vH',
               width: '100vW',
-              minHeight: '1200px',
-              minHeight: '1200px'
+              minHeight: '1600px',
+              minWidth: '1600px'
 
             }}
             notMerge={true}
