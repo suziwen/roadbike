@@ -39,7 +39,7 @@ export default class Hexagon extends Component {
   }
 
   render() {
-    let { sideLength, borderRadius, elevation, shadow, img, text, textStyle, href, target, onClick, fill } = this.props
+    let { sideLength, borderRadius, elevation, shadow, img, icon, text, textStyle, href, target, onClick, fill } = this.props
     let { thHexagonStyle } = this.state
 
     let width = Math.sqrt(3) * sideLength
@@ -47,6 +47,12 @@ export default class Hexagon extends Component {
 
     let fontSizeOffset = textStyle.fontSize ? 0.3 * parseInt(textStyle.fontSize) : 0
     const imgTag = img?(<image href={img} width={0.7 * width} height={0.7 * height} x={0.15 * width} y={0.12 * height} />): ''
+    const HexagonIcon = icon
+    const iconTag = HexagonIcon?(
+      <foreignObject className={"foreign-object hex_icon"} x="50%" y="50%" style={{overflow: 'visible', width: '100%', height: '100%'}}>
+        <HexagonIcon style={{width: '50%', height: '50%', transform: 'translate(-50%, -50%)'}}/>
+      </foreignObject>
+    ):''
     const textTag = text?(
         <text fill="#bbb" strokeWidth="0" style={textStyle}>
           <tspan x={width/2} y={height/2 + fontSizeOffset} textAnchor="middle">
@@ -60,6 +66,7 @@ export default class Hexagon extends Component {
       <React.Fragment>
         <path fill={fill} d={generateHexSVG(sideLength, borderRadius)} />
         {imgTag}
+        {iconTag}
         {textTag}
       </React.Fragment>)
 

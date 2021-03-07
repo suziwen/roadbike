@@ -27,7 +27,7 @@ export default class TiledHexagons extends Component {
 
     return (
       <svg width={fullWidth} height={fullHeight}>
-        {tiles.map(({fill, stroke, shadow, img, text, textStyle, styles, href, target, onClick}, i) => {
+        {tiles.map(({fill, stroke, shadow, img, icon, text, textStyle, styles, href, target, onClick}, i) => {
 
           let { XMultiplier, YMultiplier } = getMultipliers(i, ranges)
 
@@ -41,6 +41,7 @@ export default class TiledHexagons extends Component {
                 borderRadius={tileBorderRadii}
                 elevation={tileElevations}
                 img={img}
+                icon={icon}
                 text={text}
                 textStyle={Object.assign({}, tileTextStyles, textStyle)}
                 styles={mergedStyles}
@@ -81,6 +82,7 @@ TiledHexagons.propTypes = {
     stroke: PropTypes.string,
     shadow: PropTypes.string,
     img: PropTypes.string,
+    icon: PropTypes.func,
     text: PropTypes.string,
     textStyle: PropTypes.object,
     styles: PropTypes.shape({
