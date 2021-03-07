@@ -15,51 +15,32 @@ const HexagonContainerStyled = styled(`div`)`
   right: 0;
 `
 
+const iconMap = {
+  editor: FaConnectdevelop,
+  grammar: FaMarkdown,
+  featureCodeGrammar: FaCode,
+  mulPreviewLayout: FaBookReader,
+  syncScrollPreviewOutline: FaShippingFast,
+  fileHistory: FaHistory,
+  evernote: FiInbox,
+  github: FiGithub,
+  gitlab: FiGitlab,
+  mulEditorType: FaRocket,
+  dropbox: FaDropbox,
+  waterMarkFloatPreviewLayout: FaGrinBeam,
+  themesEditor: FaCannabis,
+  zenPreview: FaExpand,
+  zenWriter: FaUserEdit,
+  editorOutline: FaTree,
+  pptPreview: FaUserNinja,
+  pptMulPreview: FaUserPlus,
+  imageStore: FaImages,
+  store: FaFileMedical,
+  other: FiFeather
+}
+
 const getIconObj = (item)=>{
-  switch(item.id){
-    case 'editor':
-      return {tag: FaConnectdevelop, type: 'fa'}
-    case 'grammar':
-      return  {tag: FaMarkdown, type: 'fa'}
-    case 'featureCodeGrammar':
-      return {tag: FaCode, type: 'fa'}
-    case 'mulPreviewLayout':
-      return {tag: FaBookReader, type: 'fa'}
-    case 'syncScrollPreviewOutline':
-      return {tag: FaShippingFast, type: 'fa'}
-    case 'fileHistory':
-      return {tag: FaHistory, type: 'fa'}
-    case 'evernote':
-      return {tag: FiInbox, type: 'fi'}
-    case 'github':
-      return {tag: FiGithub, type: 'fi'}
-    case 'gitlab':
-      return {tag: FiGitlab, type: 'fi'}
-    case 'mulEditorType':
-      return {tag: FaRocket, type: 'fa'}
-    case 'dropbox':
-      return {tag: FaDropbox, type: 'fa'}
-    case 'waterMarkFloatPreviewLayout':
-      return {tag: FaGrinBeam, type: 'fa'}
-    case 'themesEditor':
-      return {tag: FaCannabis, type: 'fa'}
-    case 'zenPreview':
-      return {tag: FaExpand, type: 'fa'}
-    case 'zenWriter':
-      return {tag: FaUserEdit, type: 'fa'}
-    case 'editorOutline':
-      return {tag: FaTree, type: 'fa'}
-    case 'pptPreview':
-      return {tag: FaUserNinja, type: 'fa'}
-    case 'pptMulPreview':
-      return {tag: FaUserPlus, type:'fa'}
-    case 'imageStore':
-      return {tag: FaImages,type: 'fa'}
-    case 'store':
-      return {tag: FaFileMedical, type: 'fa'}
-    default:
-      return {tag:FiFeather, type: 'fi'}
-  }
+  return iconMap[item.id] || iconMap['other']
 }
 
 class FeatureTitledHexagon extends React.Component {
@@ -93,9 +74,7 @@ class FeatureTitledHexagon extends React.Component {
     const tiles = Object.entries(this.featureItems).map((val, idx)=>{
       const key = val[0]
       const itemObj = val[1]
-      const iconObj = getIconObj(itemObj)
-      const iconClass = 'hex_icon_' + iconObj.type
-      const ItemIcon = iconObj.tag
+      const ItemIcon = getIconObj(itemObj)
       const isSelected = this.props.selectedNode === key
       let selectedStyle = {}
       if (this.props.selectedNode === key) {
