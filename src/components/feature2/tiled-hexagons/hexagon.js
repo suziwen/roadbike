@@ -39,7 +39,7 @@ export default class Hexagon extends Component {
   }
 
   render() {
-    let { sideLength, borderRadius, elevation, shadow, img, icon, text, textStyle, href, target, onClick, fill } = this.props
+    let { sideLength, borderRadius, elevation, shadow, img, icon, text, textStyle, href, target, onMouseLeave, onMouseOver, onClick, fill } = this.props
     let { thHexagonStyle } = this.state
 
     let width = Math.sqrt(3) * sideLength
@@ -78,8 +78,14 @@ export default class Hexagon extends Component {
         <svg y={elevation}><path fill={shadow} d={generateHexSVG(sideLength, borderRadius)} /></svg>
         <g
           style={thHexagonStyle}
-          onMouseOver={() => this.setState({ thHexagonStyle: this.thHexagonStyleHover })}
-          onMouseLeave={() => this.setState({ thHexagonStyle: this.thHexagonStyleNormal })}
+          onMouseOver={() => {
+            this.setState({ thHexagonStyle: this.thHexagonStyleHover });
+            onMouseOver()
+          }}
+          onMouseLeave={() => {
+            this.setState({ thHexagonStyle: this.thHexagonStyleNormal })
+            onMouseLeave()
+          }}
           onMouseDown={() => this.setState({ thHexagonStyle: this.thHexagonStyleActive })}
           onMouseUp={() => this.setState({ thHexagonStyle: this.thHexagonStyleHover })}
           onClick={onClick}>
@@ -108,6 +114,8 @@ Hexagon.defaultProps = {
   },
   href: null,
   target: null,
+  onMouseOver: () => {},
+  onMouseLeave: () => {},
   onClick: () => {}
 }
 
@@ -129,5 +137,7 @@ Hexagon.propTypes = {
   }),
   href: PropTypes.string,
   target: PropTypes.string,
+  onMouseOver: PropTypes.func,
+  onMouseLeave: PropTypes.func,
   onClick: PropTypes.func
 }

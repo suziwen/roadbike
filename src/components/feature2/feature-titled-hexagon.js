@@ -111,7 +111,7 @@ class FeatureTitledHexagon extends React.Component {
         ...selectedStyle,
         icon: ItemIcon,
         onClick: ()=>{this.handleSelectedNode(this.props.selectedNode ===key ? "": key)},
-        onMouseEnter:()=>{this.handleActiveNode(key)},
+        onMouseOver:()=>{this.handleActiveNode(key)},
         onMouseLeave:()=>{this.handleActiveNode()},
       }
     })
