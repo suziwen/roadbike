@@ -9,7 +9,7 @@ import Container from "../components/container"
 import { PriceIcon} from "../assets/mobile-nav-icons"
 import {MdArrowForward} from "react-icons/md"
 import Button from "../components/button"
-import FeatureHexagon from "../components/feature/feature-hexagon"
+import FeatureHexagon from "../components/feature2/feature-titled-hexagon"
 import Mindmap from "../components/feature2/mindmap"
 import FeatureDetail from  "../components/feature/feature-detail"
 
