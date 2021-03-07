@@ -73,7 +73,6 @@
     "require-yml": "^1.3.2",
     "slash": "^1.0.0",
     "slugify": "^1.3.0",
-    "tiled-hexagons": "^1.0.2",
     "typography": "^1.0.0-alpha.4",
     "zipkin": "^0.14.2",
     "zipkin-javascript-opentracing": "^2.0.0",
