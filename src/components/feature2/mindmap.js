@@ -192,21 +192,36 @@ class Mindmap extends React.Component {
   shouldComponentUpdate(nextProps, nextState){
     // 内部自己的变化不管
     if (this.state != nextState) {return false}
+    const echarts_instance = this.echarts_react.getEchartsInstance();
     if (nextProps.activeNode != this.state.activeNode){
       const activeKey = nextProps.activeNode
-      const activeNode = getNodeById(activeKey)
-      mouseovered(activeNode)
+      echarts_instance.dispatchAction({
+        type: 'highlight',
+        name: activeKey
+      })
     }
     if (this.props.selectedNode != nextProps.selectedNode && nextProps.selectedNode != this.state.selectedNode){
       const selectedKey = nextProps.selectedNode
-      const selectedNode = getNodeById(selectedKey)
-      clickSelected(selectedNode, true, true)
+      if (selectedKey) {
+        echarts_instance.dispatchAction({
+          type: 'sunburstRootToNode',
+          targetNode: selectedKey
+        })
+      } else {
+        const myModel = echarts_instance.getModel();
+        const sunSeries = myModel.getSeriesByIndex(0);
+        const viewRoot = sunSeries.getViewRoot();
+        echarts_instance.dispatchAction({
+          type: 'sunburstRootToNode',
+          targetNode: viewRoot.hostTree.root
+        })
+      }
     }
     return false
   }
   componentDidMount() {
     const self = this
-    let echarts_instance = this.echarts_react.getEchartsInstance();
+    const echarts_instance = this.echarts_react.getEchartsInstance();
     echarts_instance.clear();
     echarts_instance.setOption(this.getOption())
     echarts_instance.on('mouseover', {seriesName: 'yinyang', name: 'yin'}, function(eInfo){
