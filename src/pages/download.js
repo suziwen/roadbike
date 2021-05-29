@@ -1,6 +1,6 @@
 import React from "react"
+import { Link } from "gatsby"
 import styled from "react-emotion"
-import { graphql } from "gatsby"
 import Helmet from "react-helmet"
 import presets, { colors } from "../utils/presets"
 import { rhythm, options } from "../utils/typography"
@@ -102,6 +102,39 @@ const DownloadSections = ({
   )
 }
 
+const AndroidDownloadSections = ()=>{
+  return (
+    <HomepageSection
+      sectionName="0.0.1"
+      sectionIcon={PriceIcon}
+      inverseStyle={true}
+      title={`花田日记 (Android 测试版本) v0.0.1`}
+      links={[{
+        to: "https://github.com/suziwen/markdownxiaoshujiang/releases/tag/Android_Beta_0.0.1",
+        label: "Github 下载",
+        inverseStyle: true,
+        icon: MdArrowForward,
+        tag: "href",
+        target: "_blank",
+      }]}
+    >
+    <InfoMessageStyled>
+      目前只对会员用户(不包括临时会员)和使用邀请码注册并且邮箱认证完成的用户开放。
+      <br/>
+      <br/>
+      <ul>
+        <li>
+          <Link to="/price/">如何成为会员</Link>
+        </li>
+        <li>
+          <Link to='/blog/user/invitation/'>如何获取邀请码</Link>
+        </li>
+      </ul>
+    </InfoMessageStyled>
+    </HomepageSection>
+  )
+}
+
 
 const OldDownloadSections = ()=>{
   return (
@@ -181,6 +214,7 @@ class IndexRoute extends React.Component {
               [presets.Hd]: { padding: vP, paddingTop: 0, paddingBottom: 0 },
             }}
           >
+            <AndroidDownloadSections />
             <DownloadSections version="8.5.0" downloadUrl="http://www.baidu.com" />
             <OldDownloadSections />
             <OtherDownloadSections />
