@@ -59,6 +59,9 @@ const DownloadSections = ({
         <Button large to="https://gitee.com/suziwen/v8.5.0/releases/v8.5.0" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
           Gitee 下载
         </Button>
+        <Button large to="https://www.aliyundrive.com/s/Ss9LcYedT8g" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
+          阿里云盘
+        </Button>
         <Button large to="https://pan.baidu.com/s/1x4wsJf4Dlimk00DcZ1iD8A" ondark tag="href" target="_blank" icon={<MdArrowForward />} overrideCSS={{
           margin: "10px",
           position: "relative",
