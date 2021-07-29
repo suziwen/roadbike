@@ -53,16 +53,16 @@ const DownloadSections = ({
       title={`当前最新版本 v${version}`}
     >
       <DownloadButtonsStyled>
-        <Button large to="https://github.com/suziwen/markdownxiaoshujiang/releases/tag/v8.5.0" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
+        <Button large to="https://github.com/suziwen/markdownxiaoshujiang/releases/tag/v8.6.0" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
           Github 下载
         </Button>
-        <Button large to="https://gitee.com/suziwen/v8.5.0/releases/v8.5.0" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
+        <Button large to="https://gitee.com/suziwen/v8.6.0/releases/v8.6.0" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
           Gitee 下载
         </Button>
         <Button large to="https://www.aliyundrive.com/s/Ss9LcYedT8g" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
           阿里云盘
         </Button>
-        <Button large to="https://pan.baidu.com/s/1x4wsJf4Dlimk00DcZ1iD8A" ondark tag="href" target="_blank" icon={<MdArrowForward />} overrideCSS={{
+        <Button large to="https://pan.baidu.com/s/1NRa-87VMJOf5Tcs21CsLCQ" ondark tag="href" target="_blank" icon={<MdArrowForward />} overrideCSS={{
           margin: "10px",
           position: "relative",
           "&:after": {
@@ -72,7 +72,7 @@ const DownloadSections = ({
             right: `0`,
             pointerEvents: `none`,
             fontSize: `1rem`,
-            content: `'提取密码: (iztb)'`,
+            content: `'提取密码: (waf9)'`,
           }
         }}>
           百度网盘下载
@@ -212,7 +212,7 @@ class IndexRoute extends React.Component {
             }}
           >
             <AndroidDownloadSections />
-            <DownloadSections version="8.5.0" downloadUrl="http://www.baidu.com" />
+            <DownloadSections version="8.6.0" downloadUrl="http://www.baidu.com" />
             <OldDownloadSections />
             <OtherDownloadSections />
           </div>
