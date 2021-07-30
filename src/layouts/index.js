@@ -76,7 +76,7 @@ class DefaultLayout extends React.PureComponent {
               <div className="xsj_beian" css={{
                 display: 'none',
                 [presets.Tablet]: {display: `block`}
-              }}> Design by xsj <a href="http://beian.miit.gov.cn/">京ICP备13031371号</a></div>
+              }}> Design by xsj <a href="https://beian.miit.gov.cn/">京ICP备13031371号</a></div>
             </div>
           )
         }}
