@@ -32,6 +32,8 @@
           link: /docs/grammar/advance/table/
         - title: 大纲
           link: /docs/grammar/advance/toc/
+        - title: 下划线
+          link: /docs/grammar/advance/ins/
         - title: 下标
           link: /docs/grammar/advance/subscript/
         - title: 上标
