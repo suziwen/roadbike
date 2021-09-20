@@ -117,6 +117,7 @@ exports.createPages = ({ graphql, actions }) => {
           reject("no story writer markdown")
           return
         }
+        const slugMap = {}
         const posts = result.data.allStoryWriterMarkdown.edges
         const blogPosts = _.filter(result.data.allStoryWriterMarkdown.edges, edge=>{
           const docType = _.get(edge, `node.docType`)
@@ -124,6 +125,18 @@ exports.createPages = ({ graphql, actions }) => {
             return edge
           }
           return undefined
+        })
+        posts.forEach(post => {
+          const slugKey = '/' + post.node.slug.replace(/^\/*|\/*$/g, '')
+          if (post.node.docType === 'logs') {
+            slugMap[slugKey] = '/logs/' + post.node.slug + '/'
+          }
+          if (post.node.docType === 'docs') {
+            slugMap[slugKey] = '/docs/' + post.node.slug + '/'
+          }
+          if (post.node.docType === 'blog') {
+            slugMap[slugKey] = '/blog/' + post.node.slug + '/'
+          }
         })
 
           // Tag pages:
@@ -192,6 +205,18 @@ exports.createPages = ({ graphql, actions }) => {
           redirectInBrowser: true,
           isPermanent: true
         })
+        for (const key in slugMap) {
+          createRedirect({
+            toPath: slugMap[key],
+            fromPath: key,
+            redirectInBrowser: true,
+          })
+          createRedirect({
+            toPath: slugMap[key],
+            fromPath: key + '/',
+            redirectInBrowser: true,
+          })
+        }
         if (logNodes.length > 0 ){
           const logNode = logNodes[0]
           createRedirect({
