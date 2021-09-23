@@ -358,7 +358,7 @@ div.mathjax {
 }
 
 @media (min-width: 750px){
-  .mindmap_container {
+  .mindmap_container, .mermaid {
       margin-left: calc(-100vw / 2 + 100% / 2 + 8rem);
       margin-right: calc(-100vw / 2 + 100% / 2);
       max-width: calc(100vw - 17.4rem);
