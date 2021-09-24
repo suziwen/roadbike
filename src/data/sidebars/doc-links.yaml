@@ -126,6 +126,8 @@
           link: /docs/tutorial/editor/light_editor/
     - title: 子编辑器
       link: /docs/tutorial/sub_codemirror_editor/
+    - title: 编辑器查找替换使用说明
+      link: /docs/tutorial/editor/find-and-replace/
     - title: 过滤器
       link: /docs/tutorial/filter/
     - title: 文章置顶
