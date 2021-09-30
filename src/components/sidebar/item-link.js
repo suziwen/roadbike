@@ -69,7 +69,7 @@ class ItemLink extends React.Component {
         },
       }}
     >
-      <Link
+      <a
         css={[
           styles.link,
           isDraft && styles.draft,
@@ -79,11 +79,11 @@ class ItemLink extends React.Component {
           customCSS && customCSS,
         ]}
         onClick={onLinkClick}
-        to={item.link}
+        href={item.link}
       >
         {stepsUI && <span css={{ ...styles.subsectionLink }} />}
         {title}
-      </Link>
+      </a>
     </span>
   )
   }
