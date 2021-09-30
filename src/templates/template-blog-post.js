@@ -56,9 +56,6 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <div>
-        <ProgressIndicator
-          zipFile={props.data.zipFile}
-        />
         <Container className="post" css={{ paddingBottom: `0` }}>
           <LeftSidebarButtons 
             zipFile={props.data.zipFile}
@@ -83,6 +80,9 @@ class BlogPostTemplate extends React.Component {
                 content={post.createDate}
               />
             </Helmet>
+            <ProgressIndicator
+              zipFile={props.data.zipFile}
+            />
             <section
               css={{
                 display: `flex`,

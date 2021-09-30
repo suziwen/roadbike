@@ -108,7 +108,7 @@ const ProgressIndicator = (props) => {
   }
 
   return (
-    <>
+    <div>
       <Bar style={{ scaleX: scrollYProgress }} />
       <UpButton show={isVisible} onClick={scrollToTop}>
         <SVG
@@ -146,7 +146,7 @@ const ProgressIndicator = (props) => {
         </a>
       </EditorButton>
       }
-    </>
+    </div>
   )
 }
 
