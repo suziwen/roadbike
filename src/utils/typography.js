@@ -1,6 +1,27 @@
 import Typography from "typography"
 import presets, { colors } from "./presets"
 
+const scrollbarStyles = {
+  "*": {
+    scrollbarWidth: `thin`,
+    scrollbarColor: `${colors.ui.border} ${colors.ui.light}`,
+  },
+  "*::-webkit-scrollbar": {
+    width: `6px`,
+    height: `6px`,
+  },
+  "*::-webkit-scrollbar-thumb": {
+    background: colors.ui.border,
+  },
+  "*::-webkit-scrollbar-thumb:hover": {
+    background: colors.gatsbyDark,
+  },
+  "*::-webkit-scrollbar-track": {
+    background: colors.ui.light,
+  },
+}
+
+
 const headerFontFamily =[`Noto Sans SC`, `-apple-system`, `BlinkMacSystemFont`, `Helvetica Neue`, `PingFang SC`, `Microsoft YaHei`, `Source Han Sans SC`, `Noto Sans CJK SC`, `WenQuanYi Micro Hei`, `sans-serif`] 
 
 const _options = {
@@ -17,6 +38,7 @@ const _options = {
   scaleRatio: 2,
   overrideStyles: ({ rhythm, scale }, options) => {
     return {
+      ...scrollbarStyles,
       "h1,h2,h4,h5,h6": {
         marginTop: rhythm(options.blockMarginBottom * 2),
         marginBottom: rhythm(options.blockMarginBottom),
@@ -117,11 +139,11 @@ const _options = {
       ".preview code": {
         position: `relative`,
         fontFamily: "'" + options.monospaceFontFamily.join(`','`) + "'", 
-        fontSize: `1em`,
+        background: `#fdf6e3`,
       },
       ".preview code:before, .preview code:after": {
         content: '"`"',
-        color: colors.ui.bright,
+        color: colors.ui.border,
         letterSpacing: `initial`,
       },
       ".preview pre code:before, .preview pre code:after": {

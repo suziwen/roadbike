@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import styled from "react-emotion"
 import presets, { colors } from "../../utils/presets"
+import { scale } from "../../utils/typography"
 import tocbot from 'tocbot';
 
 const StyledToc = styled.div`
@@ -9,9 +10,10 @@ const StyledToc = styled.div`
         position: fixed;
         overflow: auto;
         top: 0;
+        font-size: ${scale(-2/5).fontSize};
         height: 100VH;
         display: flex;
-        max-width: 210px;
+        max-width: 400px;
         z-index: 1;
         opacity: 0.15;
         transition: opacity 0.5s ease 0s;
@@ -19,11 +21,38 @@ const StyledToc = styled.div`
         justify-content: center;
         -webkit-box-align: center;
         align-items: center;
+
+        scrollbar-color: transparent transparent;
+        &::-webkit-scrollbar-thumb {
+          background: transparent;
+        }
+        &::-webkit-scrollbar-thumb:hover {
+          background: transparent;
+        }
+        &::-webkit-scrollbar-track {
+          background: transparent;
+        }
         &:hover {
+            background: ${colors.ui.wisper};
             opacity: 1;
+
+            scrollbar-color: ${colors.ui.border} ${colors.ui.light};
+            &::-webkit-scrollbar-thumb {
+              background: ${colors.ui.border};
+            }
+            &::-webkit-scrollbar-thumb:hover {
+              background: ${colors.gatsbyDark};
+            }
+            &::-webkit-scrollbar-track {
+              background: ${colors.ui.light};
+            }
         }
         .toc-list {
             list-style-type: none;
+            margin: 1rem;
+        }
+        .toc-list-item {
+            margin: 5px 0;
         }
         .toc-link {
             font-weight: normal;

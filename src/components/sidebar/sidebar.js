@@ -277,19 +277,28 @@ const styles = {
     transition: `opacity 0.5s ease`,
     zIndex: 10,
     borderRight: `1px solid ${colors.ui.light}`,
-    "::-webkit-scrollbar": {
-      height: `6px`,
-      width: `6px`,
-    },
     "::-webkit-scrollbar-thumb": {
-      background: colors.ui.bright,
+      background: `transparent`,
     },
     "::-webkit-scrollbar-thumb:hover": {
-      background: colors.gatsbyDark,
+      background: `transparent`,
     },
     "::-webkit-scrollbar-track": {
-      background: colors.ui.light,
+      background: `transparent`,
     },
+    scrollbarColor: `transparent transparent`,
+    "&:hover": {
+      scrollbarColor: `${colors.ui.border} ${colors.ui.light}`,
+      "::-webkit-scrollbar-thumb": {
+        background: colors.ui.bright,
+      },
+      "::-webkit-scrollbar-thumb:hover": {
+        background: colors.gatsbyDark,
+      },
+      "::-webkit-scrollbar-track": {
+        background: colors.ui.light,
+      },
+    }
   },
   sidebarScrollContainerTablet: {
     backgroundColor: colors.ui.whisper,

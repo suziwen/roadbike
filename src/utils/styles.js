@@ -9,22 +9,6 @@ const stripeAnimation = keyframes({
   "100%": { backgroundPosition: `30px 60px` },
 })
 
-export const scrollbarStyles = {
-  WebkitOverflowScrolling: `touch`,
-  "&::-webkit-scrollbar": {
-    width: `6px`,
-    height: `6px`,
-  },
-  "&::-webkit-scrollbar-thumb": {
-    background: colors.ui.bright,
-  },
-  "&::-webkit-scrollbar-thumb:hover": {
-    background: colors.lilac,
-  },
-  "&::-webkit-scrollbar-track": {
-    background: colors.ui.light,
-  },
-}
 
 export const buttonStyles = {
   default: {
