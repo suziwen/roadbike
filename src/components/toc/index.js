@@ -82,7 +82,9 @@ const Toc = ({onClick, location}) => {
       contentSelector: `.post-body`,
       headingSelector: `h1,h2,h3`,
       scrollSmooth: true,
-      scrollSmoothDuration: 1,
+      scrollSmoothDuration: 400,
+      scrollSmoothOffset: -200,
+      headingsOffset: 200,
       disableTocScrollSync: true,
       headingObjectCallback: function(obj, el){
         if (!obj.id && el) {

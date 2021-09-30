@@ -69,7 +69,14 @@ const _options = {
         maxWidth: `100%`,
       },
       ".preview .xsj_heading": {
-        position: `relative`
+        position: `relative`,
+        transition: `250ms box-shadow ease-out, 250ms transform ease-out`,
+      },
+      ".preview .xsj_heading:focus": {
+        boxShadow: `0 0 0 2px #ffffff, 0 0 3px 5px ${colors.gatsbyDark}`,
+        outline: `2px dotted transparent`,
+        outlineOffset: `2px`,
+        transform: `scale(1.025)`,
       },
       ".preview .xsj_heading:before": {
         color: colors.ui.bright,
