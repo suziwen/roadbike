@@ -30,15 +30,13 @@ const UpButton = styled.div`
   overflow: hidden;
   z-index: 999;
   display: none;
-  opacity: ${props => (props.show ? '1' : '0')};
+  opacity: ${props => (props.show ? '.5' : '0')};
   pointer-events: ${props => (props.show ? 'auto' : 'none')};
   ${presets.Desktop} {
     display: block;
   }
   :hover {
-    #arrow {
-      opacity: 1;
-    }
+    opacity: 1;
   }
 `
 
@@ -60,7 +58,7 @@ const EditorButton = styled.div`
     display: block;
   }
   .link {
-    color: ${colors.ui.border};
+    color: ${colors.gatsby};
     opacity: .5;
   }
   :hover {
@@ -74,12 +72,12 @@ const EditorButton = styled.div`
 const SVG = styled.svg`
   #arrow {
     transition: 0.35s all;
-    fill: ${colors.ui.border};
+    fill: ${colors.gatsby};
     transform: scale(0.22) translate(48px, 48px);
   }
 
   #progress {
-    stroke: ${colors.ui.border};
+    stroke: ${colors.gatsby};
   }
 
   #outline {

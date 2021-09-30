@@ -5,6 +5,7 @@ import {MdArrowForward, MdArrowBack} from "react-icons/md"
 import Img from "gatsby-image"
 import presets, { colors } from "../utils/presets"
 import typography, { rhythm, scale, options } from "../utils/typography"
+import ProgressIndicator from "../components/progress-indicator"
 import Container from "../components/container"
 import TagsSection from "../components/tags-section"
 import getLink from "../utils/node-link"
@@ -55,6 +56,9 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <div>
+        <ProgressIndicator
+          zipFile={props.data.zipFile}
+        />
         <Container className="post" css={{ paddingBottom: `0` }}>
           <LeftSidebarButtons 
             zipFile={props.data.zipFile}
