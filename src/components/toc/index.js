@@ -83,6 +83,21 @@ const Toc = ({onClick, location}) => {
       headingSelector: `h1,h2,h3`,
       scrollSmooth: true,
       scrollSmoothDuration: 1,
+      disableTocScrollSync: true,
+      headingObjectCallback: function(obj, el){
+        if (!obj.id && el) {
+          const prevEl = el.previousElementSibling
+          if (prevEl && prevEl.classList.contains('xsj_anchor')) {
+            const anchorEl = prevEl.querySelector('.blank_anchor_id')
+            if (anchorEl && anchorEl.id) {
+              obj.id = anchorEl.id
+              anchorEl.remove()
+              el.id = obj.id
+            }
+          }
+        }
+        return obj
+      },
     });
     tocbotInstance[location.pathname] = true
 
