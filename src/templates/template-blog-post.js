@@ -6,6 +6,7 @@ import Img from "gatsby-image"
 import presets, { colors } from "../utils/presets"
 import typography, { rhythm, scale, options } from "../utils/typography"
 import ProgressIndicator from "../components/progress-indicator"
+import Toc from "../components/toc"
 import Container from "../components/container"
 import TagsSection from "../components/tags-section"
 import getLink from "../utils/node-link"
@@ -14,6 +15,7 @@ import LeftSidebarButtons from "../components/left-sidebar-buttons"
 class BlogPostTemplate extends React.Component {
   render() {
     const props = this.props
+    const location = this.props.location
     const post = this.props.data.storyWriterMarkdown;
     const prev = this.props.pageContext.prev
     const next = this.props.pageContext.next
@@ -56,6 +58,7 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <div>
+        <Toc location={location} />
         <Container className="post" css={{ paddingBottom: `0` }}>
           <LeftSidebarButtons 
             zipFile={props.data.zipFile}

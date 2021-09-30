@@ -310,6 +310,7 @@ exports.createPages = ({ graphql, actions }) => {
               zipPath: post.node.zipPath,
               pdfPath: getPdfPath(post.node.zipPath),
               sidebarItems: blogSidebarItems,
+              isSidebarDisabled: true,
               enableScrollSync,
               prev,
               next,
