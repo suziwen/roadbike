@@ -5,12 +5,14 @@ import { graphql } from "gatsby"
 import ContextConsumer from "../components/context"
 import DocSearchContent from "../components/docsearch-content"
 
+import Toc from "../components/toc"
 import Container from "../components/container"
 import LeftSidebarButtons from "../components/left-sidebar-buttons"
 
 class DocsTemplate extends React.Component {
   render() {
     const props = this.props
+    const location = this.props.location
     const page = this.props.data.storyWriterMarkdown
     const pageHtmlAndCss = `<style>${page.customCss}</style>\n${page.html}`
     return (
@@ -26,6 +28,7 @@ class DocsTemplate extends React.Component {
                   <meta property="og:type" content="article" />
                 </Helmet>
                   <DocSearchContent>
+                    <Toc location={location} />
                     <Container>
                       <h1 css={{ marginTop: 0 }}>
                         {page.title}
@@ -35,6 +38,7 @@ class DocsTemplate extends React.Component {
                         pdfFile={props.data.pdfFile}
                       />
                       <div
+                        className="post-body"
                         dangerouslySetInnerHTML={{
                           __html: pageHtmlAndCss,
                         }}
