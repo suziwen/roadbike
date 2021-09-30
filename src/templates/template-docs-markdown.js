@@ -6,6 +6,7 @@ import ContextConsumer from "../components/context"
 import DocSearchContent from "../components/docsearch-content"
 
 import Toc from "../components/toc"
+import ProgressIndicator from "../components/progress-indicator"
 import Container from "../components/container"
 import LeftSidebarButtons from "../components/left-sidebar-buttons"
 
@@ -29,6 +30,9 @@ class DocsTemplate extends React.Component {
                 </Helmet>
                   <DocSearchContent>
                     <Toc location={location} />
+                    <ProgressIndicator
+                      zipFile={props.data.zipFile}
+                    />
                     <Container>
                       <h1 css={{ marginTop: 0 }}>
                         {page.title}
