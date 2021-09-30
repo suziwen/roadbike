@@ -13,7 +13,7 @@ const StyledToc = styled.div`
         display: flex;
         max-width: 210px;
         z-index: 1;
-        opacity: 0.3;
+        opacity: 0.15;
         transition: opacity 0.5s ease 0s;
         -webkit-box-pack: center;
         justify-content: center;
