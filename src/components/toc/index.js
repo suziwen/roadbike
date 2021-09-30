@@ -21,7 +21,7 @@ const StyledToc = styled.div`
         justify-content: center;
         -webkit-box-align: center;
         align-items: center;
-
+        overscroll-behavior: none;
         scrollbar-color: transparent transparent;
         &::-webkit-scrollbar-thumb {
           background: transparent;

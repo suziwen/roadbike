@@ -276,6 +276,7 @@ const styles = {
     overflowY: `auto`,
     transition: `opacity 0.5s ease`,
     zIndex: 10,
+    overscrollBehavior: `none`,
     borderRight: `1px solid ${colors.ui.light}`,
     "::-webkit-scrollbar-thumb": {
       background: `transparent`,
