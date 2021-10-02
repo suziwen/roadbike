@@ -39,6 +39,9 @@ const _options = {
   overrideStyles: ({ rhythm, scale }, options) => {
     return {
       ...scrollbarStyles,
+      "html": {
+        scrollBehavior: `smooth`
+      },
       "h1,h2,h4,h5,h6": {
         marginTop: rhythm(options.blockMarginBottom * 2),
         marginBottom: rhythm(options.blockMarginBottom),
