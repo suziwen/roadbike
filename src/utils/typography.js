@@ -76,7 +76,7 @@ const _options = {
         transition: `250ms box-shadow ease-out, 250ms transform ease-out`,
       },
       ".preview .xsj_heading:focus": {
-        boxShadow: `0 0 0 2px #ffffff, 0 0 3px 5px ${colors.gatsbyDark}`,
+        boxShadow: `0 0 0 15px #ffffff, 0 0 16px 20px ${colors.gatsbyDark}`,
         outline: `2px dotted transparent`,
         outlineOffset: `2px`,
         transform: `scale(1.025)`,
