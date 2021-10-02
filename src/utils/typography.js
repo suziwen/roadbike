@@ -124,6 +124,12 @@ const _options = {
         background: `none`,
         padding: `unset`,
       },
+      ".preview img.emoji": {
+            width: `1em`,
+            lineHeight: `1em`,
+            verticalAlign: `baseline`,
+            marginBottom: 0,
+      },
       ".preview kbd": {
         display: `inline-block`,
         padding: `3px 5px`,
