@@ -82,3 +82,7 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 .hljs-strong {
   font-weight: bold;
 }
+.xsj_code_strong {
+    -webkit-text-emphasis: triangle;
+    -webkit-text-emphasis-position: under;
+}
