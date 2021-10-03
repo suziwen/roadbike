@@ -11,6 +11,7 @@ import SiteMetadata from "../components/site-metadata"
 import Transition from "../components/transition"
 import ContextConsumer, { ContextProviderComponent } from "../components/context"
 import PageWithSidebar from "../components/page-with-sidebar"
+import LogTimeline from "../components/log-timeline"
 
 // Other fonts
 import "./beian.css"
@@ -30,6 +31,7 @@ class DefaultLayout extends React.PureComponent {
   render() {
     const isHomepage = isHomepageFn(this.props.location.pathname)
     const pageContext = this.props.pageContext
+    const visItems = this.props.pageContext.visItems
     const sidebarItems = pageContext.sidebarItems
     const isSidebarDisabled = pageContext.isSidebarDisabled || !sidebarItems
     const enableScrollSync = pageContext.enableScrollSync
@@ -70,6 +72,7 @@ class DefaultLayout extends React.PureComponent {
                   <Transition location={props.location}>
                     {props.children}
                   </Transition>
+                  {visItems && <LogTimeline visItems={visItems} selectedId={this.props.pageContext.id}/>}
                 </PageWithSidebar>
               </div>
               <MobileNavigation pathname={props.location.pathname} />

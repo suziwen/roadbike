@@ -93,12 +93,14 @@ exports.createPages = ({ graphql, actions }) => {
             ) {
               edges {
                 node {
+                  id
                   title
                   toc
                   docType
                   slug
                   zipPath
                   tags
+                  createDate(formatString: "x")
                   updateDate
                   excerpt
                 }
@@ -163,9 +165,16 @@ exports.createPages = ({ graphql, actions }) => {
         
         const logNodes = []
         const logSidebarItems = []
+        const visItems = []
         posts.forEach(post => {
           if (post.node.docType === 'logs') {
             logNodes.push(post.node)
+            visItems.push({
+              id: post.node.id,
+              start: parseInt(post.node.createDate),
+              title: post.node.title,
+              link: encodeURI(`/logs/${post.node.slug}`),
+            })
             logSidebarItems.push({
               title: post.node.title,
               link: encodeURI(`/logs/${post.node.slug}`),
@@ -231,9 +240,11 @@ exports.createPages = ({ graphql, actions }) => {
             path: `/logs/` + node.slug + `/`,
             component: logPostTemplate,
             context: {
+              id: node.id,
               slug: node.slug,
               zipPath: node.zipPath,
               pdfPath: getPdfPath(node.zipPath),
+              visItems: visItems,
               sidebarItems: logSidebarItems
             },
           })
