@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from "react"
 import { navigate } from "gatsby"
 
+import moment from 'moment'
+import "moment/locale/zh-cn"
+
 import Timeline from "react-vis-timeline-2"
 
 
@@ -65,6 +68,7 @@ const LogTimeline = (props) => {
           options={{
             width: "100%",
             locale: 'zh-cn',
+            moment: moment,
             zoomMin: 1000 * 60 * 60 * 24 * 15,
             zoomMax: 1000 * 60 * 60 * 24 * 31 * 12 * 5,
             min: new Date(1985, 0, 1),
