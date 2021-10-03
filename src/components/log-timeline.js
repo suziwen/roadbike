@@ -16,11 +16,7 @@ const visGroups = [
   },
 ]
 const LogTimeline = (props) => {
-  const [visItems, setVisItems] = useState(null)
-  const timelineRef = useRef(null)
-  useEffect(() => {
-    if (!visItems || visItems.length !== props.visItems.length) {
-      setVisItems(
+  const [visItems, setVisItems] = useState(
         props.visItems.map((visItem) => {
           return {
             id: visItem.id,
@@ -31,8 +27,7 @@ const LogTimeline = (props) => {
           }
         })
       )
-    }
-  }, [props.visItems])
+  const timelineRef = useRef(null)
   useEffect(()=>{
     if (timelineRef.current && props.selectedId) {
       const moveToItem = timelineRef.current.items.get(props.selectedId)
@@ -51,18 +46,7 @@ const LogTimeline = (props) => {
         }}
       >
         <Timeline
-          ref={(ref)=>{
-            if (!timelineRef.current && ref) {
-              timelineRef.current = ref
-              timelineRef.current.timeline.on('click', (_props) => {
-                const itemId = _props.item
-                if (itemId) {
-                  const item = timelineRef.current.items.get(itemId)
-                  navigate(item.link)
-                }
-              })
-            }
-          }}
+          ref={timelineRef}
           initialItems={visItems}
           initialGroups={visGroups}
           options={{
@@ -71,6 +55,22 @@ const LogTimeline = (props) => {
             moment: moment,
             zoomMin: 1000 * 60 * 60 * 24 * 15,
             zoomMax: 1000 * 60 * 60 * 24 * 31 * 12 * 5,
+            onInitialDrawComplete: ()=> {
+              if (timelineRef.current) {
+                const moveToItem = timelineRef.current.items.get(props.selectedId)
+                if (moveToItem) {
+                  timelineRef.current.updateSelection(props.selectedId)
+                  timelineRef.current.timeline.moveTo(moveToItem.start)
+                }
+                timelineRef.current.timeline.on('click', (_props) => {
+                  const itemId = _props.item
+                  if (itemId) {
+                    const item = timelineRef.current.items.get(itemId)
+                    navigate(item.link)
+                  }
+                })
+              }
+            },
             min: new Date(1985, 0, 1),
             max: new Date(nowYear+1, 0,1)
           }}
