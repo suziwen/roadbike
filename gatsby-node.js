@@ -173,11 +173,11 @@ exports.createPages = ({ graphql, actions }) => {
               id: post.node.id,
               start: parseInt(post.node.createDate),
               title: post.node.title,
-              link: encodeURI(`/logs/${post.node.slug}`),
+              link: encodeURI(`/logs/${post.node.slug}/`),
             })
             logSidebarItems.push({
               title: post.node.title,
-              link: encodeURI(`/logs/${post.node.slug}`),
+              link: encodeURI(`/logs/${post.node.slug}/`),
               hash: false,
               disableExpandAll: true,
               key: 'logs'
