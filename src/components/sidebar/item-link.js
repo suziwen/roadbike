@@ -12,12 +12,12 @@ class ItemLink extends React.Component {
     super(props, context)
     this.itemLinkRef = React.createRef()
   }
-  componentDidMount() {
-    this.scrollToView();
-  }
 
   componentDidUpdate() {
-    this.scrollToView();
+    const self = this
+    setTimeout(()=>{
+      self.scrollToView();
+    }, 300)
   }
 
   scrollToView() {
