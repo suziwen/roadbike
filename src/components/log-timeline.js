@@ -8,6 +8,7 @@ import Timeline from "react-vis-timeline-2"
 
 
 const nowDate = new Date()
+const nowMoment = moment()
 const nowYear = nowDate.getFullYear()
 const visGroups = [
   {
@@ -58,10 +59,12 @@ const LogTimeline = (props) => {
             onInitialDrawComplete: ()=> {
               if (timelineRef.current) {
                 const moveToItem = timelineRef.current.items.get(props.selectedId)
-                if (moveToItem) {
-                  timelineRef.current.updateSelection(props.selectedId)
-                  timelineRef.current.timeline.moveTo(moveToItem.start)
-                }
+                timelineRef.current.timeline.setWindow(new Date(nowYear - 1, 11,1), new Date(nowYear + 1, 0,1), null, ()=>{
+                  if (moveToItem) {
+                    timelineRef.current.updateSelection(props.selectedId)
+                    timelineRef.current.timeline.moveTo(moveToItem.start)
+                  }
+                })
                 timelineRef.current.timeline.on('click', (_props) => {
                   const itemId = _props.item
                   if (itemId) {
