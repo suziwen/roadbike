@@ -229,7 +229,7 @@ exports.createPages = ({ graphql, actions }) => {
         if (logNodes.length > 0 ){
           const logNode = logNodes[0]
           createRedirect({
-            toPath: `/logs/${logNode.slug}`,
+            toPath: `/logs/${logNode.slug}/`,
             fromPath: `/logs/`,
             redirectInBrowser: true,
             isPermanent: true
