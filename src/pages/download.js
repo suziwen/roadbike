@@ -108,12 +108,12 @@ const DownloadSections = ({
 const AndroidDownloadSections = ()=>{
   return (
     <HomepageSection
-      sectionName="1.1.2"
+      sectionName="1.1.3"
       sectionIcon={PriceIcon}
       inverseStyle={true}
       title={`有影笔记(小书匠手机版)`}
       links={[{
-        to: "https://github.com/suziwen/markdownxiaoshujiang/releases/tag/Android_1.1.2",
+        to: "https://github.com/suziwen/markdownxiaoshujiang/releases/tag/Android_1.1.3",
         label: "Android 下载(Github)",
         inverseStyle: true,
         icon: MdArrowForward,
