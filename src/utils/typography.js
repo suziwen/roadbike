@@ -68,6 +68,9 @@ const _options = {
       text: {
         fontFamily: options.monospaceFontFamily.join(`,`),
       },
+      ".preview .xsj_mindmap_toc": {
+        filter: `drop-shadow(10px 10px 5px grey)`,
+      },
       ".preview video": {
         maxWidth: `100%`,
       },
