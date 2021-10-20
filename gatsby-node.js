@@ -226,16 +226,21 @@ exports.createPages = ({ graphql, actions }) => {
             redirectInBrowser: true,
           })
         }
-        if (logNodes.length > 0 ){
-          const logNode = logNodes[0]
-          createRedirect({
-            toPath: `/logs/${logNode.slug}/`,
-            fromPath: `/logs/`,
-            redirectInBrowser: true,
-            isPermanent: true
-          })
-        }
-        logNodes.forEach(node=>{
+        logNodes.forEach((node, index)=>{
+          if (index === 0) {
+            createPage({
+              path: `/logs/`,
+              component: logPostTemplate,
+              context: {
+                id: node.id,
+                slug: node.slug,
+                zipPath: node.zipPath,
+                pdfPath: getPdfPath(node.zipPath),
+                visItems: visItems,
+                sidebarItems: logSidebarItems
+              },
+            })
+          }
           createPage({
             path: `/logs/` + node.slug + `/`,
             component: logPostTemplate,
