@@ -194,7 +194,7 @@ const MastheadContent = (props) => {
         的笔记软件
       </h1>
       <ArrowButtonContainer>
-      <IconContext.Provider value={{ size: '2em', className: "global-class-name" }}>
+      <IconContext.Provider value={{ size: '2em' }}>
         <Button large onClick={props.rippleEffect} tag="button" target="_self" overrideCSS={{
           fontFamily: 'smy',
           position: `relative`,
