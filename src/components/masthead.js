@@ -20,6 +20,15 @@ const arrowMoveLeft = keyframes({
   }
 })
 
+const sheenEffect = keyframes({
+  "0%": {
+    transform: `translateX(-100px) skewX(-15deg)`,
+  },
+  "100%": {
+    transform: `translateX(300px) skewX(-15deg)`,
+  }
+})
+
 
 const ArrowButtonStyled = styled('div')`
   position: absolute;
@@ -193,10 +202,36 @@ const MastheadContent = (props) => {
         borderColor: `#ffb238`,
         borderRadius: `30% 70% 70% 30% / 30% 30% 70% 70%`,
         boxShadow: `-1px 0px 0 0.2rem rgba(255, 229, 181, 0.39)`,
+        overflow: `hidden`,
         "&:hover, &:focus": {
           color: `#ffb238`,
           borderColor: `#ffb238`,
           backgroundColor: `rgba(255, 229, 181, 0.5)`,
+        },
+        "&::before": {
+          content: `""`,
+          display: `block`,
+          position: `absolute`,
+          background: `rgba(255, 255, 255, 0.5)`,
+          width: `60px`,
+          height: `100%`,
+          top: 0,
+          filter: `blur(30px)`,
+          transform: `translateX(-100px) skewX(-15deg)`,
+        },
+        "&::after": {
+          content: `""`,
+          display: `block`,
+          position: `absolute`,
+          background: `rgba(255, 255, 255, 0.2)`,
+          width: `30px`,
+          height: `100%`,
+          top: 0,
+          filter: `blur(5px)`,
+          transform: `translateX(-100px) skewX(-15deg)`,
+        },
+        "&:hover::before,&:hover::after": {
+          animation: `${sheenEffect} 1s ease infinite`,
         },
         "&>.crater": {
           position: `absolute`,
