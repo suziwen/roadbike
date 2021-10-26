@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import throttle from "lodash/throttle"
 
 
 /*
@@ -21,6 +22,11 @@ let center = null
 let connectArea = null
 let dots = []
 let isMount = false
+let isMouseIn = 0
+
+const throttleAddMouseCount = throttle(() => {
+  isMouseIn++;
+}, 100)
 
 class Dot {
   constructor() {
@@ -112,17 +118,22 @@ function connectDots() {
   }
 }
 
-function animateDots() {
+function animateDots(init) {
   if (isMount) {
     requestAnimationFrame(animateDots)
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    if (isMouseIn > 0 || init === true) {
+      if (isMouseIn > 0) {
+        isMouseIn--
+      }
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    updateConnectArea()
+      updateConnectArea()
 
-    for (let i = 0, dot; dot = dots[i]; i++) dot.update()
-    connectDots()
-    for (let i = 0, dot; dot = dots[i]; i++) dot.draw()
+      for (let i = 0, dot; dot = dots[i]; i++) dot.update()
+      connectDots()
+      for (let i = 0, dot; dot = dots[i]; i++) dot.draw()
+    }
   }
 
 }
@@ -164,7 +175,7 @@ class Stars extends Component{
     dots = []
     isMount = true
     resize()
-    animateDots()
+    animateDots(true)
     document.body.addEventListener('mousemove', this.handleMouseMove)
     document.body.addEventListener('mouseleave', this.handleMouseLeave)
     window.addEventListener('resize', this.handleResize)
@@ -177,6 +188,7 @@ class Stars extends Component{
     connectArea.destY = center.y
   }
   handleMouseMove(e){
+    throttleAddMouseCount()
     connectArea.destX = e.clientX || e.touches && e.touches[0].pageX
     connectArea.destY = e.clientY || e.touches && e.touches[0].pageY
   }

@@ -1,21 +1,9 @@
 import React from "react"
 import presets, { colors } from "../utils/presets"
 import { rhythm } from "../utils/typography"
-import styled, {keyframes} from "react-emotion"
+import styled from "react-emotion"
 import Stars from "./stars"
 import bgImg from "../assets/Trees-Landscape-Silhouette.png"
-
-const colorChange = keyframes({
-  "0%": {
-    opacity: 0,
-  },
-  "50%": {
-    opacity: 0.9,
-  },
-  "100%": {
-    opacity: 0,
-  }
-})
 
 const cover = {
   top: 0,
@@ -57,10 +45,6 @@ const FilterStyled = styled(`div`)`
   position: absolute;
   top: 0;
   left: 0;
-  background: #fe5757;
-  animation: ${colorChange} 30s ease-in-out infinite;
-  animation-fill-mode: both;
-  mix-blend-mode: overlay;
 `
 
 const MastheadBg = () => (
