@@ -136,7 +136,7 @@ exports.createPages = ({ graphql, actions }) => {
           if (post.node.docType === 'docs') {
             slugMap[slugKey] = '/docs/' + post.node.slug + '/'
           }
-          if (post.node.docType === 'blog') {
+          if (post.node.docType === 'blogs') {
             slugMap[slugKey] = '/blog/' + post.node.slug + '/'
           }
         })
