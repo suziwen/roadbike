@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from "react-emotion"
 import presets, { colors } from "../utils/presets"
 import { motion, useViewportScroll } from 'framer-motion'
-import {TiEdit} from "react-icons/ti"
+import {GiFeather} from "react-icons/gi"
 
 const Bar = styled(motion.div)`
   position: fixed;
@@ -142,7 +142,7 @@ const ProgressIndicator = (props) => {
       </UpButton>
       {zipURL && <EditorButton show={!isVisible} >
         <a className="link" href={zipURL} target="_blank">
-          <TiEdit  css={{fontSize: '2.5em', verticalAlign: 'text-bottom'}}/>
+          <GiFeather  css={{fontSize: '2.5em', verticalAlign: 'text-bottom'}}/>
         </a>
       </EditorButton>
       }
