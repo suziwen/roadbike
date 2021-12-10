@@ -45,7 +45,7 @@ class DocsTemplate extends React.Component {
                   <meta property="og:type" content="article" />
                 </Helmet>
                   <DocSearchContent>
-                    <Container>
+                    <Container css={{minHeight: '100VH'}}>
                       <section
                         css={{
                           display: `flex`,
