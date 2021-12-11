@@ -15,7 +15,7 @@ jobs:
           repository: suziwen/suziwen.github.io
           ref: refs/heads/main
           fetch-depth: 1
-          path: 'public'
+          path: 'roadbike/public'
       - uses: actions/setup-node@v1
         with:
           node-version: '12.16.1'
