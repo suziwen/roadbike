@@ -12,6 +12,8 @@ import TagsSection from "../components/tags-section"
 import getLink from "../utils/node-link"
 import LeftSidebarButtons from "../components/left-sidebar-buttons"
 
+import Comments from '../components/comments'
+
 class BlogPostTemplate extends React.Component {
   render() {
     const props = this.props
@@ -193,6 +195,9 @@ class BlogPostTemplate extends React.Component {
                 )}
               </div>
             </div>
+          </Container>
+          <Container>
+            <Comments post={post}/>
           </Container>
         </div>
       </div>

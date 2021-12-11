@@ -2,6 +2,8 @@ require(`dotenv`).config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
+const gitalkOptions = require('./gitalk-options')
+
 const plugins = [
   {
     resolve: `gatsby-plugin-layout`,
@@ -92,6 +94,10 @@ const plugins = [
       display: `minimal-ui`,
       icon: `src/assets/logo-icon.png`,
     },
+  },
+  {
+    resolve: `gatsby-plugin-gitalk`,
+    options: gitalkOptions
   },
   `gatsby-plugin-react-helmet`,
   `gatsby-plugin-sitemap`,
