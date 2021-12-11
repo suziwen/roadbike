@@ -97,7 +97,7 @@ const plugins = [
   },
   {
     resolve: `gatsby-plugin-gitalk`,
-    options: gitalkOptions
+    options: { config: gitalkOptions }
   },
   `gatsby-plugin-react-helmet`,
   `gatsby-plugin-sitemap`,
