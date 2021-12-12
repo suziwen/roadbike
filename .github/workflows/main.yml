@@ -9,17 +9,17 @@ jobs:
   build:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
           repository: suziwen/suziwen.github.io
           ref: refs/heads/main
-          fetch-depth: 1
-          path: 'roadbike/public'
+          path: 'public'
+          token: ${{ secrets.ACCESS_TOKEN }}
       - uses: actions/setup-node@v1
         with:
           node-version: '12.16.1'
-      - uses: suziwen/gatsby-gh-pages-action@v2.2.9
+      - uses: suziwen/gatsby-gh-pages-action@v2.2.10
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
           deploy-branch: main
