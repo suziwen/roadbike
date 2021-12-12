@@ -61,6 +61,23 @@ const Navigation = ({ pathname }) => {
     </a>
   )
 
+  let githubMirror = ''
+  if (typeof window !== 'undefined' && window.location.origin !== 'https://suziwen.github.io') {
+    const location = window.location
+    const href = 'https://suziwen.github.io' + location.pathname + location.search + location.hash
+    githubMirror = (<li css={styles.li}>
+      <a href={href}
+        title="GitHub 镜像"
+        css={{
+          ...navItemStyles,
+          fontSize: '60%',
+          textTransform: 'none',
+          fontFamily: typography.options.quoteFontFamily.join(`,`),
+        }}
+      >GitHub 镜像</a>
+      </li>)
+  }
+
   return (
     <header
       css={{
@@ -149,6 +166,7 @@ const Navigation = ({ pathname }) => {
             <NavItem linkTo="/blog/">文章</NavItem>
             <NavItem linkTo="/logs/">日志</NavItem>
             <NavItem linkTo="/download/">下载</NavItem>
+            {githubMirror}
             {/* <li css={styles.li}>
                 <Link
                   to="/community/"
