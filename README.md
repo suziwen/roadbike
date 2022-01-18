@@ -7,10 +7,10 @@
 
 - github
    源代码仓库: https://github.com/suziwen/roadbike
-   部署后的效果: https://suziwen.github.io/roadbike
-- gitee
+- gitee (不更新了,自己到 github 上抓取)
    源代码仓库: https://gitee.com/suziwen/roadbike
-   部署后的效果: https://suziwen.gitee.io/roadbike
+
+部署后的效果: https://suziwen.github.io
 
 
 # 本地运行
@@ -25,17 +25,18 @@ https://github.com/nvm-sh/nvm
 
 ```
 git clone https://github.com/suziwen/roadbike
-nvm use 8.9.1
-cd roadbike/plugins/gatsby-transformer-xsjzip
+nvm use 12.16.1
 npm  install
 npm run build
-cd roadbike
-npm  install
 npm run start
 ```
 访问 http://localhost:8000
 
 注： 这里需要先把 gatsby-transformer-xsjzip 编译一下，生成相关的 js 文件，才能在根目录下正常执行其他操作
+
+# github action
+
+在 `.github` 目录下，有自动运行的 `action`, 可以自己修改成适合自己的仓库信息，这样以后 github 仓库有变化时，就自动编译
 
 # 添加文章
 
