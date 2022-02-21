@@ -77,14 +77,6 @@ const PriceQuestion = ()=>{
           </p>
         </Content>
       </QuestionSectionStyled>
-      <QuestionSectionStyled>
-        <Header>征文奖励</Header>
-        <Content>
-          只要发布了关于小书匠相关的文章，都将获得一年(365天)的会员时长。
-          <br/>
-          详细规则可以参考<Link to='/blog/story-writer/2021-essay-contest'>这里</Link>
-        </Content>
-      </QuestionSectionStyled>
     </QuestionSectionsStyled>
   </HomepageSection>
   )
