@@ -38,6 +38,7 @@ const MobileNavItem = ({ linkTo, label, icon }) => (
 
 const MobileNavigation = ({pathname}) => {
   const isHomepage = isHomepageFn(pathname)
+  if (isHomepage) {return null}
   return (<React.Fragment>
     <span
       css={{

@@ -20,6 +20,7 @@ const assignActiveStyles = ({ isPartiallyCurrent }) =>
 
 const Navigation = ({ pathname }) => {
   const isHomepage = isHomepageFn(pathname)
+  if (isHomepage) {return null}
   const isBlog = pathname === `/blog/` || pathname.indexOf(`/blog/page/`) === 0
   const navItemStyles = {
     ...styles.navItem,

@@ -5,9 +5,7 @@ import presets, { colors } from "../utils/presets"
 import { rhythm } from "../utils/typography"
 import { vP } from "../components/gutters"
 import Container from "../components/container"
-import MastheadBg from "../components/story-head-bg"
 import MastheadContent from "../components/masthead"
-import MastheadLogo from "../components/masthead-logo"
 import Ripple from "../components/ripple"
 import {
   setupScrollersObserver,
@@ -70,7 +68,6 @@ class IndexRoute extends React.Component {
             />
             <link rel="stylesheet" type="text/css" href={withPrefix('/') + "xsjfonts/fontstyles/homepage.css"}/>
           </Helmet>
-          <MastheadBg />
           <Ripple rippled={this.state.rippled} onEnd={this.rippleEnd} cursorPos={{top: this.state.posY, left: this.state.posX}}/>
           <div
             css={{
@@ -81,7 +78,6 @@ class IndexRoute extends React.Component {
             }}
           >
             <MastheadContent rippleEffect={this.rippleEffect} curs={{index: 'adfds'}} />
-            <MastheadLogo />
           </div>
         </div>
     )
