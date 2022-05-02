@@ -29,6 +29,7 @@ class IndexRoute extends React.Component {
                     对 markdown 不是很了解的用户，建议详细阅读语法部份里的
                     <Link to="/docs/grammar/common/italic/">标准语法</Link>。
                   </p>
+                  <iframe src="//player.bilibili.com/player.html?aid=853716536&bvid=BV1qL4y1c7qX&cid=710024411&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" css={{width: '100%', height: '500px'}}> </iframe>
                   
                 </Container>
               </DocSearchContent>
