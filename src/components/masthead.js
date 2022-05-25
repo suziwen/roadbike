@@ -3,6 +3,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { IconContext } from "react-icons"
 import {GiFeather} from "react-icons/gi"
+import { RiBilibiliFill } from "react-icons/ri"
 
 import styled, {keyframes} from "react-emotion"
 import { rhythm, scale } from "../utils/typography"
@@ -42,6 +43,7 @@ const MastheadContent = (props) => {
       justifyContent: `center`,
     }}
   >
+    <IconContext.Provider value={{ size: '2em' }}>
     <div css={{
       display: `flex`,
       flexDirection: `column`,
@@ -95,12 +97,18 @@ const MastheadContent = (props) => {
         display: 'flex',
         padding: 0,
         margin: 0,
-        marginBottom: `20px`,
+        marginBottom: `60px`,
         listStyle: 'none',
         width: '100%',
         justifyContent: 'space-between'
         }}>
         <NavItem linkTo="/docs/">文档</NavItem>
+        <li>
+          <a href="http://live.bilibili.com/25102154" target="_blank"><RiBilibiliFill size="1em" style={{
+            verticalAlign: `text-top`,
+            color: `#23ade5`
+          }}/>视频</a>
+        </li>
         <NavItem linkTo="/feature/">功能</NavItem>
         <NavItem linkTo="/blog/">文章</NavItem>
         <NavItem linkTo="/logs/">日志</NavItem>
@@ -115,7 +123,6 @@ const MastheadContent = (props) => {
             </Link>
           </li> */}
       </ul>
-      <IconContext.Provider value={{ size: '2em' }}>
         <Button large onClick={props.rippleEffect} tag="button" target="_self" overrideCSS={{
           fontFamily: 'smy',
           position: `relative`,
@@ -202,8 +209,8 @@ const MastheadContent = (props) => {
             height: `4px`,
           }}></span>
         </Button>
-      </IconContext.Provider>
     </div>
+      </IconContext.Provider>
   </div>
 )}
 
