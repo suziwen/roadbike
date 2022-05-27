@@ -104,7 +104,7 @@ const MastheadContent = (props) => {
         }}>
         <NavItem linkTo="/docs/">文档</NavItem>
         <li>
-          <a href="http://live.bilibili.com/25102154" target="_blank"><RiBilibiliFill size="1em" style={{
+          <a href="https://space.bilibili.com/349933393" target="_blank"><RiBilibiliFill size="1em" style={{
             verticalAlign: `text-top`,
             color: `#23ade5`
           }}/>视频</a>
