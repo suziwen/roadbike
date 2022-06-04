@@ -2,6 +2,13 @@ require(`dotenv`).config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
+let articlePath = `${__dirname}/src/xsjposts`
+
+if (process.env.XSJ_ARTICLE_PATH) {
+  articlePath = process.env.XSJ_ARTICLE_PATH
+}
+console.log('use env:', process.env.NODE_ENV)
+console.log('use article path:', articlePath)
 const gitalkOptions = require('./gitalk-options')
 
 const plugins = [
@@ -35,21 +42,21 @@ const plugins = [
   {
       resolve: `gatsby-source-filesystem`,
       options: {
-          path: `${__dirname}/src/xsjposts/blogs`,
+          path: `${articlePath}/blogs`,
           name: 'blogs',
       },
   },
   {
       resolve: `gatsby-source-filesystem`,
       options: {
-          path: `${__dirname}/src/xsjposts/docs`,
+          path: `${articlePath}/docs`,
           name: 'docs',
       },
   },
   {
       resolve: `gatsby-source-filesystem`,
       options: {
-          path: `${__dirname}/src/xsjposts/logs`,
+          path: `${articlePath}/logs`,
           name: 'logs',
       },
   },
