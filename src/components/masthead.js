@@ -39,7 +39,7 @@ const MastheadContent = (props) => {
       }}/>视频</a>
     </li>
   )
-  if (typeof window !== 'undefined' && window.location.origin !== 'https://suziwen.github.io') {
+  if (typeof window !== 'undefined' && window.location.origin == 'https://suziwen.github.io') {
     videoChanel = (
         <li>
           <a href="https://www.youtube.com/channel/UCVtzhZnlEBxwysgtCAHFBFg" target="_blank"><RiYoutubeLine size="1em" style={{
