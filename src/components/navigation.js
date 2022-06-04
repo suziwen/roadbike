@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
 import {GoMarkGithub} from "react-icons/go"
 import logo from "../logo.svg"
@@ -20,6 +20,12 @@ const assignActiveStyles = ({ isPartiallyCurrent }) =>
 
 const Navigation = ({ pathname }) => {
   const isHomepage = isHomepageFn(pathname)
+  const [isGitHub, setIsGitHub] = useState(false)
+  useEffect(()=> {
+    if (window.location.origin == 'https://suziwen.github.io') {
+      setIsGitHub(true)
+    }
+  },[])
   if (isHomepage) {return null}
   const isBlog = pathname === `/blog/` || pathname.indexOf(`/blog/page/`) === 0
   const navItemStyles = {
@@ -63,7 +69,7 @@ const Navigation = ({ pathname }) => {
   )
 
   let githubMirror = ''
-  if (typeof window !== 'undefined' && window.location.origin !== 'https://suziwen.github.io') {
+  if (isGitHub) {
     const location = window.location
     const href = 'https://suziwen.github.io' + location.pathname + location.search + location.hash
     githubMirror = (<li css={styles.li}>

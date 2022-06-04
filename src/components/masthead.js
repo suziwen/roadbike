@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState} from "react"
 
 import { Link } from "gatsby"
 import { IconContext } from "react-icons"
@@ -31,6 +31,14 @@ const MastheadContent = (props) => {
     </li>
   )
 
+  const [isGitHub, setIsGitHub] = useState(false)
+
+  useEffect(()=> {
+    if (window.location.origin == 'https://suziwen.github.io') {
+      setIsGitHub(true)
+    }
+  },[])
+
   let videoChanel = (
     <li>
       <a href="https://space.bilibili.com/349933393" target="_blank"><RiBilibiliFill size="1em" style={{
@@ -39,7 +47,7 @@ const MastheadContent = (props) => {
       }}/>视频</a>
     </li>
   )
-  if (typeof window !== 'undefined' && window.location.origin == 'https://suziwen.github.io') {
+  if (isGitHub) {
     videoChanel = (
         <li>
           <a href="https://www.youtube.com/channel/UCVtzhZnlEBxwysgtCAHFBFg" target="_blank"><RiYoutubeFill size="1em" style={{
