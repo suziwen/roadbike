@@ -3,7 +3,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { IconContext } from "react-icons"
 import {GiFeather} from "react-icons/gi"
-import { RiBilibiliFill, RiYoutubeLine } from "react-icons/ri"
+import { RiBilibiliFill, RiYoutubeFill } from "react-icons/ri"
 
 import styled, {keyframes} from "react-emotion"
 import { rhythm, scale } from "../utils/typography"
@@ -42,9 +42,9 @@ const MastheadContent = (props) => {
   if (typeof window !== 'undefined' && window.location.origin == 'https://suziwen.github.io') {
     videoChanel = (
         <li>
-          <a href="https://www.youtube.com/channel/UCVtzhZnlEBxwysgtCAHFBFg" target="_blank"><RiYoutubeLine size="1em" style={{
+          <a href="https://www.youtube.com/channel/UCVtzhZnlEBxwysgtCAHFBFg" target="_blank"><RiYoutubeFill size="1em" style={{
             verticalAlign: `text-top`,
-            color: `#23ade5`
+            color: `#ff0000`
           }}/>视频</a>
         </li>
     )
