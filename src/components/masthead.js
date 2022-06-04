@@ -3,7 +3,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { IconContext } from "react-icons"
 import {GiFeather} from "react-icons/gi"
-import { RiBilibiliFill } from "react-icons/ri"
+import { RiBilibiliFill, RiYoutubeLine } from "react-icons/ri"
 
 import styled, {keyframes} from "react-emotion"
 import { rhythm, scale } from "../utils/typography"
@@ -31,6 +31,24 @@ const MastheadContent = (props) => {
     </li>
   )
 
+  let videoChanel = (
+    <li>
+      <a href="https://space.bilibili.com/349933393" target="_blank"><RiBilibiliFill size="1em" style={{
+        verticalAlign: `text-top`,
+        color: `#23ade5`
+      }}/>视频</a>
+    </li>
+  )
+  if (typeof window !== 'undefined' && window.location.origin !== 'https://suziwen.github.io') {
+    videoChanel = (
+        <li>
+          <a href="https://www.youtube.com/channel/UCVtzhZnlEBxwysgtCAHFBFg" target="_blank"><RiYoutubeLine size="1em" style={{
+            verticalAlign: `text-top`,
+            color: `#23ade5`
+          }}/>视频</a>
+        </li>
+    )
+  }
 
   return (
   <div
@@ -103,12 +121,7 @@ const MastheadContent = (props) => {
         justifyContent: 'space-between'
         }}>
         <NavItem linkTo="/docs/">文档</NavItem>
-        <li>
-          <a href="https://space.bilibili.com/349933393" target="_blank"><RiBilibiliFill size="1em" style={{
-            verticalAlign: `text-top`,
-            color: `#23ade5`
-          }}/>视频</a>
-        </li>
+        {videoChanel}
         <NavItem linkTo="/feature/">功能</NavItem>
         <NavItem linkTo="/blog/">文章</NavItem>
         <NavItem linkTo="/logs/">日志</NavItem>
