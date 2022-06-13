@@ -53,13 +53,13 @@ const DownloadSections = ({
       title={`当前最新版本 v${version}`}
     >
       <DownloadButtonsStyled>
-        <Button large to="https://github.com/suziwen/markdownxiaoshujiang/releases/tag/v8.9.1" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
+        <Button large to="https://github.com/suziwen/markdownxiaoshujiang/releases/tag/v8.9.12" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
           Github 下载
         </Button>
         <Button large to="https://www.aliyundrive.com/s/Ss9LcYedT8g" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
           阿里云盘
         </Button>
-        <Button large to="https://pan.baidu.com/s/1Q0iwvglY7O9_WYba_qGkoA" ondark tag="href" target="_blank" icon={<MdArrowForward />} overrideCSS={{
+        <Button large to="https://pan.baidu.com/s/1gc-PS5--9dI-Hym-kJaAaQ" ondark tag="href" target="_blank" icon={<MdArrowForward />} overrideCSS={{
           margin: "10px",
           position: "relative",
           "&:after": {
@@ -69,7 +69,7 @@ const DownloadSections = ({
             right: `0`,
             pointerEvents: `none`,
             fontSize: `1rem`,
-            content: `'提取密码: (ne7b)'`,
+            content: `'提取密码: (d8s2)'`,
           }
         }}>
           百度网盘下载
@@ -209,7 +209,7 @@ class IndexRoute extends React.Component {
             }}
           >
             <AndroidDownloadSections />
-            <DownloadSections version="8.9.1" downloadUrl="http://www.baidu.com" />
+            <DownloadSections version="8.9.12" downloadUrl="http://www.baidu.com" />
             <OldDownloadSections />
             <OtherDownloadSections />
           </div>
