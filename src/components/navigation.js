@@ -69,7 +69,7 @@ const Navigation = ({ pathname }) => {
   )
 
   let githubMirror = ''
-  if (isGitHub) {
+  if (!isGitHub) {
     const location = window.location
     const href = 'https://suziwen.github.io' + location.pathname + location.search + location.hash
     githubMirror = (<li css={styles.li}>
