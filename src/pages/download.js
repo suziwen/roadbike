@@ -116,6 +116,13 @@ const DockerDownloadSections = ()=>{
         icon: MdArrowForward,
         tag: "href",
         target: "_blank",
+      },{
+        to: "https://www.bilibili.com/video/BV1Bd4y1U7mv",
+        label: "安装教程",
+        inverseStyle: true,
+        icon: MdArrowForward,
+        tag: "href",
+        target: "_blank",
       }]}
     >
     </HomepageSection>
