@@ -20,10 +20,12 @@ const assignActiveStyles = ({ isPartiallyCurrent }) =>
 
 const Navigation = ({ pathname }) => {
   const isHomepage = isHomepageFn(pathname)
-  const [isGitHub, setIsGitHub] = useState(false)
+  const [isGitHub, setIsGitHub] = useState(true)
   useEffect(()=> {
     if (window.location.origin == 'https://suziwen.github.io') {
       setIsGitHub(true)
+    } else {
+      setIsGitHub(false)
     }
   },[])
   if (isHomepage) {return null}
