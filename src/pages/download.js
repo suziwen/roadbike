@@ -102,6 +102,28 @@ const DownloadSections = ({
   )
 }
 
+const DockerDownloadSections = ()=>{
+  return (
+    <HomepageSection
+      sectionName="Pegasus"
+      sectionIcon={PriceIcon}
+      inverseStyle={true}
+      title={`天马版(小书匠 Docker 自部署版本)`}
+      links={[{
+        to: "https://hub.docker.com/r/suziwen/pegasus",
+        label: "Docker 官网",
+        inverseStyle: true,
+        icon: MdArrowForward,
+        tag: "href",
+        target: "_blank",
+      }]}
+    >
+    </HomepageSection>
+  )
+}
+
+
+
 const AndroidDownloadSections = ()=>{
   return (
     <HomepageSection
@@ -208,6 +230,7 @@ class IndexRoute extends React.Component {
               [presets.Hd]: { padding: vP, paddingTop: 0, paddingBottom: 0 },
             }}
           >
+            <DockerDownloadSections />
             <AndroidDownloadSections />
             <DownloadSections version="8.9.12" downloadUrl="http://www.baidu.com" />
             <OldDownloadSections />
