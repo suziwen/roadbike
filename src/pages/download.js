@@ -99,8 +99,8 @@ const DownloadSections = ({
           如果发现不能启动，可以尝试执行下面的命令
           <pre>
             <code>
-            cd /Users/suziwen/Downloads/Story-writer-osxarm
-            xattr -cr ./Story-writter.app
+              cd /Users/suziwen/Downloads/Story-writer-osxarm<br/>
+              xattr -cr ./Story-writter.app<br/>
             </code>
           </pre>
         </InfoMessageStyled>
