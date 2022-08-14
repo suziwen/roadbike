@@ -53,13 +53,13 @@ const DownloadSections = ({
       title={`当前最新版本 v${version}`}
     >
       <DownloadButtonsStyled>
-        <Button large to="https://github.com/suziwen/markdownxiaoshujiang/releases/tag/v8.9.12" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
+        <Button large to="https://github.com/suziwen/markdownxiaoshujiang/releases/tag/v8.10.0" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
           Github 下载
         </Button>
         <Button large to="https://www.aliyundrive.com/s/Ss9LcYedT8g" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
           阿里云盘
         </Button>
-        <Button large to="https://pan.baidu.com/s/1gc-PS5--9dI-Hym-kJaAaQ" ondark tag="href" target="_blank" icon={<MdArrowForward />} overrideCSS={{
+        <Button large to="https://pan.baidu.com/s/1LdvJZZCJFu1ji1MUvO2eyQ" ondark tag="href" target="_blank" icon={<MdArrowForward />} overrideCSS={{
           margin: "10px",
           position: "relative",
           "&:after": {
@@ -69,7 +69,7 @@ const DownloadSections = ({
             right: `0`,
             pointerEvents: `none`,
             fontSize: `1rem`,
-            content: `'提取密码: (d8s2)'`,
+            content: `'提取密码: (rxr8)'`,
           }
         }}>
           百度网盘下载
@@ -94,6 +94,16 @@ const DownloadSections = ({
             </li>
           </ol>
         </WarningMessageStyled>
+        <InfoMessageStyled>
+          Mac M1/M2 机器的用户，请下载 osxarm 版本
+          如果发现不能启动，可以尝试执行下面的命令
+          <pre>
+            <code>
+            cd /Users/suziwen/Downloads/Story-writer-osxarm
+            xattr -cr ./Story-writter.app
+            </code>
+          </pre>
+        </InfoMessageStyled>
         <InfoMessageStyled>
           从 2.0.0 版本开始，不再支持 window xp 和 osx 32 版本
         </InfoMessageStyled>
@@ -237,9 +247,9 @@ class IndexRoute extends React.Component {
               [presets.Hd]: { padding: vP, paddingTop: 0, paddingBottom: 0 },
             }}
           >
-            <DockerDownloadSections />
+            <DownloadSections version="8.10.0" downloadUrl="http://www.baidu.com" />
             <AndroidDownloadSections />
-            <DownloadSections version="8.9.12" downloadUrl="http://www.baidu.com" />
+            <DockerDownloadSections />
             <OldDownloadSections />
             <OtherDownloadSections />
           </div>
