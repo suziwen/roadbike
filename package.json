@@ -98,7 +98,7 @@
     "deploy": "gatsby build --prefix-paths && gh-pages -d public -r git@github.com:suziwen/roadbike.git",
     "deploy-gitee": "gatsby build --prefix-paths && gh-pages -d public -r gitee:suziwen/roadbike.git",
     "sync": "rsync -a public/ ../roadbike_static/",
-    "develop": "gatsby develop",
+    "develop": "gatsby develop --verbose",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Error: no test specified\" && exit 1",
