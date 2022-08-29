@@ -224,16 +224,16 @@ const App = () => {
     snapRef.current.style.setProperty('--range-y', Math.floor(gsap.utils.clamp(-60, 60, y * 100)))
   }, snapRef, () => window.innerWidth * 0.5)
 
-  const grabPic = async () => {
-    const pics = ['a.png', 'b.png', 'c.png', 'd.png', 'e.png', 'f.png']
-    const pic = await fetch(withPrefix('/') + 'feature2/' + pics[Math.floor(Math.random()*pics.length)])
+  const grabPic = async (picIndex) => {
+    picIndex = picIndex || Math.floor(Math.random()*10) + 1
+    const pic = await fetch(withPrefix('/') + 'feature2/' + picIndex + '.png')
     //const pic = await fetch('https://source.unsplash.com/random/1000x1000')
     return pic.url
   }
 
   useEffect(() => {
     const setup = async () => {
-      const url = await grabPic()
+      const url = await grabPic(10)
       // Dirty hack to make sure we get two images
       await new Promise(resolve => setTimeout(resolve, 1000))
       const nextUrl = await grabPic()
@@ -256,7 +256,7 @@ const App = () => {
     setNewImage(count)
   }
 
-  if (snaps.length !== 2) return <h1 className="loader">Loading...</h1>
+  if (snaps.length !== 2) return <h1 className="loader">加载中...</h1>
   return (
     <div>
       <div style={{
@@ -279,7 +279,7 @@ const App = () => {
           />
         </MainStyled>
       </div>
-      <div style={{height: '200VH'}}></div>
+      <div style={{height: '150VH'}}></div>
     </div>
   )
 }
