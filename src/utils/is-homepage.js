@@ -11,7 +11,7 @@ const fixPathname = (prefixPath, pathname)=>{
 }
 const isHomepage = (pathname)=>{
   pathname = fixPathname(prefixPath, pathname)
-  if (/^[\/]*feature/i.test(pathname)) {return true}
+  //if (/^[\/]*feature/i.test(pathname)) {return true}
   return pathname === `/` || pathname === `/offline-plugin-app-shell-fallback/`
 }
 export default isHomepage

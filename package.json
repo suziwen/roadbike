@@ -44,6 +44,7 @@
     "glob": "^7.1.6",
     "graphql-request": "1.6.0",
     "gray-percentage": "^2.0.0",
+    "gsap": "^3.11.0",
     "hex2rgba": "^0.0.1",
     "lodash": "^4.17.15",
     "lodash.debounce": "^4.0.8",
