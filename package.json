@@ -68,6 +68,7 @@
     "react-instantsearch": "^4.5.1",
     "react-medium-image-zoom": "^3.0.15",
     "react-modal": "^3.8.1",
+    "react-parallax-tilt": "^1.7.60",
     "react-pose": "^4.0.8",
     "react-pose-text": "^3.1.0",
     "react-transition-group": "^2.9.0",
