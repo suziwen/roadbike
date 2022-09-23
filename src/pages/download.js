@@ -144,12 +144,12 @@ const DockerDownloadSections = ()=>{
 const AndroidDownloadSections = ()=>{
   return (
     <HomepageSection
-      sectionName="1.2.0"
+      sectionName="1.2.1"
       sectionIcon={PriceIcon}
       inverseStyle={true}
       title={`有影笔记(小书匠手机版)`}
       links={[{
-        to: "https://github.com/suziwen/markdownxiaoshujiang/releases/tag/Android_1.2.0",
+        to: "https://github.com/suziwen/markdownxiaoshujiang/releases/tag/Android_1.2.1",
         label: "Android 下载(Github)",
         inverseStyle: true,
         icon: MdArrowForward,
