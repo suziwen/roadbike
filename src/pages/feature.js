@@ -225,7 +225,7 @@ const App = () => {
   }, snapRef, () => window.innerWidth * 0.5)
 
   const grabPic = async (picIndex) => {
-    picIndex = picIndex || Math.floor(Math.random()*10) + 1
+    picIndex = picIndex || Math.floor(Math.random()*13) + 1
     const pic = await fetch(withPrefix('/') + 'feature2/' + picIndex + '.png')
     //const pic = await fetch('https://source.unsplash.com/random/1000x1000')
     return pic.url
