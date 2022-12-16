@@ -15,7 +15,7 @@ class IndexRoute extends React.Component {
         {({data, set})=>{
           return (
               <DocSearchContent>
-                <Container className="preview">
+                <Container className="preview" css={{marginTop: presets.headerHeight}}>
                   <Helmet bodyAttributes={{
                     class: "roadbike-docs-page"
                   }}>
