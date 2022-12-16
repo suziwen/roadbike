@@ -9,6 +9,7 @@ import Container from "../components/container"
 import { PriceIcon} from "../assets/mobile-nav-icons"
 import {MdArrowForward} from "react-icons/md"
 import HomepageSection from "../components/homepage/homepage-section"
+import PWADownloadSection from '../components/downloads/pwaSection'
 import Button from "../components/button"
 import {
   setupScrollersObserver,
@@ -133,6 +134,13 @@ const DockerDownloadSections = ()=>{
         icon: MdArrowForward,
         tag: "href",
         target: "_blank",
+      },{
+        to: "https://www.bilibili.com/video/BV19A41197Ba",
+        label: "架构介绍",
+        inverseStyle: true,
+        icon: MdArrowForward,
+        tag: "href",
+        target: "_blank",
       }]}
     >
     </HomepageSection>
@@ -236,18 +244,23 @@ class IndexRoute extends React.Component {
             flexDirection: `row`,
             flexWrap: `wrap`,
             justifyContent: `space-between`,
+            backgroundColor: `#fff`,
+            backgroundImage: `-webkit-gradient(linear,left top,right top,from(rgba(255,255,255,0)),color-stop(25%,#fff),color-stop(75%,#fff),to(rgba(255,255,255,0))),repeating-linear-gradient(-45deg,transparent 0,transparent 2.5em,${colors.ui.border} 0,${colors.ui.border} calc(2.5em + 1px)),repeating-linear-gradient(45deg,transparent 0,transparent 2.5em,${colors.ui.border} 0,${colors.ui.border} calc(2.5em + 1px))`,
+            backgroundImage: `linear-gradient(90deg,rgba(255,255,255,0),#fff 25%,#fff 75%,rgba(255,255,255,0)),repeating-linear-gradient(-45deg,transparent 0,transparent 2.5em,${colors.ui.border} 0,${colors.ui.border} calc(2.5em + 1px)),repeating-linear-gradient(45deg,transparent 0,transparent 2.5em,${colors.ui.border} 0,${colors.ui.border} calc(2.5em + 1px))`
           }}
         >
           <div
             css={{
+              maxWidth: `21cm`,
+              margin: `0 auto`,
               padding: rhythm(presets.gutters.default / 2),
               paddingBottom: 0,
               flex: `0 0 100%`,
-              maxWidth: `100%`,
               [presets.Hd]: { padding: vP, paddingTop: 0, paddingBottom: 0 },
             }}
           >
             <DownloadSections version="8.11.0" downloadUrl="http://www.baidu.com" />
+            <PWADownloadSection />
             <AndroidDownloadSections />
             <DockerDownloadSections />
             <OldDownloadSections />
