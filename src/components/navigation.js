@@ -90,7 +90,8 @@ const Navigation = ({ pathname }) => {
   return (
     <header
       css={{
-        backgroundColor: isHomepage ? `transparent` : `rgba(255,255,255,0.975)`,
+        backgroundColor: isHomepage ? `transparent` : `rgba(255,255,255,0.675)`,
+        backdropFilter: isHomepage ? `unset`: `blur(10px)`,
         position: isHomepage ? `absolute` : `relative`,
         height: presets.headerHeight,
         top: isHomepage
@@ -126,8 +127,7 @@ const Navigation = ({ pathname }) => {
         //   background: `red`,
         // },
         [presets.Tablet]: {
-          position: isHomepage || isBlog ? `absolute` : `fixed`,
-          backgroundColor: isBlog ? colors.ui.whisper : false,
+          position: isHomepage ? `absolute` : `fixed`,
         },
         paddingLeft: `env(safe-area-inset-left)`,
         paddingRight: `env(safe-area-inset-right)`,

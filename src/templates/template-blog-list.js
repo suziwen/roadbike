@@ -40,14 +40,11 @@ class BlogPostsIndex extends React.Component {
           </Helmet>
           <Container
             css={{
+              marginTop: presets.headerHeight,
               [presets.Tablet]: {
-                background: `url(${logo})`,
                 paddingBottom: `${rhythm(
                   options.blockMarginBottom * 4
                 )} !important`,
-                backgroundSize: `30px 30px`,
-                backgroundRepeat: `no-repeat`,
-                backgroundPosition: `bottom center`,
               },
             }}
           >

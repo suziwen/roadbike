@@ -253,6 +253,7 @@ class IndexRoute extends React.Component {
             css={{
               maxWidth: `21cm`,
               margin: `0 auto`,
+              marginTop: presets.headerHeight,
               padding: rhythm(presets.gutters.default / 2),
               paddingBottom: 0,
               flex: `0 0 100%`,

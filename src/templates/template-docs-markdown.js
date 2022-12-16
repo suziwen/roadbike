@@ -9,6 +9,7 @@ import Toc from "../components/toc"
 import ProgressIndicator from "../components/progress-indicator"
 import Container from "../components/container"
 import LeftSidebarButtons from "../components/left-sidebar-buttons"
+import presets, { colors } from "../utils/presets"
 
 class DocsTemplate extends React.Component {
   render() {
@@ -33,7 +34,9 @@ class DocsTemplate extends React.Component {
                     <ProgressIndicator
                       zipFile={props.data.zipFile}
                     />
-                    <Container>
+                    <Container css={{
+                      marginTop: presets.headerHeight,
+                      }}>
                       <h1 css={{ marginTop: 0 }}>
                         {page.title}
                       </h1>

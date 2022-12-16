@@ -59,7 +59,9 @@ class BlogPostTemplate extends React.Component {
     const postHtmlAndCss = `<style>${post.customCss}</style>\n${post.html}`
 
     return (
-      <div>
+      <div css={{
+          marginTop: presets.headerHeight,
+        }}>
         <Toc location={location} />
         <Container className="post" css={{ paddingBottom: `0` }}>
           <LeftSidebarButtons 

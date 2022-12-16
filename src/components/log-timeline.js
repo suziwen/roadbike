@@ -5,6 +5,7 @@ import moment from 'moment'
 import "moment/locale/zh-cn"
 
 import Timeline from "react-vis-timeline-2"
+import presets, { colors } from "../utils/presets"
 
 
 const nowDate = new Date()
@@ -44,6 +45,11 @@ const LogTimeline = (props) => {
         css={{
           position: "sticky",
           bottom: 0,
+          background: `linear-gradient(0deg, ${colors.ui.whisper} 25%, transparent)`,
+          ".vis-timeline .vis-time-axis .vis-grid.vis-minor": { border: 0},
+          ".vis-timeline .vis-foreground .vis-group": {border: 0},
+          ".vis-timeline .vis-time-axis .vis-grid.vis-major": {border: 0},
+          ".vis-timeline": {border: 0},
         }}
       >
         <Timeline
