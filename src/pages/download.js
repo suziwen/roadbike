@@ -244,13 +244,20 @@ class IndexRoute extends React.Component {
             flexDirection: `row`,
             flexWrap: `wrap`,
             justifyContent: `space-between`,
-            backgroundColor: `#fff`,
-            backgroundImage: `-webkit-gradient(linear,left top,right top,from(rgba(255,255,255,0)),color-stop(25%,#fff),color-stop(75%,#fff),to(rgba(255,255,255,0))),repeating-linear-gradient(-45deg,transparent 0,transparent 2.5em,${colors.ui.border} 0,${colors.ui.border} calc(2.5em + 1px)),repeating-linear-gradient(45deg,transparent 0,transparent 2.5em,${colors.ui.border} 0,${colors.ui.border} calc(2.5em + 1px))`,
-            backgroundImage: `linear-gradient(90deg,rgba(255,255,255,0),#fff 25%,#fff 75%,rgba(255,255,255,0)),repeating-linear-gradient(-45deg,transparent 0,transparent 2.5em,${colors.ui.border} 0,${colors.ui.border} calc(2.5em + 1px)),repeating-linear-gradient(45deg,transparent 0,transparent 2.5em,${colors.ui.border} 0,${colors.ui.border} calc(2.5em + 1px))`
+            "&:before": {
+              content: `' '`,
+              height: `100VH`,
+              width: `100VW`,
+              position: `fixed`,
+              backgroundColor: `#fff`,
+              backgroundImage: `-webkit-gradient(linear,left top,right top,from(rgba(255,255,255,0)),color-stop(25%,#fff),color-stop(75%,#fff),to(rgba(255,255,255,0))),repeating-linear-gradient(-45deg,transparent 0,transparent 2.5em,${colors.ui.border} 0,${colors.ui.border} calc(2.5em + 1px)),repeating-linear-gradient(45deg,transparent 0,transparent 2.5em,${colors.ui.border} 0,${colors.ui.border} calc(2.5em + 1px))`,
+              backgroundImage: `linear-gradient(90deg,rgba(255,255,255,0),#fff 25%,#fff 75%,rgba(255,255,255,0)),repeating-linear-gradient(-45deg,transparent 0,transparent 2.5em,${colors.ui.border} 0,${colors.ui.border} calc(2.5em + 1px)),repeating-linear-gradient(45deg,transparent 0,transparent 2.5em,${colors.ui.border} 0,${colors.ui.border} calc(2.5em + 1px))`
+            },
           }}
         >
           <div
             css={{
+              position: `relative`,
               maxWidth: `21cm`,
               margin: `0 auto`,
               marginTop: presets.headerHeight,
