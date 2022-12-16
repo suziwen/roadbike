@@ -60,7 +60,9 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <div css={{
-          marginTop: presets.headerHeight,
+          [presets.Hd]: {
+            marginTop: presets.headerHeight,
+          },
         }}>
         <Toc location={location} />
         <Container className="post" css={{ paddingBottom: `0` }}>

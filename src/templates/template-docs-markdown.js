@@ -35,7 +35,9 @@ class DocsTemplate extends React.Component {
                       zipFile={props.data.zipFile}
                     />
                     <Container css={{
-                      marginTop: presets.headerHeight,
+                      [presets.Hd]: {
+                        marginTop: presets.headerHeight,
+                      },
                       }}>
                       <h1 css={{ marginTop: 0 }}>
                         {page.title}

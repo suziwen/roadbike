@@ -40,8 +40,8 @@ class BlogPostsIndex extends React.Component {
           </Helmet>
           <Container
             css={{
-              marginTop: presets.headerHeight,
               [presets.Tablet]: {
+                marginTop: presets.headerHeight,
                 paddingBottom: `${rhythm(
                   options.blockMarginBottom * 4
                 )} !important`,

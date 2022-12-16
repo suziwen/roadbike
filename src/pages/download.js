@@ -260,11 +260,17 @@ class IndexRoute extends React.Component {
               position: `relative`,
               maxWidth: `21cm`,
               margin: `0 auto`,
-              marginTop: presets.headerHeight,
               padding: rhythm(presets.gutters.default / 2),
               paddingBottom: 0,
               flex: `0 0 100%`,
-              [presets.Hd]: { padding: vP, paddingTop: 0, paddingBottom: 0 },
+              background: `linear-gradient(135deg, #4567b2 20%, #8ab9ff 80%)`,
+              backgroundAttachment: `fixed`,
+              [presets.Hd]: { padding: vP, paddingTop: 0, paddingBottom: 0,
+                marginTop: presets.headerHeight,
+              },
+              "&>section": {
+                background: `initial!important`,
+              },
             }}
           >
             <DownloadSections version="8.11.0" downloadUrl="http://www.baidu.com" />
