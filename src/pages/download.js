@@ -101,7 +101,7 @@ const DownloadSections = ({
           <pre>
             <code>
               cd /Users/suziwen/Downloads/Story-writer-osxarm<br/>
-              xattr -cr ./Story-writter.app<br/>
+              xattr -cr ./Story-writer.app<br/>
             </code>
           </pre>
         </InfoMessageStyled>
