@@ -54,7 +54,7 @@ const DownloadSections = ({
       title={`当前最新版本 v${version}`}
     >
       <DownloadButtonsStyled>
-        <Button large to="https://github.com/suziwen/markdownxiaoshujiang/releases/tag/v8.11.0" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
+        <Button large to="https://github.com/suziwen/markdownxiaoshujiang/releases/tag/v8.12.0" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
           Github 下载
         </Button>
         <Button large to="https://www.aliyundrive.com/s/Ss9LcYedT8g" ondark={true} tag="href" target="_blank" icon={<MdArrowForward />} style={{margin: "10px"}}>
@@ -273,7 +273,7 @@ class IndexRoute extends React.Component {
               },
             }}
           >
-            <DownloadSections version="8.11.0" downloadUrl="http://www.baidu.com" />
+            <DownloadSections version="8.12.0" downloadUrl="http://www.baidu.com" />
             <PWADownloadSection />
             <AndroidDownloadSections />
             <DockerDownloadSections />
