@@ -21,6 +21,12 @@ const sheenEffect = keyframes({
   }
 })
 
+const fadeEffect = keyframes({
+  "100%": {
+    opacity: 1,
+    transform: `none`,
+  }
+})
 
 
 const StartWriteBtn = (props) => {
@@ -169,6 +175,9 @@ const MastheadContent = (props) => {
       flexDirection: `column`,
       justifyContent: `center`,
       alignItems: `center`,
+      opacity: 0,
+      transform: `perspective(800px) rotateX(-50deg) translateY(30px)`,
+      animation: `${fadeEffect} .7s .2s forwards`,
     }}>
       <h1
         css={{
