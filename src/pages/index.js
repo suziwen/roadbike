@@ -47,7 +47,7 @@ class IndexRoute extends React.Component {
         backgroundColor: '#2F4F4F'
     })
     //document.location.href = "http://localhost:3000"
-    document.location.href = "http://markdown.xiaoshujiang.com"
+    document.location.href = `${process.env.STORY_WRITER}`||"http://markdown.xiaoshujiang.com"
   }
 
   render() {

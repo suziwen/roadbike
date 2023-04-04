@@ -28,6 +28,12 @@ const fadeEffect = keyframes({
   }
 })
 
+const fadeIdiomEffect = keyframes({
+  "100%": {
+    opacity: 1,
+  }
+})
+
 
 const StartWriteBtn = (props) => {
   return (
@@ -78,7 +84,7 @@ const StartWriteBtn = (props) => {
             borderRadius: `100%`,
           }
 
-        }} to="http://markdown.xiaoshujiang.com" icon={<GiFeather />}>
+        }} icon={<GiFeather />}>
           开始写作
           <span className="crater" css={{
             top: `18px`,
@@ -132,6 +138,7 @@ const MastheadContent = (props) => {
   )
 
   const [isGitHub, setIsGitHub] = useState(false)
+  const [isInMainBtn, setIsInMainBtn] = useState(false)
 
   useEffect(()=> {
     if (window.location.origin == 'https://suziwen.github.io') {
@@ -158,6 +165,26 @@ const MastheadContent = (props) => {
     )
   }
 
+  const mouseEnter = () => {
+    setIsInMainBtn(true)
+  }
+
+  const mouseLeave = () => {
+    setIsInMainBtn(false)
+  }
+
+
+  const idiom1 = (<span css={{
+    position: `absolute`,
+    bottom: 0,
+    display: `inline-block`,
+    left: `50%`,
+    transform: `translateX(-50%)`,
+    opacity: 0,
+    fontSize: `.8em`,
+    animation: `${fadeIdiomEffect} 3s forwards`,
+  }}>知识管理<br/>就是化繁为简，然后厚积薄发</span>)
+
   return (
   <div
     className="masthead-content"
@@ -182,6 +209,7 @@ const MastheadContent = (props) => {
       <h1
         css={{
           ...scale(0.7),
+          position: `relative`,
           lineHeight: 1.1,
           margin: 0,
           marginBottom: `20px`,
@@ -220,7 +248,11 @@ const MastheadContent = (props) => {
           },
         }}
       >
-        小书匠
+        {isInMainBtn?idiom1:""}
+        <span css={{
+          opacity: isInMainBtn?0:1,
+          transition: `opacity 2s`
+        }}>小书匠</span>
       </h1>
       <ul css={{
         display: 'flex',
@@ -247,7 +279,11 @@ const MastheadContent = (props) => {
             </Link>
           </li> */}
       </ul>
-      <Tilt perspective={500}>
+      <Tilt perspective={500} onEnter={mouseEnter} onLeave={mouseLeave}
+    glareEnable={true}
+    glareMaxOpacity={0.75}
+    glarePosition="all"
+      >
         <StartWriteBtn rippleEffect={props.rippleEffect}/>
       </Tilt>
     </div>
