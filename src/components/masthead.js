@@ -263,6 +263,7 @@ const MastheadContent = (props) => {
         width: '100%',
         justifyContent: 'space-between'
         }}>
+        {isInMainBtn? (<li>小书匠，一款助你将混沌变为有序，令你事半功倍的知识管理软件。</li>): (<>
         <NavItem linkTo="/docs/">文档</NavItem>
         {videoChanel}
         <NavItem linkTo="/feature/">功能</NavItem>
@@ -278,6 +279,7 @@ const MastheadContent = (props) => {
               Community
             </Link>
           </li> */}
+        </>)}
       </ul>
       <Tilt perspective={500} onEnter={mouseEnter} onLeave={mouseLeave}
     glareEnable={true}
