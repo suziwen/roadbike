@@ -11,6 +11,7 @@ import { rhythm, scale } from "../utils/typography"
 import presets, { colors } from "../utils/presets"
 import Button from "./button"
 import { vP, vPHd, vPVHd, vPVVHd } from "../components/gutters"
+import LetterCloud from "../components/letter-cloud"
 
 const sheenEffect = keyframes({
   "0%": {
@@ -183,7 +184,7 @@ const MastheadContent = (props) => {
     opacity: 0,
     fontSize: `.8em`,
     animation: `${fadeIdiomEffect} 3s forwards`,
-  }}>知识管理<br/>就是化繁为简，然后厚积薄发</span>)
+  }}>知识到智慧<br/>先化繁于简，再厚积薄发</span>)
 
   return (
   <div
@@ -203,6 +204,7 @@ const MastheadContent = (props) => {
       justifyContent: `center`,
       alignItems: `center`,
       opacity: 0,
+      padding: `40px`,
       transform: `perspective(800px) rotateX(-50deg) translateY(30px)`,
       animation: `${fadeEffect} .7s .2s forwards`,
     }}>
@@ -281,13 +283,18 @@ const MastheadContent = (props) => {
           </li> */}
         </>)}
       </ul>
-      <Tilt perspective={500} onEnter={mouseEnter} onLeave={mouseLeave}
-    glareEnable={true}
-    glareMaxOpacity={0.75}
-    glarePosition="all"
-      >
-        <StartWriteBtn rippleEffect={props.rippleEffect}/>
-      </Tilt>
+      <div>
+        <div>
+          <LetterCloud/>
+        </div>
+        <Tilt perspective={500} onEnter={mouseEnter} onLeave={mouseLeave}
+      glareEnable={true}
+      glareMaxOpacity={0.75}
+      glarePosition="all"
+        >
+          <StartWriteBtn rippleEffect={props.rippleEffect}/>
+        </Tilt>
+      </div>
     </div>
       </IconContext.Provider>
   </div>
