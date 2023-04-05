@@ -185,7 +185,7 @@ const MastheadContent = (props) => {
     transform: `translateX(-50%)`,
     opacity: 0,
     fontSize: `.8em`,
-    animation: `${fadeIdiomEffect} 3s forwards`,
+    animation: `${fadeIdiomEffect} 1s .3s forwards`,
   }}>从<br/>知识到智慧<br/>先化繁于简，再厚积薄发</span>)
 
   return (
@@ -255,7 +255,7 @@ const MastheadContent = (props) => {
         {isInMainBtn?idiom1:""}
         <span css={{
           opacity: isInMainBtn?0:1,
-          transition: `opacity 2s`
+          transition: `opacity .5s`
         }}>小书匠</span>
       </h1>
       <ul css={{

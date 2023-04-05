@@ -151,7 +151,7 @@ const LetterCloud = (props) => {
       containerElRef.current.innerHTML = domResultStr;
     }
   }, [isSupportEmoji,  emojiData, containerElRef])
-  if (!isSupportEmoji || !emojiData) {
+  if (!isSupportEmoji) {
     return <></>
   }
 
@@ -168,9 +168,11 @@ const LetterCloud = (props) => {
         zIndex: 10,
         position: `absolute`,
         background: `radial-gradient(transparent, white)`,
+        backgroundRepeat: `no-repeat`,
+        backgroundSize: `300% 300%`,
+        backgroundPosition: `center`,
         pointerEvents: `none`,
         transition: `all 1s`,
-        opacity: 0,
       },
       "&.initStep .emojiCloudWrapper": {
         opacity: 0,
@@ -185,7 +187,7 @@ const LetterCloud = (props) => {
       },
       "&.runStep": {
         "&:before": {
-          opacity: 1,
+          backgroundSize: `100% 100%`,
         },
       },
       "&.emojiStep .emojiCloudContainer:before": {
@@ -193,7 +195,7 @@ const LetterCloud = (props) => {
       },
       "&.runStep .emojiCloudContainer": {
         "&:before": {
-          opacity: 0
+          backgroundSize: `0 0`,
         },
         "& .emojiCloudWrapper": {
           left: `50%!important`,
@@ -202,6 +204,12 @@ const LetterCloud = (props) => {
           "&:before": {
             content: `"🌟"`,
             opacity: 1,
+          },
+          "&:nth-child(3n+1):before": {
+            content: `"✨"`,
+          },
+          "&:nth-child(4n+3):before": {
+            content: `"⭐️"`,
           },
           "&:after": {
             opacity: 0,
@@ -229,6 +237,7 @@ const LetterCloud = (props) => {
           background: `radial-gradient(white 30%, transparent)`,
           backgroundSize: `300% 300%`,
           backgroundPosition: `center`,
+          backgroundRepeat: `no-repeat`,
           transition: `all 1s`,
           zIndex: 10,
         },
@@ -236,6 +245,12 @@ const LetterCloud = (props) => {
           position: `absolute`,
           opacity: 1,
           transition: `all 2s`,
+          "&:nth-child(2n+1)": {
+            fontSize: `.8em`,
+          },
+          "&:nth-child(3n+2)": {
+            fontSize: `.6em`,
+          },
           "&:before": {
             content: `attr(data-emoji)`,
             opacity: 1,
