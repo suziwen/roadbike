@@ -40,7 +40,7 @@ const StartWriteBtn = (props) => {
   const isInMainBtn = props.isInMainBtn;
   return (
 <Button large onClick={props.rippleEffect} tag="button" target="_self" overrideCSS={{
-          fontFamily: 'smy',
+          fontFamily: 'xsjkt',
           position: `relative`,
           textShadow: `3px 3px 7px hsla(0, 2%, 13%, 0.3)`,
           backgroundColor: `rgba(255, 229, 181, 0.5)`,
@@ -87,7 +87,12 @@ const StartWriteBtn = (props) => {
           }
 
         }} icon={isInMainBtn ? (<GiStarSwirl />):(<GiFeather />)}>
-          {isInMainBtn?"如此而已":"开始使用"}
+          <span css={{
+              transform: `scale(1.5)`,
+              margin: `0 1em 0 1.5em`
+            }}>
+            {isInMainBtn?"如此而已":"开始使用"}
+          </span>
           <span className="crater" css={{
             top: `18px`,
             left: `10px`,
@@ -185,6 +190,7 @@ const MastheadContent = (props) => {
     transform: `translateX(-50%)`,
     opacity: 0,
     fontSize: `.8em`,
+    fontFamily: `founderkaiti, "AR PL UKai TW", SimSun, "宋体", Song`,
     animation: `${fadeIdiomEffect} 1s .3s forwards`,
   }}>从<br/>知识到智慧<br/>先化繁于简，再厚积薄发</span>)
 
@@ -301,7 +307,7 @@ const MastheadContent = (props) => {
             }
             setTimeout(()=>{
               props.rippleEffect(fakeEvent)
-            }, 1000)
+            }, 1300)
           }} isInMainBtn={isInMainBtn}/>
         </Tilt>
       </div>
