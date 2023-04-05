@@ -5,7 +5,7 @@ import Helmet from "react-helmet"
 class IndexRoute extends React.Component {
   render() {
     return (
-        <div css={{ position: `relative` }}>
+      <div css={{ position: `relative`, margin: `2em 0 0`, }}>
           <Helmet>
             <link rel="stylesheet" type="text/css" href={withPrefix('/') + "xsjfonts/fontstyles/homepage.css"}/>
           </Helmet>
