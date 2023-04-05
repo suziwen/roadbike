@@ -42,10 +42,6 @@ class IndexRoute extends React.Component {
     })
   }
   rippleEnd(){
-    $('body').css({
-        display: 'none',
-        backgroundColor: '#2F4F4F'
-    })
     //document.location.href = "http://localhost:3000"
     document.location.href = `${process.env.STORY_WRITER}`||"http://markdown.xiaoshujiang.com"
   }

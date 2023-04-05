@@ -10,14 +10,14 @@ const rippleScale = keyframes({
 const Ink = styled.div`
   position: absolute;
   display: block;
-  background: #2F4F4F;
+  background: #12aa9c;
   border-radius: 50%;
   transform: scale(0);
   width: 10vw;
   height: 10vw;
   margin-top: -5vw;
   margin-left: -5vw;
-  animation: ${rippleScale} .8s linear;
+  animation: ${rippleScale} .8s linear forwards;
   z-index: 1000;
 `
 

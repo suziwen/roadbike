@@ -50,8 +50,7 @@ function initEmojiCloud(targetEl) {
         )
       ){
           let dom = ""
-          dom += "<span class='emojiCloudWrapper' style='left: " + xPos + "%; top: " + yPos + "%'>"
-          dom += shuffledList[i].emoji
+          dom += "<span class='emojiCloudWrapper' style='left: " + xPos + "%; top: " + yPos + "%' data-emoji='" + shuffledList[i].emoji + "'>"
           dom += "</span>"
           domResult.push(dom)
         }
@@ -126,6 +125,8 @@ function supportsEmoji () {
 const LetterCloud = (props) => {
   const [isSupportEmoji, setIsSupportEmoji] = useState(false)
   const [emojiData, setEmojiData] = useState(null)
+  const runStep = props.isRunStep
+  const isInMainBtn = props.isInMainBtn || props.isRunStep
   const containerElRef = useRef()
   useEffect(() => {
     //const _isSupport = getWidth(trinidad) === getWidth(hammerpick)
@@ -134,12 +135,14 @@ const LetterCloud = (props) => {
   useEffect(() => {
     if (!OPENMOJIJSON && isSupportEmoji) {
       OPENMOJIJSON = []
-      fetch(withPrefix('/') + 'emoji.json').then((res)=> res.json()).then((emojiJson)=>{
-        OPENMOJIJSON = emojiJson
-        setEmojiData(emojiJson)
-      }).catch((e)=>{
-        console.error(e)
-      })
+      setTimeout(()=>{
+        fetch(withPrefix('/') + 'emoji.json').then((res)=> res.json()).then((emojiJson)=>{
+          OPENMOJIJSON = emojiJson
+          setEmojiData(emojiJson)
+        }).catch((e)=>{
+          console.error(e)
+        })
+      }, 600)
     }
   }, [isSupportEmoji])
   useEffect(()=>{
@@ -153,29 +156,101 @@ const LetterCloud = (props) => {
   }
 
   return (
-    <div className={"initStep"} css={{
-      position: 'absolute',
-      left: 0,
-      right: 0,
-      top: 0,
-      bottom: 0,
-      fontSize: `3em`,
-      zIndex: -1,
-      pointerEvents: `none`,
-      "& .emojiCloudWrapper": {
+    <div className={`${!!emojiData?'emojiStep':'initStep'} ${!!isInMainBtn?'starStep':''} ${!!runStep ? "runStep": ""}`} css={{
+      "&:before": {
+        content: `' '`,
+        width: `100VW`,
+        height: `100VH`,
+        display: `block`,
+        transform: `translateX(-50%)`,
+        top: 0,
+        left: `50%`,
+        zIndex: 10,
         position: `absolute`,
-        opacity: 1,
-        transition: `all 2s`,
+        background: `radial-gradient(transparent, white)`,
+        pointerEvents: `none`,
+        transition: `all 1s`,
+        opacity: 0,
       },
       "&.initStep .emojiCloudWrapper": {
         opacity: 0,
       },
-      "&.initPosition .emojiCloudWrapper": {
-        left: `50%!important`,
-        top: `50%!important`,
-      }
-    }} ref={containerElRef}>
-      背景图片
+      "&.starStep .emojiCloudWrapper": {
+        "&:before": {
+          opacity: 0,
+        },
+        "&:after": {
+          opacity: 1,
+        }
+      },
+      "&.runStep": {
+        "&:before": {
+          opacity: 1,
+        },
+      },
+      "&.emojiStep .emojiCloudContainer:before": {
+        backgroundSize: `100% 100%`,
+      },
+      "&.runStep .emojiCloudContainer": {
+        "&:before": {
+          opacity: 0
+        },
+        "& .emojiCloudWrapper": {
+          left: `50%!important`,
+          top: `50%!important`,
+          transitionDelay: `.5s`,
+          "&:before": {
+            content: `"🌟"`,
+            opacity: 1,
+          },
+          "&:after": {
+            opacity: 0,
+          },
+        }
+      },
+      }}>
+      <div className="emojiCloudContainer" css={{
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        fontSize: `3em`,
+        zIndex: -1,
+        pointerEvents: `none`,
+        "&:before": {
+          content: `' '`,
+          width: `100VW`,
+          height: `100VH`,
+          display: `block`,
+          position: `relative`,
+          transform: `translateX(-50%)`,
+          left: `50%`,
+          background: `radial-gradient(white 30%, transparent)`,
+          backgroundSize: `300% 300%`,
+          backgroundPosition: `center`,
+          transition: `all 1s`,
+          zIndex: 10,
+        },
+        "& .emojiCloudWrapper": {
+          position: `absolute`,
+          opacity: 1,
+          transition: `all 2s`,
+          "&:before": {
+            content: `attr(data-emoji)`,
+            opacity: 1,
+            transition: `all 1s`,
+            position: `absolute`,
+          },
+          "&:after": {
+            content: `"⭐️"`,
+            opacity: 0,
+            transition: `all 1s`,
+            position: `absolute`,
+          }
+        },
+      }} ref={containerElRef}>
+      </div>
     </div>
   )
 }

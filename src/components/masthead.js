@@ -2,7 +2,7 @@ import React, { useEffect, useState} from "react"
 
 import { Link } from "gatsby"
 import { IconContext } from "react-icons"
-import {GiFeather} from "react-icons/gi"
+import {GiFeather, GiStarSwirl} from "react-icons/gi"
 import { RiBilibiliFill, RiYoutubeFill } from "react-icons/ri"
 import Tilt from 'react-parallax-tilt'
 
@@ -37,6 +37,7 @@ const fadeIdiomEffect = keyframes({
 
 
 const StartWriteBtn = (props) => {
+  const isInMainBtn = props.isInMainBtn;
   return (
 <Button large onClick={props.rippleEffect} tag="button" target="_self" overrideCSS={{
           fontFamily: 'smy',
@@ -85,8 +86,8 @@ const StartWriteBtn = (props) => {
             borderRadius: `100%`,
           }
 
-        }} icon={<GiFeather />}>
-          开始写作
+        }} icon={isInMainBtn ? (<GiStarSwirl />):(<GiFeather />)}>
+          {isInMainBtn?"如此而已":"开始使用"}
           <span className="crater" css={{
             top: `18px`,
             left: `10px`,
@@ -140,6 +141,7 @@ const MastheadContent = (props) => {
 
   const [isGitHub, setIsGitHub] = useState(false)
   const [isInMainBtn, setIsInMainBtn] = useState(false)
+  const [isRunStep, setIsRunStep] = useState(false)
 
   useEffect(()=> {
     if (window.location.origin == 'https://suziwen.github.io') {
@@ -184,7 +186,7 @@ const MastheadContent = (props) => {
     opacity: 0,
     fontSize: `.8em`,
     animation: `${fadeIdiomEffect} 3s forwards`,
-  }}>知识到智慧<br/>先化繁于简，再厚积薄发</span>)
+  }}>从<br/>知识到智慧<br/>先化繁于简，再厚积薄发</span>)
 
   return (
   <div
@@ -263,6 +265,7 @@ const MastheadContent = (props) => {
         marginBottom: `60px`,
         listStyle: 'none',
         width: '100%',
+        whiteSpace: `nowrap`,
         justifyContent: 'space-between'
         }}>
         {isInMainBtn? (<li>小书匠，一款助你将混沌变为有序，令你事半功倍的知识管理软件。</li>): (<>
@@ -284,15 +287,22 @@ const MastheadContent = (props) => {
         </>)}
       </ul>
       <div>
-        <div>
-          <LetterCloud/>
-        </div>
+        <LetterCloud isInMainBtn={isInMainBtn} isRunStep={isRunStep}/>
         <Tilt perspective={500} onEnter={mouseEnter} onLeave={mouseLeave}
       glareEnable={true}
       glareMaxOpacity={0.75}
       glarePosition="all"
         >
-          <StartWriteBtn rippleEffect={props.rippleEffect}/>
+          <StartWriteBtn rippleEffectxx={props.rippleEffect} rippleEffect={(e)=>{
+            setIsRunStep(!isRunStep)
+            const fakeEvent = {
+              pageX: e.pageX,
+              pageY: e.pageY
+            }
+            setTimeout(()=>{
+              props.rippleEffect(fakeEvent)
+            }, 1000)
+          }} isInMainBtn={isInMainBtn}/>
         </Tilt>
       </div>
     </div>
