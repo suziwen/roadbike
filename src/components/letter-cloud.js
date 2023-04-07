@@ -146,6 +146,8 @@ const LetterCloud = (props) => {
           console.error(e)
         })
       }, 600)
+    } else {
+      setEmojiData(OPENMOJIJSON)
     }
   }, [isSupportEmoji])
   useEffect(()=>{

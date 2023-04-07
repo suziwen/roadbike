@@ -171,6 +171,8 @@ const ImageCloud = (props) => {
           console.error(e)
         })
       }, 600)
+    } else {
+      setEmojiData(OPENMOJIJSON)
     }
   }, [])
   useEffect(()=>{
