@@ -216,6 +216,10 @@ const LetterCloud = (props) => {
           "&:nth-child(4n+3):before": {
             content: `"⭐️"`,
           },
+          "&:nth-child(7n+3):before": {
+            fontSize: `1.3em`,
+            content: `"💖"`,
+          },
           "&:after": {
             opacity: 0,
           },

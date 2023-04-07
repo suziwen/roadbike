@@ -242,6 +242,11 @@ const ImageCloud = (props) => {
             //content: `"⭐️"`,
             background: `url(${toCodePointURL('⭐️')})`,
           },
+          "&:nth-child(7n+3):before": {
+            //content: `"⭐️"`,
+            fontSize: `1.3em`,
+            background: `url(${toCodePointURL('💖')})`,
+          },
           "&:after": {
             opacity: 0,
           },
