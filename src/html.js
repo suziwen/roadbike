@@ -22,8 +22,6 @@ export default class HTML extends React.Component {
           <link rel="stylesheet" type="text/css" href={withPrefix('/') + "css/font-awesome.min.css"}/>
           <link rel="stylesheet" type="text/css" href={withPrefix('/') + "css/svg-with-js.css"}/>
           {this.props.headComponents}
-          <script src= {withPrefix('/') + "libs/jquery-3.3.1.min.js"}></script>
-          <script src={withPrefix('/') + "libs/transition.js"}></script>
         </head>
         <body {...this.props.bodyAttributes}>
           {this.props.preBodyComponents}
