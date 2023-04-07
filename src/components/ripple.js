@@ -21,6 +21,27 @@ const Ink = styled.div`
   z-index: 1000;
 `
 
+
+var animationEndEvent = null; // use this to check for support and trigger fallback
+
+// feature detect which vendor prefix is used
+function getAnimationEventName () {
+    var testEl = document.createElement('div'),
+        transEndEventNames = {
+            'WebkitAnimation': 'webkitAnimationEnd',
+            'MozAnimation': 'animationend',
+            'OAnimation': 'oAnimationEnd oanimationend',
+            'msAnimation': 'MSAnimationEnd',
+            'animation': 'animationend'
+        };
+    for (var i in transEndEventNames) {
+        if (transEndEventNames.hasOwnProperty(i) && testEl.style[i] !== undefined) {
+            return animationEndEvent = transEndEventNames[i];
+        }
+    }
+};
+
+
 class Ripple extends React.Component {
 
   constructor(props, context) {
@@ -38,9 +59,12 @@ class Ripple extends React.Component {
     if (this.props.rippled) {
       const onEnd = this.props.onEnd
       const rippleNode = this.rippleRef.current
-      $(rippleNode).one(`animationend webkitAnimationEnd oanimationend MSAnimationEnd`, ()=>{
+      if (!animationEndEvent) {
+        getAnimationEventName()
+      }
+      rippleNode.addEventListener(animationEndEvent, ()=> {
         onEnd()
-      })
+      }, false)
     }
   }
 

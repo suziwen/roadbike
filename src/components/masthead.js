@@ -11,7 +11,7 @@ import { rhythm, scale } from "../utils/typography"
 import presets, { colors } from "../utils/presets"
 import Button from "./button"
 import { vP, vPHd, vPVHd, vPVVHd } from "../components/gutters"
-import LetterCloud from "../components/letter-cloud"
+import LetterCloud from "../components/image-cloud"
 
 const sheenEffect = keyframes({
   "0%": {

@@ -48,7 +48,7 @@ function initEmojiCloud(targetEl) {
         )
       ){
           let dom = ""
-          dom += "<span class='emojiCloudWrapper' style='left: " + xPos + "%; top: " + yPos + "%' data-emoji='" + shuffledList[i].emoji + "'>"
+        dom += "<span class='emojiCloudWrapper' style='left: " + xPos + "%; top: " + yPos + "%;--emojiURL: url(" + toCodePointURL(shuffledList[i].emoji) + ");' data-emoji='" + shuffledList[i].emoji + "'>"
           dom += "</span>"
           domResult.push(dom)
         }
@@ -112,29 +112,54 @@ function getWidth(s) {
 var trinidad = String.fromCodePoint(0x1F1F9, 0x1F1F9);
 var hammerpick = String.fromCodePoint(0x2692);
 
-//https://stackoverflow.com/questions/45576748/how-can-i-detect-rendering-support-for-emoji-in-javascript
-function supportsEmoji () {
-  const ctx = document.createElement("canvas").getContext("2d");
-  ctx.canvas.width = ctx.canvas.height = 1;
-  ctx.fillText("😗", -4, 4);
-  return ctx.getImageData(0, 0, 1, 1).data[3] > 0; // Not a transparent pixel
+function toCodePoint(unicodeSurrogates, sep) {
+  var
+    r = [],
+    c = 0,
+    p = 0,
+    i = 0;
+  while (i < unicodeSurrogates.length) {
+    c = unicodeSurrogates.charCodeAt(i++);
+    if (p) {
+      r.push((0x10000 + ((p - 0xD800) << 10) + (c - 0xDC00)).toString(16));
+      p = 0;
+    } else if (0xD800 <= c && c <= 0xDBFF) {
+      p = c;
+    } else {
+      r.push(c.toString(16));
+    }
+  }
+  return r.join(sep || '-');
 }
 
-const LetterCloud = (props) => {
-  const [isSupportEmoji, setIsSupportEmoji] = useState(false)
+const UFE0Fg = /\uFE0F/g
+
+// avoid using a string literal like '\u200D' here because minifiers expand it inline
+const U200D = String.fromCharCode(0x200D)
+
+function grabTheRightIcon(rawText) {
+  // if variant is present as \uFE0F
+  return toCodePoint(rawText.indexOf(U200D) < 0 ?
+    rawText.replace(UFE0Fg, '') :
+    rawText
+  );
+}
+
+function toCodePointURL(unicodeSurrogates){
+  return withPrefix('/') + 'imgs/twemoji/svg/' + grabTheRightIcon(unicodeSurrogates) + '.svg'
+}
+
+const ImageCloud = (props) => {
   const [emojiData, setEmojiData] = useState(null)
   const runStep = props.isRunStep
   const isInMainBtn = props.isInMainBtn || props.isRunStep
   const containerElRef = useRef()
+
   useEffect(() => {
-    //const _isSupport = getWidth(trinidad) === getWidth(hammerpick)
-    setIsSupportEmoji(supportsEmoji())
-  }, [])
-  useEffect(() => {
-    if (!OPENMOJIJSON && isSupportEmoji) {
+    if (!OPENMOJIJSON) {
       OPENMOJIJSON = []
       setTimeout(()=>{
-        fetch(withPrefix('/') + 'emoji.json').then((res)=> res.json()).then((emojiJson)=>{
+        fetch(withPrefix('/') + 'emojistr.json').then((res)=> res.json()).then((emojiJson)=>{
           emojiJson = emojiJson.split(',').map((emojiStr)=>{
             return {
               emoji: emojiStr
@@ -147,16 +172,13 @@ const LetterCloud = (props) => {
         })
       }, 600)
     }
-  }, [isSupportEmoji])
+  }, [])
   useEffect(()=>{
-    if (isSupportEmoji && emojiData && containerElRef.current) {
+    if (emojiData && containerElRef.current) {
       const domResultStr = initEmojiCloud();
       containerElRef.current.innerHTML = domResultStr;
     }
-  }, [isSupportEmoji,  emojiData, containerElRef])
-  if (!isSupportEmoji) {
-    return <></>
-  }
+  }, [emojiData, containerElRef])
 
   return (
     <div className={`${!!emojiData?'emojiStep':'initStep'} ${!!isInMainBtn?'starStep':''} ${!!runStep ? "runStep": ""}`} css={{
@@ -183,6 +205,7 @@ const LetterCloud = (props) => {
       "&.starStep .emojiCloudWrapper": {
         "&:before": {
           opacity: 0,
+          background: `url(${toCodePointURL('⭐️')})`,
         },
         "&:after": {
           opacity: 1,
@@ -205,14 +228,17 @@ const LetterCloud = (props) => {
           top: `50%!important`,
           transitionDelay: `.5s`,
           "&:before": {
-            content: `"🌟"`,
+            //content: `"🌟"`,
+            background: `url(${toCodePointURL('🌟')})`,
             opacity: 1,
           },
           "&:nth-child(3n+1):before": {
-            content: `"✨"`,
+            //content: `"✨"`,
+            background: `url(${toCodePointURL('✨')})`,
           },
           "&:nth-child(4n+3):before": {
-            content: `"⭐️"`,
+            //content: `"⭐️"`,
+            background: `url(${toCodePointURL('⭐️')})`,
           },
           "&:after": {
             opacity: 0,
@@ -255,16 +281,24 @@ const LetterCloud = (props) => {
             fontSize: `.6em`,
           },
           "&:before": {
-            content: `attr(data-emoji)`,
+            //content: `attr(data-emoji)`,
+            content: `' '`,
             opacity: 1,
             transition: `all 1s`,
             position: `absolute`,
+            aspectRatio: `1 / 1`,
+            width: `1em`,
+            background: `var(--emojiURL)`,
           },
           "&:after": {
-            content: `"⭐️"`,
+            //content: `"⭐️"`,
+            content: `' '`,
             opacity: 0,
             transition: `all 1s`,
             position: `absolute`,
+            aspectRatio: `1 / 1`,
+            width: `1em`,
+            background: `url(${toCodePointURL('⭐️')})`,
           }
         },
       }} ref={containerElRef}>
@@ -273,4 +307,4 @@ const LetterCloud = (props) => {
   )
 }
 
-export default LetterCloud
+export default ImageCloud
