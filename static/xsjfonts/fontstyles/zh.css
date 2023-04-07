@@ -123,26 +123,9 @@
 }
 
 @font-face {
-  font-family: 'xsjcursive';
+  font-family: 'founderkaiti';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(../fontfiles/slidetownsoul/SlideTownsoul-Regular.ttf) format('truetype');
-}
-
-
-@font-face {
-  font-family: 'xsjcursive';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url(../fontfiles/slidetownsoul/SlideTownsoulfe-Regular.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: 'enxsjcursive';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(../fontfiles/permanentmarker/PermanentMarker-Regular.ttf) format('truetype');
+  src: url(../fontfiles/founder/FZKTJW.TTF) format('truetype');
 }
