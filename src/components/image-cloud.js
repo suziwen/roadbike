@@ -194,7 +194,7 @@ const ImageCloud = (props) => {
         left: `50%`,
         zIndex: 10,
         position: `absolute`,
-        background: `radial-gradient(transparent, white)`,
+        background: `radial-gradient(transparent 50%, white)`,
         backgroundRepeat: `no-repeat`,
         backgroundSize: `300% 300%`,
         backgroundPosition: `center`,

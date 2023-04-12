@@ -221,8 +221,8 @@ const MastheadFrontend = (props) => {
 
   const mouseLeave = () => {
     setIsInMainBtn(false)
-    // 在主按钮停留超过 1 秒才触发
-    if ( canShowCornerBtn === null && inMainBtnTime && (Date.now() - inMainBtnTime) >= 1000) {
+    // 在主按钮停留超过 600ms 才触发
+    if ( canShowCornerBtn === null && inMainBtnTime && (Date.now() - inMainBtnTime) >= 600) {
       const isMobile = window.matchMedia("(max-width: 767px)").matches;
       setCanShowCornerBtn(!isMobile)
       props.setInitFrontendBtn(true)

@@ -198,7 +198,7 @@ const BitCloud = (props) => {
           position: `relative`,
           transform: `translateX(-50%)`,
           left: `50%`,
-          background: `radial-gradient(white 10%, transparent)`,
+          background: `radial-gradient(white 10%, transparent 30%)`,
           backgroundSize: `300% 300%`,
           backgroundPosition: `center`,
           backgroundRepeat: `no-repeat`,
