@@ -65,16 +65,7 @@ class IndexRoute extends React.Component {
             <link rel="stylesheet" type="text/css" href={withPrefix('/') + "xsjfonts/fontstyles/homepage.css"}/>
           </Helmet>
           <Ripple rippled={this.state.rippled} onEnd={this.rippleEnd} cursorPos={{top: this.state.posY, left: this.state.posX}}/>
-          <div
-            css={{
-              display: `flex`,
-              flexDirection: `row`,
-              flexWrap: `wrap`,
-              justifyContent: `space-between`,
-            }}
-          >
-            <MastheadContent rippleEffect={this.rippleEffect} curs={{index: 'adfds'}} />
-          </div>
+          <MastheadContent rippleEffect={this.rippleEffect} />
         </div>
     )
   }
