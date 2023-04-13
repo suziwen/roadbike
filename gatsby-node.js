@@ -102,6 +102,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                 title
                 toc
                 docType
+                docId
                 slug
                 zipPath
                 tags
@@ -156,8 +157,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     posts.forEach((post, index) => {
 
       const slugKey = '/' + post.node.slug.replace(/^\/*|\/*$/g, '')
-      const idKey = '/' + post.node.id.replace(/^\/*|\/*$/g, '')
-      console.log('xxxxxxxxxxxxx:', slugKey, idKey)
+      const idKey = '/' + post.node.docId.replace(/^\/*|\/*$/g, '')
       if (post.node.docType === 'logs') {
         slugMap[slugKey] = '/logs/' + post.node.slug + '/'
         slugMap[idKey] = slugMap[slugKey]
