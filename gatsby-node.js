@@ -156,14 +156,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     posts.forEach((post, index) => {
 
       const slugKey = '/' + post.node.slug.replace(/^\/*|\/*$/g, '')
+      const idKey = '/' + post.node.id.replace(/^\/*|\/*$/g, '')
+      console.log('xxxxxxxxxxxxx:', slugKey, idKey)
       if (post.node.docType === 'logs') {
         slugMap[slugKey] = '/logs/' + post.node.slug + '/'
+        slugMap[idKey] = slugMap[slugKey]
       }
       if (post.node.docType === 'docs') {
         slugMap[slugKey] = '/docs/' + post.node.slug + '/'
+        slugMap[idKey] = slugMap[slugKey]
       }
       if (post.node.docType === 'blogs') {
         slugMap[slugKey] = '/blog/' + post.node.slug + '/'
+        slugMap[idKey] = slugMap[slugKey]
       }
     })
 
