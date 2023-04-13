@@ -148,6 +148,8 @@
       link: /docs/tutorial/preview/
     - title: 表格组件
       link: /docs/tutorial/table/
+    - title: 公式使用
+      link: /docs/tutorial/advance/mathjax/
     - title: 表格组件编辑器
       link: /docs/tutorial/table/editor/
     - title: 绘图 drawio
