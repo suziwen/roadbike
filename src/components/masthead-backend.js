@@ -336,7 +336,7 @@ const MastheadBackend = (props) => {
         whiteSpace: `nowrap`,
         justifyContent: 'space-between'
         }}>
-        {isInMainBtn? (<li>小书匠，一款本地优先，去中心化，自定义云同步服务策略的专业数字软件。</li>): (<>
+        {isInMainBtn? (<li>小书匠，一款本地优先，去中心化，自定义云同步服务的专业数字算术软件。</li>): (<>
         <NavItem linkTo="/docs/">文档</NavItem>
         {videoChanel}
         <NavItem linkTo="/feature/">功能</NavItem>
