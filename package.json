@@ -39,7 +39,7 @@
     "gatsby-source-filesystem": "^2.0.29",
     "gatsby-transformer-csv": "^2.0.8",
     "gatsby-transformer-sharp": "^2.3.17",
-    "gatsby-transformer-xsjzip": "^1.2.12",
+    "gatsby-transformer-xsjzip": "^1.2.13",
     "gatsby-transformer-yaml": "^2.2.26",
     "glob": "^7.1.6",
     "graphql-request": "1.6.0",
