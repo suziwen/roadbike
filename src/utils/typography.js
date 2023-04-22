@@ -1,5 +1,18 @@
 import Typography from "typography"
+import {keyframes} from "react-emotion"
 import presets, { colors } from "./presets"
+
+
+const waveEffect = keyframes({
+  "0%": {
+    backgroundPosition: `0 100%`
+  },
+  "100%": {
+    backgroundPosition: `-20px 100%`
+  }
+})
+
+
 
 const scrollbarStyles = {
   "*": {
@@ -189,17 +202,19 @@ const _options = {
       },
       ".preview a": {
         fontSize: `103%`,
+        padding: `3px 0`,
         color: colors.gray.lightCopy,
         position: `relative`,
         textShadow: `-1px -1px 0 ${colors.ui.whisper}, 1px -1px 0 ${colors.ui.whisper}, -1px 1px 0 ${colors.ui.whisper}, 1px 1px 0 ${colors.ui.whisper}`,
         backgroundImage: `linear-gradient(${colors.gatsby} 50%, ${colors.gatsby} 50%)`,
         backgroundSize: `100% 2px`,
         backgroundRepeat: `no-repeat`,
-        backgroundPositionY: `calc(100% - 2px)`
+        backgroundPositionY: `100%`
       },
       ".preview a:hover": {
-        backgroundSize: `0 2px`,
-        transition: `background-size .5s ease-in-out`,
+        background: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath fill='none' stroke='%23${colors.gatsby.substring(1)}' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3E%3C/svg%3E") repeat-x 0 100%`,
+        backgroundSize: `20px auto`,
+        animation: `${waveEffect} 1s linear infinite`,
       },
       ".main-body a.anchor": {
         color: `inherit`,
