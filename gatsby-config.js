@@ -165,7 +165,7 @@ const plugins = [
   },
 ];
 
-if (process.env.XSJ_TONGJI == 'true') {
+if (process.env.XSJ_TONGJI == 'true'&&false) {
   plugins.push({
     resolve: `gatsby-plugin-baidu-analytics`,
     options: {
