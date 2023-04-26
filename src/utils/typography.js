@@ -3,6 +3,17 @@ import {keyframes} from "react-emotion"
 import presets, { colors } from "./presets"
 
 
+const rippleEffect = keyframes({
+  "0%": {
+    opacity: 1,
+    transform: `scale(0)`
+  },
+  "100%": {
+    opacity: 0,
+    transform: `scale(3)`
+  }
+})
+
 const waveEffect = keyframes({
   "0%": {
     backgroundPosition: `0 100%`
@@ -92,11 +103,18 @@ const _options = {
         position: `relative`,
         transition: `250ms box-shadow ease-out, 250ms transform ease-out`,
       },
-      ".preview .xsj_heading:focus": {
-        boxShadow: `0 0 0 15px #ffffff, 0 0 16px 20px ${colors.gatsbyDark}`,
-        outline: `2px dotted transparent`,
-        outlineOffset: `2px`,
-        transform: `scale(1.025)`,
+      ".preview .xsj_heading:focus:after, .preview .xsj_heading:target:after": {
+        content: `" "`,
+        position: `absolute`,
+        borderRadius: `50%`,
+        overflow: `visible`,
+        pointerEvents: `none`,
+        backgroundColor: colors.warning,
+        width: `40px`,
+        height: `40px`,
+        right: `100%`,
+        top: `-100%`,
+        animation: `${rippleEffect} 1.5s 3 ease-out forwards`,
       },
       ".preview .xsj_heading:before": {
         display: `inline-block`,
