@@ -72,8 +72,9 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <div css={{
+          overflow: `hidden`,
           [presets.Hd]: {
-            marginTop: presets.headerHeight,
+            paddingTop: presets.headerHeight,
           },
         }}>
         <Toc location={location} />
