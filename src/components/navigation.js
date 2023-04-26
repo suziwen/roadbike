@@ -284,6 +284,7 @@ const styles = {
     alignItems: `center`,
     color: `inherit`,
     display: `flex`,
+    fontSize: `1.8rem`,
     marginRight: rhythm(1 / 2),
     textDecoration: `none`,
   },

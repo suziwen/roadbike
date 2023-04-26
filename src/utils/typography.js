@@ -99,30 +99,36 @@ const _options = {
         transform: `scale(1.025)`,
       },
       ".preview .xsj_heading:before": {
-        color: colors.ui.bright,
         display: `inline-block`,
         position: `absolute`,
         paddingRight: `100%`,
         right: `10px`,
-        fontSize: `.8em`,
+        fontSize: `.7em`,
+        userSelect: `none`,
+        opacity: `.1`,
+        transition: `opacity .5s`,
+        pointerEvents: `none`,
+      },
+      ".preview .xsj_heading:hover:before": {
+        opacity: `1`,
       },
       ".preview .xsj_heading.xsj_heading_h1:before": {
-        "content": `'# '`
+        "content": `'H1 '`
       },
       ".preview .xsj_heading.xsj_heading_h2:before": {
-        "content": `'## '`
+        "content": `'H2 '`
       },
       ".preview .xsj_heading.xsj_heading_h3:before": {
-        "content": `'### '`
+        "content": `'H3 '`
       },
       ".preview .xsj_heading.xsj_heading_h4:before": {
-        "content": `'#### '`
+        "content": `'H4 '`
       },
       ".preview .xsj_heading.xsj_heading_h5:before": {
-        "content": `'##### '`
+        "content": `'H5 '`
       },
       ".preview .xsj_heading.xsj_heading_h6:before": {
-        "content": `'###### '`
+        "content": `'H6 '`
       },
       ".preview blockquote": {
         fontFamily: options.quoteFontFamily.join(`,`),
