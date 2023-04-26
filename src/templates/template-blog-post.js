@@ -1,6 +1,7 @@
 import React from "react"
 import Helmet from "react-helmet"
 import { Link, graphql } from "gatsby"
+import styled from "react-emotion"
 import {MdArrowForward, MdArrowBack} from "react-icons/md"
 import Img from "gatsby-image"
 import presets, { colors } from "../utils/presets"
@@ -13,6 +14,17 @@ import getLink from "../utils/node-link"
 import LeftSidebarButtons from "../components/left-sidebar-buttons"
 
 import Comments from '../components/comments'
+
+const CoverStyled = styled('div')`
+  height: 50VH;
+  width: 100VW;
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  pointer-events: none;
+  margin-top: -7rem;
+  mask-image: linear-gradient(180deg, black 70%, transparent);
+`
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -92,6 +104,12 @@ class BlogPostTemplate extends React.Component {
             <ProgressIndicator
               zipFile={props.data.zipFile}
             />
+
+            {post.haveCover && (
+              <CoverStyled>
+                <Img fluid={post.cover.childImageSharp.fluid} css={{height: `100%`}}/>
+              </CoverStyled>
+            )}
             <section
               css={{
                 display: `flex`,
@@ -235,9 +253,10 @@ export const pageQuery = graphql`
       createDate(formatString: "MMMM DD, YYYY")
       updateDate(formatString: "MMMM DD, YYYY")
       tags
+      haveCover
       cover {
         childImageSharp {
-          fluid(maxWidth: 1000) {
+          fluid(maxWidth: 4096) {
             ...GatsbyImageSharpFluid_tracedSVG
             originalImg
           }

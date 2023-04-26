@@ -33,7 +33,8 @@ const StyledToc = styled.div`
           background: transparent;
         }
         &:hover {
-            background: ${colors.ui.wisper};
+            backdrop-filter: blur(10px);
+            background: #ffffff29;
             opacity: 1;
 
             scrollbar-color: ${colors.ui.border} ${colors.ui.light};

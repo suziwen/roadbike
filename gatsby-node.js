@@ -414,7 +414,9 @@ exports.onCreatePage = ({page, actions})=> {
 exports.onCreateNode = ({ node, actions, getNodesByType, getNodes }) => {
   const { createNode, createNodeField } = actions
   if (node.internal.type === 'StoryWriterMarkdown') {
+    node.haveCover = true
     if (!node.cover) {
+      node.haveCover = false
       const fileNodes = getNodesByType('File');
       const coverNodes = fileNodes.filter((node)=>{
         return node.sourceInstanceName == 'covers' && node.extension == 'png';
