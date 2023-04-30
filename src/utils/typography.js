@@ -240,6 +240,10 @@ const _options = {
         backgroundSize: `20px auto`,
         animation: `${waveEffect} 1s linear infinite`,
       },
+      ".preview a.attachment": {
+        borderRadius: `5px`,
+        padding: `1em`
+      },
       ".main-body a.anchor": {
         color: `inherit`,
         fill: colors.gatsby,
