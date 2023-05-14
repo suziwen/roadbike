@@ -4,6 +4,37 @@ import { withPrefix } from "gatsby"
 
 let OPENMOJIJSON = null
 
+const initialiseStyleBackgroundIntersectionObserver = () => {
+  const lazyBackgrounds = Array.from(document.querySelectorAll('.emojiCloudWrapper.hidden'));
+  if (lazyBackgrounds.length === 0) {
+    return;
+  }
+  let lazyBackgroundObserver;
+
+  const loadBackgroundIfElementOnScreen = (entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.remove('hidden')
+      lazyBackgroundObserver.unobserve(entry.target);
+    }
+  };
+  const observeElementVisibility = (lazyBackground) => {
+    lazyBackgroundObserver.observe(lazyBackground);
+  };
+
+  const setBackground = (element) => {
+    element.classList.remove('hidden')
+  };
+
+  if (typeof window.IntersectionObserver === 'function') {
+    lazyBackgroundObserver = new IntersectionObserver((entries) => {
+      entries.forEach(loadBackgroundIfElementOnScreen);
+    });
+    lazyBackgrounds.forEach(observeElementVisibility);
+  } else {
+    lazyBackgrounds.forEach(setBackground);
+  }
+};
+
 // openmoji.org-master/public/js-code/emoji-cloud.js
 function initEmojiCloud(targetEl) {
   const domResult = []
@@ -48,7 +79,7 @@ function initEmojiCloud(targetEl) {
         )
       ){
           let dom = ""
-        dom += "<span class='emojiCloudWrapper' style='left: " + xPos + "%; top: " + yPos + "%;--emojiURL: url(" + toCodePointURL(shuffledList[i].emoji) + ");' data-emoji='" + shuffledList[i].emoji + "'>"
+        dom += "<span class='emojiCloudWrapper hidden' style='left: " + xPos + "%; top: " + yPos + "%;--emoji-url: url(" + toCodePointURL(shuffledList[i].emoji) + ");' data-emoji='" + shuffledList[i].emoji + "'>"
           dom += "</span>"
           domResult.push(dom)
         }
@@ -179,6 +210,9 @@ const ImageCloud = (props) => {
     if (emojiData && containerElRef.current) {
       const domResultStr = initEmojiCloud();
       containerElRef.current.innerHTML = domResultStr;
+      setTimeout(()=> {
+        initialiseStyleBackgroundIntersectionObserver()
+      }, 600)
     }
   }, [emojiData, containerElRef])
 
@@ -287,6 +321,9 @@ const ImageCloud = (props) => {
           "&:nth-child(3n+2)": {
             fontSize: `.6em`,
           },
+          "&.hidden:before": {
+            "--emoji-url": "none"
+          },
           "&:before": {
             //content: `attr(data-emoji)`,
             content: `' '`,
@@ -295,7 +332,7 @@ const ImageCloud = (props) => {
             position: `absolute`,
             aspectRatio: `1 / 1`,
             width: `1em`,
-            background: `var(--emojiURL)`,
+            background: `var(--emoji-url)`,
           },
           "&:after": {
             //content: `"⭐️"`,
