@@ -4,6 +4,7 @@ import { withPrefix } from "gatsby"
 
 let OPENMOJIJSON = null
 
+// https://www.sitelint.com/blog/lazy-loading-css-background-images-for-better-website-loading-performance/
 const initialiseStyleBackgroundIntersectionObserver = () => {
   const lazyBackgrounds = Array.from(document.querySelectorAll('.emojiCloudWrapper.hidden'));
   if (lazyBackgrounds.length === 0) {
