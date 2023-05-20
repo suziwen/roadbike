@@ -333,6 +333,7 @@ const ImageCloud = (props) => {
             position: `absolute`,
             aspectRatio: `1 / 1`,
             width: `1em`,
+            height: `1em`,
             background: `var(--emoji-url)`,
           },
           "&:after": {
@@ -343,6 +344,7 @@ const ImageCloud = (props) => {
             position: `absolute`,
             aspectRatio: `1 / 1`,
             width: `1em`,
+            height: `1em`,
             background: `url(${toCodePointURL('⭐️')})`,
           }
         },
