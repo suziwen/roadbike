@@ -279,8 +279,9 @@ const MastheadFrontend = (props) => {
       pointerEvents: `none`,
       mixBlendMode: `multiply`,
     }}>
-      <div css={{
-        width: `70%`,
+      <div className="main-image" css={{
+        width: isRunStep?'110%':`70%`,
+        transition: `all 5s cubic-bezier(0.6, -0.28, 0, 1.07)`,
         backgroundImage: `url(${withPrefix('/') + 'imgs/light_main.png'})`,
         border: `3px solid`,
         borderRadius: `5px`,
