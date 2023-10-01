@@ -49,7 +49,7 @@ const StartWriteBtn = (props) => {
   const isInMainBtn = props.isInMainBtn;
   return (
 <Button large onClick={props.rippleEffect} tag="button" target="_self" overrideCSS={{
-          fontFamily: 'xsjkt',
+          fontFamily: `founderkaiti, "AR PL UKai TW", SimSun, "宋体", Song`,
           position: `relative`,
           textShadow: `3px 3px 7px hsla(0, 2%, 13%, 0.3)`,
           backgroundColor: `rgba(255, 229, 181, 0.5)`,
