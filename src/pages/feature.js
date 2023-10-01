@@ -194,6 +194,7 @@ const FlippySnap = ({ disabled, gridSize, onFlip, snaps, snapRef }) => {
         const y = Math.floor(index / gridSize)
         return (
           <span
+            key={index}
             onPointerOver={indicate}
             className="flippy-card"
             data-snap-x={x}
@@ -260,14 +261,11 @@ const App = () => {
   return (
     <div>
       <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
         overflow: 'hidden',
         pointerEvents: 'none',
         zIndex: 100,
+        width: `100%`,
+        height: `100VH`,
         }}>
         <MainStyled>
           <FlippySnap
