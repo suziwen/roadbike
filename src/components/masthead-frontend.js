@@ -263,13 +263,11 @@ const MastheadFrontend = (props) => {
       justifyContent: `center`,
       backgroundColor: `white`,
       transition: `all 1s`,
-      '&.masthead-content-inmain-btn>.main-image-container': {
-      },
       ...cornerBtnStyle,
       ...pageTransitionStyle,
     }}
   >
-    <div className={`main-image-container`} css={{
+    <div css={{
       position: `absolute`,
       width: `100VW`,
       height: `100VH`,
