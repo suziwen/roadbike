@@ -60,7 +60,7 @@ const StartWriteBtn = (props) => {
           overflow: `hidden`,
           "&:hover, &:focus": {
             color: colors.gray.dark,
-            backgroundColor: `rgba(255, 229, 181, 0.5)`,
+            backgroundColor: `rgba(255, 229, 181, 1)`,
             backgroundImage: 'none',
             animation: 'none',
           },
@@ -367,7 +367,7 @@ const MastheadFrontend = (props) => {
         backgroundColor: isInMainBtn ? 'white': '',
         borderRadius: isInMainBtn ? '5px': ''
         }}>
-        {isInMainBtn? (<li>小书匠，一款助你将混沌变为有序，令你事半功倍的知识管理软件。</li>): (<>
+        {isInMainBtn? (<li style={{textDecoration: `green wavy underline`}}>小书匠，一款助你将混沌变为有序，令你事半功倍的知识管理软件。</li>): (<>
         <NavItem linkTo="/docs/">文档</NavItem>
         {videoChanel}
         <NavItem linkTo="/feature/">功能</NavItem>
