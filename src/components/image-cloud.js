@@ -267,6 +267,7 @@ const ImageCloud = (props) => {
           left: `50%!important`,
           top: `50%!important`,
           transitionDelay: `.5s`,
+          opacity: 0,
           "&:before": {
             //content: `"🌟"`,
             background: `url(${toCodePointURL('🌟')})`,
