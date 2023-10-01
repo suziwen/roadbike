@@ -152,6 +152,9 @@ const BitCloud = (props) => {
       "&.emojiStep .emojiCloudContainer:before": {
         backgroundSize: `100% 100%`,
       },
+      "&.starStep .emojiCloudContainer:before": {
+        opacity: .3
+      },
       "&.runStep .emojiCloudContainer": {
         "&:before": {
           backgroundSize: `0 0`,
@@ -198,7 +201,7 @@ const BitCloud = (props) => {
           position: `relative`,
           transform: `translateX(-50%)`,
           left: `50%`,
-          background: `radial-gradient(white 10%, transparent 30%)`,
+          background: `radial-gradient(black, transparent 30%)`,
           backgroundSize: `300% 300%`,
           backgroundPosition: `center`,
           backgroundRepeat: `no-repeat`,

@@ -41,19 +41,24 @@ const StartWriteBtn = (props) => {
 <Button large onClick={props.rippleEffect} tag="button" target="_self" overrideCSS={{
           fontFamily: 'xsjkt',
           position: `relative`,
-          textShadow: `3px 3px 7px hsla(0, 2%, 13%, 0.3)`,
-          backgroundColor: `rgba(255, 229, 181, 0.5)`,
-          background: `rgba(255, 229, 181, 0.5)`,
-          color: colors.gray.lightCopy,
-          borderRadius: `30% 70% 70% 30% / 30% 30% 70% 70%`,
-          boxShadow: `-1px 0px 0 0.2rem rgba(255, 229, 181, 0.39)`,
+          alignSelf: `center`,
+          padding: `1rem 1rem`,
+          margin: `0 1rem`,
+          transition: `all 0.5s ease`,
+          background: `#41403E`,
+          fontSize: `2rem`,
+          letterSpacing: `1px`,
+          outline: `none`,
+          boxShadow: `20px 38px 34px -26px rgba(0, 0, 0, 0.2)`,
+          borderRadius: `255px 15px 225px 15px/15px 225px 15px 255px`,
+          border: `dashed 5px #41403E`,
+
           overflow: `hidden`,
           "&:hover, &:focus": {
             color: colors.gray.dark,
-            backgroundColor: `rgba(255, 229, 181, 0.5)`,
+            backgroundColor: `white`,
             backgroundImage: 'none',
             animation: 'none',
-            outline: `2px solid`,
             "&>.crater, &>.btn-text": {
               opacity: 0,
             },
@@ -89,6 +94,7 @@ const StartWriteBtn = (props) => {
         }} icon={isInMainBtn ? (<GiCpu className="processer" />):(<GiElectric />)}>
           <span className="btn-text" css={{
               transform: `scale(1.5)`,
+              color: `white`,
               margin: `0 1em 0 1.5em`
             }}>
             {isInMainBtn?"数字之美":"开始通电"}
@@ -222,6 +228,7 @@ const MastheadBackend = (props) => {
     fontSize: `.8em`,
     fontFamily: `founderkaiti, "AR PL UKai TW", SimSun, "宋体", Song`,
     animation: `${fadeIdiomEffect} 1s .3s forwards`,
+    textShadow: `4px 4px 0px #000, -4px 0 0px #000,7px 4px 0 #fff;`,
   }}>术<br/>0与1<br/>简约却不简单</span>)
 
   const cornerBtnStyle = !isInMainBtn && {
@@ -260,6 +267,25 @@ const MastheadBackend = (props) => {
       ...pageTransitionStyle,
     }}
   >
+    <div className={`main-image-container`} css={{
+      position: `absolute`,
+      width: `100VW`,
+      height: `100VH`,
+      display: `flex`,
+      alignItems: `center`,
+      justifyContent: `center`,
+      pointerEvents: `none`,
+      mixBlendMode: `multiply`,
+    }}>
+      <div css={{
+        width: `70%`,
+        backgroundImage: `url(${withPrefix('/') + 'imgs/dark_main.png'})`,
+        border: `3px solid`,
+        borderRadius: `5px`,
+        aspectRatio: `1920/1049`,
+        backgroundSize: `cover`,
+      }}></div>
+    </div>
     { !isInMainBtn && !isPageTransition && (<FrontendCornerBtn setIsInFront={ () => {
       if (!isPageTransition) {
         setIsPageTransition(true)
@@ -270,6 +296,7 @@ const MastheadBackend = (props) => {
     }}/>)}
     <div css={{
       display: `flex`,
+      color: `white`,
       flexDirection: `column`,
       justifyContent: `center`,
       alignItems: `center`,
@@ -289,6 +316,7 @@ const MastheadBackend = (props) => {
           textAlign: 'center',
           whiteSpace: `nowrap`,
           width: rhythm(10),
+          color: `white`,
           fontFamily: `webfontxiaoshujiang, "AR PL UKai TW", SimSun, "宋体", Song`,
           //fontSize: `calc(12px + 2vh + 2vw)`,
           [presets.Mobile]: {
@@ -334,7 +362,9 @@ const MastheadBackend = (props) => {
         listStyle: 'none',
         width: '100%',
         whiteSpace: `nowrap`,
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        backgroundColor: isInMainBtn ? 'black': '',
+        borderRadius: isInMainBtn ? '5px': ''
         }}>
         {isInMainBtn? (<li>小书匠，一款本地优先，去中心化，自定义云同步服务的专业数字算术软件。</li>): (<>
         <NavItem linkTo="/docs/">文档</NavItem>
