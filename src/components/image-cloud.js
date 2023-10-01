@@ -256,6 +256,9 @@ const ImageCloud = (props) => {
       "&.emojiStep .emojiCloudContainer:before": {
         backgroundSize: `100% 100%`,
       },
+      "&.starStep .emojiCloudContainer:before": {
+        opacity: .3
+      },
       "&.runStep .emojiCloudContainer": {
         "&:before": {
           backgroundSize: `0 0`,

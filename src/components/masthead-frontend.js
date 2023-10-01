@@ -240,6 +240,7 @@ const MastheadFrontend = (props) => {
     opacity: 0,
     fontSize: `.8em`,
     fontFamily: `founderkaiti, "AR PL UKai TW", SimSun, "宋体", Song`,
+    textShadow: isInMainBtn?`0px 11px 10px rgba(10, 10, 10, .8)`: '',
     animation: `${fadeIdiomEffect} 1s .3s forwards`,
   }}>从<br/>知识到智慧<br/>先化繁于简，再厚积薄发</span>)
 
@@ -253,7 +254,7 @@ const MastheadFrontend = (props) => {
   }
   return (
   <div
-    className="masthead-content"
+    className={`masthead-content ${isInMainBtn?'masthead-content-inmain-btn':''}`}
     css={{
       display: `flex`,
       flexWrap: `wrap-reverse`,
@@ -262,10 +263,31 @@ const MastheadFrontend = (props) => {
       justifyContent: `center`,
       backgroundColor: `white`,
       transition: `all 1s`,
+      '&.masthead-content-inmain-btn>.main-image-container': {
+      },
       ...cornerBtnStyle,
       ...pageTransitionStyle,
     }}
   >
+    <div className={`main-image-container`} css={{
+      position: `absolute`,
+      width: `100VW`,
+      height: `100VH`,
+      display: `flex`,
+      alignItems: `center`,
+      justifyContent: `center`,
+      pointerEvents: `none`,
+      mixBlendMode: `multiply`,
+    }}>
+      <div css={{
+        width: `70%`,
+        backgroundImage: `url(${withPrefix('/') + 'imgs/light_main.png'})`,
+        border: `3px solid`,
+        borderRadius: `5px`,
+        aspectRatio: `1920/1049`,
+        backgroundSize: `cover`,
+      }}></div>
+    </div>
     {canShowCornerBtn && !isInMainBtn && !isPageTransition && (<BackendCornerBtn setIsInFront={ () => {
       if (!isPageTransition) {
         setIsPageTransition(true)
@@ -341,7 +363,9 @@ const MastheadFrontend = (props) => {
         listStyle: 'none',
         width: '100%',
         whiteSpace: `nowrap`,
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        backgroundColor: isInMainBtn ? 'white': '',
+        borderRadius: isInMainBtn ? '5px': ''
         }}>
         {isInMainBtn? (<li>小书匠，一款助你将混沌变为有序，令你事半功倍的知识管理软件。</li>): (<>
         <NavItem linkTo="/docs/">文档</NavItem>
