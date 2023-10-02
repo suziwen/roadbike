@@ -20,7 +20,7 @@ class IndexRoute extends React.Component {
           </div>
           <div>
             <span css={{
-              fontFamily: `xsjkt`,
+              fontFamily: `founderkaiti`,
             }}>如此而已，开始使用,开始通电，数字之美</span>
           </div>
         </div>
