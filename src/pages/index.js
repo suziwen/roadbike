@@ -50,7 +50,8 @@ class IndexRoute extends React.Component {
     return (
         <div css={{ position: `relative` }}>
           <Helmet bodyAttributes={{
-            class: "roadbike-home-page"
+            class: "roadbike-home-page",
+            style: "overflow:hidden"
           }}>
             <htmlAttributes
               css={{

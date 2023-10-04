@@ -8,11 +8,8 @@ export default class HTML extends React.Component {
       <html {...this.props.htmlAttributes}>
         <head>
           <meta charSet="utf-8" />
-          <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-          />
+          <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
           <link rel="stylesheet" type="text/css" href={withPrefix('/') + "libs/zoom/zoom.css"}/>
           <link rel="stylesheet" type="text/css" href={withPrefix('/') + "css/story-writer-markdown-default.css"}/>
           <link rel="stylesheet" type="text/css" href={withPrefix('/') + "css/story-writer-markdown-code-solarized-light.css"}/>
