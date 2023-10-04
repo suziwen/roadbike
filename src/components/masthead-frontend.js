@@ -278,13 +278,20 @@ const MastheadFrontend = (props) => {
       mixBlendMode: `multiply`,
     }}>
       <div className="main-image" css={{
-        width: isRunStep?'110%':`70%`,
+        width: isRunStep?'110%':`100%`,
+        maxHeight: `100%`,
         transition: `all 5s cubic-bezier(0.6, -0.28, 0, 1.07)`,
         backgroundImage: `url(${withPrefix('/') + 'imgs/light_main.png'})`,
         border: `3px solid`,
         borderRadius: `5px`,
         aspectRatio: `1920/1049`,
         backgroundSize: `cover`,
+        [presets.Tablet]: {
+          width: isRunStep?'110%':`90%`
+        },
+        [presets.Desktop]: {
+          width: isRunStep?'110%':`70%`
+        },
       }}></div>
     </div>
     {canShowCornerBtn && !isInMainBtn && !isPageTransition && (<BackendCornerBtn setIsInFront={ () => {
