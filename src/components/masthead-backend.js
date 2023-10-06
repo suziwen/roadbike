@@ -240,6 +240,7 @@ const MastheadBackend = (props) => {
     opacity: 0,
   }
 
+  const backgroundImage = isInMainBtn ? 'dark_main_hover.png': 'dark_main.png'
   return (
   <div
     className="masthead-content"
@@ -279,12 +280,40 @@ const MastheadBackend = (props) => {
     }}>
       <div css={{
         width: isRunStep?'110%':`100%`,
-        transition: `all 5s cubic-bezier(0.6, -0.28, 0, 1.07)`,
-        backgroundImage: `url(${withPrefix('/') + 'imgs/dark_main.png'})`,
+        transition: `width 5s cubic-bezier(0.6, -0.28, 0, 1.07)`,
+        backgroundImage: `url(${withPrefix('/') + 'imgs/' + backgroundImage})`,
         border: `3px solid`,
         borderRadius: `5px`,
         aspectRatio: `1920/1049`,
         backgroundSize: `cover`,
+        [presets.Tablet]: {
+          width: isRunStep?'110%':`90%`
+        },
+        [presets.Desktop]: {
+          width: isRunStep?'110%':`70%`
+        },
+      }}></div>
+    </div>
+    <div className={`main-image-container`} css={{
+      position: `absolute`,
+      width: `100VW`,
+      height: `100VH`,
+      display: `flex`,
+      alignItems: `center`,
+      justifyContent: `center`,
+      pointerEvents: `none`,
+      zIndex: 10,
+    }}>
+      <div css={{
+        width: isRunStep?'110%':`100%`,
+        opacity: isInMainBtn&&!isRunStep? 1: 0,
+        maxHeight: `100%`,
+        backgroundImage: `url(${withPrefix('/') + 'imgs/dark_main_hover.svg'})`,
+        transition: isInMainBtn?`opacity 1s ease`: ``,
+        aspectRatio: `1920/1049`,
+        backgroundSize: `cover`,
+        transform: `scale(1.23)`,
+        filter: `drop-shadow(2px 4px 6px black)`,
         [presets.Tablet]: {
           width: isRunStep?'110%':`90%`
         },
