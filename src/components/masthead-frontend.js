@@ -294,6 +294,33 @@ const MastheadFrontend = (props) => {
         },
       }}></div>
     </div>
+    <div css={{
+      position: `absolute`,
+      width: `100VW`,
+      height: `100VH`,
+      display: `flex`,
+      alignItems: `center`,
+      justifyContent: `center`,
+      pointerEvents: `none`,
+      zIndex: 10,
+    }}>
+      <div className="main-image" css={{
+        width: isRunStep?'110%':`100%`,
+        opacity: isInMainBtn&&!isRunStep? 1: 0,
+        maxHeight: `100%`,
+        backgroundImage: `url(${withPrefix('/') + 'imgs/light_main.svg'})`,
+        transition: isInMainBtn?`opacity 1s ease`: ``,
+        aspectRatio: `1920/1049`,
+        backgroundSize: `cover`,
+        transform: `scale(1.23)`,
+        [presets.Tablet]: {
+          width: isRunStep?'110%':`90%`
+        },
+        [presets.Desktop]: {
+          width: isRunStep?'110%':`70%`
+        },
+      }}></div>
+    </div>
     {canShowCornerBtn && !isInMainBtn && !isPageTransition && (<BackendCornerBtn setIsInFront={ () => {
       if (!isPageTransition) {
         setIsPageTransition(true)
