@@ -12,6 +12,7 @@ import presets, { colors } from "../utils/presets"
 import Button from "./button"
 import { vP, vPHd, vPVHd, vPVVHd } from "../components/gutters"
 import LetterCloud from "../components/bit-cloud"
+import LazyImages from './lazy-images'
 
 const binaryEffect = keyframes({
   "0%": {
@@ -240,7 +241,7 @@ const MastheadBackend = (props) => {
     opacity: 0,
   }
 
-  const backgroundImage = isInMainBtn ? 'dark_main_hover.png': 'dark_main.png'
+  const LazyImage = isInMainBtn ? LazyImages.DarkMainHoverLazyImage : LazyImages.DarkMainLazyImage
   return (
   <div
     className="masthead-content"
@@ -281,7 +282,6 @@ const MastheadBackend = (props) => {
       <div css={{
         width: isRunStep?'110%':`100%`,
         transition: `width 5s cubic-bezier(0.6, -0.28, 0, 1.07)`,
-        backgroundImage: `url(${withPrefix('/') + 'imgs/' + backgroundImage})`,
         border: `3px solid`,
         borderRadius: `5px`,
         aspectRatio: `1920/1049`,
@@ -292,7 +292,7 @@ const MastheadBackend = (props) => {
         [presets.Desktop]: {
           width: isRunStep?'110%':`70%`
         },
-      }}></div>
+      }}><LazyImage /></div>
     </div>
     <div className={`main-image-container`} css={{
       position: `absolute`,

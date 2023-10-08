@@ -12,6 +12,7 @@ import presets, { colors } from "../utils/presets"
 import Button from "./button"
 import { vP, vPHd, vPVHd, vPVVHd } from "../components/gutters"
 import LetterCloud from "../components/image-cloud"
+import LazyImages from './lazy-images'
 
 const sheenEffect = keyframes({
   "0%": {
@@ -281,7 +282,6 @@ const MastheadFrontend = (props) => {
         width: isRunStep?'110%':`100%`,
         maxHeight: `100%`,
         transition: `all 5s cubic-bezier(0.6, -0.28, 0, 1.07)`,
-        backgroundImage: `url(${withPrefix('/') + 'imgs/light_main.png'})`,
         border: `3px solid`,
         borderRadius: `5px`,
         aspectRatio: `1920/1049`,
@@ -292,7 +292,9 @@ const MastheadFrontend = (props) => {
         [presets.Desktop]: {
           width: isRunStep?'110%':`70%`
         },
-      }}></div>
+      }}>
+        <LazyImages.LightMainLazyImage />
+      </div>
     </div>
     <div css={{
       position: `absolute`,
