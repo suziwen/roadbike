@@ -70,10 +70,6 @@
           link: /docs/grammar/feature/mindmap/
         - title: 中文斜体
           link: /docs/grammar/feature/cjk_emphasis/
-        - title: nunjucks 模板引擎
-          link: /docs/grammar/feature/nunjucks/
-        - title: codeChunk 代码执行
-          link: /docs/grammar/feature/code_chunk/
         - title: 远程图片
           link: /docs/grammar/feature/xsjimg/
         - title: plantuml 建模
