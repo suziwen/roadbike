@@ -12,3 +12,10 @@ nvm use 12.16.1
 ```
 node --inspect-brk --no-lazy node_modules/gatsby/dist/bin/gatsby build
 ```
+
+# 本地运行
+
+```
+nvm use 12.16.1
+npm run develop
+```

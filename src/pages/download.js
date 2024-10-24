@@ -10,6 +10,7 @@ import { PriceIcon} from "../assets/mobile-nav-icons"
 import {MdArrowForward} from "react-icons/md"
 import HomepageSection from "../components/homepage/homepage-section"
 import PWADownloadSection from '../components/downloads/pwaSection'
+import JOPPDownloadSection from '../components/downloads/joppSection'
 import Button from "../components/button"
 import {
   setupScrollersObserver,
@@ -274,6 +275,7 @@ class IndexRoute extends React.Component {
             }}
           >
             <DownloadSections version="8.13.2" downloadUrl="http://www.baidu.com" />
+            <JOPPDownloadSection />
             <PWADownloadSection />
             <AndroidDownloadSections />
             <DockerDownloadSections />
