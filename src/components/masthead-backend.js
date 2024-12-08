@@ -199,7 +199,7 @@ const MastheadBackend = (props) => {
       }}/>视频</a>
     </li>
   )
-  if (isGitHub) {
+  if (isGitHub && false) {
     videoChanel = (
         <li>
           <a href="https://www.youtube.com/channel/UCVtzhZnlEBxwysgtCAHFBFg" target="_blank"><RiYoutubeFill size="1em" style={{
