@@ -167,13 +167,58 @@ code.hljs.code_linenums,
   color: #29754d;
   padding: 2px 4px;
 }
-.line_mark {
-  background-color: rgba(255, 0, 0, 0.1);
+
+.mark_color_000000{
+  color: transparent!important;
+  background: initial!important;
+  border-bottom: 2px solid #3a4c42;
+  transition: color .6s;
 }
-.li_linenum.line_mark:before,
-.line_mark .li_linenum_before_span {
-  background-color: rgba(255, 0, 0, 0.3);
+
+.mark_color_000000:hover{
+  color: black!important;
 }
+
+.li_linenum.line_mark:before, .line_mark .li_linenum_before_span {
+    background: rgba(65, 174, 60, 0.6);
+}
+.line_mark{
+  background: rgba(65, 174, 60, 0.3);
+}
+
+
+
+.li_linenum.line_mark_warn:before, .line_mark_warn .li_linenum_before_span {
+    background: rgba(252, 121, 48, .6);
+}
+.line_mark_warn{
+  background: rgba(252, 121, 48, .3);
+}
+
+.li_linenum.line_mark_info:before, .line_mark_info .li_linenum_before_span {
+    background: rgba(97, 154, 195, .6);
+}
+.line_mark_info{
+  background: rgba(97, 154, 195, .3);
+}
+
+.li_linenum.line_mark_error:before, .line_mark_error .li_linenum_before_span {
+    background: rgba(210, 118, 118, 0.6);
+}
+.line_mark_error{
+  background: rgba(210, 174, 174, 0.3);
+}
+
+.line_mark_del{
+  text-decoration: line-through;
+  text-decoration: 2px line-through;
+}
+.line_mark_ins{
+  text-decoration: underline;
+  text-decoration: 2px underline;
+}
+
+
 code .mark,
 .xiaoshujiang_code .mark {
   border-radius: 0px;
