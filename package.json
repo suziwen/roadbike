@@ -46,7 +46,7 @@
     "gray-percentage": "^2.0.0",
     "gsap": "^3.11.0",
     "hex2rgba": "^0.0.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
     "mitt": "^1.1.3",
