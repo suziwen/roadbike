@@ -151,7 +151,7 @@ const DockerDownloadSections = ()=>{
 const GithubPagesDownloadSections = ()=>{
   return (
     <HomepageSection
-      sectionName="Pegasus"
+      sectionName="Lucky-cat"
       sectionIcon={PriceIcon}
       inverseStyle={true}
       title={`招财猫版(小书匠 Github Pages 静态自部署版本)`}
