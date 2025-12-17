@@ -148,6 +148,34 @@ const DockerDownloadSections = ()=>{
   )
 }
 
+const GithubPagesDownloadSections = ()=>{
+  return (
+    <HomepageSection
+      sectionName="Pegasus"
+      sectionIcon={PriceIcon}
+      inverseStyle={true}
+      title={`招财猫版(小书匠 Github Pages 静态自部署版本)`}
+      links={[{
+        to: "https://github.com/suziwen/lucky-cat",
+        label: "代码地址",
+        inverseStyle: true,
+        icon: MdArrowForward,
+        tag: "href",
+        target: "_blank",
+      },{
+        to: "https://suziwen.github.io/lucky-cat/",
+        label: "演示地址",
+        inverseStyle: true,
+        icon: MdArrowForward,
+        tag: "href",
+        target: "_blank",
+      }]}
+    >
+    </HomepageSection>
+  )
+}
+
+
 
 
 const AndroidDownloadSections = ()=>{
@@ -279,6 +307,7 @@ class IndexRoute extends React.Component {
             <PWADownloadSection />
             <AndroidDownloadSections />
             <DockerDownloadSections />
+            <GithubPagesDownloadSections />
             <OldDownloadSections />
             <OtherDownloadSections />
           </div>
