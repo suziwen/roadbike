@@ -54,7 +54,7 @@
     "parse-filepath": "^1.0.2",
     "parse-github-url": "^1.0.2",
     "prismjs": "^1.16.0",
-    "qs": "^6.7.0",
+    "qs": "^6.9.7",
     "query-string": "^6.4.2",
     "react": "^16.8.6",
     "react-composition": "^0.2.2",
